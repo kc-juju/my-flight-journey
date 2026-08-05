@@ -15,6 +15,10 @@ export function indexPlaces(places: Place[]): Map<string, Place> {
   return new Map(places.map((p) => [p.id, p]));
 }
 
+/** Legs that actually happened — everything derived counts only these. */
+export const travelled = (journey: Journey): Segment[] =>
+  journey.segments.filter((s) => !s.dropped);
+
 export function placesOfJourney(journey: Journey, byId: Map<string, Place>): Place[] {
   const seen = new Set<string>();
   const out: Place[] = [];
@@ -26,7 +30,7 @@ export function placesOfJourney(journey: Journey, byId: Map<string, Place>): Pla
     }
   };
   journey.stops.forEach((s) => push(s.placeId));
-  journey.segments.forEach((s) => {
+  travelled(journey).forEach((s) => {
     push(s.fromPlaceId);
     push(s.toPlaceId);
   });
@@ -50,20 +54,18 @@ export function segmentDistanceKm(segment: Segment, byId: Map<string, Place>): n
 /** Everything the UI shows about a journey is derived here, never authored. */
 export function journeyMetrics(journey: Journey, byId: Map<string, Place>): JourneyMetrics {
   const places = placesOfJourney(journey, byId);
-  const distance = journey.segments.reduce(
-    (sum, s) => sum + segmentDistanceKm(s, byId),
-    0,
-  );
-  const modes = [...new Set(journey.segments.map((s) => s.mode))];
+  const legs = travelled(journey);
+  const distance = legs.reduce((sum, s) => sum + segmentDistanceKm(s, byId), 0);
+  const modes = [...new Set(legs.map((s) => s.mode))];
 
   return {
     days: inclusiveDays(journey.startDate, journey.endDate),
-    segmentCount: journey.segments.length,
-    flightCount: journey.segments.filter((s) => s.mode === 'flight').length,
+    segmentCount: legs.length,
+    flightCount: legs.filter((s) => s.mode === 'flight').length,
     cityCount: new Set(places.map((p) => p.name)).size,
     countryCount: new Set(places.map((p) => p.countryCode)).size,
     distanceKm: Math.round(distance),
-    durationMinutes: journey.segments.reduce((sum, s) => sum + (s.durationMinutes ?? 0), 0),
+    durationMinutes: legs.reduce((sum, s) => sum + (s.durationMinutes ?? 0), 0),
     modes: TRANSPORT_MODES.filter((m) => modes.includes(m)),
   };
 }
@@ -91,7 +93,7 @@ export function atlasMetrics(data: AtlasData): AtlasMetrics {
       countries.add(place.countryCode);
       if (place.code) airports.add(place.code);
     }
-    for (const segment of journey.segments) {
+    for (const segment of travelled(journey)) {
       segments += 1;
       modeTotals[segment.mode] += 1;
       if (segment.mode === 'flight') flights += 1;

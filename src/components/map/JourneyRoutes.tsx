@@ -44,6 +44,7 @@ export function JourneyRoutes({
     () =>
       journeys.map((journey) => {
         const lines = journey.segments
+          .filter((segment) => !segment.dropped)
           .map((segment) => {
             const from = placesById.get(segment.fromPlaceId);
             const to = placesById.get(segment.toPlaceId);
@@ -62,7 +63,7 @@ export function JourneyRoutes({
           );
 
         const nodes = new Map<string, Place>();
-        journey.segments.forEach((segment) => {
+        journey.segments.filter((s) => !s.dropped).forEach((segment) => {
           const from = placesById.get(segment.fromPlaceId);
           const to = placesById.get(segment.toPlaceId);
           if (from) nodes.set(from.id, from);

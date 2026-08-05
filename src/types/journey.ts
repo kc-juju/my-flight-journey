@@ -59,6 +59,11 @@ export interface Segment {
   /** Cabin, class of service, seat category… */
   cabin?: string;
   note?: string;
+  /**
+   * Booked but not travelled — an oversold flight given up, a cancelled leg.
+   * Shown struck through and excluded from every derived figure.
+   */
+  dropped?: boolean;
 }
 
 /** A place the journey passes through, in itinerary order. */

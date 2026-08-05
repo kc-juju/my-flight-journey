@@ -2423,6 +2423,16 @@
           "cabin": "Economy"
         },
         {
+          "id": "2025-10-18-SEATPE-dropped",
+          "mode": "flight",
+          "fromPlaceId": "sea",
+          "toPlaceId": "tpe",
+          "departure": "2025-10-18",
+          "dropped": true,
+          "operator": "Delta Air Lines",
+          "note": "Oversold — we volunteered to give up our seats and flew the next evening"
+        },
+        {
           "id": "2025-10-19-DAL69-SEATPE",
           "mode": "flight",
           "fromPlaceId": "sea",

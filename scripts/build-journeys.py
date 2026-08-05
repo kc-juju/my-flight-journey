@@ -427,10 +427,41 @@ def build():
             journey['highlights'] = entry['highlights']
         for ann in entry.get('segments', []):
             for seg in journey['segments']:
+                if seg.get('dropped'):
+                    continue
                 if (place_id.get(ann['from']) == seg['fromPlaceId']
                         and place_id.get(ann['to']) == seg['toPlaceId']):
                     seg['note'] = ' • '.join(filter(None, [seg.get('note'), ann['note']]))
                     break
+
+        for drop in entry.get('dropped', []):
+            seg = {
+                'id': f"{drop['date']}-{drop['from']}{drop['to']}-dropped",
+                'mode': drop.get('mode', 'flight'),
+                'fromPlaceId': place_id[drop['from']],
+                'toPlaceId': place_id[drop['to']],
+                # Date only unless a clock time was actually recorded — a
+                # placeholder 00:00 would read as a real departure.
+                'departure': (f"{drop['date']}T{drop['departure']}"
+                              if drop.get('departure') else drop['date']),
+                'dropped': True,
+            }
+            for key in ('operator', 'reference', 'vehicle', 'cabin', 'note'):
+                if drop.get(key):
+                    seg[key] = drop[key]
+
+            # The list is already chronological; undated legs (a coach with no
+            # times) inherit the date of the leg before them.
+            at = len(journey['segments'])
+            last = ''
+            for idx, existing in enumerate(journey['segments']):
+                when = (existing.get('departure') or '')[:10] or last
+                last = when or last
+                if when and when > drop['date']:
+                    at = idx
+                    break
+            journey['segments'].insert(at, seg)
+
     for slug in notes:
         if not any(j['slug'] == slug for j in journeys):
             print(f'  WARNING: note for unknown journey "{slug}"')
