@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAtlas } from '../hooks/useAtlas';
 import { WorldMap } from '../components/map/WorldMap';
 import { JourneyPopup } from '../components/map/JourneyPopup';
@@ -8,7 +8,7 @@ import { JourneyCard } from '../components/journey/JourneyCard';
 import { Timeline } from '../components/journey/Timeline';
 import { Icon } from '../components/ui/Icon';
 import type { Journey } from '../types/journey';
-import { formatDateRange, formatNumber } from '../lib/format';
+import { formatDateRange, formatMonthYear, formatNumber } from '../lib/format';
 import { journeyYear } from '../lib/atlas';
 import { asset } from '../lib/asset';
 
@@ -27,6 +27,11 @@ export function MapPage() {
   );
 
   const active = selected ?? hovered;
+
+  // "Recent" means travelled. Booked-but-not-yet-flown journeys get their own
+  // group so the list is not a mix of memory and intention.
+  const flown = useMemo(() => visible.filter((j) => j.status === 'completed'), [visible]);
+  const upcoming = useMemo(() => visible.filter((j) => j.status !== 'completed'), [visible]);
 
   const handleHover = (journey: Journey | null, event?: { clientX: number; clientY: number }) => {
     if (selected) return;
@@ -89,22 +94,58 @@ export function MapPage() {
                 {year === null ? 'Recent journeys' : `${year} journeys`}
               </h2>
 
-              {visible.length === 0 ? (
+              {flown.length === 0 && upcoming.length === 0 ? (
                 <p className="py-4 text-sm italic text-on-surface-variant">
                   No journeys recorded in {year}.
                 </p>
               ) : (
-                <div className="flex flex-col gap-6">
-                  {visible.slice(0, 4).map((journey) => (
-                    <JourneyCard
-                      key={journey.id}
-                      journey={journey}
-                      metrics={metricsFor(journey)}
-                      onHoverStart={(j) => !selected && setHovered(j)}
-                      onHoverEnd={() => setHovered(null)}
-                    />
-                  ))}
-                </div>
+                <>
+                  {flown.length > 0 ? (
+                    <div className="flex flex-col gap-6">
+                      {flown.slice(0, 4).map((journey) => (
+                        <JourneyCard
+                          key={journey.id}
+                          journey={journey}
+                          metrics={metricsFor(journey)}
+                          onHoverStart={(j) => !selected && setHovered(j)}
+                          onHoverEnd={() => setHovered(null)}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="py-2 text-sm italic text-on-surface-variant">
+                      Nothing flown {year === null ? 'yet' : `in ${year}`}.
+                    </p>
+                  )}
+
+                  {upcoming.length > 0 && (
+                    <div className="mt-stack-md border-t border-outline-variant/50 pt-stack-sm">
+                      <h3 className="mb-stack-sm flex items-center gap-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                        <Icon name="flight_takeoff" className="text-[16px]" />
+                        Booked ahead · {upcoming.length}
+                      </h3>
+                      <ul className="flex flex-col gap-2">
+                        {upcoming.map((journey) => (
+                          <li key={journey.id}>
+                            <Link
+                              to={`/journeys/${journey.slug}`}
+                              onMouseEnter={() => !selected && setHovered(journey)}
+                              onMouseLeave={() => setHovered(null)}
+                              className="flex items-baseline justify-between gap-3 rounded-lg px-2 py-1.5 transition-colors hover:bg-surface-container"
+                            >
+                              <span className="font-body-md text-sm text-on-surface">
+                                {journey.title}
+                              </span>
+                              <span className="shrink-0 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                                {formatMonthYear(journey.startDate)}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </>
               )}
             </div>
           </motion.aside>
