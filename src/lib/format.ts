@@ -48,6 +48,27 @@ export function formatDateRange(startIso: string, endIso: string): string {
   return s.y === e.y ? `${left} — ${right}, ${e.y}` : `${left}, ${s.y} — ${right}, ${e.y}`;
 }
 
+/** "04 Oct 2025" from an ISO date or date-time. */
+export function formatDayDate(iso?: string): string {
+  if (!iso) return '';
+  const { y, m, d } = parts(iso);
+  return `${String(d).padStart(2, '0')} ${MONTHS[m - 1]} ${y}`;
+}
+
+/**
+ * Calendar days between departure and arrival.
+ *
+ * Usually 0 or 1, but an eastbound Pacific crossing can land on the same date
+ * at an earlier clock time, which is why the date is worth printing.
+ */
+export function dayOffset(departure?: string, arrival?: string): number {
+  if (!departure || !arrival) return 0;
+  const a = Date.parse(`${departure.slice(0, 10)}T00:00:00Z`);
+  const b = Date.parse(`${arrival.slice(0, 10)}T00:00:00Z`);
+  if (Number.isNaN(a) || Number.isNaN(b)) return 0;
+  return Math.round((b - a) / 86_400_000);
+}
+
 /** "14:20" from an ISO local date-time. */
 export function formatClock(iso?: string): string {
   return iso ? iso.slice(11, 16) : '—';

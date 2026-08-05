@@ -1,5 +1,13 @@
 import type { Place, Segment } from '../../types/journey';
-import { formatClock, formatDuration, MODE_COLOR, MODE_ICON, MODE_LABEL } from '../../lib/format';
+import {
+  dayOffset,
+  formatClock,
+  formatDayDate,
+  formatDuration,
+  MODE_COLOR,
+  MODE_ICON,
+  MODE_LABEL,
+} from '../../lib/format';
 import { Icon } from '../ui/Icon';
 
 interface SegmentCardProps {
@@ -16,6 +24,8 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
   const heading = [MODE_LABEL[segment.mode].toUpperCase(), segment.reference]
     .filter(Boolean)
     .join(' • ');
+
+  const overnight = dayOffset(segment.departure, segment.arrival);
 
   const detail = [segment.operator, segment.cabin, segment.vehicle, segment.note]
     .filter(Boolean)
@@ -56,9 +66,25 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
             <span className="mt-1 font-body-md text-sm text-on-surface-variant">{detail}</span>
           )}
 
-          {segment.departure && segment.arrival && (
-            <span className="mt-1 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-              {formatClock(segment.departure)} → {formatClock(segment.arrival)} local
+          {segment.departure && (
+            <span className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+              <span className="text-on-surface">{formatDayDate(segment.departure)}</span>
+              {segment.arrival && (
+                <>
+                  <span>
+                    {formatClock(segment.departure)} → {formatClock(segment.arrival)}
+                    {overnight > 0 && (
+                      <sup className="ml-0.5 text-tertiary-fixed-dim">+{overnight}</sup>
+                    )}
+                    {' local'}
+                  </span>
+                  {overnight > 0 && (
+                    <span className="text-on-surface-variant/70">
+                      arrives {formatDayDate(segment.arrival)}
+                    </span>
+                  )}
+                </>
+              )}
             </span>
           )}
         </div>
