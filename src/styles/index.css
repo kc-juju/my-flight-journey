@@ -1,0 +1,99 @@
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* The prototype hides scrollbars; keep the affordance for keyboard/AT users
+     by leaving overflow behaviour untouched and only styling the chrome. */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.tertiary-fixed-dim');
+    outline-offset: 2px;
+  }
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+.icon-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ---- Leaflet surface, restyled to the atlas palette ------------------- */
+
+.leaflet-container {
+  background: theme('colors.surface-container-low');
+  font-family: theme('fontFamily.body-md');
+}
+
+.leaflet-container a {
+  color: theme('colors.on-surface-variant');
+}
+
+.leaflet-control-attribution {
+  background: rgb(255 255 255 / 0.72) !important;
+  backdrop-filter: blur(8px);
+  font-size: 10px !important;
+  letter-spacing: 0.02em;
+}
+
+.leaflet-control-zoom a {
+  background: theme('colors.surface-container-lowest') !important;
+  color: theme('colors.on-surface') !important;
+  border-color: theme('colors.outline-variant') !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: theme('colors.surface-container') !important;
+}
+
+/* The tile layer is desaturated so the gold routes stay the loudest thing
+   on the map — the prototype's "Modern Heritage" look. */
+.atlas-tiles {
+  filter: grayscale(0.55) sepia(0.14) brightness(1.03) contrast(0.95);
+}
+
+.route-glow {
+  filter: drop-shadow(0 0 5px rgb(233 193 118 / 0.75));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

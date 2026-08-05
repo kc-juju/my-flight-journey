@@ -1,0 +1,2956 @@
+{
+  "places": [
+    {
+      "id": "bki",
+      "name": "Kota Kinabalu",
+      "code": "BKI",
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "lat": 5.932743,
+      "lon": 116.049324,
+      "image": "/images/cities/BKI.jpg"
+    },
+    {
+      "id": "bkk",
+      "name": "Bangkok",
+      "code": "BKK",
+      "country": "Thailand",
+      "countryCode": "TH",
+      "lat": 13.6811,
+      "lon": 100.747002,
+      "image": "/images/cities/BKK.jpg"
+    },
+    {
+      "id": "bne",
+      "name": "Brisbane",
+      "code": "BNE",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -27.384199142456055,
+      "lon": 153.11700439453125,
+      "image": "/images/cities/BNE.jpg"
+    },
+    {
+      "id": "bod",
+      "name": "Bordeaux",
+      "code": "BOD",
+      "country": "France",
+      "countryCode": "FR",
+      "lat": 44.82865,
+      "lon": -0.715356,
+      "image": "/images/cities/BOD.jpg"
+    },
+    {
+      "id": "bud",
+      "name": "Budapest",
+      "code": "BUD",
+      "country": "Hungary",
+      "countryCode": "HU",
+      "lat": 47.43018,
+      "lon": 19.262393,
+      "image": "/images/cities/BUD.jpg"
+    },
+    {
+      "id": "cdg",
+      "name": "Paris",
+      "code": "CDG",
+      "country": "France",
+      "countryCode": "FR",
+      "lat": 49.00896,
+      "lon": 2.554117,
+      "image": "/images/cities/CDG.jpg"
+    },
+    {
+      "id": "cts",
+      "name": "Sapporo",
+      "code": "CTS",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 42.774753,
+      "lon": 141.690414,
+      "image": "/images/cities/CTS.jpg"
+    },
+    {
+      "id": "doh",
+      "name": "Doha",
+      "code": "DOH",
+      "country": "Qatar",
+      "countryCode": "QA",
+      "lat": 25.273056,
+      "lon": 51.608056,
+      "image": "/images/cities/DOH.jpg"
+    },
+    {
+      "id": "dub",
+      "name": "Dublin",
+      "code": "DUB",
+      "country": "Ireland",
+      "countryCode": "IE",
+      "lat": 53.428713,
+      "lon": -6.262121,
+      "image": "/images/cities/DUB.jpg"
+    },
+    {
+      "id": "fuk",
+      "name": "Fukuoka",
+      "code": "FUK",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 33.585899353027344,
+      "lon": 130.4510040283203,
+      "image": "/images/cities/FUK.jpg"
+    },
+    {
+      "id": "hel",
+      "name": "Helsinki",
+      "code": "HEL",
+      "country": "Finland",
+      "countryCode": "FI",
+      "lat": 60.318363,
+      "lon": 24.963341,
+      "image": "/images/cities/HEL.jpg"
+    },
+    {
+      "id": "hkd",
+      "name": "Hakodate",
+      "code": "HKD",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 41.77,
+      "lon": 140.822006,
+      "image": "/images/cities/HKD.jpg"
+    },
+    {
+      "id": "hkg",
+      "name": "Hong Kong",
+      "code": "HKG",
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "lat": 22.31184,
+      "lon": 113.914862,
+      "image": "/images/cities/HKG.jpg"
+    },
+    {
+      "id": "hnd",
+      "name": "Tokyo",
+      "code": "HND",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 35.549678,
+      "lon": 139.786958,
+      "image": "/images/cities/HND.jpg"
+    },
+    {
+      "id": "icn",
+      "name": "Seoul",
+      "code": "ICN",
+      "country": "South Korea",
+      "countryCode": "KR",
+      "lat": 37.469101,
+      "lon": 126.450996,
+      "image": "/images/cities/ICN.jpg"
+    },
+    {
+      "id": "ist",
+      "name": "Istanbul",
+      "code": "IST",
+      "country": "Türkiye",
+      "countryCode": "TR",
+      "lat": 41.274874,
+      "lon": 28.732136,
+      "image": "/images/cities/IST.jpg"
+    },
+    {
+      "id": "itm",
+      "name": "Osaka",
+      "code": "ITM",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 34.780853,
+      "lon": 135.440829,
+      "image": "/images/cities/ITM.jpg"
+    },
+    {
+      "id": "jfk",
+      "name": "New York",
+      "code": "JFK",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 40.639447,
+      "lon": -73.779317,
+      "image": "/images/cities/JFK.jpg"
+    },
+    {
+      "id": "kix",
+      "name": "Osaka",
+      "code": "KIX",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 34.427299,
+      "lon": 135.244003,
+      "image": "/images/cities/KIX.jpg"
+    },
+    {
+      "id": "kul",
+      "name": "Kuala Lumpur",
+      "code": "KUL",
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "lat": 2.74558,
+      "lon": 101.709999,
+      "image": "/images/cities/KUL.jpg"
+    },
+    {
+      "id": "kwe",
+      "name": "Guiyang",
+      "code": "KWE",
+      "country": "China",
+      "countryCode": "CN",
+      "lat": 26.541805,
+      "lon": 106.80402,
+      "image": "/images/cities/KWE.jpg"
+    },
+    {
+      "id": "lax",
+      "name": "Los Angeles",
+      "code": "LAX",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 33.942501,
+      "lon": -118.407997,
+      "image": "/images/cities/LAX.jpg"
+    },
+    {
+      "id": "lhr",
+      "name": "London",
+      "code": "LHR",
+      "country": "United Kingdom",
+      "countryCode": "GB",
+      "lat": 51.470748,
+      "lon": -0.459909,
+      "image": "/images/cities/LHR.jpg"
+    },
+    {
+      "id": "man",
+      "name": "Manchester",
+      "code": "MAN",
+      "country": "United Kingdom",
+      "countryCode": "GB",
+      "lat": 53.349375,
+      "lon": -2.279521,
+      "image": "/images/cities/MAN.jpg"
+    },
+    {
+      "id": "mel",
+      "name": "Melbourne",
+      "code": "MEL",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -37.670732,
+      "lon": 144.837898,
+      "image": "/images/cities/MEL.jpg"
+    },
+    {
+      "id": "mfm",
+      "name": "Macau",
+      "code": "MFM",
+      "country": "Macau",
+      "countryCode": "MO",
+      "lat": 22.149599,
+      "lon": 113.592003,
+      "image": "/images/cities/MFM.jpg"
+    },
+    {
+      "id": "mnl",
+      "name": "Manila",
+      "code": "MNL",
+      "country": "Philippines",
+      "countryCode": "PH",
+      "lat": 14.5086,
+      "lon": 121.019997,
+      "image": "/images/cities/MNL.jpg"
+    },
+    {
+      "id": "muc",
+      "name": "Munich",
+      "code": "MUC",
+      "country": "Germany",
+      "countryCode": "DE",
+      "lat": 48.353802,
+      "lon": 11.7861,
+      "image": "/images/cities/MUC.jpg"
+    },
+    {
+      "id": "mzg",
+      "name": "Penghu",
+      "code": "MZG",
+      "country": "Taiwan",
+      "countryCode": "TW",
+      "lat": 23.568701,
+      "lon": 119.627998,
+      "image": "/images/cities/MZG.jpg"
+    },
+    {
+      "id": "nce",
+      "name": "Nice",
+      "code": "NCE",
+      "country": "France",
+      "countryCode": "FR",
+      "lat": 43.658401,
+      "lon": 7.21587,
+      "image": "/images/cities/NCE.jpg"
+    },
+    {
+      "id": "nrt",
+      "name": "Tokyo",
+      "code": "NRT",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 35.76858,
+      "lon": 140.388714,
+      "image": "/images/cities/NRT.jpg"
+    },
+    {
+      "id": "oka",
+      "name": "Naha",
+      "code": "OKA",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 26.192437,
+      "lon": 127.639804,
+      "image": "/images/cities/OKA.jpg"
+    },
+    {
+      "id": "okj",
+      "name": "Okayama",
+      "code": "OKJ",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 34.756901,
+      "lon": 133.854996,
+      "image": "/images/cities/OKJ.jpg"
+    },
+    {
+      "id": "ool",
+      "name": "Gold Coast",
+      "code": "OOL",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -28.165962,
+      "lon": 153.506641,
+      "image": "/images/cities/OOL.jpg"
+    },
+    {
+      "id": "pen",
+      "name": "Penang",
+      "code": "PEN",
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "lat": 5.296303,
+      "lon": 100.276185,
+      "image": "/images/cities/PEN.jpg"
+    },
+    {
+      "id": "per",
+      "name": "Perth",
+      "code": "PER",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -31.94029998779297,
+      "lon": 115.96700286865234,
+      "image": "/images/cities/PER.jpg"
+    },
+    {
+      "id": "pvg",
+      "name": "Shanghai",
+      "code": "PVG",
+      "country": "China",
+      "countryCode": "CN",
+      "lat": 31.1434,
+      "lon": 121.805,
+      "image": "/images/cities/PVG.jpg"
+    },
+    {
+      "id": "sea",
+      "name": "Seattle",
+      "code": "SEA",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 47.447943,
+      "lon": -122.310276,
+      "image": "/images/cities/SEA.jpg"
+    },
+    {
+      "id": "sin",
+      "name": "Singapore",
+      "code": "SIN",
+      "country": "Singapore",
+      "countryCode": "SG",
+      "lat": 1.35019,
+      "lon": 103.994003,
+      "image": "/images/cities/SIN.jpg"
+    },
+    {
+      "id": "tpe",
+      "name": "Taipei",
+      "code": "TPE",
+      "country": "Taiwan",
+      "countryCode": "TW",
+      "lat": 25.0777,
+      "lon": 121.233002,
+      "image": "/images/cities/TPE.jpg"
+    },
+    {
+      "id": "tsa",
+      "name": "Taipei",
+      "code": "TSA",
+      "country": "Taiwan",
+      "countryCode": "TW",
+      "lat": 25.067244,
+      "lon": 121.552822,
+      "image": "/images/cities/TSA.jpg"
+    },
+    {
+      "id": "vce",
+      "name": "Venice",
+      "code": "VCE",
+      "country": "Italy",
+      "countryCode": "IT",
+      "lat": 45.505299,
+      "lon": 12.3519,
+      "image": "/images/cities/VCE.jpg"
+    },
+    {
+      "id": "vie",
+      "name": "Vienna",
+      "code": "VIE",
+      "country": "Austria",
+      "countryCode": "AT",
+      "lat": 48.110298,
+      "lon": 16.5697,
+      "image": "/images/cities/VIE.jpg"
+    },
+    {
+      "id": "waw",
+      "name": "Warsaw",
+      "code": "WAW",
+      "country": "Poland",
+      "countryCode": "PL",
+      "lat": 52.165699,
+      "lon": 20.9671,
+      "image": "/images/cities/WAW.jpg"
+    },
+    {
+      "id": "yvr",
+      "name": "Vancouver",
+      "code": "YVR",
+      "country": "Canada",
+      "countryCode": "CA",
+      "lat": 49.193901,
+      "lon": -123.183998,
+      "image": "/images/cities/YVR.jpg"
+    },
+    {
+      "id": "yyc",
+      "name": "Calgary",
+      "code": "YYC",
+      "country": "Canada",
+      "countryCode": "CA",
+      "lat": 51.118822,
+      "lon": -114.009933,
+      "image": "/images/cities/YYC.jpg"
+    },
+    {
+      "id": "yzf",
+      "name": "Yellowknife",
+      "code": "YZF",
+      "country": "Canada",
+      "countryCode": "CA",
+      "lat": 62.462799,
+      "lon": -114.440002,
+      "image": "/images/cities/YZF.jpg"
+    }
+  ],
+  "collections": [
+    {
+      "id": "japan",
+      "title": "Japan",
+      "blurb": "The most-returned-to country on the map.",
+      "icon": "travel_explore",
+      "image": "/images/cities/KIX.jpg"
+    },
+    {
+      "id": "greater-china",
+      "title": "Hong Kong, Macau & Mainland",
+      "blurb": "The short hops and the long layovers.",
+      "icon": "travel_explore",
+      "image": "/images/cities/HKG.jpg"
+    },
+    {
+      "id": "southeast-asia",
+      "title": "Southeast Asia",
+      "blurb": "Kuala Lumpur, Singapore, Bangkok, Manila.",
+      "icon": "travel_explore",
+      "image": "/images/cities/SIN.jpg"
+    },
+    {
+      "id": "korea",
+      "title": "Korea",
+      "blurb": "Seoul, in winter and in spring.",
+      "icon": "travel_explore",
+      "image": "/images/cities/ICN.jpg"
+    },
+    {
+      "id": "europe",
+      "title": "Europe",
+      "blurb": "Long-haul west, usually with a stop somewhere in between.",
+      "icon": "travel_explore",
+      "image": "/images/cities/BUD.jpg"
+    },
+    {
+      "id": "north-america",
+      "title": "North America",
+      "blurb": "Across the Pacific, and once as far as the Arctic.",
+      "icon": "travel_explore",
+      "image": "/images/cities/JFK.jpg"
+    },
+    {
+      "id": "oceania",
+      "title": "Oceania",
+      "blurb": "The southern hemisphere runs.",
+      "icon": "travel_explore",
+      "image": "/images/cities/MEL.jpg"
+    },
+    {
+      "id": "taiwan",
+      "title": "Taiwan",
+      "blurb": "Songshan to Magong and back.",
+      "icon": "travel_explore",
+      "image": "/images/cities/MZG.jpg"
+    }
+  ],
+  "journeys": [
+    {
+      "id": "2008-01-13-hkg",
+      "slug": "2008-01-13-hk-cn",
+      "title": "Hong Kong · China",
+      "subtitle": "TPE → HKG → PVG → HKG → TPE",
+      "startDate": "2008-01-13",
+      "endDate": "2008-01-19",
+      "status": "completed",
+      "collectionId": "greater-china",
+      "heroImage": "/images/cities/HKG.jpg",
+      "thumbnail": "/images/cities/HKG.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "hkg"
+        },
+        {
+          "placeId": "pvg"
+        },
+        {
+          "placeId": "hkg"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2008-01-13-HDA487-TPEHKG",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "hkg",
+          "operator": "Dragonair",
+          "reference": "HDA487",
+          "departure": "2008-01-13T10:55",
+          "arrival": "2008-01-13T12:45",
+          "durationMinutes": 110,
+          "vehicle": "Airbus A330",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2008-01-13-HDA890-HKGPVG",
+          "mode": "flight",
+          "fromPlaceId": "hkg",
+          "toPlaceId": "pvg",
+          "operator": "Dragonair",
+          "reference": "HDA890",
+          "departure": "2008-01-13T15:00",
+          "arrival": "2008-01-13T17:03",
+          "durationMinutes": 123,
+          "vehicle": "Airbus A330",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2008-01-19-HDA893-PVGHKG",
+          "mode": "flight",
+          "fromPlaceId": "pvg",
+          "toPlaceId": "hkg",
+          "operator": "Dragonair",
+          "reference": "HDA893",
+          "departure": "2008-01-19T15:22",
+          "arrival": "2008-01-19T18:08",
+          "durationMinutes": 166,
+          "vehicle": "Airbus A321",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2008-01-19-HDA482-HKGTPE",
+          "mode": "flight",
+          "fromPlaceId": "hkg",
+          "toPlaceId": "tpe",
+          "operator": "Dragonair",
+          "reference": "HDA482",
+          "departure": "2008-01-19T18:10",
+          "arrival": "2008-01-19T19:50",
+          "durationMinutes": 100,
+          "vehicle": "Airbus A330",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2010-07-27-hkg",
+      "slug": "2010-07-27-hk",
+      "title": "Hong Kong",
+      "subtitle": "TPE → HKG → TPE",
+      "startDate": "2010-07-27",
+      "endDate": "2010-07-31",
+      "status": "completed",
+      "collectionId": "greater-china",
+      "heroImage": "/images/cities/HKG.jpg",
+      "thumbnail": "/images/cities/HKG.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "hkg"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2010-07-27-HDA489-TPEHKG",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "hkg",
+          "operator": "Dragonair",
+          "reference": "HDA489",
+          "departure": "2010-07-27T08:00",
+          "arrival": "2010-07-27T09:36",
+          "durationMinutes": 96,
+          "vehicle": "Airbus A330",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2010-07-31-HDA482-HKGTPE",
+          "mode": "flight",
+          "fromPlaceId": "hkg",
+          "toPlaceId": "tpe",
+          "operator": "Dragonair",
+          "reference": "HDA482",
+          "departure": "2010-07-31T18:21",
+          "arrival": "2010-07-31T20:03",
+          "durationMinutes": 102,
+          "vehicle": "Airbus A330",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2012-07-03-sin",
+      "slug": "2012-07-03-sg",
+      "title": "Singapore",
+      "subtitle": "TPE → SIN → TPE",
+      "startDate": "2012-07-03",
+      "endDate": "2012-07-08",
+      "status": "completed",
+      "collectionId": "southeast-asia",
+      "heroImage": "/images/cities/SIN.jpg",
+      "thumbnail": "/images/cities/SIN.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "sin"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2012-07-03-TNA887-TPESIN",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "sin",
+          "operator": "TransAsia Airways",
+          "reference": "TNA887",
+          "departure": "2012-07-03T19:20",
+          "arrival": "2012-07-03T23:45",
+          "durationMinutes": 265,
+          "vehicle": "Airbus A320",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2012-07-08-TNA888-SINTPE",
+          "mode": "flight",
+          "fromPlaceId": "sin",
+          "toPlaceId": "tpe",
+          "operator": "TransAsia Airways",
+          "reference": "TNA888",
+          "departure": "2012-07-08T07:20",
+          "arrival": "2012-07-08T11:45",
+          "durationMinutes": 265,
+          "vehicle": "Airbus A320",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2016-07-30-kwe",
+      "slug": "2016-07-30-cn",
+      "title": "China",
+      "subtitle": "TPE → KWE → TPE",
+      "startDate": "2016-07-30",
+      "endDate": "2016-08-06",
+      "status": "completed",
+      "collectionId": "greater-china",
+      "heroImage": "/images/cities/KWE.jpg",
+      "thumbnail": "/images/cities/KWE.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "kwe"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2016-07-30-CSN3022-TPEKWE",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "kwe",
+          "operator": "China Southern",
+          "reference": "CSN3022",
+          "departure": "2016-07-30T12:16",
+          "arrival": "2016-07-30T14:54",
+          "durationMinutes": 158,
+          "vehicle": "Boeing 737-800",
+          "registration": "B-5468",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2016-08-06-CSN3021-KWETPE",
+          "mode": "flight",
+          "fromPlaceId": "kwe",
+          "toPlaceId": "tpe",
+          "operator": "China Southern",
+          "reference": "CSN3021",
+          "departure": "2016-08-06T08:38",
+          "arrival": "2016-08-06T11:02",
+          "durationMinutes": 144,
+          "vehicle": "Boeing 737-800",
+          "registration": "B-5468",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2017-03-10-mfm",
+      "slug": "2017-03-10-mo",
+      "title": "Macau",
+      "subtitle": "TPE → MFM → TPE",
+      "startDate": "2017-03-10",
+      "endDate": "2017-03-12",
+      "status": "completed",
+      "collectionId": "greater-china",
+      "heroImage": "/images/cities/MFM.jpg",
+      "thumbnail": "/images/cities/MFM.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "mfm"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2017-03-10-TTW305-TPEMFM",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "mfm",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW305",
+          "departure": "2017-03-10T16:49",
+          "arrival": "2017-03-10T18:35",
+          "durationMinutes": 106,
+          "vehicle": "Airbus A320",
+          "registration": "B-50008",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2017-03-12-TTW304-MFMTPE",
+          "mode": "flight",
+          "fromPlaceId": "mfm",
+          "toPlaceId": "tpe",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW304",
+          "departure": "2017-03-12T23:05",
+          "arrival": "2017-03-13T00:45",
+          "durationMinutes": 100,
+          "vehicle": "Airbus A320",
+          "registration": "B-50015",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2017-09-03-kix",
+      "slug": "2017-09-03-jp",
+      "title": "Japan",
+      "subtitle": "TPE → KIX → TPE",
+      "startDate": "2017-09-03",
+      "endDate": "2017-09-08",
+      "status": "completed",
+      "collectionId": "japan",
+      "heroImage": "/images/cities/KIX.jpg",
+      "thumbnail": "/images/cities/KIX.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "kix"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2017-09-03-TTW210-TPEKIX",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "kix",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW210",
+          "departure": "2017-09-03T06:40",
+          "arrival": "2017-09-03T10:08",
+          "durationMinutes": 148,
+          "vehicle": "Airbus A320",
+          "registration": "B-50008",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2017-09-08-TTW213-KIXTPE",
+          "mode": "flight",
+          "fromPlaceId": "kix",
+          "toPlaceId": "tpe",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW213",
+          "departure": "2017-09-08T18:46",
+          "arrival": "2017-09-08T20:15",
+          "durationMinutes": 149,
+          "vehicle": "Airbus A320",
+          "registration": "B-50003",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2018-03-10-oka",
+      "slug": "2018-03-10-jp",
+      "title": "Japan",
+      "subtitle": "TPE → OKA → TPE",
+      "startDate": "2018-03-10",
+      "endDate": "2018-03-13",
+      "status": "completed",
+      "collectionId": "japan",
+      "heroImage": "/images/cities/OKA.jpg",
+      "thumbnail": "/images/cities/OKA.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "oka"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2018-03-10-APJ928-TPEOKA",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "oka",
+          "operator": "Peach Aviation",
+          "reference": "APJ928",
+          "departure": "2018-03-10T17:55",
+          "arrival": "2018-03-10T20:25",
+          "durationMinutes": 90,
+          "vehicle": "Airbus A320",
+          "registration": "JA813P",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2018-03-13-APJ921-OKATPE",
+          "mode": "flight",
+          "fromPlaceId": "oka",
+          "toPlaceId": "tpe",
+          "operator": "Peach Aviation",
+          "reference": "APJ921",
+          "departure": "2018-03-13T08:30",
+          "arrival": "2018-03-13T09:10",
+          "durationMinutes": 100,
+          "vehicle": "Airbus A320",
+          "registration": "JA807P",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2018-07-02-bud",
+      "slug": "2018-07-02-sg-fi",
+      "title": "Singapore · Finland · Poland +1",
+      "subtitle": "TPE → SIN → HEL → WAW → BUD → SIN → HEL → TPE",
+      "startDate": "2018-07-02",
+      "endDate": "2018-07-13",
+      "status": "completed",
+      "collectionId": "europe",
+      "heroImage": "/images/cities/BUD.jpg",
+      "thumbnail": "/images/cities/BUD.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "sin"
+        },
+        {
+          "placeId": "hel"
+        },
+        {
+          "placeId": "waw"
+        },
+        {
+          "placeId": "bud"
+        },
+        {
+          "placeId": "hel"
+        },
+        {
+          "placeId": "sin"
+        },
+        {
+          "placeId": "waw"
+        },
+        {
+          "placeId": "hel"
+        },
+        {
+          "placeId": "sin"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2018-07-02-TGW893-TPESIN",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "sin",
+          "operator": "Scoot",
+          "reference": "TGW893",
+          "departure": "2018-07-02T00:10",
+          "arrival": "2018-07-02T04:40",
+          "durationMinutes": 270,
+          "vehicle": "Boeing 787-8",
+          "registration": "9V-OFE",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2018-07-02-FIN132-SINHEL",
+          "mode": "flight",
+          "fromPlaceId": "sin",
+          "toPlaceId": "hel",
+          "operator": "Finnair",
+          "reference": "FIN132",
+          "departure": "2018-07-02T23:39",
+          "arrival": "2018-07-03T05:59",
+          "durationMinutes": 680,
+          "vehicle": "Airbus A350-900",
+          "registration": "OH-LWG",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2018-07-03-FIN1145-HELWAW",
+          "mode": "flight",
+          "fromPlaceId": "hel",
+          "toPlaceId": "waw",
+          "operator": "Finnair",
+          "reference": "FIN1145",
+          "departure": "2018-07-03T17:53",
+          "arrival": "2018-07-03T18:20",
+          "durationMinutes": 87,
+          "vehicle": "Embraer 190",
+          "registration": "OH-LKG",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2018-07-05-WZZ2468-WAWBUD",
+          "mode": "flight",
+          "fromPlaceId": "waw",
+          "toPlaceId": "bud",
+          "operator": "Wizz Air",
+          "reference": "WZZ2468",
+          "departure": "2018-07-05T06:25",
+          "arrival": "2018-07-05T07:33",
+          "durationMinutes": 68,
+          "vehicle": "Airbus A320",
+          "registration": "HA-LWE",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2018-07-10-FIN131-HELSIN",
+          "mode": "flight",
+          "fromPlaceId": "hel",
+          "toPlaceId": "sin",
+          "operator": "Finnair",
+          "reference": "FIN131",
+          "departure": "2018-07-10T03:25",
+          "arrival": "2018-07-10T19:40",
+          "durationMinutes": 675,
+          "vehicle": "Airbus A350-900",
+          "registration": "OH-LWF",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2018-07-11-FIN1146-WAWHEL",
+          "mode": "flight",
+          "fromPlaceId": "waw",
+          "toPlaceId": "hel",
+          "operator": "Finnair",
+          "reference": "FIN1146",
+          "departure": "2018-07-11T19:18",
+          "arrival": "2018-07-11T21:50",
+          "durationMinutes": 92,
+          "vehicle": "Embraer 190",
+          "registration": "OH-LKR",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2018-07-13-TGW898-SINTPE",
+          "mode": "flight",
+          "fromPlaceId": "sin",
+          "toPlaceId": "tpe",
+          "operator": "Scoot",
+          "reference": "TGW898",
+          "departure": "2018-07-13T01:03",
+          "arrival": "2018-07-13T05:40",
+          "durationMinutes": 277,
+          "vehicle": "Boeing 787-9",
+          "registration": "9V-OJA",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2018-08-23-mzg",
+      "slug": "2018-08-23-taiwan",
+      "title": "Penghu",
+      "subtitle": "TSA → MZG → TSA",
+      "startDate": "2018-08-23",
+      "endDate": "2018-08-25",
+      "status": "completed",
+      "collectionId": "taiwan",
+      "heroImage": "/images/cities/MZG.jpg",
+      "thumbnail": "/images/cities/MZG.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tsa"
+        },
+        {
+          "placeId": "mzg"
+        },
+        {
+          "placeId": "tsa"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2018-08-23-FEA6021-TSAMZG",
+          "mode": "flight",
+          "fromPlaceId": "tsa",
+          "toPlaceId": "mzg",
+          "operator": "Far Eastern Air Transport",
+          "reference": "FEA6021",
+          "departure": "2018-08-23T06:40",
+          "arrival": "2018-08-23T07:27",
+          "durationMinutes": 47,
+          "vehicle": "McDonnell Douglas MD-83",
+          "registration": "B-28007",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2018-08-25-UIA8610-MZGTSA",
+          "mode": "flight",
+          "fromPlaceId": "mzg",
+          "toPlaceId": "tsa",
+          "operator": "Uni Air",
+          "reference": "UIA8610",
+          "departure": "2018-08-25T17:27",
+          "arrival": "2018-08-25T18:15",
+          "durationMinutes": 48,
+          "vehicle": "Airbus A321",
+          "registration": "B-16221",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2018-11-08-cts",
+      "slug": "2018-11-08-jp",
+      "title": "Japan",
+      "subtitle": "TPE → CTS → TPE",
+      "startDate": "2018-11-08",
+      "endDate": "2018-11-13",
+      "status": "completed",
+      "collectionId": "japan",
+      "heroImage": "/images/cities/CTS.jpg",
+      "thumbnail": "/images/cities/CTS.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "cts"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2018-11-08-TGW892-TPECTS",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "cts",
+          "operator": "Scoot",
+          "reference": "TGW892",
+          "departure": "2018-11-08T11:26",
+          "arrival": "2018-11-08T16:07",
+          "durationMinutes": 221,
+          "vehicle": "Boeing 787-8",
+          "registration": "9V-OFE",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2018-11-13-TGW893-CTSTPE",
+          "mode": "flight",
+          "fromPlaceId": "cts",
+          "toPlaceId": "tpe",
+          "operator": "Scoot",
+          "reference": "TGW893",
+          "departure": "2018-11-13T17:25",
+          "arrival": "2018-11-13T21:20",
+          "durationMinutes": 295,
+          "vehicle": "Boeing 787-8",
+          "registration": "9V-OFE",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2019-02-19-fuk",
+      "slug": "2019-02-19-jp",
+      "title": "Japan",
+      "subtitle": "TPE → FUK → TPE",
+      "startDate": "2019-02-19",
+      "endDate": "2019-02-22",
+      "status": "completed",
+      "collectionId": "japan",
+      "heroImage": "/images/cities/FUK.jpg",
+      "thumbnail": "/images/cities/FUK.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "fuk"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2019-02-19-TTW240-TPEFUK",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "fuk",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW240",
+          "departure": "2019-02-19T06:32",
+          "arrival": "2019-02-19T09:48",
+          "durationMinutes": 136,
+          "vehicle": "Airbus A320",
+          "registration": "B-50007",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2019-02-22-TTW241-FUKTPE",
+          "mode": "flight",
+          "fromPlaceId": "fuk",
+          "toPlaceId": "tpe",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW241",
+          "departure": "2019-02-22T10:51",
+          "arrival": "2019-02-22T12:36",
+          "durationMinutes": 165,
+          "vehicle": "Airbus A320",
+          "registration": "B-50001",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2019-07-23-jfk",
+      "slug": "2019-07-23-cn-us",
+      "title": "China · United States",
+      "subtitle": "TSA → PVG → JFK → PVG → TPE",
+      "startDate": "2019-07-23",
+      "endDate": "2019-08-18",
+      "status": "completed",
+      "collectionId": "north-america",
+      "heroImage": "/images/cities/JFK.jpg",
+      "thumbnail": "/images/cities/JFK.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tsa"
+        },
+        {
+          "placeId": "pvg"
+        },
+        {
+          "placeId": "jfk"
+        },
+        {
+          "placeId": "pvg"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2019-07-23-CSH802-TSAPVG",
+          "mode": "flight",
+          "fromPlaceId": "tsa",
+          "toPlaceId": "pvg",
+          "operator": "Shanghai Airlines",
+          "reference": "CSH802",
+          "departure": "2019-07-23T12:41",
+          "arrival": "2019-07-23T14:40",
+          "durationMinutes": 119,
+          "vehicle": "Boeing 787-9",
+          "registration": "B-208X",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2019-07-23-CES297-PVGJFK",
+          "mode": "flight",
+          "fromPlaceId": "pvg",
+          "toPlaceId": "jfk",
+          "operator": "China Eastern",
+          "reference": "CES297",
+          "departure": "2019-07-23T20:17",
+          "arrival": "2019-07-23T23:15",
+          "durationMinutes": 898,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-2002",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2019-08-17-CES298-JFKPVG",
+          "mode": "flight",
+          "fromPlaceId": "jfk",
+          "toPlaceId": "pvg",
+          "operator": "China Eastern",
+          "reference": "CES298",
+          "departure": "2019-08-17T01:45",
+          "arrival": "2019-08-18T04:01",
+          "durationMinutes": 856,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-2023",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2019-08-18-CES5007-PVGTPE",
+          "mode": "flight",
+          "fromPlaceId": "pvg",
+          "toPlaceId": "tpe",
+          "operator": "China Eastern",
+          "reference": "CES5007",
+          "departure": "2019-08-18T12:24",
+          "arrival": "2019-08-18T14:25",
+          "durationMinutes": 121,
+          "vehicle": "Airbus A330-200",
+          "registration": "B-5952",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2020-01-16-mfm",
+      "slug": "2020-01-16-mo-hk",
+      "title": "Macau · Hong Kong",
+      "subtitle": "TPE → MFM → TPE",
+      "startDate": "2020-01-16",
+      "endDate": "2020-01-19",
+      "status": "completed",
+      "collectionId": "greater-china",
+      "heroImage": "/images/cities/MFM.jpg",
+      "thumbnail": "/images/cities/MFM.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "mfm"
+        },
+        {
+          "placeId": "hkg"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2020-01-16-TTW301-TPEMFM",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "mfm",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW301",
+          "departure": "2020-01-16T06:45",
+          "arrival": "2020-01-16T08:43",
+          "durationMinutes": 118,
+          "vehicle": "Airbus A320",
+          "registration": "B-50007",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2020-01-19-CPA468-HKGTPE",
+          "mode": "flight",
+          "fromPlaceId": "hkg",
+          "toPlaceId": "tpe",
+          "operator": "Cathay Pacific",
+          "reference": "CPA468",
+          "departure": "2020-01-19T20:29",
+          "arrival": "2020-01-19T22:07",
+          "durationMinutes": 98,
+          "vehicle": "Airbus A330-300",
+          "registration": "B-LBC",
+          "cabin": "Business"
+        }
+      ]
+    },
+    {
+      "id": "2022-12-01-cts",
+      "slug": "2022-12-01-jp",
+      "title": "Japan",
+      "subtitle": "TPE → CTS → TPE",
+      "startDate": "2022-12-01",
+      "endDate": "2022-12-04",
+      "status": "completed",
+      "collectionId": "japan",
+      "heroImage": "/images/cities/CTS.jpg",
+      "thumbnail": "/images/cities/CTS.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "cts"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2022-12-01-TTW234-TPECTS",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "cts",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW234",
+          "departure": "2022-12-01T05:54",
+          "arrival": "2022-12-01T10:30",
+          "durationMinutes": 216,
+          "vehicle": "Airbus A320neo",
+          "registration": "B-50025",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2022-12-04-TTW235-CTSTPE",
+          "mode": "flight",
+          "fromPlaceId": "cts",
+          "toPlaceId": "tpe",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW235",
+          "departure": "2022-12-04T11:30",
+          "arrival": "2022-12-04T15:46",
+          "durationMinutes": 317,
+          "vehicle": "Airbus A320neo",
+          "registration": "B-50023",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2023-02-25-kul",
+      "slug": "2023-02-25-my",
+      "title": "Malaysia",
+      "subtitle": "TPE → KUL → TPE",
+      "startDate": "2023-02-25",
+      "endDate": "2023-02-28",
+      "status": "completed",
+      "collectionId": "southeast-asia",
+      "heroImage": "/images/cities/KUL.jpg",
+      "thumbnail": "/images/cities/KUL.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "kul"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2023-02-25-XAX379-TPEKUL",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "kul",
+          "operator": "AirAsia X",
+          "reference": "XAX379",
+          "departure": "2023-02-25T15:37",
+          "arrival": "2023-02-25T20:20",
+          "durationMinutes": 283,
+          "vehicle": "Airbus A330-300",
+          "registration": "9M-XXR",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2023-02-28-EVA228-KULTPE",
+          "mode": "flight",
+          "fromPlaceId": "kul",
+          "toPlaceId": "tpe",
+          "operator": "EVA Air",
+          "reference": "EVA228",
+          "departure": "2023-02-28T15:36",
+          "arrival": "2023-02-28T20:07",
+          "durationMinutes": 272,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-16712",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2023-03-31-muc",
+      "slug": "2023-03-31-de-at",
+      "title": "Germany · Austria",
+      "subtitle": "TPE → MUC → TPE",
+      "startDate": "2023-03-31",
+      "endDate": "2023-04-10",
+      "status": "completed",
+      "collectionId": "europe",
+      "heroImage": "/images/cities/MUC.jpg",
+      "thumbnail": "/images/cities/MUC.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "muc"
+        },
+        {
+          "placeId": "vie"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2023-03-31-EVA71-TPEMUC",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "muc",
+          "operator": "EVA Air",
+          "reference": "EVA71",
+          "departure": "2023-03-31T23:14",
+          "arrival": "2023-04-01T08:18",
+          "durationMinutes": 904,
+          "vehicle": "Boeing 787-9",
+          "registration": "B-17885",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2023-04-10-EVA66-VIETPE",
+          "mode": "flight",
+          "fromPlaceId": "vie",
+          "toPlaceId": "tpe",
+          "operator": "EVA Air",
+          "reference": "EVA66",
+          "departure": "2023-04-10T12:34",
+          "arrival": "2023-04-11T06:31",
+          "durationMinutes": 717,
+          "vehicle": "Boeing 787-9",
+          "registration": "B-17882",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2023-10-06-kul",
+      "slug": "2023-10-06-my",
+      "title": "Malaysia",
+      "subtitle": "TPE → KUL → PEN → KUL → TPE",
+      "startDate": "2023-10-06",
+      "endDate": "2023-10-09",
+      "status": "completed",
+      "collectionId": "southeast-asia",
+      "heroImage": "/images/cities/KUL.jpg",
+      "thumbnail": "/images/cities/KUL.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "kul"
+        },
+        {
+          "placeId": "pen"
+        },
+        {
+          "placeId": "kul"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2023-10-06-EVA217-TPEKUL",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "kul",
+          "operator": "EVA Air",
+          "reference": "EVA217",
+          "departure": "2023-10-06T06:48",
+          "arrival": "2023-10-06T11:15",
+          "durationMinutes": 267,
+          "vehicle": "Airbus A330-300",
+          "registration": "B-16336",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2023-10-06-MXD2108-KULPEN",
+          "mode": "flight",
+          "fromPlaceId": "kul",
+          "toPlaceId": "pen",
+          "operator": "Malindo Air",
+          "reference": "MXD2108",
+          "departure": "2023-10-06T14:40",
+          "arrival": "2023-10-06T15:40",
+          "durationMinutes": 60,
+          "vehicle": "Boeing 737-900ER",
+          "registration": "9M-LRM",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2023-10-09-MXD2101-PENKUL",
+          "mode": "flight",
+          "fromPlaceId": "pen",
+          "toPlaceId": "kul",
+          "operator": "Malindo Air",
+          "reference": "MXD2101",
+          "departure": "2023-10-09T09:56",
+          "arrival": "2023-10-09T11:00",
+          "durationMinutes": 63,
+          "vehicle": "Boeing 737-800",
+          "registration": "9M-LCZ",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2023-10-09-EVA228-KULTPE",
+          "mode": "flight",
+          "fromPlaceId": "kul",
+          "toPlaceId": "tpe",
+          "operator": "EVA Air",
+          "reference": "EVA228",
+          "departure": "2023-10-09T15:32",
+          "arrival": "2023-10-09T20:30",
+          "durationMinutes": 298,
+          "vehicle": "Airbus A330-300",
+          "registration": "B-16338",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2023-11-17-nrt",
+      "slug": "2023-11-17-jp",
+      "title": "Japan",
+      "subtitle": "TPE → NRT → TPE",
+      "startDate": "2023-11-17",
+      "endDate": "2023-11-21",
+      "status": "completed",
+      "collectionId": "japan",
+      "heroImage": "/images/cities/NRT.jpg",
+      "thumbnail": "/images/cities/NRT.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "nrt"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2023-11-17-TGW898-TPENRT",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "nrt",
+          "operator": "Scoot",
+          "reference": "TGW898",
+          "departure": "2023-11-17T07:32",
+          "arrival": "2023-11-17T10:45",
+          "durationMinutes": 133,
+          "vehicle": "Boeing 787-9",
+          "registration": "9V-OJH",
+          "cabin": "Premium Economy"
+        },
+        {
+          "id": "2023-11-21-JAL809-NRTTPE",
+          "mode": "flight",
+          "fromPlaceId": "nrt",
+          "toPlaceId": "tpe",
+          "operator": "Japan Airlines",
+          "reference": "JAL809",
+          "departure": "2023-11-21T18:08",
+          "arrival": "2023-11-21T20:58",
+          "durationMinutes": 230,
+          "vehicle": "Boeing 787-8",
+          "registration": "JA831J",
+          "cabin": "Business"
+        }
+      ]
+    },
+    {
+      "id": "2024-02-27-okj",
+      "slug": "2024-02-27-jp-hk",
+      "title": "Japan · Hong Kong",
+      "subtitle": "TPE → OKJ → HKG → TPE",
+      "startDate": "2024-02-27",
+      "endDate": "2024-03-03",
+      "status": "completed",
+      "collectionId": "japan",
+      "heroImage": "/images/cities/OKJ.jpg",
+      "thumbnail": "/images/cities/OKJ.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "okj"
+        },
+        {
+          "placeId": "kix"
+        },
+        {
+          "placeId": "hkg"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2024-02-27-TTW214-TPEOKJ",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "okj",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW214",
+          "departure": "2024-02-27T11:24",
+          "arrival": "2024-02-27T14:35",
+          "durationMinutes": 131,
+          "vehicle": "Airbus A320",
+          "registration": "B-50017",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2024-03-03-CPA567-KIXHKG",
+          "mode": "flight",
+          "fromPlaceId": "kix",
+          "toPlaceId": "hkg",
+          "operator": "Cathay Pacific",
+          "reference": "CPA567",
+          "departure": "2024-03-03T09:28",
+          "arrival": "2024-03-03T12:47",
+          "durationMinutes": 259,
+          "vehicle": "Airbus A330-300",
+          "registration": "B-LBH",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2024-03-03-CPA402-HKGTPE",
+          "mode": "flight",
+          "fromPlaceId": "hkg",
+          "toPlaceId": "tpe",
+          "operator": "Cathay Pacific",
+          "reference": "CPA402",
+          "departure": "2024-03-03T18:26",
+          "arrival": "2024-03-03T21:25",
+          "durationMinutes": 179,
+          "vehicle": "Airbus A330-300",
+          "registration": "B-LAZ",
+          "cabin": "Business"
+        }
+      ]
+    },
+    {
+      "id": "2024-03-30-lhr",
+      "slug": "2024-03-30-th-gb",
+      "title": "Thailand · United Kingdom · France",
+      "subtitle": "TPE → BKK → LHR → TPE",
+      "startDate": "2024-03-30",
+      "endDate": "2024-04-07",
+      "status": "completed",
+      "collectionId": "europe",
+      "heroImage": "/images/cities/LHR.jpg",
+      "thumbnail": "/images/cities/LHR.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "bkk"
+        },
+        {
+          "placeId": "lhr"
+        },
+        {
+          "placeId": "cdg"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2024-03-30-EVA67-TPEBKK",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "bkk",
+          "operator": "EVA Air",
+          "reference": "EVA67",
+          "departure": "2024-03-30T08:47",
+          "arrival": "2024-03-30T11:50",
+          "durationMinutes": 243,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-16737",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2024-03-30-EVA67-BKKLHR",
+          "mode": "flight",
+          "fromPlaceId": "bkk",
+          "toPlaceId": "lhr",
+          "operator": "EVA Air",
+          "reference": "EVA67",
+          "departure": "2024-03-30T13:22",
+          "arrival": "2024-03-30T19:21",
+          "durationMinutes": 779,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-16737",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2024-04-07-EVA88-CDGTPE",
+          "mode": "flight",
+          "fromPlaceId": "cdg",
+          "toPlaceId": "tpe",
+          "operator": "EVA Air",
+          "reference": "EVA88",
+          "departure": "2024-04-07T12:04",
+          "arrival": "2024-04-08T07:06",
+          "durationMinutes": 782,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-16738",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2024-06-08-kul",
+      "slug": "2024-06-08-my",
+      "title": "Malaysia",
+      "subtitle": "TPE → KUL → TPE",
+      "startDate": "2024-06-08",
+      "endDate": "2024-06-11",
+      "status": "completed",
+      "collectionId": "southeast-asia",
+      "heroImage": "/images/cities/KUL.jpg",
+      "thumbnail": "/images/cities/KUL.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "kul"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2024-06-08-EVA227-TPEKUL",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "kul",
+          "operator": "EVA Air",
+          "reference": "EVA227",
+          "departure": "2024-06-08T09:42",
+          "arrival": "2024-06-08T14:25",
+          "durationMinutes": 283,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-16708",
+          "cabin": "Premium Economy"
+        },
+        {
+          "id": "2024-06-11-XAX378-KULTPE",
+          "mode": "flight",
+          "fromPlaceId": "kul",
+          "toPlaceId": "tpe",
+          "operator": "AirAsia X",
+          "reference": "XAX378",
+          "departure": "2024-06-11T09:26",
+          "arrival": "2024-06-11T14:43",
+          "durationMinutes": 317,
+          "vehicle": "Airbus A330-300",
+          "registration": "9M-XXG",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2024-11-01-bki",
+      "slug": "2024-11-01-my",
+      "title": "Malaysia",
+      "subtitle": "TPE → BKI → TPE",
+      "startDate": "2024-11-01",
+      "endDate": "2024-11-04",
+      "status": "completed",
+      "collectionId": "southeast-asia",
+      "heroImage": "/images/cities/BKI.jpg",
+      "thumbnail": "/images/cities/BKI.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "bki"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2024-11-01-AXM1511-TPEBKI",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "bki",
+          "operator": "AirAsia",
+          "reference": "AXM1511",
+          "departure": "2024-11-01T10:15",
+          "arrival": "2024-11-01T13:29",
+          "durationMinutes": 194,
+          "vehicle": "Airbus A320neo",
+          "registration": "9M-RAB",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2024-11-04-AXM1510-BKITPE",
+          "mode": "flight",
+          "fromPlaceId": "bki",
+          "toPlaceId": "tpe",
+          "operator": "AirAsia",
+          "reference": "AXM1510",
+          "departure": "2024-11-04T06:05",
+          "arrival": "2024-11-04T09:31",
+          "durationMinutes": 206,
+          "vehicle": "Airbus A320",
+          "registration": "9M-AGU",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2024-12-27-icn",
+      "slug": "2024-12-27-kr",
+      "title": "South Korea",
+      "subtitle": "TPE → ICN → TPE",
+      "startDate": "2024-12-27",
+      "endDate": "2025-01-02",
+      "status": "completed",
+      "collectionId": "korea",
+      "heroImage": "/images/cities/ICN.jpg",
+      "thumbnail": "/images/cities/ICN.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "icn"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2024-12-27-TTW602-TPEICN",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "icn",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW602",
+          "departure": "2024-12-27T19:55",
+          "arrival": "2024-12-27T23:24",
+          "durationMinutes": 149,
+          "vehicle": "Airbus A320",
+          "registration": "B-50001",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-01-02-TTW603-ICNTPE",
+          "mode": "flight",
+          "fromPlaceId": "icn",
+          "toPlaceId": "tpe",
+          "operator": "Tigerair Taiwan",
+          "reference": "TTW603",
+          "departure": "2025-01-02T00:40",
+          "arrival": "2025-01-02T02:15",
+          "durationMinutes": 155,
+          "vehicle": "Airbus A320neo",
+          "registration": "B-50023",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2025-01-19-mel",
+      "slug": "2025-01-19-sg-au",
+      "title": "Singapore · Australia",
+      "subtitle": "TPE → SIN → MEL → OOL → SIN → TPE",
+      "startDate": "2025-01-19",
+      "endDate": "2025-02-02",
+      "status": "completed",
+      "collectionId": "oceania",
+      "heroImage": "/images/cities/MEL.jpg",
+      "thumbnail": "/images/cities/MEL.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "sin"
+        },
+        {
+          "placeId": "mel"
+        },
+        {
+          "placeId": "ool"
+        },
+        {
+          "placeId": "bne"
+        },
+        {
+          "placeId": "sin"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2025-01-19-EVA215-TPESIN",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "sin",
+          "operator": "EVA Air",
+          "reference": "EVA215",
+          "departure": "2025-01-19T09:36",
+          "arrival": "2025-01-19T14:19",
+          "durationMinutes": 283,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-16711",
+          "cabin": "Business"
+        },
+        {
+          "id": "2025-01-19-SIA227-SINMEL",
+          "mode": "flight",
+          "fromPlaceId": "sin",
+          "toPlaceId": "mel",
+          "operator": "Singapore Airlines",
+          "reference": "SIA227",
+          "departure": "2025-01-19T21:56",
+          "arrival": "2025-01-20T08:15",
+          "durationMinutes": 439,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "9V-SWZ",
+          "cabin": "Business"
+        },
+        {
+          "id": "2025-01-27-VOZ755-MELOOL",
+          "mode": "flight",
+          "fromPlaceId": "mel",
+          "toPlaceId": "ool",
+          "operator": "Virgin Australia",
+          "reference": "VOZ755",
+          "departure": "2025-01-27T18:35",
+          "arrival": "2025-01-27T20:08",
+          "durationMinutes": 93,
+          "vehicle": "Boeing 737-800",
+          "registration": "VH-VUG",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-02-01-SIA246-BNESIN",
+          "mode": "flight",
+          "fromPlaceId": "bne",
+          "toPlaceId": "sin",
+          "operator": "Singapore Airlines",
+          "reference": "SIA246",
+          "departure": "2025-02-01T23:25",
+          "arrival": "2025-02-02T05:05",
+          "durationMinutes": 460,
+          "vehicle": "Airbus A350-900",
+          "registration": "9V-SHL",
+          "cabin": "Business"
+        },
+        {
+          "id": "2025-02-02-SIA876-SINTPE",
+          "mode": "flight",
+          "fromPlaceId": "sin",
+          "toPlaceId": "tpe",
+          "operator": "Singapore Airlines",
+          "reference": "SIA876",
+          "departure": "2025-02-02T08:17",
+          "arrival": "2025-02-02T12:43",
+          "durationMinutes": 266,
+          "vehicle": "Boeing 787-10",
+          "registration": "9V-SCU",
+          "cabin": "Business"
+        }
+      ]
+    },
+    {
+      "id": "2025-03-28-lax",
+      "slug": "2025-03-28-hk-us",
+      "title": "Hong Kong · United States",
+      "subtitle": "TPE → HKG → LAX → HKG → TPE",
+      "startDate": "2025-03-28",
+      "endDate": "2025-04-07",
+      "status": "completed",
+      "collectionId": "north-america",
+      "heroImage": "/images/cities/LAX.jpg",
+      "thumbnail": "/images/cities/LAX.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "hkg"
+        },
+        {
+          "placeId": "lax"
+        },
+        {
+          "placeId": "hkg"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2025-03-28-CPA479-TPEHKG",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "hkg",
+          "operator": "Cathay Pacific",
+          "reference": "CPA479",
+          "departure": "2025-03-28T21:37",
+          "arrival": "2025-03-28T23:46",
+          "durationMinutes": 129,
+          "vehicle": "Boeing 777-300",
+          "registration": "B-HNG",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-03-29-CPA880-HKGLAX",
+          "mode": "flight",
+          "fromPlaceId": "hkg",
+          "toPlaceId": "lax",
+          "operator": "Cathay Pacific",
+          "reference": "CPA880",
+          "departure": "2025-03-29T00:32",
+          "arrival": "2025-03-28T22:10",
+          "durationMinutes": 758,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-KPI",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-04-06-CPA885-LAXHKG",
+          "mode": "flight",
+          "fromPlaceId": "lax",
+          "toPlaceId": "hkg",
+          "operator": "Cathay Pacific",
+          "reference": "CPA885",
+          "departure": "2025-04-06T14:29",
+          "arrival": "2025-04-07T21:04",
+          "durationMinutes": 935,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "B-KQO",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-04-07-CPA408-HKGTPE",
+          "mode": "flight",
+          "fromPlaceId": "hkg",
+          "toPlaceId": "tpe",
+          "operator": "Cathay Pacific",
+          "reference": "CPA408",
+          "departure": "2025-04-07T22:46",
+          "arrival": "2025-04-08T00:16",
+          "durationMinutes": 90,
+          "vehicle": "Airbus A330-300",
+          "registration": "B-LBH",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2025-07-18-nrt",
+      "slug": "2025-07-18-jp",
+      "title": "Japan",
+      "subtitle": "TPE → NRT → TPE",
+      "startDate": "2025-07-18",
+      "endDate": "2025-07-21",
+      "status": "completed",
+      "collectionId": "japan",
+      "heroImage": "/images/cities/NRT.jpg",
+      "thumbnail": "/images/cities/NRT.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "nrt"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2025-07-18-TGW870-TPENRT",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "nrt",
+          "operator": "Scoot",
+          "reference": "TGW870",
+          "departure": "2025-07-18T15:25",
+          "arrival": "2025-07-18T19:58",
+          "durationMinutes": 213,
+          "vehicle": "Boeing 787-9",
+          "registration": "9V-OJA",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-07-21-TGW871-NRTTPE",
+          "mode": "flight",
+          "fromPlaceId": "nrt",
+          "toPlaceId": "tpe",
+          "operator": "Scoot",
+          "reference": "TGW871",
+          "departure": "2025-07-21T21:09",
+          "arrival": "2025-07-21T23:33",
+          "durationMinutes": 204,
+          "vehicle": "Boeing 787-9",
+          "registration": "9V-OJD",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2025-10-04-sea",
+      "slug": "2025-10-04-us-ca",
+      "title": "United States · Canada",
+      "subtitle": "TPE → SEA → YYC → YZF → YYC → SEA → TPE",
+      "startDate": "2025-10-04",
+      "endDate": "2025-10-19",
+      "status": "completed",
+      "collectionId": "north-america",
+      "heroImage": "/images/cities/SEA.jpg",
+      "thumbnail": "/images/cities/SEA.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "sea"
+        },
+        {
+          "placeId": "yvr"
+        },
+        {
+          "placeId": "yyc"
+        },
+        {
+          "placeId": "yzf"
+        },
+        {
+          "placeId": "yyc"
+        },
+        {
+          "placeId": "sea"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2025-10-04-DAL68-TPESEA",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "sea",
+          "operator": "Delta Air Lines",
+          "reference": "DAL68",
+          "departure": "2025-10-04T09:37",
+          "arrival": "2025-10-04T05:27",
+          "durationMinutes": 650,
+          "vehicle": "Airbus A350-900",
+          "registration": "N510DN",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-10-08-WJA108-YVRYYC",
+          "mode": "flight",
+          "fromPlaceId": "yvr",
+          "toPlaceId": "yyc",
+          "operator": "WestJet",
+          "reference": "WJA108",
+          "departure": "2025-10-08T10:22",
+          "arrival": "2025-10-08T12:43",
+          "durationMinutes": 81,
+          "vehicle": "Boeing 737-800",
+          "registration": "C-GLRN",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-10-12-WJA221-YYCYZF",
+          "mode": "flight",
+          "fromPlaceId": "yyc",
+          "toPlaceId": "yzf",
+          "operator": "WestJet",
+          "reference": "WJA221",
+          "departure": "2025-10-12T11:10",
+          "arrival": "2025-10-12T13:32",
+          "durationMinutes": 142,
+          "vehicle": "Boeing 737-700",
+          "registration": "C-GWCN",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-10-15-WJA222-YZFYYC",
+          "mode": "flight",
+          "fromPlaceId": "yzf",
+          "toPlaceId": "yyc",
+          "operator": "WestJet",
+          "reference": "WJA222",
+          "departure": "2025-10-15T14:17",
+          "arrival": "2025-10-15T16:19",
+          "durationMinutes": 122,
+          "vehicle": "Boeing 737 MAX 8",
+          "registration": "C-GMXB",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-10-15-WJA3616-YYCSEA",
+          "mode": "flight",
+          "fromPlaceId": "yyc",
+          "toPlaceId": "sea",
+          "operator": "WestJet",
+          "reference": "WJA3616",
+          "departure": "2025-10-15T18:25",
+          "arrival": "2025-10-15T19:29",
+          "durationMinutes": 124,
+          "vehicle": "DHC-8-400 Dash 8Q",
+          "registration": "C-FENJ",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2025-10-19-DAL69-SEATPE",
+          "mode": "flight",
+          "fromPlaceId": "sea",
+          "toPlaceId": "tpe",
+          "operator": "Delta Air Lines",
+          "reference": "DAL69",
+          "departure": "2025-10-19T15:58",
+          "arrival": "2025-10-20T21:03",
+          "durationMinutes": 845,
+          "vehicle": "Airbus A350-900",
+          "registration": "N508DN",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2026-01-16-mzg",
+      "slug": "2026-01-16-taiwan",
+      "title": "Penghu",
+      "subtitle": "TSA → MZG → TSA",
+      "startDate": "2026-01-16",
+      "endDate": "2026-01-18",
+      "status": "completed",
+      "collectionId": "taiwan",
+      "heroImage": "/images/cities/MZG.jpg",
+      "thumbnail": "/images/cities/MZG.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tsa"
+        },
+        {
+          "placeId": "mzg"
+        },
+        {
+          "placeId": "tsa"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2026-01-16-UIA9109-TSAMZG",
+          "mode": "flight",
+          "fromPlaceId": "tsa",
+          "toPlaceId": "mzg",
+          "operator": "Uni Air",
+          "reference": "UIA9109",
+          "departure": "2026-01-16T19:09",
+          "arrival": "2026-01-16T20:15",
+          "durationMinutes": 66,
+          "vehicle": "ATR 72",
+          "registration": "B-17009",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2026-01-18-UIA8622-MZGTSA",
+          "mode": "flight",
+          "fromPlaceId": "mzg",
+          "toPlaceId": "tsa",
+          "operator": "Uni Air",
+          "reference": "UIA8622",
+          "departure": "2026-01-18T17:30",
+          "arrival": "2026-01-18T18:20",
+          "durationMinutes": 50,
+          "vehicle": "Airbus A321",
+          "registration": "B-16209",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2026-03-28-bod",
+      "slug": "2026-03-28-ph-tr",
+      "title": "Philippines · Türkiye · France +1",
+      "subtitle": "TPE → MNL → IST → BOD → NCE → VCE → IST → TPE",
+      "startDate": "2026-03-28",
+      "endDate": "2026-04-11",
+      "status": "completed",
+      "collectionId": "europe",
+      "heroImage": "/images/cities/BOD.jpg",
+      "thumbnail": "/images/cities/BOD.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "mnl"
+        },
+        {
+          "placeId": "ist"
+        },
+        {
+          "placeId": "bod"
+        },
+        {
+          "placeId": "nce"
+        },
+        {
+          "placeId": "vce"
+        },
+        {
+          "placeId": "ist"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2026-03-28-APG125-TPEMNL",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "mnl",
+          "operator": "Philippines AirAsia",
+          "reference": "APG125",
+          "departure": "2026-03-28T09:46",
+          "arrival": "2026-03-28T12:14",
+          "durationMinutes": 148,
+          "vehicle": "Airbus A320",
+          "registration": "RP-C8971",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2026-03-29-THY85-MNLIST",
+          "mode": "flight",
+          "fromPlaceId": "mnl",
+          "toPlaceId": "ist",
+          "operator": "Turkish Airlines",
+          "reference": "THY85",
+          "departure": "2026-03-29T21:24",
+          "arrival": "2026-03-30T05:05",
+          "durationMinutes": 761,
+          "vehicle": "Boeing 777-300 ER",
+          "registration": "TC-JJP",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2026-03-30-THY1391-ISTBOD",
+          "mode": "flight",
+          "fromPlaceId": "ist",
+          "toPlaceId": "bod",
+          "operator": "Turkish Airlines",
+          "reference": "THY1391",
+          "departure": "2026-03-30T14:59",
+          "arrival": "2026-03-30T17:23",
+          "durationMinutes": 204,
+          "vehicle": "Airbus A321neo",
+          "registration": "TC-LPY",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2026-04-01-EZY1642-BODNCE",
+          "mode": "flight",
+          "fromPlaceId": "bod",
+          "toPlaceId": "nce",
+          "operator": "easyJet",
+          "reference": "EZY1642",
+          "departure": "2026-04-01T18:02",
+          "arrival": "2026-04-01T19:28",
+          "durationMinutes": 86,
+          "vehicle": "Airbus A320",
+          "registration": "OE-INI",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2026-04-05-EZY1697-NCEVCE",
+          "mode": "flight",
+          "fromPlaceId": "nce",
+          "toPlaceId": "vce",
+          "operator": "easyJet",
+          "reference": "EZY1697",
+          "departure": "2026-04-05T11:04",
+          "arrival": "2026-04-05T12:04",
+          "durationMinutes": 60,
+          "vehicle": "Airbus A320",
+          "registration": "OE-IVL",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2026-04-11-THY1868-VCEIST",
+          "mode": "flight",
+          "fromPlaceId": "vce",
+          "toPlaceId": "ist",
+          "operator": "Turkish Airlines",
+          "reference": "THY1868",
+          "departure": "2026-04-11T09:41",
+          "arrival": "2026-04-11T13:07",
+          "durationMinutes": 146,
+          "vehicle": "Airbus A321neo",
+          "registration": "TC-LPF",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2026-04-11-THY124-ISTTPE",
+          "mode": "flight",
+          "fromPlaceId": "ist",
+          "toPlaceId": "tpe",
+          "operator": "Turkish Airlines",
+          "reference": "THY124",
+          "departure": "2026-04-11T20:00",
+          "arrival": "2026-04-12T11:06",
+          "durationMinutes": 606,
+          "vehicle": "Boeing 787-9",
+          "registration": "TC-LMB",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2026-05-07-icn",
+      "slug": "2026-05-07-hk-kr",
+      "title": "Hong Kong · South Korea",
+      "subtitle": "TPE → HKG → ICN → TPE",
+      "startDate": "2026-05-07",
+      "endDate": "2026-05-10",
+      "status": "completed",
+      "collectionId": "korea",
+      "heroImage": "/images/cities/ICN.jpg",
+      "thumbnail": "/images/cities/ICN.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "hkg"
+        },
+        {
+          "placeId": "icn"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2026-05-07-HKE117-TPEHKG",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "hkg",
+          "operator": "HK Express",
+          "reference": "HKE117",
+          "departure": "2026-05-07T21:09",
+          "arrival": "2026-05-07T22:48",
+          "durationMinutes": 99,
+          "vehicle": "Airbus A321neo",
+          "registration": "B-KKJ",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2026-05-10-AAR746-HKGICN",
+          "mode": "flight",
+          "fromPlaceId": "hkg",
+          "toPlaceId": "icn",
+          "operator": "Asiana Airlines",
+          "reference": "AAR746",
+          "departure": "2026-05-10T01:31",
+          "arrival": "2026-05-10T06:04",
+          "durationMinutes": 213,
+          "vehicle": "Airbus A330-300",
+          "registration": "HL-8258",
+          "cabin": "Business"
+        },
+        {
+          "id": "2026-05-10-AAR711-ICNTPE",
+          "mode": "flight",
+          "fromPlaceId": "icn",
+          "toPlaceId": "tpe",
+          "operator": "Asiana Airlines",
+          "reference": "AAR711",
+          "departure": "2026-05-10T12:00",
+          "arrival": "2026-05-10T13:32",
+          "durationMinutes": 152,
+          "vehicle": "Airbus A380",
+          "registration": "HL-7634",
+          "cabin": "Business"
+        }
+      ]
+    },
+    {
+      "id": "2026-08-22-per",
+      "slug": "2026-08-22-sg-au",
+      "title": "Singapore · Australia",
+      "subtitle": "TPE → SIN → PER → SIN → TPE",
+      "startDate": "2026-08-22",
+      "endDate": "2026-08-30",
+      "status": "planned",
+      "collectionId": "oceania",
+      "heroImage": "/images/cities/PER.jpg",
+      "thumbnail": "/images/cities/PER.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "sin"
+        },
+        {
+          "placeId": "per"
+        },
+        {
+          "placeId": "sin"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2026-08-22-TGW867-TPESIN",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "sin",
+          "operator": "Scoot",
+          "reference": "TGW867",
+          "departure": "2026-08-22T16:15",
+          "arrival": "2026-08-22T20:45",
+          "durationMinutes": 270,
+          "vehicle": "Boeing 787-9"
+        },
+        {
+          "id": "2026-08-22-TGW28-SINPER",
+          "mode": "flight",
+          "fromPlaceId": "sin",
+          "toPlaceId": "per",
+          "operator": "Scoot",
+          "reference": "TGW28",
+          "departure": "2026-08-22T23:10",
+          "arrival": "2026-08-23T04:20",
+          "durationMinutes": 310,
+          "vehicle": "Boeing 787-8"
+        },
+        {
+          "id": "2026-08-29-TGW9-PERSIN",
+          "mode": "flight",
+          "fromPlaceId": "per",
+          "toPlaceId": "sin",
+          "operator": "Scoot",
+          "reference": "TGW9",
+          "departure": "2026-08-29T18:25",
+          "arrival": "2026-08-29T23:45",
+          "durationMinutes": 320,
+          "vehicle": "Boeing 787-9"
+        },
+        {
+          "id": "2026-08-30-TGW866-SINTPE",
+          "mode": "flight",
+          "fromPlaceId": "sin",
+          "toPlaceId": "tpe",
+          "operator": "Scoot",
+          "reference": "TGW866",
+          "departure": "2026-08-30T01:00",
+          "arrival": "2026-08-30T05:45",
+          "durationMinutes": 285,
+          "vehicle": "Boeing 787-9"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-09-man",
+      "slug": "2026-10-09-kr-qa",
+      "title": "South Korea · Qatar · United Kingdom +2",
+      "subtitle": "TPE → ICN → DOH → MAN → DOH → BKK → TPE",
+      "startDate": "2026-10-09",
+      "endDate": "2026-10-26",
+      "status": "planned",
+      "collectionId": "europe",
+      "heroImage": "/images/cities/MAN.jpg",
+      "thumbnail": "/images/cities/MAN.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "icn"
+        },
+        {
+          "placeId": "doh"
+        },
+        {
+          "placeId": "man"
+        },
+        {
+          "placeId": "dub"
+        },
+        {
+          "placeId": "doh"
+        },
+        {
+          "placeId": "bkk"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2026-10-09-EVA170-TPEICN",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "icn",
+          "operator": "EVA Air",
+          "reference": "EVA170",
+          "departure": "2026-10-09T07:30",
+          "arrival": "2026-10-09T11:00",
+          "durationMinutes": 150,
+          "vehicle": "Boeing 787-9",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2026-10-09-QTR863-ICNDOH",
+          "mode": "flight",
+          "fromPlaceId": "icn",
+          "toPlaceId": "doh",
+          "operator": "Qatar Airways",
+          "reference": "QTR863",
+          "departure": "2026-10-09T18:30",
+          "arrival": "2026-10-09T23:00",
+          "durationMinutes": 630,
+          "vehicle": "Airbus A350-1000"
+        },
+        {
+          "id": "2026-10-10-QTR27-DOHMAN",
+          "mode": "flight",
+          "fromPlaceId": "doh",
+          "toPlaceId": "man",
+          "operator": "Qatar Airways",
+          "reference": "QTR27",
+          "departure": "2026-10-10T08:00",
+          "arrival": "2026-10-10T13:20",
+          "durationMinutes": 440,
+          "vehicle": "Airbus A350-1000"
+        },
+        {
+          "id": "2026-10-23-QTR20-DUBDOH",
+          "mode": "flight",
+          "fromPlaceId": "dub",
+          "toPlaceId": "doh",
+          "operator": "Qatar Airways",
+          "reference": "QTR20",
+          "departure": "2026-10-23T08:15",
+          "arrival": "2026-10-23T17:20",
+          "durationMinutes": 425,
+          "vehicle": "Boeing 787-9",
+          "cabin": "Business"
+        },
+        {
+          "id": "2026-10-24-QTR836-DOHBKK",
+          "mode": "flight",
+          "fromPlaceId": "doh",
+          "toPlaceId": "bkk",
+          "operator": "Qatar Airways",
+          "reference": "QTR836",
+          "departure": "2026-10-24T02:30",
+          "arrival": "2026-10-24T13:25",
+          "durationMinutes": 415,
+          "vehicle": "Airbus A380-800",
+          "cabin": "First"
+        },
+        {
+          "id": "2026-10-26-THA634-BKKTPE",
+          "mode": "flight",
+          "fromPlaceId": "bkk",
+          "toPlaceId": "tpe",
+          "operator": "Thai Airways",
+          "reference": "THA634",
+          "departure": "2026-10-26T12:40",
+          "arrival": "2026-10-26T17:20",
+          "durationMinutes": 220,
+          "vehicle": "Boeing 787-8",
+          "cabin": "Economy"
+        }
+      ]
+    },
+    {
+      "id": "2027-01-09-hnd",
+      "slug": "2027-01-09-jp",
+      "title": "Japan",
+      "subtitle": "TSA → HND → ITM → TPE",
+      "startDate": "2027-01-09",
+      "endDate": "2027-01-17",
+      "status": "planned",
+      "collectionId": "japan",
+      "heroImage": "/images/cities/HND.jpg",
+      "thumbnail": "/images/cities/HND.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tsa"
+        },
+        {
+          "placeId": "hnd"
+        },
+        {
+          "placeId": "hkd"
+        },
+        {
+          "placeId": "itm"
+        },
+        {
+          "placeId": "kix"
+        },
+        {
+          "placeId": "tpe"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2027-01-09-EVA192-TSAHND",
+          "mode": "flight",
+          "fromPlaceId": "tsa",
+          "toPlaceId": "hnd",
+          "operator": "EVA Air",
+          "reference": "EVA192",
+          "departure": "2027-01-09T07:15",
+          "arrival": "2027-01-09T11:00",
+          "durationMinutes": 165,
+          "vehicle": "Boeing 787-10",
+          "cabin": "Business"
+        },
+        {
+          "id": "2027-01-16-ANA746-HKDITM",
+          "mode": "flight",
+          "fromPlaceId": "hkd",
+          "toPlaceId": "itm",
+          "operator": "All Nippon Airways",
+          "reference": "ANA746",
+          "departure": "2027-01-16T13:25",
+          "arrival": "2027-01-16T15:15",
+          "durationMinutes": 110,
+          "vehicle": "Airbus A321",
+          "cabin": "Economy"
+        },
+        {
+          "id": "2027-01-17-EVA131-KIXTPE",
+          "mode": "flight",
+          "fromPlaceId": "kix",
+          "toPlaceId": "tpe",
+          "operator": "EVA Air",
+          "reference": "EVA131",
+          "departure": "2027-01-17T12:55",
+          "arrival": "2027-01-17T15:05",
+          "durationMinutes": 190,
+          "vehicle": "Boeing 787-10",
+          "cabin": "Business"
+        }
+      ]
+    },
+    {
+      "id": "2027-01-30-hkg",
+      "slug": "2027-01-30-hk",
+      "title": "Hong Kong",
+      "subtitle": "TPE → HKG",
+      "startDate": "2027-01-30",
+      "endDate": "2027-01-30",
+      "status": "planned",
+      "collectionId": "greater-china",
+      "heroImage": "/images/cities/HKG.jpg",
+      "thumbnail": "/images/cities/HKG.jpg",
+      "highlights": [],
+      "stops": [
+        {
+          "placeId": "tpe"
+        },
+        {
+          "placeId": "hkg"
+        }
+      ],
+      "segments": [
+        {
+          "id": "2027-01-30-EVA891-TPEHKG",
+          "mode": "flight",
+          "fromPlaceId": "tpe",
+          "toPlaceId": "hkg",
+          "operator": "EVA Air",
+          "reference": "EVA891",
+          "departure": "2027-01-30T07:00",
+          "arrival": "2027-01-30T09:00",
+          "durationMinutes": 120,
+          "vehicle": "Boeing 787-10",
+          "cabin": "Business"
+        }
+      ]
+    }
+  ]
+}
