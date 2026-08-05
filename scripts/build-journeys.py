@@ -33,6 +33,14 @@ FR24_CSV = os.environ.get('FR24_CSV', '/snoopy/flightdiary_2026_08_05_10_50.csv'
 # ICAO -> IATA airline designators, resolved from Wikidata P229 and checked
 # line by line against the Flightradar24 export. Vendored so the build does
 # not depend on anything outside the repo.
+# Ground legs the flight log cannot know about, filled in by hand.
+OVERLAND = os.environ.get(
+    'OVERLAND', os.path.join(os.path.dirname(__file__), 'overland.json')
+)
+# Hand-written journey notes and per-leg annotations.
+JOURNEY_NOTES = os.environ.get(
+    'JOURNEY_NOTES', os.path.join(os.path.dirname(__file__), 'journey-notes.json')
+)
 IATA_MAP = os.environ.get(
     'IATA_MAP', os.path.join(os.path.dirname(__file__), 'airline-iata.json')
 )
@@ -160,11 +168,30 @@ def airport_label(city, official, code):
     return f'{city} {rest}'
 
 
+def load_overland():
+    """Hand-recorded ground legs, keyed by the airports they bridge."""
+    try:
+        with open(OVERLAND, encoding='utf-8') as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return []
+
+
+def load_notes():
+    try:
+        with open(JOURNEY_NOTES, encoding='utf-8') as fh:
+            return {k: v for k, v in json.load(fh).items() if not k.startswith('_')}
+    except (OSError, ValueError):
+        return {}
+
+
 def build():
     data = load()
     airports = {a['c']: a for a in data['airports']}
     airline_names = data.get('airline_names', {})
     fr_dates, iata = fr24_dates()
+    overland = load_overland()
+    notes = load_notes()
 
     city_dir = os.path.join(os.path.dirname(__file__), '..', 'public', 'images', 'cities')
     have_image = set()
@@ -250,6 +277,38 @@ def build():
                     'toPlaceId': place_id[leg['o']],
                     'note': 'Overland — the flight log does not record how',
                 })
+
+            # A hand-recorded ground leg that bridges this gap goes in first.
+            if i:
+                prev_code = group[i - 1]['d']
+                for entry in overland:
+                    if entry.get('_used'):
+                        continue
+                    if entry['from'] != prev_code or entry['to'] != leg['o']:
+                        continue
+                    if not (group[i - 1]['_orderDate'] <= entry['date'] <= leg['_orderDate']):
+                        continue
+                    entry['_used'] = True
+                    ground = {
+                        'id': f"{entry['date']}-{entry['from']}{entry['to']}-{entry['mode']}",
+                        'mode': entry['mode'],
+                        'fromPlaceId': place_id[entry['from']],
+                        'toPlaceId': place_id[entry['to']],
+                    }
+                    for key in ('operator', 'reference', 'vehicle', 'note'):
+                        if entry.get(key):
+                            ground[key] = entry[key]
+                    # Clock times are optional — the date alone is honest when
+                    # that is all that was remembered.
+                    if entry.get('departure'):
+                        ground['departure'] = f"{entry['date']}T{entry['departure']}"
+                    if entry.get('arrival'):
+                        arr_date = entry.get('arrivalDate', entry['date'])
+                        ground['arrival'] = f"{arr_date}T{entry['arrival']}"
+                    if entry.get('durationMinutes'):
+                        ground['durationMinutes'] = entry['durationMinutes']
+                    segments.append(ground)
+                    break
 
             arrival = None
             if leg.get('arr_local'):
@@ -355,10 +414,38 @@ def build():
         if n:
             j['slug'] = f'{base}-{n + 1}'
 
+    # Attach the hand-written notes now that slugs are final.
+    applied = 0
+    for journey in journeys:
+        entry = notes.get(journey['slug'])
+        if not entry:
+            continue
+        applied += 1
+        if entry.get('notes'):
+            journey['notes'] = entry['notes']
+        if entry.get('highlights'):
+            journey['highlights'] = entry['highlights']
+        for ann in entry.get('segments', []):
+            for seg in journey['segments']:
+                if (place_id.get(ann['from']) == seg['fromPlaceId']
+                        and place_id.get(ann['to']) == seg['toPlaceId']):
+                    seg['note'] = ' • '.join(filter(None, [seg.get('note'), ann['note']]))
+                    break
+    for slug in notes:
+        if not any(j['slug'] == slug for j in journeys):
+            print(f'  WARNING: note for unknown journey "{slug}"')
+    print(f'  journeys annotated: {applied}')
+
     out = {'places': places, 'collections': collections, 'journeys': journeys}
     with open(os.path.abspath(OUT), 'w', encoding='utf-8') as fh:
         json.dump(out, fh, ensure_ascii=False, indent=2)
 
+    unused = [e for e in overland if not e.get('_used')]
+    for e in unused:
+        print(f"  WARNING: overland {e['from']}->{e['to']} on {e['date']} matched no gap")
+    ground_n = sum(1 for j in journeys for s in j['segments']
+                   if s['mode'] not in ('flight', 'surface'))
+    print(f'  ground legs merged: {ground_n}')
     surf = sum(1 for j in journeys for s in j['segments'] if s['mode'] == 'surface')
     print(f'{len(legs)} legs -> {len(journeys)} journeys, '
           f'{sum(len(j["segments"]) for j in journeys)} segments '

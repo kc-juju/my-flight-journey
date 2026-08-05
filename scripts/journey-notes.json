@@ -1,0 +1,14 @@
+{
+  "_comment": "Things only the traveller knows. Keyed by journey slug; `segments` annotates a leg by its endpoints. Nothing here is derived — if it is not written down, it is not shown.",
+
+  "2025-10-04-us-ca": {
+    "notes": "We were booked to fly home on 18 October. The flight was oversold, we volunteered to give up our seats, and left the following evening instead.",
+    "segments": [
+      {
+        "from": "SEA",
+        "to": "TPE",
+        "note": "Rebooked from 18 Oct — the original flight was oversold and we volunteered to move"
+      }
+    ]
+  }
+}

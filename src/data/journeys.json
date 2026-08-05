@@ -2359,6 +2359,14 @@
           "cabin": "Economy"
         },
         {
+          "id": "2025-10-06-SEAYVR-bus",
+          "mode": "bus",
+          "fromPlaceId": "sea",
+          "toPlaceId": "yvr",
+          "operator": "FlixBus",
+          "note": "Seattle to Vancouver by coach — the atlas only has airport nodes, so the line runs airport to airport"
+        },
+        {
           "id": "2025-10-08-WJA108-YVRYYC",
           "mode": "flight",
           "fromPlaceId": "yvr",
@@ -2426,9 +2434,11 @@
           "durationMinutes": 845,
           "vehicle": "Airbus A350-900",
           "registration": "N508DN",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "note": "Rebooked from 18 Oct — the original flight was oversold and we volunteered to move"
         }
-      ]
+      ],
+      "notes": "We were booked to fly home on 18 October. The flight was oversold, we volunteered to give up our seats, and left the following evening instead."
     },
     {
       "id": "2026-01-16-mzg",

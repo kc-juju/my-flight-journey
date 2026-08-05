@@ -1,0 +1,10 @@
+[
+  {
+    "date": "2025-10-06",
+    "mode": "bus",
+    "operator": "FlixBus",
+    "from": "SEA",
+    "to": "YVR",
+    "note": "Seattle to Vancouver by coach — the atlas only has airport nodes, so the line runs airport to airport"
+  }
+]
