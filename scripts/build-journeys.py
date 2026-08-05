@@ -30,9 +30,11 @@ SRC = os.environ.get(
 )
 OUT = os.path.join(os.path.dirname(__file__), '..', 'src', 'data', 'journeys.json')
 FR24_CSV = os.environ.get('FR24_CSV', '/snoopy/flightdiary_2026_08_05_10_50.csv')
+# ICAO -> IATA airline designators, resolved from Wikidata P229 and checked
+# line by line against the Flightradar24 export. Vendored so the build does
+# not depend on anything outside the repo.
 IATA_MAP = os.environ.get(
-    'IATA_MAP',
-    '/tmp/claude-0/-synosrc/ec395867-e62f-4b7c-a152-0235c8dfff0a/scratchpad/iata.json',
+    'IATA_MAP', os.path.join(os.path.dirname(__file__), 'airline-iata.json')
 )
 
 HOME_AIRPORTS = {'TPE', 'TSA'}
@@ -262,7 +264,9 @@ def build():
                 'fromPlaceId': place_id[leg['o']],
                 'toPlaceId': place_id[leg['d']],
                 'operator': airline_names.get(leg['al'], leg['al']),
-                'reference': f"{leg['al']}{leg['fl']}",
+                # Show the two-letter code people see on a ticket: UO117, not
+                # HKE117. Falls back to ICAO if an airline has no IATA code.
+                'reference': f"{iata.get(leg['al']) or leg['al']}{leg['fl']}",
             }
             if leg.get('dep_local'):
                 seg['departure'] = f"{leg['date']}T{leg['dep_local']}"
