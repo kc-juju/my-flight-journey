@@ -60,8 +60,12 @@ export function greatCircle(a: Place, b: Place, samples = 64): LatLng[][] {
     const lon = toDeg(Math.atan2(y, x));
 
     if (previousLon !== null) {
-      if (lon - previousLon + shift > 180) shift -= 360;
-      else if (lon - previousLon + shift < -180) shift += 360;
+      // Compare RAW longitudes. Folding `shift` into this test makes the
+      // accumulated offset cancel itself out on the sample after a crossing,
+      // which snaps the line back across the whole map.
+      const delta = lon - previousLon;
+      if (delta > 180) shift -= 360;
+      else if (delta < -180) shift += 360;
     }
     previousLon = lon;
     run.push([lat, lon + shift]);
