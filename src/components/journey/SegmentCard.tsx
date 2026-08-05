@@ -44,11 +44,11 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
 
           <div className="flex flex-wrap items-baseline gap-2">
             <h4 className="font-headline-md text-headline-md text-on-surface">
-              {from?.name ?? segment.fromPlaceId}
+              {from?.airportName ?? from?.name ?? segment.fromPlaceId}
             </h4>
             <Icon name="arrow_right_alt" className="text-[16px] text-on-surface-variant" />
             <h4 className="font-headline-md text-headline-md text-on-surface">
-              {to?.name ?? segment.toPlaceId}
+              {to?.airportName ?? to?.name ?? segment.toPlaceId}
             </h4>
           </div>
 

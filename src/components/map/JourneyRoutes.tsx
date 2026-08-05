@@ -19,6 +19,16 @@ interface JourneyRoutesProps extends RouteHandlers {
 }
 
 /**
+ * Leaflet repeats the tiles forever but draws each vector once. Rendering
+ * every route and marker at -360/0/+360 keeps them present no matter which
+ * copy of the world you have panned into.
+ */
+const WORLD_COPIES = [-360, 0, 360];
+
+const shiftRun = (run: LatLng[], by: number): LatLng[] =>
+  by === 0 ? run : run.map(([lat, lon]) => [lat, lon + by] as LatLng);
+
+/**
  * Draws every segment of every journey as a great-circle polyline.
  * Kept free of map state so it can be reused inside any <MapContainer>.
  */
@@ -74,10 +84,11 @@ export function JourneyRoutes({
         return (
           <Fragment key={journey.id}>
             {lines.flatMap((line) =>
-              line.runs.map((run, runIndex) => (
+              line.runs.flatMap((run, runIndex) =>
+                WORLD_COPIES.map((copy) => (
               <Polyline
-                key={`${line.id}-${runIndex}`}
-                positions={run}
+                key={`${line.id}-${runIndex}-${copy}`}
+                positions={shiftRun(run, copy)}
                 pathOptions={{
                   color: MODE_COLOR[line.mode],
                   weight: active ? 4 : 2.5,
@@ -101,14 +112,16 @@ export function JourneyRoutes({
                   click: () => onSelect?.(journey),
                 }}
               />
-              )),
+                )),
+              ),
             )}
 
             {showNodes &&
-              nodes.map((place) => (
+              nodes.flatMap((place) =>
+                WORLD_COPIES.map((copy) => (
                 <CircleMarker
-                  key={`${journey.id}-${place.id}`}
-                  center={[place.lat, place.lon]}
+                  key={`${journey.id}-${place.id}-${copy}`}
+                  center={[place.lat, place.lon + copy]}
                   radius={active ? 6 : 4.5}
                   pathOptions={{
                     color: '#e9c176',
@@ -129,11 +142,13 @@ export function JourneyRoutes({
                 >
                   <Tooltip direction="top" offset={[0, -6]} opacity={1}>
                     <span className="font-label-caps text-[11px] uppercase tracking-widest">
-                      {place.code ? `${place.name} (${place.code})` : place.name}
+                      {place.airportName ?? place.name}
+                      {place.code ? ` (${place.code})` : ''}
                     </span>
                   </Tooltip>
                 </CircleMarker>
-              ))}
+                )),
+              )}
           </Fragment>
         );
       })}

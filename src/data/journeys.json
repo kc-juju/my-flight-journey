@@ -6,6 +6,7 @@
       "code": "BKI",
       "country": "Malaysia",
       "countryCode": "MY",
+      "airportName": "Kota Kinabalu",
       "lat": 5.932743,
       "lon": 116.049324,
       "image": "/images/cities/BKI.jpg"
@@ -16,6 +17,7 @@
       "code": "BKK",
       "country": "Thailand",
       "countryCode": "TH",
+      "airportName": "Bangkok Suvarnabhumi",
       "lat": 13.6811,
       "lon": 100.747002,
       "image": "/images/cities/BKK.jpg"
@@ -26,6 +28,7 @@
       "code": "BNE",
       "country": "Australia",
       "countryCode": "AU",
+      "airportName": "Brisbane",
       "lat": -27.384199142456055,
       "lon": 153.11700439453125,
       "image": "/images/cities/BNE.jpg"
@@ -36,6 +39,7 @@
       "code": "BOD",
       "country": "France",
       "countryCode": "FR",
+      "airportName": "Bordeaux–Mérignac",
       "lat": 44.82865,
       "lon": -0.715356,
       "image": "/images/cities/BOD.jpg"
@@ -46,6 +50,7 @@
       "code": "BUD",
       "country": "Hungary",
       "countryCode": "HU",
+      "airportName": "Budapest Liszt Ferenc",
       "lat": 47.43018,
       "lon": 19.262393,
       "image": "/images/cities/BUD.jpg"
@@ -56,6 +61,7 @@
       "code": "CDG",
       "country": "France",
       "countryCode": "FR",
+      "airportName": "Paris Charles de Gaulle",
       "lat": 49.00896,
       "lon": 2.554117,
       "image": "/images/cities/CDG.jpg"
@@ -66,6 +72,7 @@
       "code": "CTS",
       "country": "Japan",
       "countryCode": "JP",
+      "airportName": "Sapporo New Chitose",
       "lat": 42.774753,
       "lon": 141.690414,
       "image": "/images/cities/CTS.jpg"
@@ -76,6 +83,7 @@
       "code": "DOH",
       "country": "Qatar",
       "countryCode": "QA",
+      "airportName": "Doha Hamad",
       "lat": 25.273056,
       "lon": 51.608056,
       "image": "/images/cities/DOH.jpg"
@@ -86,6 +94,7 @@
       "code": "DUB",
       "country": "Ireland",
       "countryCode": "IE",
+      "airportName": "Dublin",
       "lat": 53.428713,
       "lon": -6.262121,
       "image": "/images/cities/DUB.jpg"
@@ -96,6 +105,7 @@
       "code": "FUK",
       "country": "Japan",
       "countryCode": "JP",
+      "airportName": "Fukuoka",
       "lat": 33.585899353027344,
       "lon": 130.4510040283203,
       "image": "/images/cities/FUK.jpg"
@@ -106,6 +116,7 @@
       "code": "HEL",
       "country": "Finland",
       "countryCode": "FI",
+      "airportName": "Helsinki Vantaa",
       "lat": 60.318363,
       "lon": 24.963341,
       "image": "/images/cities/HEL.jpg"
@@ -116,6 +127,7 @@
       "code": "HKD",
       "country": "Japan",
       "countryCode": "JP",
+      "airportName": "Hakodate",
       "lat": 41.77,
       "lon": 140.822006,
       "image": "/images/cities/HKD.jpg"
@@ -126,6 +138,7 @@
       "code": "HKG",
       "country": "Hong Kong",
       "countryCode": "HK",
+      "airportName": "Hong Kong",
       "lat": 22.31184,
       "lon": 113.914862,
       "image": "/images/cities/HKG.jpg"
@@ -136,6 +149,7 @@
       "code": "HND",
       "country": "Japan",
       "countryCode": "JP",
+      "airportName": "Tokyo Haneda",
       "lat": 35.549678,
       "lon": 139.786958,
       "image": "/images/cities/HND.jpg"
@@ -146,6 +160,7 @@
       "code": "ICN",
       "country": "South Korea",
       "countryCode": "KR",
+      "airportName": "Seoul Incheon",
       "lat": 37.469101,
       "lon": 126.450996,
       "image": "/images/cities/ICN.jpg"
@@ -156,6 +171,7 @@
       "code": "IST",
       "country": "Türkiye",
       "countryCode": "TR",
+      "airportName": "İstanbul",
       "lat": 41.274874,
       "lon": 28.732136,
       "image": "/images/cities/IST.jpg"
@@ -166,6 +182,7 @@
       "code": "ITM",
       "country": "Japan",
       "countryCode": "JP",
+      "airportName": "Osaka Itami",
       "lat": 34.780853,
       "lon": 135.440829,
       "image": "/images/cities/ITM.jpg"
@@ -176,6 +193,7 @@
       "code": "JFK",
       "country": "United States",
       "countryCode": "US",
+      "airportName": "New York JFK",
       "lat": 40.639447,
       "lon": -73.779317,
       "image": "/images/cities/JFK.jpg"
@@ -186,6 +204,7 @@
       "code": "KIX",
       "country": "Japan",
       "countryCode": "JP",
+      "airportName": "Osaka Kansai",
       "lat": 34.427299,
       "lon": 135.244003,
       "image": "/images/cities/KIX.jpg"
@@ -196,6 +215,7 @@
       "code": "KUL",
       "country": "Malaysia",
       "countryCode": "MY",
+      "airportName": "Kuala Lumpur",
       "lat": 2.74558,
       "lon": 101.709999,
       "image": "/images/cities/KUL.jpg"
@@ -206,6 +226,7 @@
       "code": "KWE",
       "country": "China",
       "countryCode": "CN",
+      "airportName": "Guiyang Longdongbao",
       "lat": 26.541805,
       "lon": 106.80402,
       "image": "/images/cities/KWE.jpg"
@@ -216,6 +237,7 @@
       "code": "LAX",
       "country": "United States",
       "countryCode": "US",
+      "airportName": "Los Angeles",
       "lat": 33.942501,
       "lon": -118.407997,
       "image": "/images/cities/LAX.jpg"
@@ -226,6 +248,7 @@
       "code": "LHR",
       "country": "United Kingdom",
       "countryCode": "GB",
+      "airportName": "London Heathrow",
       "lat": 51.470748,
       "lon": -0.459909,
       "image": "/images/cities/LHR.jpg"
@@ -236,6 +259,7 @@
       "code": "MAN",
       "country": "United Kingdom",
       "countryCode": "GB",
+      "airportName": "Manchester",
       "lat": 53.349375,
       "lon": -2.279521,
       "image": "/images/cities/MAN.jpg"
@@ -246,6 +270,7 @@
       "code": "MEL",
       "country": "Australia",
       "countryCode": "AU",
+      "airportName": "Melbourne",
       "lat": -37.670732,
       "lon": 144.837898,
       "image": "/images/cities/MEL.jpg"
@@ -256,6 +281,7 @@
       "code": "MFM",
       "country": "Macau",
       "countryCode": "MO",
+      "airportName": "Macau",
       "lat": 22.149599,
       "lon": 113.592003,
       "image": "/images/cities/MFM.jpg"
@@ -266,6 +292,7 @@
       "code": "MNL",
       "country": "Philippines",
       "countryCode": "PH",
+      "airportName": "Manila Ninoy Aquino",
       "lat": 14.5086,
       "lon": 121.019997,
       "image": "/images/cities/MNL.jpg"
@@ -276,6 +303,7 @@
       "code": "MUC",
       "country": "Germany",
       "countryCode": "DE",
+      "airportName": "Munich",
       "lat": 48.353802,
       "lon": 11.7861,
       "image": "/images/cities/MUC.jpg"
@@ -286,6 +314,7 @@
       "code": "MZG",
       "country": "Taiwan",
       "countryCode": "TW",
+      "airportName": "Penghu Magong",
       "lat": 23.568701,
       "lon": 119.627998,
       "image": "/images/cities/MZG.jpg"
@@ -296,6 +325,7 @@
       "code": "NCE",
       "country": "France",
       "countryCode": "FR",
+      "airportName": "Nice-Côte d'Azur",
       "lat": 43.658401,
       "lon": 7.21587,
       "image": "/images/cities/NCE.jpg"
@@ -306,6 +336,7 @@
       "code": "NRT",
       "country": "Japan",
       "countryCode": "JP",
+      "airportName": "Tokyo Narita",
       "lat": 35.76858,
       "lon": 140.388714,
       "image": "/images/cities/NRT.jpg"
@@ -316,6 +347,7 @@
       "code": "OKA",
       "country": "Japan",
       "countryCode": "JP",
+      "airportName": "Naha",
       "lat": 26.192437,
       "lon": 127.639804,
       "image": "/images/cities/OKA.jpg"
@@ -326,6 +358,7 @@
       "code": "OKJ",
       "country": "Japan",
       "countryCode": "JP",
+      "airportName": "Okayama Momotaro",
       "lat": 34.756901,
       "lon": 133.854996,
       "image": "/images/cities/OKJ.jpg"
@@ -336,6 +369,7 @@
       "code": "OOL",
       "country": "Australia",
       "countryCode": "AU",
+      "airportName": "Gold Coast",
       "lat": -28.165962,
       "lon": 153.506641,
       "image": "/images/cities/OOL.jpg"
@@ -346,6 +380,7 @@
       "code": "PEN",
       "country": "Malaysia",
       "countryCode": "MY",
+      "airportName": "Penang",
       "lat": 5.296303,
       "lon": 100.276185,
       "image": "/images/cities/PEN.jpg"
@@ -356,6 +391,7 @@
       "code": "PER",
       "country": "Australia",
       "countryCode": "AU",
+      "airportName": "Perth",
       "lat": -31.94029998779297,
       "lon": 115.96700286865234,
       "image": "/images/cities/PER.jpg"
@@ -366,6 +402,7 @@
       "code": "PVG",
       "country": "China",
       "countryCode": "CN",
+      "airportName": "Shanghai Pudong",
       "lat": 31.1434,
       "lon": 121.805,
       "image": "/images/cities/PVG.jpg"
@@ -376,6 +413,7 @@
       "code": "SEA",
       "country": "United States",
       "countryCode": "US",
+      "airportName": "Seattle–Tacoma",
       "lat": 47.447943,
       "lon": -122.310276,
       "image": "/images/cities/SEA.jpg"
@@ -386,6 +424,7 @@
       "code": "SIN",
       "country": "Singapore",
       "countryCode": "SG",
+      "airportName": "Singapore Changi",
       "lat": 1.35019,
       "lon": 103.994003,
       "image": "/images/cities/SIN.jpg"
@@ -396,8 +435,10 @@
       "code": "TPE",
       "country": "Taiwan",
       "countryCode": "TW",
+      "airportName": "Taipei Taoyuan",
       "lat": 25.0777,
       "lon": 121.233002,
+      "home": true,
       "image": "/images/cities/TPE.jpg"
     },
     {
@@ -406,8 +447,10 @@
       "code": "TSA",
       "country": "Taiwan",
       "countryCode": "TW",
+      "airportName": "Taipei Songshan",
       "lat": 25.067244,
       "lon": 121.552822,
+      "home": true,
       "image": "/images/cities/TSA.jpg"
     },
     {
@@ -416,6 +459,7 @@
       "code": "VCE",
       "country": "Italy",
       "countryCode": "IT",
+      "airportName": "Venice Marco Polo",
       "lat": 45.505299,
       "lon": 12.3519,
       "image": "/images/cities/VCE.jpg"
@@ -426,6 +470,7 @@
       "code": "VIE",
       "country": "Austria",
       "countryCode": "AT",
+      "airportName": "Vienna",
       "lat": 48.110298,
       "lon": 16.5697,
       "image": "/images/cities/VIE.jpg"
@@ -436,6 +481,7 @@
       "code": "WAW",
       "country": "Poland",
       "countryCode": "PL",
+      "airportName": "Warsaw Chopin",
       "lat": 52.165699,
       "lon": 20.9671,
       "image": "/images/cities/WAW.jpg"
@@ -446,6 +492,7 @@
       "code": "YVR",
       "country": "Canada",
       "countryCode": "CA",
+      "airportName": "Vancouver",
       "lat": 49.193901,
       "lon": -123.183998,
       "image": "/images/cities/YVR.jpg"
@@ -456,6 +503,7 @@
       "code": "YYC",
       "country": "Canada",
       "countryCode": "CA",
+      "airportName": "Calgary",
       "lat": 51.118822,
       "lon": -114.009933,
       "image": "/images/cities/YYC.jpg"
@@ -466,6 +514,7 @@
       "code": "YZF",
       "country": "Canada",
       "countryCode": "CA",
+      "airportName": "Yellowknife",
       "lat": 62.462799,
       "lon": -114.440002,
       "image": "/images/cities/YZF.jpg"

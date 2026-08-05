@@ -22,6 +22,7 @@ import datetime as dt
 import os
 import re
 import sys
+import unicodedata
 
 SRC = os.environ.get(
     'FLIGHT_DATA',
@@ -112,6 +113,12 @@ def fr24_dates():
 # OurAirports records the municipality an airport sits in, which is often the
 # administrative district rather than the city people mean. These are the ones
 # that read wrong in a travel atlas.
+# Composing these from the official name reads badly, so state them.
+LABEL_OVERRIDES = {
+    'TPE': 'Taipei Taoyuan',   # official name says "Taiwan Taoyuan"
+    'JFK': 'New York JFK',     # "New York John F. Kennedy" is a mouthful
+}
+
 CITY_OVERRIDES = {
     'MFM': 'Macau',        # municipality is a parish name
     'KUL': 'Kuala Lumpur', # airport sits in Sepang
@@ -129,6 +136,26 @@ def clean_city(name, code, country_code):
     if not name:
         return code
     return name.split('(')[0].split(',')[0].strip() or code
+
+
+def airport_label(city, official, code):
+    """A readable airport name: city plus whatever distinguishes the field.
+
+    OurAirports' official names range from "Dublin Airport" to "Taiwan Taoyuan
+    International Airport"; the goal is "Dublin" and "Taipei Taoyuan".
+    """
+    if code in LABEL_OVERRIDES:
+        return LABEL_OVERRIDES[code]
+    rest = official
+    for word in (' International Airport', ' Airport'):
+        rest = rest.replace(word, '')
+    rest = rest.replace('International', '').strip()
+    if not rest:
+        return city
+    flat = lambda t: unicodedata.normalize('NFKD', t).encode('ascii', 'ignore').decode().lower()
+    if flat(rest) == flat(city) or flat(rest).startswith(flat(city)):
+        return rest
+    return f'{city} {rest}'
 
 
 def build():
@@ -149,8 +176,12 @@ def build():
             'code': code,
             'country': COUNTRY_NAMES.get(a['cty'], a['cty']),
             'countryCode': a['cty'],
+            'airportName': airport_label(
+                clean_city(a.get('city'), code, a['cty']), a['name'], code
+            ),
             'lat': a['lat'],
             'lon': a['lon'],
+            **({'home': True} if code in HOME_AIRPORTS else {}),
             **({'image': f'/images/cities/{code}.jpg'} if code in have_image else {}),
         }
         for code, a in sorted(airports.items())

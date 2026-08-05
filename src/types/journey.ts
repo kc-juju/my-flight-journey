@@ -26,12 +26,16 @@ export interface Place {
   name: string;
   /** IATA airport code, station code, port code — whatever identifies the node. */
   code?: string;
+  /** Readable airport name — the marker sits on the airport, not the city. */
+  airportName?: string;
   country: string;
   countryCode: string;
   lat: number;
   lon: number;
   /** Representative photo, served from /public. */
   image?: string;
+  /** Home base — every journey starts and ends here, so galleries skip it. */
+  home?: boolean;
 }
 
 /** One leg of a journey, in any transport mode. */

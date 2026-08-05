@@ -36,7 +36,7 @@ export function Timeline({ stops, placesById, variant = 'panel' }: TimelineProps
                 }`}
               />
               <h4 className="font-body-lg font-bold leading-tight text-on-surface">
-                {place?.name ?? stop.placeId}
+                {place?.airportName ?? place?.name ?? stop.placeId}
                 {place?.code ? ` (${place.code})` : ''}
               </h4>
               <span className="mt-1 block font-label-caps text-label-caps uppercase text-on-surface-variant">

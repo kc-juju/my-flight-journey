@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Journey, Place } from '../../types/journey';
 import { placesOfJourney } from '../../lib/atlas';
 import { asset } from '../../lib/asset';
@@ -10,28 +10,89 @@ interface CityGalleryProps {
 }
 
 /**
- * Every city the journey touched, in itinerary order.
- * One place can appear twice in a route (home at both ends) — show it once.
+ * The cities a journey reached, as a carousel.
+ *
+ * Home is skipped — every journey starts and ends there, so showing it says
+ * nothing. If a journey reached nowhere else (a domestic hop), show what
+ * there is rather than an empty rail.
  */
 export function CityGallery({ journey, placesById }: CityGalleryProps) {
-  const places = placesOfJourney(journey, placesById);
+  const all = placesOfJourney(journey, placesById);
+  const away = all.filter((p) => !p.home);
+  const places = away.length ? away : all;
+
+  const rail = useRef<HTMLUListElement>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  const measure = useCallback(() => {
+    const el = rail.current;
+    if (!el) return;
+    setAtStart(el.scrollLeft <= 2);
+    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 2);
+  }, []);
+
+  useEffect(() => {
+    measure();
+    const el = rail.current;
+    if (!el) return;
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [measure, places.length]);
+
+  const scrollBy = (direction: -1 | 1) => {
+    const el = rail.current;
+    if (!el) return;
+    // Advance by one card plus its gap.
+    const card = el.querySelector('li');
+    const step = card ? card.clientWidth + 24 : el.clientWidth * 0.8;
+    el.scrollBy({ left: step * direction, behavior: 'smooth' });
+  };
+
   if (!places.length) return null;
 
   return (
     <section className="flex flex-col gap-stack-md">
-      <h2 className="px-2 font-headline-md text-headline-md text-on-surface">
-        Cities on this journey
-      </h2>
+      <div className="flex items-end justify-between gap-4 px-2">
+        <h2 className="font-headline-md text-headline-md text-on-surface">
+          Cities on this journey
+        </h2>
 
-      <ul className="grid grid-cols-2 gap-gutter sm:grid-cols-3">
-        {places.map((place, index) => (
-          <motion.li
+        <div className="flex items-center gap-2">
+          <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+            {places.length}
+          </span>
+          <button
+            type="button"
+            onClick={() => scrollBy(-1)}
+            disabled={atStart}
+            aria-label="Previous cities"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-outline-variant text-on-surface transition-colors hover:bg-surface-container disabled:opacity-30 disabled:hover:bg-transparent"
+          >
+            <Icon name="chevron_left" className="text-[20px]" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollBy(1)}
+            disabled={atEnd}
+            aria-label="More cities"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-outline-variant text-on-surface transition-colors hover:bg-surface-container disabled:opacity-30 disabled:hover:bg-transparent"
+          >
+            <Icon name="chevron_right" className="text-[20px]" />
+          </button>
+        </div>
+      </div>
+
+      <ul
+        ref={rail}
+        onScroll={measure}
+        className="flex snap-x snap-mandatory gap-gutter overflow-x-auto scroll-smooth pb-2"
+      >
+        {places.map((place) => (
+          <li
             key={place.id}
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.4, delay: Math.min(index * 0.04, 0.3), ease: 'easeOut' }}
-            className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-surface-container shadow-md"
+            className="group relative aspect-[4/3] w-[260px] shrink-0 snap-start overflow-hidden rounded-xl bg-surface-container shadow-md sm:w-[300px]"
           >
             {place.image ? (
               <img
@@ -53,7 +114,7 @@ export function CityGallery({ journey, placesById }: CityGalleryProps) {
 
             <div className="absolute bottom-0 left-0 w-full p-stack-sm">
               <div className="flex items-baseline gap-2">
-                <h3 className="font-display-lg text-[20px] leading-tight text-on-primary drop-shadow">
+                <h3 className="font-display-lg text-[22px] leading-tight text-on-primary drop-shadow">
                   {place.name}
                 </h3>
                 {place.code && (
@@ -66,7 +127,7 @@ export function CityGallery({ journey, placesById }: CityGalleryProps) {
                 {place.country}
               </span>
             </div>
-          </motion.li>
+          </li>
         ))}
       </ul>
     </section>

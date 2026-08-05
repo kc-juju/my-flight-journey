@@ -10,6 +10,35 @@ const TILE_URL = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png
 const TILE_ATTRIBUTION =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
+/**
+ * Leaflet measures its container once at mount. Inside a card that is still
+ * being laid out (or animated in) that measurement is zero, and the map never
+ * requests a tile. Re-measure on mount and whenever the container resizes.
+ */
+function ResizeFix() {
+  const map = useMap();
+
+  useEffect(() => {
+    const container = map.getContainer();
+    const settle = () => map.invalidateSize({ animate: false });
+
+    settle();
+    const raf = requestAnimationFrame(settle);
+    const timer = window.setTimeout(settle, 250);
+
+    const observer = new ResizeObserver(settle);
+    observer.observe(container);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [map]);
+
+  return null;
+}
+
 /** Flies the map to a journey when one is focused, and back out when cleared. */
 function FocusController({
   focus,
@@ -82,6 +111,7 @@ export function WorldMap({
       className={className}
       style={{ height: '100%', width: '100%' }}
     >
+      <ResizeFix />
       <ZoomControl position="bottomright" />
       <TileLayer url={TILE_URL} attribution={TILE_ATTRIBUTION} subdomains="abcd" className="atlas-tiles" />
       <JourneyRoutes
