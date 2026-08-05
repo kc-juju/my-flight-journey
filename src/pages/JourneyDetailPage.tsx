@@ -5,9 +5,10 @@ import { WorldMap } from '../components/map/WorldMap';
 import { Timeline } from '../components/journey/Timeline';
 import { SegmentCard } from '../components/journey/SegmentCard';
 import { CityGallery } from '../components/journey/CityGallery';
+import { HeroCarousel } from '../components/journey/HeroCarousel';
+import { placesOfJourney } from '../lib/atlas';
 import { Icon } from '../components/ui/Icon';
 import { formatDateRange, formatDuration, formatNumber, STATUS_LABEL } from '../lib/format';
-import { asset } from '../lib/asset';
 
 export function JourneyDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -32,24 +33,20 @@ export function JourneyDetailPage() {
   }
 
   const metrics = metricsFor(journey);
+  // Same rule as the gallery: home appears on every journey, so it is not a
+  // photo worth showing. Fall back to everything for a purely domestic hop.
+  const all = placesOfJourney(journey, placesById);
+  const away = all.filter((p) => !p.home);
+  const heroPlaces = away.length ? away : all;
 
   return (
     <div className="flex w-full flex-col pb-margin-desktop">
       <section className="relative mx-auto -mt-20 w-full max-w-container px-0 pt-20 md:px-margin-mobile lg:px-margin-desktop">
-        <div className="group relative h-[60vh] max-h-[700px] min-h-[400px] w-full overflow-hidden shadow-2xl shadow-primary/5 md:rounded-xl">
-          {journey.heroImage && (
-            <div
-              role="img"
-              aria-label={journey.title}
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] ease-out group-hover:scale-105"
-              style={{ backgroundImage: `url('${asset(journey.heroImage)}')` }}
-            />
-          )}
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/80"
-          />
-          <div className="absolute bottom-0 left-0 flex w-full flex-col justify-end p-stack-lg">
+        <HeroCarousel
+          places={heroPlaces}
+          className="h-[60vh] max-h-[700px] min-h-[400px] w-full shadow-2xl shadow-primary/5 md:rounded-xl"
+        >
+          <div className="absolute bottom-0 left-0 z-10 flex w-full flex-col justify-end p-stack-lg">
             <div className="mb-stack-sm flex flex-wrap items-center gap-stack-sm">
               <span className="rounded-full border border-surface-container-lowest/30 bg-surface/20 px-3 py-1 font-label-caps text-label-caps uppercase text-on-primary backdrop-blur-md">
                 {STATUS_LABEL[journey.status]}
@@ -66,7 +63,7 @@ export function JourneyDetailPage() {
               • {formatNumber(metrics.distanceKm)} km
             </p>
           </div>
-        </div>
+        </HeroCarousel>
       </section>
 
       <div className="relative z-10 mx-auto mt-stack-lg grid w-full max-w-container grid-cols-1 gap-stack-lg px-margin-mobile lg:grid-cols-12 lg:px-margin-desktop">
