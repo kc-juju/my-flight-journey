@@ -4,6 +4,7 @@ import { useAtlas } from '../hooks/useAtlas';
 import { WorldMap } from '../components/map/WorldMap';
 import { Timeline } from '../components/journey/Timeline';
 import { SegmentCard } from '../components/journey/SegmentCard';
+import { CityGallery } from '../components/journey/CityGallery';
 import { Icon } from '../components/ui/Icon';
 import { formatDateRange, formatDuration, formatNumber, STATUS_LABEL } from '../lib/format';
 import { asset } from '../lib/asset';
@@ -109,6 +110,8 @@ export function JourneyDetailPage() {
               )}
             </motion.article>
           )}
+
+          <CityGallery journey={journey} placesById={placesById} />
 
           <section className="flex flex-col gap-stack-md">
             <h2 className="px-2 font-headline-md text-headline-md text-on-surface">
