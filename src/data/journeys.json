@@ -1295,14 +1295,15 @@
           "toPlaceId": "sin",
           "operator": "Finnair",
           "reference": "AY131",
-          "departure": "2018-07-12T03:25",
-          "arrival": "2018-07-12T19:40",
-          "durationMinutes": 675,
+          "departure": "2018-07-12T03:35",
+          "arrival": "2018-07-12T19:22",
+          "durationMinutes": 647,
           "vehicle": "Airbus A350-900",
           "registration": "OH-LWF",
           "cabin": "Economy",
-          "departureDelayMinutes": 210,
-          "arrivalDelayMinutes": 190
+          "departureDelayMinutes": 220,
+          "arrivalDelayMinutes": 172,
+          "note": "Actual times from VariFlight; the flight log had inherited the previous day's rotation"
         },
         {
           "id": "2018-07-13-TGW898-SINTPE",

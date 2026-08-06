@@ -608,10 +608,31 @@ def build():
             for seg in journey['segments']:
                 if seg.get('dropped'):
                     continue
-                if (place_id.get(ann['from']) == seg['fromPlaceId']
-                        and place_id.get(ann['to']) == seg['toPlaceId']):
+                if (place_id.get(ann['from']) != seg['fromPlaceId']
+                        or place_id.get(ann['to']) != seg['toPlaceId']):
+                    continue
+                if ann.get('date') and not (seg.get('departure') or '').startswith(ann['date']):
+                    continue
+                if ann.get('note'):
                     seg['note'] = ' • '.join(filter(None, [seg.get('note'), ann['note']]))
-                    break
+                # A better record of when it actually moved. The schedule is
+                # what the delay is measured against, so it is recovered from
+                # the figures already there and the punctuality recomputed
+                # rather than carried over from the record being replaced.
+                for end, key, delay in (('departure', 'actualDeparture', 'departureDelayMinutes'),
+                                        ('arrival', 'actualArrival', 'arrivalDelayMinutes')):
+                    if not ann.get(key) or not seg.get(end):
+                        continue
+                    was = dt.datetime.fromisoformat(seg[end])
+                    scheduled = was - dt.timedelta(minutes=seg.get(delay) or 0)
+                    now = dt.datetime.fromisoformat(ann[key])
+                    seg[end] = ann[key]
+                    seg[delay] = round((now - scheduled).total_seconds() / 60)
+                out = moment(seg.get('departure'), zone_of.get(seg['fromPlaceId']))
+                back = moment(seg.get('arrival'), zone_of.get(seg['toPlaceId']))
+                if out and back:
+                    seg['durationMinutes'] = round((back - out).total_seconds() / 60)
+                break
 
         for leg in [e for e in overland if e.get('journey') == journey['slug']]:
             leg['_used'] = True

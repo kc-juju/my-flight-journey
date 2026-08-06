@@ -1,39 +1,49 @@
 {
-  "_comment": "Things only the traveller knows. Keyed by journey slug; `segments` annotates a leg by its endpoints. Nothing here is derived — if it is not written down, it is not shown.",
-  "2025-10-04-us-ca": {
-    "notes": "We were booked to fly home on 18 October. The flight was oversold, we volunteered to give up our seats, and left the following evening instead.",
-    "segments": [
-      {
-        "from": "SEA",
-        "to": "TPE",
-        "note": "Rebooked from 18 Oct — the original flight was oversold and we volunteered to move"
-      }
-    ],
-    "dropped": [
-      {
-        "date": "2025-10-18",
-        "mode": "flight",
-        "from": "SEA",
-        "to": "TPE",
-        "operator": "Delta Air Lines",
-        "note": "Oversold — we volunteered to give up our seats and flew the same flight the next evening",
-        "reference": "DL69"
-      }
-    ]
-  },
-  "2026-05-07-hk-kr": {
-    "collection": "greater-china"
-  },
-  "2018-07-02-sg-fi": {
-    "visited": [
-      "HEL"
-    ],
-    "notes": "The Helsinki stop was under twelve hours but we went into the city, so it counts as a visit rather than a connection."
-  },
-  "2026-03-28-ph-tr": {
-    "visited": [
-      "IST"
-    ],
-    "notes": "Both Istanbul stops were under twelve hours, but we cleared immigration and went into the city, so it counts as a visit."
-  }
+ "_comment": "Things only the traveller knows. Keyed by journey slug; `segments` annotates a leg by its endpoints. Nothing here is derived — if it is not written down, it is not shown.",
+ "2025-10-04-us-ca": {
+  "notes": "We were booked to fly home on 18 October. The flight was oversold, we volunteered to give up our seats, and left the following evening instead.",
+  "segments": [
+   {
+    "from": "SEA",
+    "to": "TPE",
+    "note": "Rebooked from 18 Oct — the original flight was oversold and we volunteered to move"
+   }
+  ],
+  "dropped": [
+   {
+    "date": "2025-10-18",
+    "mode": "flight",
+    "from": "SEA",
+    "to": "TPE",
+    "operator": "Delta Air Lines",
+    "note": "Oversold — we volunteered to give up our seats and flew the same flight the next evening",
+    "reference": "DL69"
+   }
+  ]
+ },
+ "2026-05-07-hk-kr": {
+  "collection": "greater-china"
+ },
+ "2018-07-02-sg-fi": {
+  "visited": [
+   "HEL"
+  ],
+  "notes": "The Helsinki stop was under twelve hours but we went into the city, so it counts as a visit rather than a connection.",
+  "segments": [
+   {
+    "from": "HEL",
+    "to": "SIN",
+    "date": "2018-07-12",
+    "actualDeparture": "2018-07-12T03:35",
+    "actualArrival": "2018-07-12T19:22",
+    "note": "Actual times from VariFlight; the flight log had inherited the previous day's rotation"
+   }
+  ]
+ },
+ "2026-03-28-ph-tr": {
+  "visited": [
+   "IST"
+  ],
+  "notes": "Both Istanbul stops were under twelve hours, but we cleared immigration and went into the city, so it counts as a visit."
+ }
 }
