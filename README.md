@@ -88,6 +88,44 @@ one. 102 legs become 34 journeys.
   municipality (Sepang → Kuala Lumpur, Huxi → Penghu). The overrides and their
   reasons are in the script.
 
+## Photos and guestbook (Supabase)
+
+Uploads and the guestbook need a backend; the rest of the site does not. When
+the two variables below are missing the app still builds and runs — the
+guestbook shows a short notice and the uploader stays hidden.
+
+1. Create a project at supabase.com.
+2. Run `supabase/schema.sql` in the SQL editor. It creates the `journey_photos`
+   and `guestbook` tables, the `journey-photos` storage bucket, and the
+   row-level security that makes a public key safe: anyone may read, anyone may
+   sign the guestbook, only signed-in accounts may add or delete photos.
+3. Settings → API gives you the project URL and the `anon` key.
+4. Locally, put them in `.env.local`:
+
+   ```
+   VITE_SUPABASE_URL=https://xxxx.supabase.co
+   VITE_SUPABASE_ANON_KEY=eyJ...
+   ```
+
+5. For the deployed site, add the same two as **repository variables**
+   (Settings → Secrets and variables → Actions → Variables) named
+   `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+
+The anon key is designed to ship in the browser — every Supabase web app
+contains one. Access is controlled by the policies in `schema.sql`.
+
+### How a photo finds its place in the itinerary
+
+A camera writes `DateTimeOriginal` as a naive local clock. Only newer phones
+add `OffsetTimeOriginal`, so most photos carry no time zone at all — and the
+same string means different moments depending on where the shutter was pressed.
+
+When the offset is present, the instant is known outright. When it is not, each
+stay in the itinerary is tested in *its own* zone: was the traveller in
+Vancouver when the camera said 14:03? Every place carries its IANA zone,
+resolved from its coordinates, so this needs no guessing about which zone the
+phone was set to. The uploader states which method it used for each file.
+
 ## Photo credits
 
 Every city photo comes from Wikimedia Commons under CC BY, CC BY-SA, CC0 or

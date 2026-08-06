@@ -32,6 +32,11 @@ export interface Place {
   countryCode: string;
   lat: number;
   lon: number;
+  /**
+   * IANA zone, resolved from the coordinates. Used to read a photo's local
+   * timestamp when its EXIF carries no UTC offset.
+   */
+  timezone?: string;
   /** Representative photo, served from /public. */
   image?: string;
   /** Home base — every journey starts and ends here, so galleries skip it. */

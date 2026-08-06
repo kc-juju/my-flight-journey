@@ -168,6 +168,21 @@ def airport_label(city, official, code):
     return f'{city} {rest}'
 
 
+def timezones_for(places):
+    """IANA zone per place, so a photo with no EXIF offset can still be read
+    in the local time of wherever the traveller actually was."""
+    try:
+        from timezonefinder import TimezoneFinder
+    except ImportError:
+        print('  WARNING: timezonefinder not installed — places will carry no timezone')
+        return {}
+    tf = TimezoneFinder()
+    return {
+        p['id']: tf.timezone_at(lat=p['lat'], lng=p['lon'])
+        for p in places
+    }
+
+
 def load_overland():
     """Hand-recorded ground legs, keyed by the airports they bridge."""
     try:
@@ -216,6 +231,17 @@ def build():
         for code, a in sorted(airports.items())
     ]
     place_id = {p['code']: p['id'] for p in places}
+
+    zones = timezones_for(places)
+    missing_zone = []
+    for p in places:
+        zone = zones.get(p['id'])
+        if zone:
+            p['timezone'] = zone
+        else:
+            missing_zone.append(p['code'])
+    if missing_zone:
+        print(f'  WARNING: no timezone for {missing_zone}')
 
     legs = [f for f in data['flights'] if not f['canceled']]
 

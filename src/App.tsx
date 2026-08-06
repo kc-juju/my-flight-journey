@@ -6,6 +6,7 @@ import { MapPage } from './pages/MapPage';
 import { JourneysPage } from './pages/JourneysPage';
 import { StatsPage } from './pages/StatsPage';
 import { JourneyDetailPage } from './pages/JourneyDetailPage';
+import { GuestbookPage } from './pages/GuestbookPage';
 
 /** The map page owns the full viewport; the others scroll normally. */
 function ScrollToTop() {
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/journeys" element={<JourneysPage />} />
           <Route path="/journeys/:slug" element={<JourneyDetailPage />} />
           <Route path="/stats" element={<StatsPage />} />
+          <Route path="/guestbook" element={<GuestbookPage />} />
           <Route path="*" element={<JourneysPage />} />
         </Routes>
       </main>

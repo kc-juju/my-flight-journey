@@ -9,7 +9,8 @@
       "airportName": "Kota Kinabalu",
       "lat": 5.932743,
       "lon": 116.049324,
-      "image": "/images/cities/BKI.jpg"
+      "image": "/images/cities/BKI.jpg",
+      "timezone": "Asia/Kuching"
     },
     {
       "id": "bkk",
@@ -20,7 +21,8 @@
       "airportName": "Bangkok Suvarnabhumi",
       "lat": 13.6811,
       "lon": 100.747002,
-      "image": "/images/cities/BKK.jpg"
+      "image": "/images/cities/BKK.jpg",
+      "timezone": "Asia/Bangkok"
     },
     {
       "id": "bne",
@@ -31,7 +33,8 @@
       "airportName": "Brisbane",
       "lat": -27.384199142456055,
       "lon": 153.11700439453125,
-      "image": "/images/cities/BNE.jpg"
+      "image": "/images/cities/BNE.jpg",
+      "timezone": "Australia/Brisbane"
     },
     {
       "id": "bod",
@@ -42,7 +45,8 @@
       "airportName": "Bordeaux–Mérignac",
       "lat": 44.82865,
       "lon": -0.715356,
-      "image": "/images/cities/BOD.jpg"
+      "image": "/images/cities/BOD.jpg",
+      "timezone": "Europe/Paris"
     },
     {
       "id": "bud",
@@ -53,7 +57,8 @@
       "airportName": "Budapest Liszt Ferenc",
       "lat": 47.43018,
       "lon": 19.262393,
-      "image": "/images/cities/BUD.jpg"
+      "image": "/images/cities/BUD.jpg",
+      "timezone": "Europe/Budapest"
     },
     {
       "id": "cdg",
@@ -64,7 +69,8 @@
       "airportName": "Paris Charles de Gaulle",
       "lat": 49.00896,
       "lon": 2.554117,
-      "image": "/images/cities/CDG.jpg"
+      "image": "/images/cities/CDG.jpg",
+      "timezone": "Europe/Paris"
     },
     {
       "id": "cts",
@@ -75,7 +81,8 @@
       "airportName": "Sapporo New Chitose",
       "lat": 42.774753,
       "lon": 141.690414,
-      "image": "/images/cities/CTS.jpg"
+      "image": "/images/cities/CTS.jpg",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "doh",
@@ -86,7 +93,8 @@
       "airportName": "Doha Hamad",
       "lat": 25.273056,
       "lon": 51.608056,
-      "image": "/images/cities/DOH.jpg"
+      "image": "/images/cities/DOH.jpg",
+      "timezone": "Asia/Qatar"
     },
     {
       "id": "dub",
@@ -97,7 +105,8 @@
       "airportName": "Dublin",
       "lat": 53.428713,
       "lon": -6.262121,
-      "image": "/images/cities/DUB.jpg"
+      "image": "/images/cities/DUB.jpg",
+      "timezone": "Europe/Dublin"
     },
     {
       "id": "fuk",
@@ -108,7 +117,8 @@
       "airportName": "Fukuoka",
       "lat": 33.585899353027344,
       "lon": 130.4510040283203,
-      "image": "/images/cities/FUK.jpg"
+      "image": "/images/cities/FUK.jpg",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "hel",
@@ -119,7 +129,8 @@
       "airportName": "Helsinki Vantaa",
       "lat": 60.318363,
       "lon": 24.963341,
-      "image": "/images/cities/HEL.jpg"
+      "image": "/images/cities/HEL.jpg",
+      "timezone": "Europe/Helsinki"
     },
     {
       "id": "hkd",
@@ -130,7 +141,8 @@
       "airportName": "Hakodate",
       "lat": 41.77,
       "lon": 140.822006,
-      "image": "/images/cities/HKD.jpg"
+      "image": "/images/cities/HKD.jpg",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "hkg",
@@ -141,7 +153,8 @@
       "airportName": "Hong Kong",
       "lat": 22.31184,
       "lon": 113.914862,
-      "image": "/images/cities/HKG.jpg"
+      "image": "/images/cities/HKG.jpg",
+      "timezone": "Asia/Hong_Kong"
     },
     {
       "id": "hnd",
@@ -152,7 +165,8 @@
       "airportName": "Tokyo Haneda",
       "lat": 35.549678,
       "lon": 139.786958,
-      "image": "/images/cities/HND.jpg"
+      "image": "/images/cities/HND.jpg",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "icn",
@@ -163,7 +177,8 @@
       "airportName": "Seoul Incheon",
       "lat": 37.469101,
       "lon": 126.450996,
-      "image": "/images/cities/ICN.jpg"
+      "image": "/images/cities/ICN.jpg",
+      "timezone": "Asia/Seoul"
     },
     {
       "id": "ist",
@@ -174,7 +189,8 @@
       "airportName": "İstanbul",
       "lat": 41.274874,
       "lon": 28.732136,
-      "image": "/images/cities/IST.jpg"
+      "image": "/images/cities/IST.jpg",
+      "timezone": "Europe/Istanbul"
     },
     {
       "id": "itm",
@@ -185,7 +201,8 @@
       "airportName": "Osaka Itami",
       "lat": 34.780853,
       "lon": 135.440829,
-      "image": "/images/cities/ITM.jpg"
+      "image": "/images/cities/ITM.jpg",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "jfk",
@@ -196,7 +213,8 @@
       "airportName": "New York JFK",
       "lat": 40.639447,
       "lon": -73.779317,
-      "image": "/images/cities/JFK.jpg"
+      "image": "/images/cities/JFK.jpg",
+      "timezone": "America/New_York"
     },
     {
       "id": "kix",
@@ -207,7 +225,8 @@
       "airportName": "Osaka Kansai",
       "lat": 34.427299,
       "lon": 135.244003,
-      "image": "/images/cities/KIX.jpg"
+      "image": "/images/cities/KIX.jpg",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "kul",
@@ -218,7 +237,8 @@
       "airportName": "Kuala Lumpur",
       "lat": 2.74558,
       "lon": 101.709999,
-      "image": "/images/cities/KUL.jpg"
+      "image": "/images/cities/KUL.jpg",
+      "timezone": "Asia/Kuala_Lumpur"
     },
     {
       "id": "kwe",
@@ -229,7 +249,8 @@
       "airportName": "Guiyang Longdongbao",
       "lat": 26.541805,
       "lon": 106.80402,
-      "image": "/images/cities/KWE.jpg"
+      "image": "/images/cities/KWE.jpg",
+      "timezone": "Asia/Shanghai"
     },
     {
       "id": "lax",
@@ -240,7 +261,8 @@
       "airportName": "Los Angeles",
       "lat": 33.942501,
       "lon": -118.407997,
-      "image": "/images/cities/LAX.jpg"
+      "image": "/images/cities/LAX.jpg",
+      "timezone": "America/Los_Angeles"
     },
     {
       "id": "lhr",
@@ -251,7 +273,8 @@
       "airportName": "London Heathrow",
       "lat": 51.470748,
       "lon": -0.459909,
-      "image": "/images/cities/LHR.jpg"
+      "image": "/images/cities/LHR.jpg",
+      "timezone": "Europe/London"
     },
     {
       "id": "man",
@@ -262,7 +285,8 @@
       "airportName": "Manchester",
       "lat": 53.349375,
       "lon": -2.279521,
-      "image": "/images/cities/MAN.jpg"
+      "image": "/images/cities/MAN.jpg",
+      "timezone": "Europe/London"
     },
     {
       "id": "mel",
@@ -273,7 +297,8 @@
       "airportName": "Melbourne",
       "lat": -37.670732,
       "lon": 144.837898,
-      "image": "/images/cities/MEL.jpg"
+      "image": "/images/cities/MEL.jpg",
+      "timezone": "Australia/Melbourne"
     },
     {
       "id": "mfm",
@@ -284,7 +309,8 @@
       "airportName": "Macau",
       "lat": 22.149599,
       "lon": 113.592003,
-      "image": "/images/cities/MFM.jpg"
+      "image": "/images/cities/MFM.jpg",
+      "timezone": "Asia/Macau"
     },
     {
       "id": "mnl",
@@ -295,7 +321,8 @@
       "airportName": "Manila Ninoy Aquino",
       "lat": 14.5086,
       "lon": 121.019997,
-      "image": "/images/cities/MNL.jpg"
+      "image": "/images/cities/MNL.jpg",
+      "timezone": "Asia/Manila"
     },
     {
       "id": "muc",
@@ -306,7 +333,8 @@
       "airportName": "Munich",
       "lat": 48.353802,
       "lon": 11.7861,
-      "image": "/images/cities/MUC.jpg"
+      "image": "/images/cities/MUC.jpg",
+      "timezone": "Europe/Berlin"
     },
     {
       "id": "mzg",
@@ -317,7 +345,8 @@
       "airportName": "Penghu Magong",
       "lat": 23.568701,
       "lon": 119.627998,
-      "image": "/images/cities/MZG.jpg"
+      "image": "/images/cities/MZG.jpg",
+      "timezone": "Asia/Taipei"
     },
     {
       "id": "nce",
@@ -328,7 +357,8 @@
       "airportName": "Nice-Côte d'Azur",
       "lat": 43.658401,
       "lon": 7.21587,
-      "image": "/images/cities/NCE.jpg"
+      "image": "/images/cities/NCE.jpg",
+      "timezone": "Europe/Paris"
     },
     {
       "id": "nrt",
@@ -339,7 +369,8 @@
       "airportName": "Tokyo Narita",
       "lat": 35.76858,
       "lon": 140.388714,
-      "image": "/images/cities/NRT.jpg"
+      "image": "/images/cities/NRT.jpg",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "oka",
@@ -350,7 +381,8 @@
       "airportName": "Naha",
       "lat": 26.192437,
       "lon": 127.639804,
-      "image": "/images/cities/OKA.jpg"
+      "image": "/images/cities/OKA.jpg",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "okj",
@@ -361,7 +393,8 @@
       "airportName": "Okayama Momotaro",
       "lat": 34.756901,
       "lon": 133.854996,
-      "image": "/images/cities/OKJ.jpg"
+      "image": "/images/cities/OKJ.jpg",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "ool",
@@ -372,7 +405,8 @@
       "airportName": "Gold Coast",
       "lat": -28.165962,
       "lon": 153.506641,
-      "image": "/images/cities/OOL.jpg"
+      "image": "/images/cities/OOL.jpg",
+      "timezone": "Australia/Sydney"
     },
     {
       "id": "pen",
@@ -383,7 +417,8 @@
       "airportName": "Penang",
       "lat": 5.296303,
       "lon": 100.276185,
-      "image": "/images/cities/PEN.jpg"
+      "image": "/images/cities/PEN.jpg",
+      "timezone": "Asia/Kuala_Lumpur"
     },
     {
       "id": "per",
@@ -394,7 +429,8 @@
       "airportName": "Perth",
       "lat": -31.94029998779297,
       "lon": 115.96700286865234,
-      "image": "/images/cities/PER.jpg"
+      "image": "/images/cities/PER.jpg",
+      "timezone": "Australia/Perth"
     },
     {
       "id": "pvg",
@@ -405,7 +441,8 @@
       "airportName": "Shanghai Pudong",
       "lat": 31.1434,
       "lon": 121.805,
-      "image": "/images/cities/PVG.jpg"
+      "image": "/images/cities/PVG.jpg",
+      "timezone": "Asia/Shanghai"
     },
     {
       "id": "sea",
@@ -416,7 +453,8 @@
       "airportName": "Seattle–Tacoma",
       "lat": 47.447943,
       "lon": -122.310276,
-      "image": "/images/cities/SEA.jpg"
+      "image": "/images/cities/SEA.jpg",
+      "timezone": "America/Los_Angeles"
     },
     {
       "id": "sin",
@@ -427,7 +465,8 @@
       "airportName": "Singapore Changi",
       "lat": 1.35019,
       "lon": 103.994003,
-      "image": "/images/cities/SIN.jpg"
+      "image": "/images/cities/SIN.jpg",
+      "timezone": "Asia/Singapore"
     },
     {
       "id": "tpe",
@@ -439,7 +478,8 @@
       "lat": 25.0777,
       "lon": 121.233002,
       "home": true,
-      "image": "/images/cities/TPE.jpg"
+      "image": "/images/cities/TPE.jpg",
+      "timezone": "Asia/Taipei"
     },
     {
       "id": "tsa",
@@ -451,7 +491,8 @@
       "lat": 25.067244,
       "lon": 121.552822,
       "home": true,
-      "image": "/images/cities/TSA.jpg"
+      "image": "/images/cities/TSA.jpg",
+      "timezone": "Asia/Taipei"
     },
     {
       "id": "vce",
@@ -462,7 +503,8 @@
       "airportName": "Venice Marco Polo",
       "lat": 45.505299,
       "lon": 12.3519,
-      "image": "/images/cities/VCE.jpg"
+      "image": "/images/cities/VCE.jpg",
+      "timezone": "Europe/Rome"
     },
     {
       "id": "vie",
@@ -473,7 +515,8 @@
       "airportName": "Vienna",
       "lat": 48.110298,
       "lon": 16.5697,
-      "image": "/images/cities/VIE.jpg"
+      "image": "/images/cities/VIE.jpg",
+      "timezone": "Europe/Vienna"
     },
     {
       "id": "waw",
@@ -484,7 +527,8 @@
       "airportName": "Warsaw Chopin",
       "lat": 52.165699,
       "lon": 20.9671,
-      "image": "/images/cities/WAW.jpg"
+      "image": "/images/cities/WAW.jpg",
+      "timezone": "Europe/Warsaw"
     },
     {
       "id": "yvr",
@@ -495,7 +539,8 @@
       "airportName": "Vancouver",
       "lat": 49.193901,
       "lon": -123.183998,
-      "image": "/images/cities/YVR.jpg"
+      "image": "/images/cities/YVR.jpg",
+      "timezone": "America/Vancouver"
     },
     {
       "id": "yyc",
@@ -506,7 +551,8 @@
       "airportName": "Calgary",
       "lat": 51.118822,
       "lon": -114.009933,
-      "image": "/images/cities/YYC.jpg"
+      "image": "/images/cities/YYC.jpg",
+      "timezone": "America/Edmonton"
     },
     {
       "id": "yzf",
@@ -517,7 +563,8 @@
       "airportName": "Yellowknife",
       "lat": 62.462799,
       "lon": -114.440002,
-      "image": "/images/cities/YZF.jpg"
+      "image": "/images/cities/YZF.jpg",
+      "timezone": "America/Edmonton"
     }
   ],
   "collections": [
@@ -2430,7 +2477,8 @@
           "departure": "2025-10-18",
           "dropped": true,
           "operator": "Delta Air Lines",
-          "note": "Oversold — we volunteered to give up our seats and flew the next evening"
+          "reference": "DL69",
+          "note": "Oversold — we volunteered to give up our seats and flew the same flight the next evening"
         },
         {
           "id": "2025-10-19-DAL69-SEATPE",

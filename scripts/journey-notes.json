@@ -16,7 +16,8 @@
         "from": "SEA",
         "to": "TPE",
         "operator": "Delta Air Lines",
-        "note": "Oversold — we volunteered to give up our seats and flew the next evening"
+        "note": "Oversold — we volunteered to give up our seats and flew the same flight the next evening",
+        "reference": "DL69"
       }
     ]
   }

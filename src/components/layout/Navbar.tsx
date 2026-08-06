@@ -6,6 +6,7 @@ const LINKS = [
   { to: '/', label: 'Map', end: true },
   { to: '/journeys', label: 'Journeys', end: false },
   { to: '/stats', label: 'Stats', end: false },
+  { to: '/guestbook', label: 'Guestbook', end: false },
 ];
 
 export function Navbar() {

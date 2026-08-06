@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAtlas } from '../hooks/useAtlas';
@@ -6,6 +7,11 @@ import { Timeline } from '../components/journey/Timeline';
 import { SegmentCard } from '../components/journey/SegmentCard';
 import { CityGallery } from '../components/journey/CityGallery';
 import { HeroCarousel } from '../components/journey/HeroCarousel';
+import {
+  PhotoStrip,
+  PhotoUploader,
+  usePhotoSlots,
+} from '../components/journey/JourneyPhotos';
 import { placesOfJourney } from '../lib/atlas';
 import { Icon } from '../components/ui/Icon';
 import { formatDateRange, formatDuration, formatNumber, STATUS_LABEL } from '../lib/format';
@@ -38,6 +44,13 @@ export function JourneyDetailPage() {
   const all = placesOfJourney(journey, placesById);
   const away = all.filter((p) => !p.home);
   const heroPlaces = away.length ? away : all;
+
+  // Photos are filed against the list of legs that actually happened, so a
+  // dropped leg must not shift the index the strips are keyed by.
+  const { slots: photoSlots, refresh: refreshPhotos } = usePhotoSlots(journey, placesById);
+  const photosBefore = photoSlots.get(-1) ?? [];
+  const travelledIndex = (renderedIndex: number) =>
+    journey.segments.slice(0, renderedIndex + 1).filter((s) => !s.dropped).length - 1;
 
   return (
     <div className="flex w-full flex-col pb-margin-desktop">
@@ -114,13 +127,30 @@ export function JourneyDetailPage() {
             <h2 className="px-2 font-headline-md text-headline-md text-on-surface">
               Itinerary segments
             </h2>
-            {journey.segments.map((segment) => (
-              <SegmentCard key={segment.id} segment={segment} placesById={placesById} />
+            {photosBefore.length > 0 && (
+              <PhotoStrip photos={photosBefore} onDeleted={refreshPhotos} />
+            )}
+            {journey.segments.map((segment, index) => (
+              <Fragment key={segment.id}>
+                <SegmentCard segment={segment} placesById={placesById} />
+                {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
+                  <PhotoStrip
+                    photos={photoSlots.get(travelledIndex(index)) ?? []}
+                    onDeleted={refreshPhotos}
+                  />
+                )}
+              </Fragment>
             ))}
             <p className="px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
               Total travelling time {formatDuration(metrics.durationMinutes)} ·{' '}
               {formatNumber(metrics.distanceKm)} km great-circle
             </p>
+
+            <PhotoUploader
+              journey={journey}
+              placesById={placesById}
+              onUploaded={refreshPhotos}
+            />
           </section>
         </div>
 

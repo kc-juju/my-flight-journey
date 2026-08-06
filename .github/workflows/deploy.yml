@@ -27,6 +27,10 @@ jobs:
       - run: npm run build
         env:
           VITE_BASE: /${{ github.event.repository.name }}/
+          # Both are safe to expose — the anon key is a public browser key and
+          # the data is protected by row-level security, not by hiding it.
+          VITE_SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
       # Client-side routing: Pages serves 404.html for unknown paths.
       - run: cp dist/index.html dist/404.html
       - uses: actions/configure-pages@v5
