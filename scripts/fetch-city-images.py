@@ -74,6 +74,13 @@ ARTICLE_OVERRIDES = {
     'BKK': 'Bangkok',
     # Country/territory articles lead with a flag, so name a place instead.
     'SIN': 'Downtown Core',
+    # Ground-only towns on the Côte d'Azur; Monaco's own article leads with
+    # its flag, so name a place inside it.
+    'eze': 'Èze',
+    'monaco': 'Monte Carlo',
+    'menton': 'Menton',
+    'cannes': 'Cannes',
+    'antibes': 'Antibes',
     'HKG': 'Central, Hong Kong',
     'MFM': 'Macau Peninsula',
 }
@@ -130,7 +137,7 @@ def file_meta(filename):
 
 
 def work(place):
-    code = place['code']
+    code = place.get('code') or place['id']
     title = ARTICLE_OVERRIDES.get(code, place['name'])
     try:
         filename = lead_image(title)
@@ -158,7 +165,8 @@ def work(place):
 
 def main():
     data = json.load(open(os.path.abspath(DATA), encoding='utf-8'))
-    places = [p for p in data['places'] if p.get('code')]
+    # Airports keyed by IATA, plus the ground-only towns keyed by id.
+    places = [p for p in data['places'] if p.get('code') or p.get('image') is None]
     os.makedirs(os.path.abspath(OUT_DIR), exist_ok=True)
 
     credits, failures = {}, []

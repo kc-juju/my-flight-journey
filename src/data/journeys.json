@@ -565,6 +565,56 @@
       "lon": -114.440002,
       "image": "/images/cities/YZF.jpg",
       "timezone": "America/Edmonton"
+    },
+    {
+      "id": "antibes",
+      "name": "Antibes",
+      "country": "France",
+      "countryCode": "FR",
+      "lat": 43.58,
+      "lon": 7.1231,
+      "image": "/images/cities/antibes.jpg",
+      "timezone": "Europe/Paris"
+    },
+    {
+      "id": "cannes",
+      "name": "Cannes",
+      "country": "France",
+      "countryCode": "FR",
+      "lat": 43.5525,
+      "lon": 7.0214,
+      "image": "/images/cities/cannes.jpg",
+      "timezone": "Europe/Paris"
+    },
+    {
+      "id": "menton",
+      "name": "Menton",
+      "country": "France",
+      "countryCode": "FR",
+      "lat": 43.7747,
+      "lon": 7.4997,
+      "image": "/images/cities/menton.jpg",
+      "timezone": "Europe/Paris"
+    },
+    {
+      "id": "monaco",
+      "name": "Monaco",
+      "country": "Monaco",
+      "countryCode": "MC",
+      "lat": 43.7311,
+      "lon": 7.42,
+      "image": "/images/cities/monaco.jpg",
+      "timezone": "Europe/Monaco"
+    },
+    {
+      "id": "eze",
+      "name": "Èze",
+      "country": "France",
+      "countryCode": "FR",
+      "lat": 43.7278,
+      "lon": 7.3611,
+      "image": "/images/cities/eze.jpg",
+      "timezone": "Europe/Paris"
     }
   ],
   "collections": [
@@ -2646,6 +2696,63 @@
           "vehicle": "Airbus A320",
           "registration": "OE-INI",
           "cabin": "Economy"
+        },
+        {
+          "id": "2026-04-02-nce-eze-bus",
+          "mode": "bus",
+          "fromPlaceId": "nce",
+          "toPlaceId": "eze",
+          "departure": "2026-04-02",
+          "note": "Up to the village on the corniche"
+        },
+        {
+          "id": "2026-04-02-eze-nce-train",
+          "mode": "train",
+          "fromPlaceId": "eze",
+          "toPlaceId": "nce",
+          "departure": "2026-04-02"
+        },
+        {
+          "id": "2026-04-03-nce-monaco-train",
+          "mode": "train",
+          "fromPlaceId": "nce",
+          "toPlaceId": "monaco",
+          "departure": "2026-04-03"
+        },
+        {
+          "id": "2026-04-03-monaco-menton-train",
+          "mode": "train",
+          "fromPlaceId": "monaco",
+          "toPlaceId": "menton",
+          "departure": "2026-04-03"
+        },
+        {
+          "id": "2026-04-03-menton-nce-train",
+          "mode": "train",
+          "fromPlaceId": "menton",
+          "toPlaceId": "nce",
+          "departure": "2026-04-03"
+        },
+        {
+          "id": "2026-04-04-nce-cannes-train",
+          "mode": "train",
+          "fromPlaceId": "nce",
+          "toPlaceId": "cannes",
+          "departure": "2026-04-04"
+        },
+        {
+          "id": "2026-04-04-cannes-antibes-train",
+          "mode": "train",
+          "fromPlaceId": "cannes",
+          "toPlaceId": "antibes",
+          "departure": "2026-04-04"
+        },
+        {
+          "id": "2026-04-04-antibes-nce-train",
+          "mode": "train",
+          "fromPlaceId": "antibes",
+          "toPlaceId": "nce",
+          "departure": "2026-04-04"
         },
         {
           "id": "2026-04-05-EZY1697-NCEVCE",

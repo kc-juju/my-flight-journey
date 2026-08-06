@@ -1,0 +1,42 @@
+[
+  {
+    "id": "eze",
+    "name": "Èze",
+    "country": "France",
+    "countryCode": "FR",
+    "lat": 43.7278,
+    "lon": 7.3611
+  },
+  {
+    "id": "monaco",
+    "name": "Monaco",
+    "country": "Monaco",
+    "countryCode": "MC",
+    "lat": 43.7311,
+    "lon": 7.42
+  },
+  {
+    "id": "menton",
+    "name": "Menton",
+    "country": "France",
+    "countryCode": "FR",
+    "lat": 43.7747,
+    "lon": 7.4997
+  },
+  {
+    "id": "cannes",
+    "name": "Cannes",
+    "country": "France",
+    "countryCode": "FR",
+    "lat": 43.5525,
+    "lon": 7.0214
+  },
+  {
+    "id": "antibes",
+    "name": "Antibes",
+    "country": "France",
+    "countryCode": "FR",
+    "lat": 43.58,
+    "lon": 7.1231
+  }
+]

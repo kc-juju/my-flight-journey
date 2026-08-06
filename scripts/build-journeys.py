@@ -34,6 +34,10 @@ FR24_CSV = os.environ.get('FR24_CSV', '/snoopy/flightdiary_2026_08_05_10_50.csv'
 # line by line against the Flightradar24 export. Vendored so the build does
 # not depend on anything outside the repo.
 # Ground legs the flight log cannot know about, filled in by hand.
+# Places that are not airports — towns reached by train, bus or road.
+PLACES_EXTRA = os.environ.get(
+    'PLACES_EXTRA', os.path.join(os.path.dirname(__file__), 'places-extra.json')
+)
 OVERLAND = os.environ.get(
     'OVERLAND', os.path.join(os.path.dirname(__file__), 'overland.json')
 )
@@ -183,6 +187,14 @@ def timezones_for(places):
     }
 
 
+def load_extra_places():
+    try:
+        with open(PLACES_EXTRA, encoding='utf-8') as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return []
+
+
 def load_overland():
     """Hand-recorded ground legs, keyed by the airports they bridge."""
     try:
@@ -210,8 +222,11 @@ def build():
 
     city_dir = os.path.join(os.path.dirname(__file__), '..', 'public', 'images', 'cities')
     have_image = set()
+    have_image_by_id = set()
     if os.path.isdir(city_dir):
-        have_image = {f[:-4] for f in os.listdir(city_dir) if f.endswith('.jpg')}
+        names = {f[:-4] for f in os.listdir(city_dir) if f.endswith('.jpg')}
+        have_image = {n for n in names if n.isupper()}
+        have_image_by_id = {n for n in names if not n.isupper()}
 
     places = [
         {
@@ -230,7 +245,22 @@ def build():
         }
         for code, a in sorted(airports.items())
     ]
-    place_id = {p['code']: p['id'] for p in places}
+    # Towns reached on the ground sit alongside the airports. They have no
+    # IATA code, so the itinerary refers to them by id.
+    for extra in load_extra_places():
+        if any(p['id'] == extra['id'] for p in places):
+            continue
+        places.append(dict(extra))
+    # Ground-only towns keep their photo under their id.
+    for place in places:
+        if place.get('image'):
+            continue
+        if place['id'] in have_image_by_id:
+            place['image'] = f"/images/cities/{place['id']}.jpg"
+    places.sort(key=lambda p: (p.get('code') or '~', p['name']))
+
+    place_id = {p['code']: p['id'] for p in places if p.get('code')}
+    place_id.update({p['id']: p['id'] for p in places})
 
     zones = timezones_for(places)
     missing_zone = []
@@ -443,10 +473,9 @@ def build():
     # Attach the hand-written notes now that slugs are final.
     applied = 0
     for journey in journeys:
-        entry = notes.get(journey['slug'])
-        if not entry:
-            continue
-        applied += 1
+        entry = notes.get(journey['slug']) or {}
+        if entry:
+            applied += 1
         if entry.get('notes'):
             journey['notes'] = entry['notes']
         if entry.get('highlights'):
@@ -459,6 +488,34 @@ def build():
                         and place_id.get(ann['to']) == seg['toPlaceId']):
                     seg['note'] = ' • '.join(filter(None, [seg.get('note'), ann['note']]))
                     break
+
+        for leg in [e for e in overland if e.get('journey') == journey['slug']]:
+            leg['_used'] = True
+            ground = {
+                'id': f"{leg['date']}-{leg['from']}-{leg['to']}-{leg['mode']}",
+                'mode': leg['mode'],
+                'fromPlaceId': place_id[leg['from']],
+                'toPlaceId': place_id[leg['to']],
+                'departure': (f"{leg['date']}T{leg['departure']}"
+                              if leg.get('departure') else leg['date']),
+            }
+            if leg.get('arrival'):
+                ground['arrival'] = f"{leg.get('arrivalDate', leg['date'])}T{leg['arrival']}"
+            for key in ('operator', 'reference', 'vehicle', 'note'):
+                if leg.get(key):
+                    ground[key] = leg[key]
+            if leg.get('durationMinutes'):
+                ground['durationMinutes'] = leg['durationMinutes']
+
+            at = len(journey['segments'])
+            last = ''
+            for idx, existing in enumerate(journey['segments']):
+                when = (existing.get('departure') or '')[:10] or last
+                last = when or last
+                if when and when > ground['departure'][:10]:
+                    at = idx
+                    break
+            journey['segments'].insert(at, ground)
 
         for drop in entry.get('dropped', []):
             seg = {

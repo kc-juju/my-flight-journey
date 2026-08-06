@@ -327,5 +327,40 @@
     "licence": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Northwest_Territories_Legislative_Building.jpg",
     "article": "Yellowknife"
+  },
+  "eze": {
+    "file": "Èze_Alpes_Maritimes_France_(261171069).jpeg",
+    "author": "Jean Pierre Lozi",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%C3%88ze_Alpes_Maritimes_France_(261171069).jpeg",
+    "article": "Èze"
+  },
+  "menton": {
+    "file": "Menton_february_13.jpg",
+    "author": "Le poulpe ambidextre",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Menton_february_13.jpg",
+    "article": "Menton"
+  },
+  "cannes": {
+    "file": "Cannes_from_Suquet_Tower_03.jpg",
+    "author": "Spike",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cannes_from_Suquet_Tower_03.jpg",
+    "article": "Cannes"
+  },
+  "antibes": {
+    "file": "Antibesbordmer.JPG",
+    "author": "Gilbert Bochenek",
+    "licence": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Antibesbordmer.JPG",
+    "article": "Antibes"
+  },
+  "monaco": {
+    "file": "Panorama_von_Monaco-La_Turbie.jpg",
+    "author": "Tobi 87",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Panorama_von_Monaco-La_Turbie.jpg",
+    "article": "Monte Carlo"
   }
 }

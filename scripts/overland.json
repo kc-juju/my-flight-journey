@@ -6,5 +6,62 @@
     "from": "SEA",
     "to": "YVR",
     "note": "Seattle to Vancouver by coach — the atlas only has airport nodes, so the line runs airport to airport"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-02",
+    "mode": "bus",
+    "from": "nce",
+    "to": "eze",
+    "note": "Up to the village on the corniche"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-02",
+    "mode": "train",
+    "from": "eze",
+    "to": "nce"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-03",
+    "mode": "train",
+    "from": "nce",
+    "to": "monaco"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-03",
+    "mode": "train",
+    "from": "monaco",
+    "to": "menton"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-03",
+    "mode": "train",
+    "from": "menton",
+    "to": "nce"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-04",
+    "mode": "train",
+    "from": "nce",
+    "to": "cannes"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-04",
+    "mode": "train",
+    "from": "cannes",
+    "to": "antibes"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-04",
+    "mode": "train",
+    "from": "antibes",
+    "to": "nce"
   }
 ]
