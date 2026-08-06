@@ -12,6 +12,8 @@ import { isSupabaseConfigured, supabase } from '../lib/supabase';
 
 interface AuthValue {
   configured: boolean;
+  /** Where the magic link will send you back to. Must be allow-listed. */
+  redirectTo: string;
   session: Session | null;
   loading: boolean;
   /** Send a magic link. Returns an error message, or null on success. */
@@ -37,22 +39,35 @@ export function SupabaseProvider({ children }: { children: ReactNode }) {
     return () => sub.subscription.unsubscribe();
   }, []);
 
-  const signIn = useCallback(async (email: string) => {
-    if (!supabase) return 'Supabase is not configured for this site.';
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: window.location.href },
-    });
-    return error ? error.message : null;
-  }, []);
+  /**
+   * Query strings and hashes make the redirect harder to allow-list, and
+   * Supabase silently falls back to the project's Site URL — which defaults to
+   * http://localhost:3000 — whenever the value is not on the list.
+   */
+  const redirectTo =
+    typeof window === 'undefined'
+      ? ''
+      : `${window.location.origin}${window.location.pathname}`;
+
+  const signIn = useCallback(
+    async (email: string) => {
+      if (!supabase) return 'Supabase is not configured for this site.';
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: redirectTo },
+      });
+      return error ? error.message : null;
+    },
+    [redirectTo],
+  );
 
   const signOut = useCallback(async () => {
     await supabase?.auth.signOut();
   }, []);
 
   const value = useMemo<AuthValue>(
-    () => ({ configured: isSupabaseConfigured, session, loading, signIn, signOut }),
-    [session, loading, signIn, signOut],
+    () => ({ configured: isSupabaseConfigured, redirectTo, session, loading, signIn, signOut }),
+    [redirectTo, session, loading, signIn, signOut],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

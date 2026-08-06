@@ -130,7 +130,7 @@ export function PhotoUploader({
   placesById: Map<string, Place>;
   onUploaded: () => void;
 }) {
-  const { session, signIn, signOut, loading } = useAuth();
+  const { session, signIn, signOut, loading, redirectTo } = useAuth();
   const [pending, setPending] = useState<PendingPhoto[]>([]);
   const [busy, setBusy] = useState(false);
   const [email, setEmail] = useState('');
@@ -199,7 +199,11 @@ export function PhotoUploader({
           onSubmit={async (e) => {
             e.preventDefault();
             const error = await signIn(email);
-            setMessage(error ?? 'Check your inbox for the sign-in link.');
+            setMessage(
+              error ??
+                `Check your inbox. The link returns to ${redirectTo} — that address has ` +
+                  'to be allow-listed in Supabase, or the link goes to localhost.',
+            );
           }}
         >
           <input
