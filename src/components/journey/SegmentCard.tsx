@@ -31,7 +31,8 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
   const overnight = dayOffset(segment.departure, segment.arrival);
   const km = Math.round(segmentDistanceKm(segment, placesById));
   const arrivalPunctuality = punctuality(segment.arrivalDelayMinutes);
-  const departurePunctuality = punctuality(segment.departureDelayMinutes);
+  // Only the arrival is shown: a late departure that lands on time is not a
+  // late flight, and two coloured lines fought each other for attention.
   const dropped = Boolean(segment.dropped);
   // Flights are the spine of a journey; a hop to the next town along the coast
   // should not shout as loudly.
@@ -161,35 +162,14 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
                 </span>
               )}
 
-              {(departurePunctuality || arrivalPunctuality) && (
-                <dl className="mt-stack-md grid w-fit grid-cols-[auto_auto] gap-x-1.5 gap-y-0.5 md:absolute md:inset-x-0 md:top-full md:mx-auto md:mt-1">
-                  {departurePunctuality && (
-                    <>
-                      <dt className="text-right font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant/70">
-                        Off
-                      </dt>
-                      <dd
-                        className="font-label-caps text-[9px] uppercase tracking-widest"
-                        style={{ color: departurePunctuality.colour }}
-                      >
-                        {departurePunctuality.label}
-                      </dd>
-                    </>
-                  )}
-                  {arrivalPunctuality && (
-                    <>
-                      <dt className="text-right font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant/70">
-                        In
-                      </dt>
-                      <dd
-                        className="font-label-caps text-[9px] font-bold uppercase tracking-widest"
-                        style={{ color: arrivalPunctuality.colour }}
-                      >
-                        {arrivalPunctuality.label}
-                      </dd>
-                    </>
-                  )}
-                </dl>
+              {arrivalPunctuality && (
+                <span
+                  title="Arrival against the schedule"
+                  className="mt-stack-sm block font-label-caps text-[10px] font-bold uppercase tracking-widest md:absolute md:inset-x-0 md:top-full md:mt-1"
+                  style={{ color: arrivalPunctuality.colour }}
+                >
+                  {arrivalPunctuality.label}
+                </span>
               )}
             </>
           )}

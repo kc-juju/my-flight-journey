@@ -31,7 +31,47 @@ export function MapPage() {
   // "Recent" means travelled. Booked-but-not-yet-flown journeys get their own
   // group so the list is not a mix of memory and intention.
   const flown = useMemo(() => visible.filter((j) => j.status === 'completed'), [visible]);
-  const upcoming = useMemo(() => visible.filter((j) => j.status !== 'completed'), [visible]);
+  // The flown list reads newest first, but a plan reads soonest first — the
+  // next trip is the one you want to see, not the furthest one away.
+  const upcoming = useMemo(
+    () =>
+      visible
+        .filter((j) => j.status !== 'completed')
+        .sort((a, b) => a.startDate.localeCompare(b.startDate)),
+    [visible],
+  );
+
+  // Totals for whatever the map is showing, so picking a year says something
+  // about that year rather than repeating the all-time figures.
+  const overview = useMemo(() => {
+    const cities = new Set<string>();
+    const countries = new Set<string>();
+    let km = 0;
+    let flights = 0;
+    for (const journey of visible) {
+      const transfers = new Set(journey.transferPlaceIds ?? []);
+      for (const segment of journey.segments) {
+        if (segment.dropped) continue;
+        if (segment.mode === 'flight') flights += 1;
+        for (const id of [segment.fromPlaceId, segment.toPlaceId]) {
+          const place = placesById.get(id);
+          if (!place || place.home || transfers.has(id)) continue;
+          cities.add(place.name);
+          countries.add(place.countryCode);
+        }
+      }
+      km += metricsFor(journey).distanceKm;
+    }
+    const next = visible
+      .filter((j) => j.status !== 'completed')
+      .sort((a, b) => a.startDate.localeCompare(b.startDate))[0];
+    const days = next
+      ? Math.ceil(
+          (Date.parse(`${next.startDate}T00:00:00Z`) - Date.now()) / 86_400_000,
+        )
+      : null;
+    return { cities: cities.size, countries: countries.size, km, flights, next, days };
+  }, [visible, placesById, metricsFor]);
 
   const handleHover = (journey: Journey | null, event?: { clientX: number; clientY: number }) => {
     if (selected) return;
@@ -72,6 +112,75 @@ export function MapPage() {
           ))}
         </div>
       </div>
+
+      {/* Overview — what the map is showing, in numbers */}
+      <AnimatePresence>
+        {!selected && (
+          <motion.aside
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="pointer-events-none absolute right-margin-mobile top-[76px] z-[600] hidden w-[300px] lg:right-margin-desktop lg:top-stack-md lg:block"
+          >
+            <div className="pointer-events-auto flex flex-col gap-stack-sm rounded-xl border border-outline-variant/40 bg-surface/85 p-stack-md shadow-2xl backdrop-blur-xl">
+              <div className="flex items-baseline justify-between gap-3">
+                <h2 className="font-display-lg text-headline-md text-on-surface">
+                  {year === null ? 'Everywhere so far' : `${year} in numbers`}
+                </h2>
+                <Link
+                  to="/stats"
+                  className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant underline hover:text-on-surface"
+                >
+                  More
+                </Link>
+              </div>
+
+              <div className="flex items-baseline gap-2">
+                <span className="font-stat-display text-stat-display text-on-surface">
+                  {formatNumber(overview.km)}
+                </span>
+                <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                  km travelled
+                </span>
+              </div>
+
+              <dl className="grid grid-cols-4 gap-2 border-t border-outline-variant/50 pt-stack-sm">
+                {[
+                  ['Journeys', visible.length],
+                  ['Flights', overview.flights],
+                  ['Countries', overview.countries],
+                  ['Cities', overview.cities],
+                ].map(([label, value]) => (
+                  <div key={label as string} className="flex flex-col">
+                    <dd className="font-stat-display text-[22px] leading-tight text-on-surface">
+                      {value as number}
+                    </dd>
+                    <dt className="font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant">
+                      {label as string}
+                    </dt>
+                  </div>
+                ))}
+              </dl>
+
+              {overview.next && overview.days !== null && overview.days >= 0 && (
+                <Link
+                  to={`/journeys/${overview.next.slug}`}
+                  onMouseEnter={() => setHovered(overview.next!)}
+                  onMouseLeave={() => setHovered(null)}
+                  className="flex items-center gap-2 border-t border-outline-variant/50 pt-stack-sm font-body-md text-sm text-on-surface transition-colors hover:text-tertiary-fixed-dim"
+                >
+                  <Icon name="flight_takeoff" className="text-[16px] text-on-surface-variant" />
+                  <span className="truncate">{overview.next.title}</span>
+                  <span className="ml-auto shrink-0 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                    {overview.days === 0 ? 'today' : `in ${overview.days}d`}
+                  </span>
+                </Link>
+              )}
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
 
       <JourneyPopup
         journey={selected ? null : hovered}
