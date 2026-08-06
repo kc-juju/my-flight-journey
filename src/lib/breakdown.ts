@@ -68,7 +68,6 @@ export interface YearRow {
 
 export interface Breakdown {
   countries: CountryRow[];
-  airports: Tally[];
   airportDetail: AirportRow[];
   routes: Tally[];
   operators: Tally[];
@@ -119,7 +118,6 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
   const counted = data.journeys.filter((j) => j.status !== 'bucket');
 
   const countries = new Map<string, CountryRow>();
-  const airports = new Map<string, Tally>();
   const detail = new Map<string, AirportRow>();
   const journeysPerAirport = new Map<string, Set<string>>();
 
@@ -213,10 +211,6 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
       ) + 1;
 
     for (const place of journeyPlaces) {
-      journeysPerAirport.set(
-        place.id,
-        (journeysPerAirport.get(place.id) ?? new Set<string>()).add(journey.id),
-      );
       const row = countries.get(place.countryCode) ?? {
         code: place.countryCode,
         name: place.country,
@@ -248,29 +242,46 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
       const km = segmentDistanceKm(segment, placesById);
       modeTotals[segment.mode] = (modeTotals[segment.mode] ?? 0) + 1;
 
+      // Arriving somewhere by train is still arriving: a visit counts whatever
+      // carried you. The airport picture below is a different question — a
+      // coach calling at Venice is not a flight through VCE — so calls,
+      // routes and connections are counted from flights alone.
+      const flight = segment.mode === 'flight';
+      // A journey only counts against an airport if a flight touched it.
+      const flew = (id: string) =>
+        journeysPerAirport.set(
+          id,
+          (journeysPerAirport.get(id) ?? new Set<string>()).add(journey.id),
+        );
       if (from) {
-        bump(airports, from.id, from.airportName ?? from.name, 0, from.country);
         const row = countries.get(from.countryCode);
         if (row) row.visits += 1;
+      }
+      if (to) {
+        const row = countries.get(to.countryCode);
+        if (row) row.visits += 1;
+      }
+      if (flight && from) {
         const a = airportRow(from, journey.startDate);
         a.calls += 1;
         a.departures += 1;
+        flew(from.id);
       }
-      if (to) {
-        bump(airports, to.id, to.airportName ?? to.name, 0, to.country);
-        const row = countries.get(to.countryCode);
-        if (row) row.visits += 1;
+      if (flight && to) {
         const a = airportRow(to, journey.startDate);
         a.calls += 1;
         a.arrivals += 1;
+        flew(to.id);
       }
-      if (from && to && from.id !== to.id) {
+      if (flight && from && to && from.id !== to.id) {
         link(airportRow(from, journey.startDate), to, km, true);
         link(airportRow(to, journey.startDate), from, km, false);
       }
-      if (from && to) {
+      if (flight && from && to) {
         const pair = [from.code ?? from.id, to.code ?? to.id].sort().join(' — ');
         bump(routes, pair, pair, km, `${Math.round(km).toLocaleString('en-US')} km`);
+      }
+      if (from && to) {
         if (!longest || km > longest.km) longest = { segment, journey, km };
         if (!shortest || km < shortest.km) shortest = { segment, journey, km };
       }
@@ -337,7 +348,6 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
     countries: [...countries.values()].sort(
       (a, b) => b.visits - a.visits || a.name.localeCompare(b.name),
     ),
-    airports: [...airports.values()].sort(byCount),
     routes: [...routes.values()].sort(byCount),
     operators: [...operators.values()].sort(byCount),
     aircraft: [...aircraft.values()].sort(byCount),
