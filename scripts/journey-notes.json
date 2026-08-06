@@ -19,7 +19,8 @@
     "note": "Oversold — we volunteered to give up our seats and flew the same flight the next evening",
     "reference": "DL69"
    }
-  ]
+  ],
+  "label": "The Pacific Northwest & the Rockies"
  },
  "2026-05-07-hk-kr": {
   "collection": "greater-china"
@@ -38,12 +39,20 @@
     "actualArrival": "2018-07-12T19:22",
     "note": "Actual times from VariFlight; the flight log had inherited the previous day's rotation"
    }
-  ]
+  ],
+  "label": "Helsinki, Poland & Budapest"
  },
  "2026-03-28-ph-tr": {
   "visited": [
    "IST"
   ],
-  "notes": "Both Istanbul stops were under twelve hours, but we cleared immigration and went into the city, so it counts as a visit."
+  "notes": "Both Istanbul stops were under twelve hours, but we cleared immigration and went into the city, so it counts as a visit.",
+  "label": "Istanbul, the Riviera & the Dolomites"
+ },
+ "2023-03-31-de-at": {
+  "label": "Bavaria, Salzburg & Bohemia"
+ },
+ "2024-02-27-jp-hk": {
+  "label": "Okayama, the San’in coast & Kansai"
  }
 }

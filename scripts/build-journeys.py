@@ -626,6 +626,8 @@ def build():
         entry = notes.get(journey['slug']) or {}
         if entry:
             applied += 1
+        if entry.get('label'):
+            journey['label'] = entry['label']
         if entry.get('notes'):
             journey['notes'] = entry['notes']
         if entry.get('highlights'):

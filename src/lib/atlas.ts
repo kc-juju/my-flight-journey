@@ -48,6 +48,29 @@ export function citiesOfJourney(journey: Journey, byId: Map<string, Place>): Pla
   return placesOfJourney(journey, byId).filter((p) => !transfers.has(p.id));
 }
 
+/**
+ * A journey named by where it went, not what country it was in — nine trips
+ * to Japan all called 'Japan' say nothing about which was which.
+ */
+export function journeyLabel(
+  journey: Journey,
+  byId: Map<string, Place>,
+  max = 5,
+): string {
+  const year = journey.startDate.slice(0, 4);
+  // A trip that covered a whole region reads better named after it than
+  // after the first four towns; journey-notes.json says when that is so.
+  if (journey.label) return `${year} · ${journey.label}`;
+  const seen: string[] = [];
+  for (const place of citiesOfJourney(journey, byId)) {
+    if (place.home || seen.includes(place.name)) continue;
+    seen.push(place.name);
+  }
+  if (!seen.length) return `${year} · ${journey.title}`;
+  const shown = seen.slice(0, max).join(' · ');
+  return `${year} · ${shown}${seen.length > max ? ` +${seen.length - max}` : ''}`;
+}
+
 function inclusiveDays(startDate: string, endDate: string): number {
   const start = Date.parse(`${startDate}T00:00:00Z`);
   const end = Date.parse(`${endDate}T00:00:00Z`);

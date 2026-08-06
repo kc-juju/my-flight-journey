@@ -205,7 +205,7 @@
       "lat": 41.274874,
       "lon": 28.732136,
       "image": "/images/cities/IST.jpg",
-      "continent": "Eurasia",
+      "continent": "Asia",
       "timezone": "Europe/Istanbul"
     },
     {
@@ -1547,6 +1547,7 @@
           "departureDelayMinutes": 8
         }
       ],
+      "label": "Helsinki, Poland & Budapest",
       "notes": "The Helsinki stop was under twelve hours but we went into the city, so it counts as a visit rather than a connection."
     },
     {
@@ -2150,7 +2151,8 @@
           "departureDelayMinutes": 4,
           "arrivalDelayMinutes": 1
         }
-      ]
+      ],
+      "label": "Bavaria, Salzburg & Bohemia"
     },
     {
       "id": "2023-10-06-kul",
@@ -2475,7 +2477,8 @@
       ],
       "transferPlaceIds": [
         "hkg"
-      ]
+      ],
+      "label": "Okayama, the San’in coast & Kansai"
     },
     {
       "id": "2024-03-30-lhr",
@@ -3297,6 +3300,7 @@
           "note": "Rebooked from 18 Oct — the original flight was oversold and we volunteered to move"
         }
       ],
+      "label": "The Pacific Northwest & the Rockies",
       "notes": "We were booked to fly home on 18 October. The flight was oversold, we volunteered to give up our seats, and left the following evening instead."
     },
     {
@@ -3607,6 +3611,7 @@
           "arrivalDelayMinutes": 181
         }
       ],
+      "label": "Istanbul, the Riviera & the Dolomites",
       "notes": "Both Istanbul stops were under twelve hours, but we cleared immigration and went into the city, so it counts as a visit."
     },
     {

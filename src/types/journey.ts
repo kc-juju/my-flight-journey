@@ -87,6 +87,8 @@ export interface Journey {
   id: string;
   slug: string;
   title: string;
+  /** A region this journey is better known by, when one fits. */
+  label?: string;
   /** One-line positioning under the title. */
   subtitle?: string;
   /** ISO date. */

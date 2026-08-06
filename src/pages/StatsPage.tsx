@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAtlas } from '../hooks/useAtlas';
+import { journeyLabel } from '../lib/atlas';
 import { StatisticsCard } from '../components/stats/StatisticsCard';
 import { ImageCredits } from '../components/stats/ImageCredits';
 import { Breakdowns } from '../components/stats/Breakdowns';
@@ -11,7 +12,7 @@ import { asset } from '../lib/asset';
 const MOON_KM = 384_400;
 
 export function StatsPage() {
-  const { metrics, data, journeys } = useAtlas();
+  const { metrics, data, journeys, placesById } = useAtlas();
   const moonProgress = Math.min(100, (metrics.distanceKm / MOON_KM) * 100);
 
   return (
@@ -169,7 +170,7 @@ export function StatsPage() {
                           className="flex items-center gap-3 transition-colors hover:text-tertiary-fixed"
                         >
                           <span className="h-1.5 w-1.5 rounded-full bg-tertiary-fixed" />
-                          {j.title}
+                          {journeyLabel(j, placesById)}
                         </Link>
                       </li>
                     ))}
