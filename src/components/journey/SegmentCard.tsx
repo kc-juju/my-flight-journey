@@ -132,7 +132,7 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
           )}
         </div>
 
-        <div className="shrink-0 text-left md:text-center">
+        <div className="relative shrink-0 text-left md:text-center">
           {dropped ? (
             <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">
               Given up
@@ -162,7 +162,7 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
               )}
 
               {(departurePunctuality || arrivalPunctuality) && (
-                <dl className="mt-stack-md grid w-fit grid-cols-[auto_auto] gap-x-1.5 gap-y-0.5 md:mx-auto">
+                <dl className="mt-stack-md grid w-fit grid-cols-[auto_auto] gap-x-1.5 gap-y-0.5 md:absolute md:inset-x-0 md:top-full md:mx-auto md:mt-1">
                   {departurePunctuality && (
                     <>
                       <dt className="text-right font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant/70">
