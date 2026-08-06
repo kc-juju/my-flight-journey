@@ -293,11 +293,18 @@ def build():
             continue
         best = min(near, key=lambda d: abs((dt.date.fromisoformat(d) - own).days))
         if best != leg['date']:
-            leg['_orderDate'] = best
             corrected.append(f"{leg['date']}→{best} {leg['o']}-{leg['d']} {key[0]}")
+            leg['_orderDate'] = leg['date'] = best
     for note in corrected:
         print(f'  re-dated from the Flightradar24 record: {note}')
-    legs.sort(key=lambda f: (f['_orderDate'], f.get('dep_local') or ''))
+    for leg in legs:
+        leg['_depDay'] = 0
+        clock, delay = leg.get('dep_local'), leg.get('dep')
+        if clock and delay and delay > 0:
+            h, m = (int(x) for x in clock.split(':')[:2])
+            if h * 60 + m - delay < 0:
+                leg['_depDay'] = 1
+    legs.sort(key=lambda f: (f['_orderDate'], f.get('_depDay') or 0, f.get('dep_local') or ''))
 
     # ---- group legs into journeys -------------------------------------
     groups = []
@@ -369,11 +376,12 @@ def build():
                     segments.append(ground)
                     break
 
+            dep_date = dt.date.fromisoformat(leg['date']) + dt.timedelta(
+                days=leg.get('_depDay') or 0
+            )
             arrival = None
             if leg.get('arr_local'):
-                arr_date = dt.date.fromisoformat(leg['date']) + dt.timedelta(
-                    days=leg.get('arr_day') or 0
-                )
+                arr_date = dep_date + dt.timedelta(days=leg.get('arr_day') or 0)
                 arrival = f"{arr_date.isoformat()}T{leg['arr_local']}"
 
             seg = {
@@ -387,7 +395,7 @@ def build():
                 'reference': f"{iata.get(leg['al']) or leg['al']}{leg['fl']}",
             }
             if leg.get('dep_local'):
-                seg['departure'] = f"{leg['date']}T{leg['dep_local']}"
+                seg['departure'] = f"{dep_date.isoformat()}T{leg['dep_local']}"
             if arrival:
                 seg['arrival'] = arrival
             if leg.get('dur'):

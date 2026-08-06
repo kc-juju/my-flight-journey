@@ -1169,7 +1169,7 @@
       "id": "2018-07-02-bud",
       "slug": "2018-07-02-sg-fi",
       "title": "Singapore · Finland · Poland +1",
-      "subtitle": "TPE → SIN → HEL → WAW → BUD → SIN → HEL → TPE",
+      "subtitle": "TPE → SIN → HEL → WAW → BUD → HEL → SIN → TPE",
       "startDate": "2018-07-02",
       "endDate": "2018-07-13",
       "status": "completed",
@@ -1196,12 +1196,6 @@
         },
         {
           "placeId": "bud"
-        },
-        {
-          "placeId": "hel"
-        },
-        {
-          "placeId": "sin"
         },
         {
           "placeId": "waw"
@@ -1279,22 +1273,6 @@
           "arrivalDelayMinutes": -7
         },
         {
-          "id": "2018-07-10-FIN131-HELSIN",
-          "mode": "flight",
-          "fromPlaceId": "hel",
-          "toPlaceId": "sin",
-          "operator": "Finnair",
-          "reference": "AY131",
-          "departure": "2018-07-10T03:25",
-          "arrival": "2018-07-10T19:40",
-          "durationMinutes": 675,
-          "vehicle": "Airbus A350-900",
-          "registration": "OH-LWF",
-          "cabin": "Economy",
-          "departureDelayMinutes": 210,
-          "arrivalDelayMinutes": 190
-        },
-        {
           "id": "2018-07-11-FIN1146-WAWHEL",
           "mode": "flight",
           "fromPlaceId": "waw",
@@ -1309,6 +1287,22 @@
           "cabin": "Economy",
           "departureDelayMinutes": -7,
           "arrivalDelayMinutes": -15
+        },
+        {
+          "id": "2018-07-11-FIN131-HELSIN",
+          "mode": "flight",
+          "fromPlaceId": "hel",
+          "toPlaceId": "sin",
+          "operator": "Finnair",
+          "reference": "AY131",
+          "departure": "2018-07-12T03:25",
+          "arrival": "2018-07-12T19:40",
+          "durationMinutes": 675,
+          "vehicle": "Airbus A350-900",
+          "registration": "OH-LWF",
+          "cabin": "Economy",
+          "departureDelayMinutes": 210,
+          "arrivalDelayMinutes": 190
         },
         {
           "id": "2018-07-13-TGW898-SINTPE",

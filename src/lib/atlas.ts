@@ -64,7 +64,10 @@ export function segmentDistanceKm(segment: Segment, byId: Map<string, Place>): n
 
 /** Everything the UI shows about a journey is derived here, never authored. */
 export function journeyMetrics(journey: Journey, byId: Map<string, Place>): JourneyMetrics {
-  const visited = citiesOfJourney(journey, byId);
+  // Home is where every journey starts and ends, so counting it would say
+  // '3 countries' about a trip to two. A domestic trip keeps its own country,
+  // because the places it reached are not home.
+  const visited = citiesOfJourney(journey, byId).filter((p) => !p.home);
   const legs = travelled(journey);
   const distance = legs.reduce((sum, s) => sum + segmentDistanceKm(s, byId), 0);
   const modes = [...new Set(legs.map((s) => s.mode))];
