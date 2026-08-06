@@ -20,7 +20,7 @@ export interface PhotoPlacement {
    * How the instant was determined.
    * `outside-journey` means it was determined and it does not belong here.
    */
-  basis: 'exif-offset' | 'itinerary' | 'unplaced' | 'outside-journey';
+  basis: 'exif-offset' | 'itinerary' | 'unplaced' | 'outside-journey' | 'manual';
   /** Resolved instant, ISO with offset, when it could be determined. */
   instant?: string;
 }
@@ -250,6 +250,23 @@ function byInstant(
   return { afterSegmentIndex: legs.length - 1, duringSegment: false };
 }
 
+/**
+ * Slot for a place chosen by hand: the stay that begins when the journey
+ * arrives there. Falls back to the start of the trip for the origin.
+ */
+export function slotForPlace(journey: Journey, placeId: string): PhotoPlacement {
+  const legs = travelled(journey);
+  for (let i = legs.length - 1; i >= 0; i -= 1) {
+    if (legs[i].toPlaceId === placeId) {
+      return { afterSegmentIndex: i, duringSegment: false, basis: 'manual' };
+    }
+  }
+  if (legs[0]?.fromPlaceId === placeId) {
+    return { afterSegmentIndex: -1, duringSegment: false, basis: 'manual' };
+  }
+  return { afterSegmentIndex: legs.length - 1, duringSegment: false, basis: 'manual' };
+}
+
 /** Human summary of how a photo's time was worked out. */
 export function basisLabel(placement: PhotoPlacement): string {
   switch (placement.basis) {
@@ -259,8 +276,10 @@ export function basisLabel(placement: PhotoPlacement): string {
       return placement.place?.timezone
         ? `Read as ${placement.place.timezone} — where you were`
         : 'Placed from the itinerary';
+    case 'manual':
+      return placement.place ? `Filed under ${placement.place.name}` : 'Filed by hand';
     case 'outside-journey':
-      return 'Taken outside this journey — not added';
+      return 'Taken outside this journey — pick a city to add it anyway';
     default:
       return 'No capture time in the file — added at the end';
   }

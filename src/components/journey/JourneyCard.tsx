@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Journey, JourneyMetrics } from '../../types/journey';
-import { formatMonthYear, MODE_ICON, MODE_LABEL, plural, STATUS_LABEL } from '../../lib/format';
+import {
+  formatMonthYear,
+  formatNumber,
+  MODE_ICON,
+  MODE_LABEL,
+  plural,
+  STATUS_LABEL,
+} from '../../lib/format';
 import { Icon } from '../ui/Icon';
 import { asset } from '../../lib/asset';
 
@@ -25,6 +32,7 @@ export function JourneyCard({
     plural(metrics.days, 'day'),
     plural(metrics.segmentCount, 'leg'),
     plural(metrics.cityCount, 'city', 'cities'),
+    `${formatNumber(metrics.distanceKm)} km`,
   ].join(' • ');
 
   const body = (

@@ -22,7 +22,7 @@ export function JourneyPopup({ journey, metrics, position }: JourneyPopupProps) 
         { label: 'Duration', value: plural(metrics.days, 'day') },
         { label: 'Legs', value: String(metrics.segmentCount) },
         { label: 'Cities', value: String(metrics.cityCount) },
-        { label: 'Countries', value: String(metrics.countryCount) },
+        { label: 'Distance', value: `${formatNumber(metrics.distanceKm)} km` },
       ]
     : [];
 

@@ -9,7 +9,13 @@ import {
   uploadPhoto,
   type JourneyPhoto,
 } from '../../lib/photos';
-import { basisLabel, placePhoto, type PhotoPlacement } from '../../lib/photoPlacement';
+import {
+  basisLabel,
+  placePhoto,
+  slotForPlace,
+  type PhotoPlacement,
+} from '../../lib/photoPlacement';
+import { placesOfJourney } from '../../lib/atlas';
 import { Icon } from '../ui/Icon';
 
 /** Photos grouped by the itinerary position they belong to. */
@@ -34,10 +40,14 @@ export function usePhotoSlots(journey: Journey, placesById: Map<string, Place>) 
   const slots = useMemo<PhotosBySlot>(() => {
     const map: PhotosBySlot = new Map();
     for (const photo of photos) {
-      const placement = placePhoto(journey, placesById, {
-        naiveLocal: photo.taken_local ?? undefined,
-        offsetMinutes: photo.taken_offset_minutes,
-      });
+      // A city chosen by hand beats anything inferred from the clock.
+      const placement =
+        photo.time_basis === 'manual' && photo.place_id
+          ? slotForPlace(journey, photo.place_id)
+          : placePhoto(journey, placesById, {
+              naiveLocal: photo.taken_local ?? undefined,
+              offsetMinutes: photo.taken_offset_minutes,
+            });
       const key = placement.afterSegmentIndex;
       map.set(key, [...(map.get(key) ?? []), photo]);
     }
@@ -115,7 +125,10 @@ export function PhotoStrip({
 interface PendingPhoto {
   file: File;
   preview: string;
-  placement: PhotoPlacement;
+  /** What the timestamp says. Kept so 'Auto' can be restored. */
+  auto: PhotoPlacement;
+  /** Place id chosen by hand, or '' to trust the timestamp. */
+  chosen: string;
   naiveLocal?: string;
   offsetMinutes?: number | null;
 }
@@ -148,7 +161,8 @@ export function PhotoUploader({
         preview: URL.createObjectURL(file),
         naiveLocal: exif.naiveLocal,
         offsetMinutes: exif.offsetMinutes,
-        placement: placePhoto(journey, placesById, {
+        chosen: '',
+        auto: placePhoto(journey, placesById, {
           naiveLocal: exif.naiveLocal,
           offsetMinutes: exif.offsetMinutes,
         }),
@@ -157,21 +171,35 @@ export function PhotoUploader({
     setPending((p) => [...p, ...next]);
   };
 
-  const accepted = pending.filter((p) => p.placement.basis !== 'outside-journey');
-  const rejected = pending.filter((p) => p.placement.basis === 'outside-journey');
+  // Cities this journey actually reached, in itinerary order, home aside.
+  const all = placesOfJourney(journey, placesById);
+  const away = all.filter((p) => !p.home);
+  const choices = away.length ? away : all;
+
+  const resolve = (item: PendingPhoto): PhotoPlacement => {
+    if (!item.chosen) return item.auto;
+    const place = placesById.get(item.chosen);
+    return { ...slotForPlace(journey, item.chosen), place };
+  };
+
+  // Choosing a city is an explicit answer, so it also rescues a photo whose
+  // timestamp falls outside the journey.
+  const accepted = pending.filter((p) => resolve(p).basis !== 'outside-journey');
+  const rejected = pending.filter((p) => resolve(p).basis === 'outside-journey');
 
   const commit = async () => {
     setBusy(true);
     setMessage(null);
     for (const item of accepted) {
+      const placement = resolve(item);
       const { error } = await uploadPhoto({
         file: item.file,
         journeySlug: journey.slug,
         takenLocal: item.naiveLocal,
         offsetMinutes: item.offsetMinutes,
-        instant: item.placement.instant,
-        basis: item.placement.basis,
-        placeId: item.placement.place?.id,
+        instant: placement.instant,
+        basis: placement.basis,
+        placeId: item.chosen || placement.place?.id,
       });
       if (error) {
         setMessage(error);
@@ -261,25 +289,28 @@ export function PhotoUploader({
       />
 
       <p className="font-body-md text-sm text-on-surface-variant">
-        Each photo is filed by the time it was taken. When the camera did not record a
-        time zone, the clock is read in the zone of wherever this journey says you were.
+        Each photo is filed by the time it was taken — and when the camera recorded no
+        time zone, the clock is read in the zone of wherever this journey says you
+        were. Pick a city to override that.
       </p>
 
       {pending.length > 0 && (
         <>
           <ul className="flex flex-wrap gap-stack-sm">
-            {pending.map((item, i) => (
+            {pending.map((item, i) => {
+              const placement = resolve(item);
+              return (
               <li
                 key={item.preview}
-                className={`w-40 ${
-                  item.placement.basis === 'outside-journey' ? 'opacity-60' : ''
+                className={`w-44 ${
+                  placement.basis === 'outside-journey' ? 'opacity-60' : ''
                 }`}
               >
                 <img
                   src={item.preview}
                   alt=""
-                  className={`h-28 w-40 rounded-lg object-cover shadow-sm ${
-                    item.placement.basis === 'outside-journey'
+                  className={`h-28 w-44 rounded-lg object-cover shadow-sm ${
+                    placement.basis === 'outside-journey'
                       ? 'grayscale ring-2 ring-error'
                       : ''
                   }`}
@@ -287,14 +318,33 @@ export function PhotoUploader({
                 <p className="mt-1 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
                   {item.naiveLocal ? item.naiveLocal.replace('T', ' ') : 'No capture time'}
                 </p>
+                <select
+                  value={item.chosen}
+                  onChange={(e) =>
+                    setPending((p) =>
+                      p.map((x, j) => (j === i ? { ...x, chosen: e.target.value } : x)),
+                    )
+                  }
+                  aria-label="Where was this taken?"
+                  className="mt-1 w-full rounded-lg border border-outline-variant bg-surface-container-lowest px-2 py-1 font-body-md text-[12px] text-on-surface"
+                >
+                  <option value="">Auto — from the timestamp</option>
+                  {choices.map((place) => (
+                    <option key={place.id} value={place.id}>
+                      {place.name}
+                      {place.code ? ` (${place.code})` : ''}
+                    </option>
+                  ))}
+                </select>
+
                 <p
-                  className={`font-body-md text-[11px] leading-tight ${
-                    item.placement.basis === 'outside-journey'
+                  className={`mt-1 font-body-md text-[11px] leading-tight ${
+                    placement.basis === 'outside-journey'
                       ? 'text-error'
                       : 'text-on-surface-variant'
                   }`}
                 >
-                  {basisLabel(item.placement)}
+                  {basisLabel(placement)}
                 </p>
                 <button
                   type="button"
@@ -304,13 +354,15 @@ export function PhotoUploader({
                   Remove
                 </button>
               </li>
-            ))}
+              );
+            })}
           </ul>
           {rejected.length > 0 && (
             <p className="font-body-md text-sm text-on-surface-variant">
               {rejected.length === 1 ? 'One photo was' : `${rejected.length} photos were`}{' '}
-              taken outside {journey.startDate} — {journey.endDate}, so{' '}
-              {rejected.length === 1 ? 'it is' : 'they are'} not being added.
+              taken outside {journey.startDate} — {journey.endDate}. Pick a city for{' '}
+              {rejected.length === 1 ? 'it' : 'them'} to add {rejected.length === 1 ? 'it' : 'them'}{' '}
+              anyway.
             </p>
           )}
           <button
