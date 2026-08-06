@@ -169,6 +169,7 @@ export function JourneyDetailPage() {
                 placesById={placesById}
                 activeId={journey.id}
                 focus={journey}
+                focusPlaces={heroPlaces}
                 scrollWheelZoom={false}
                 zoom={4}
               />

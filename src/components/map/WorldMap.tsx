@@ -42,11 +42,13 @@ function ResizeFix() {
 /** Flies the map to a journey when one is focused, and back out when cleared. */
 function FocusController({
   focus,
+  focusPlaces,
   placesById,
   defaultCenter,
   defaultZoom,
 }: {
   focus: Journey | null;
+  focusPlaces?: Place[];
   placesById: Map<string, Place>;
   defaultCenter: LatLng;
   defaultZoom: number;
@@ -58,9 +60,8 @@ function FocusController({
       map.flyTo(defaultCenter, defaultZoom, { duration: 0.8 });
       return;
     }
-    const points = placesOfJourney(focus, placesById).map(
-      (p) => [p.lat, p.lon] as LatLng,
-    );
+    const source = focusPlaces?.length ? focusPlaces : placesOfJourney(focus, placesById);
+    const points = source.map((p) => [p.lat, p.lon] as LatLng);
     const bounds = boundsOf(points, 6);
     if (bounds) {
       map.flyToBounds(bounds as LatLngBoundsExpression, {
@@ -69,7 +70,7 @@ function FocusController({
         paddingBottomRight: [40, 40],
       });
     }
-  }, [focus, map, placesById, defaultCenter, defaultZoom]);
+  }, [focus, focusPlaces, map, placesById, defaultCenter, defaultZoom]);
 
   return null;
 }
@@ -80,6 +81,11 @@ interface WorldMapProps extends RouteHandlers {
   activeId?: string | null;
   /** Journey to zoom to. Passing null returns to the world view. */
   focus?: Journey | null;
+  /**
+   * Frame these places instead of every place on the journey. Used to open on
+   * the destinations rather than zooming out far enough to include home.
+   */
+  focusPlaces?: Place[];
   center?: LatLng;
   zoom?: number;
   className?: string;
@@ -92,6 +98,7 @@ export function WorldMap({
   placesById,
   activeId = null,
   focus = null,
+  focusPlaces,
   center = [26, 116],
   zoom = 3,
   className = '',
@@ -123,6 +130,7 @@ export function WorldMap({
       />
       <FocusController
         focus={focus}
+        focusPlaces={focusPlaces}
         placesById={placesById}
         defaultCenter={center}
         defaultZoom={zoom}
