@@ -1,12 +1,17 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
 const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
 /**
- * The anon key is meant to be public — it ships in every Supabase browser app.
+ * Supabase now issues `sb_publishable_...` keys alongside the older `anon`
+ * JWTs, and both work. Accept either variable name so whichever one you copy
+ * out of the dashboard lands correctly.
+ *
+ * Either key is meant to be public — it ships in every Supabase browser app.
  * What protects the data is row-level security, defined in supabase/schema.sql.
  */
+const anonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY ??
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY) as string | undefined;
 export const isSupabaseConfigured = Boolean(url && anonKey);
 
 export const supabase: SupabaseClient | null = isSupabaseConfigured

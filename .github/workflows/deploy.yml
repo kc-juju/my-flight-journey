@@ -31,6 +31,7 @@ jobs:
           # the data is protected by row-level security, not by hiding it.
           VITE_SUPABASE_URL: ${{ vars.SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
       # Client-side routing: Pages serves 404.html for unknown paths.
       - run: cp dist/index.html dist/404.html
       - uses: actions/configure-pages@v5

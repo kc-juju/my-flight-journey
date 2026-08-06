@@ -99,20 +99,23 @@ guestbook shows a short notice and the uploader stays hidden.
    and `guestbook` tables, the `journey-photos` storage bucket, and the
    row-level security that makes a public key safe: anyone may read, anyone may
    sign the guestbook, only signed-in accounts may add or delete photos.
-3. Settings → API gives you the project URL and the `anon` key.
+3. Open the project's **Connect** dialog (top of the dashboard), or go to
+   **Settings → API Keys**. Take the **Project URL** and either the
+   **publishable** key (`sb_publishable_…`) or the legacy **anon** key
+   (`eyJ…`) — Supabase issues both and either works here.
 4. Locally, put them in `.env.local`:
 
    ```
    VITE_SUPABASE_URL=https://xxxx.supabase.co
-   VITE_SUPABASE_ANON_KEY=eyJ...
+   VITE_SUPABASE_ANON_KEY=eyJ...          # or VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
    ```
 
 5. For the deployed site, add the same two as **repository variables**
    (Settings → Secrets and variables → Actions → Variables) named
-   `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+   `SUPABASE_URL` and `SUPABASE_ANON_KEY` (or `SUPABASE_PUBLISHABLE_KEY`).
 
-The anon key is designed to ship in the browser — every Supabase web app
-contains one. Access is controlled by the policies in `schema.sql`.
+The key is designed to ship in the browser — every Supabase web app contains
+one, and Supabase labels the publishable key "safe to expose online". Access is controlled by the policies in `schema.sql`.
 
 ### How a photo finds its place in the itinerary
 
