@@ -76,8 +76,8 @@ export function Breakdowns() {
             Every country
           </h2>
           <p className="max-w-lg font-body-md text-on-surface-variant">
-            {b.countries.length} countries and territories. Open one to see which
-            airports it accounts for.
+            {b.countries.length} countries and territories. Open one to see the
+            cities, and the airports or stations reached in each.
           </p>
         </header>
 
@@ -105,7 +105,7 @@ export function Breakdowns() {
                     </span>
                   </span>
                   <span className="flex items-center gap-2 font-label-caps text-[11px] uppercase tracking-widest text-on-surface-variant">
-                    {plural(row.places.length, 'airport')}
+                    {plural(row.cities.length, 'city', 'cities')}
                     <Icon name={open ? 'expand_less' : 'expand_more'} className="text-[16px]" />
                   </span>
                 </button>
@@ -116,16 +116,23 @@ export function Breakdowns() {
                 </p>
 
                 {open && (
-                  <ul className="mt-stack-sm flex flex-col gap-1 border-t border-outline-variant/50 pt-stack-sm">
-                    {row.places.map((place) => (
-                      <li
-                        key={place.id}
-                        className="flex items-baseline justify-between gap-3 font-body-md text-sm text-on-surface-variant"
-                      >
-                        <span>{place.airportName ?? place.name}</span>
-                        <span className="font-label-caps text-[10px] uppercase tracking-widest">
-                          {place.code}
-                        </span>
+                  <ul className="mt-stack-sm flex flex-col gap-stack-sm border-t border-outline-variant/50 pt-stack-sm">
+                    {row.cities.map((city) => (
+                      <li key={city.name}>
+                        <span className="font-body-md text-sm text-on-surface">{city.name}</span>
+                        <ul className="ml-3 mt-0.5 flex flex-col gap-0.5 border-l border-outline-variant/50 pl-3">
+                          {city.places.map((place) => (
+                            <li
+                              key={place.id}
+                              className="flex items-baseline justify-between gap-3 font-body-md text-xs text-on-surface-variant"
+                            >
+                              <span>{place.airportName ?? place.name}</span>
+                              <span className="font-label-caps text-[10px] uppercase tracking-widest">
+                                {place.code ?? 'ground'}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
                       </li>
                     ))}
                   </ul>
@@ -140,11 +147,17 @@ export function Breakdowns() {
       <section className="flex flex-col gap-stack-md">
         <header className="flex flex-col gap-unit">
           <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
-            Every airport
+            Every place
           </h2>
           <p className="max-w-lg font-body-md text-on-surface-variant">
-            {b.airportDetail.length} airports. Open one to see everywhere it connects
-            to and how many times each route was flown.
+            {plural(b.airportDetail.filter((r) => r.place.code).length, 'airport')} and{' '}
+            {plural(
+              b.airportDetail.filter((r) => !r.place.code).length,
+              'town reached on the ground',
+              'towns reached on the ground',
+            )}
+            . Open one to see everywhere it connects to and how many times each
+            link was travelled.
           </p>
         </header>
 
@@ -168,7 +181,7 @@ export function Breakdowns() {
                       {row.place.airportName ?? row.place.name}
                     </span>
                     <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-                      {row.place.code} · {row.place.country}
+                      {row.place.code ?? 'ground'} · {row.place.country}
                     </span>
                   </span>
                   <span className="flex items-center gap-3 font-label-caps text-[11px] uppercase tracking-widest text-on-surface-variant">
@@ -188,7 +201,7 @@ export function Breakdowns() {
                     {row.partners.map((partner) => (
                       <li key={partner.place.id} className="flex items-center gap-3">
                         <span className="w-52 shrink-0 truncate font-body-md text-sm text-on-surface">
-                          {row.place.code} — {partner.place.code}
+                          {row.place.code ?? row.place.name} — {partner.place.code ?? partner.place.name}
                           <span className="ml-2 text-on-surface-variant">
                             {partner.place.name}
                           </span>

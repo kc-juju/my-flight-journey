@@ -8,6 +8,11 @@ export interface CountryRow {
   visits: number;
   journeys: number;
   places: Place[];
+  /**
+   * Places grouped by the city they serve. Tokyo has two airports and Osaka
+   * two more, so counting places would overstate how many cities were seen.
+   */
+  cities: { name: string; places: Place[] }[];
   firstDate: string;
   lastDate: string;
   distanceKm: number;
@@ -214,6 +219,7 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
         visits: 0,
         journeys: 0,
         places: [] as Place[],
+        cities: [] as { name: string; places: Place[] }[],
         firstDate: journey.startDate,
         lastDate: journey.endDate,
         distanceKm: 0,
@@ -270,6 +276,13 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
 
   for (const row of countries.values()) {
     row.places.sort((a, b) => a.name.localeCompare(b.name));
+    const byCity = new Map<string, Place[]>();
+    for (const place of row.places) {
+      byCity.set(place.name, [...(byCity.get(place.name) ?? []), place]);
+    }
+    row.cities = [...byCity.entries()]
+      .map(([name, places]) => ({ name, places }))
+      .sort((a, b) => a.name.localeCompare(b.name));
   }
 
   const yearRows = [...years.values()].sort((a, b) => a.year - b.year);
