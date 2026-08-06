@@ -120,7 +120,9 @@ def file_meta(filename):
     """Licence, author and a scaled URL for a Commons file."""
     d = api('https://commons.wikimedia.org/w/api.php', {
         'action': 'query', 'format': 'json', 'titles': 'File:' + filename,
-        'prop': 'imageinfo', 'iiprop': 'extmetadata|url', 'iiurlwidth': '1200',
+        # A thousand pixels covers the largest place the interface shows one
+        # of these — and the whole set has to fit in a Pages deployment.
+        'prop': 'imageinfo', 'iiprop': 'extmetadata|url', 'iiurlwidth': '1000',
     })
     page = next(iter(d['query']['pages'].values()))
     info = (page.get('imageinfo') or [{}])[0]
