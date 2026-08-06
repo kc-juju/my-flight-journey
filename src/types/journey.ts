@@ -102,6 +102,11 @@ export interface Journey {
   highlights: string[];
   stops: Stop[];
   segments: Segment[];
+  /**
+   * Places that were only ever connections on this journey — the airport
+   * counts, the city does not.
+   */
+  transferPlaceIds?: string[];
 }
 
 export interface Collection {

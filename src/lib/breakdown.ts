@@ -1,5 +1,5 @@
 import type { AtlasData, Journey, Place, Segment, TransportMode } from '../types/journey';
-import { placesOfJourney, segmentDistanceKm, travelled } from './atlas';
+import { citiesOfJourney, placesOfJourney, segmentDistanceKm, travelled } from './atlas';
 
 /** Everything the stats page slices, computed once from the leg list. */
 export interface CountryRow {
@@ -8,6 +8,8 @@ export interface CountryRow {
   visits: number;
   journeys: number;
   places: Place[];
+  /** Ids of places that were more than a connection. */
+  visitedIds: Set<string>;
   /**
    * Places grouped by the city they serve. Tokyo has two airports and Osaka
    * two more, so counting places would overstate how many cities were seen.
@@ -177,7 +179,9 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
     const journeyKm = legs.reduce((sum, s) => sum + segmentDistanceKm(s, placesById), 0);
     const journeyMinutes = legs.reduce((sum, s) => sum + (s.durationMinutes ?? 0), 0);
     const journeyPlaces = placesOfJourney(journey, placesById);
-    const journeyCountries = new Set(journeyPlaces.map((p) => p.countryCode));
+    const visitedPlaces = citiesOfJourney(journey, placesById);
+    const journeyCountries = new Set(visitedPlaces.map((p) => p.countryCode));
+    const visitedIds = new Set(visitedPlaces.map((p) => p.id));
 
     const yearRow = years.get(year) ?? {
       year,
@@ -219,12 +223,14 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
         visits: 0,
         journeys: 0,
         places: [] as Place[],
+        visitedIds: new Set<string>(),
         cities: [] as { name: string; places: Place[] }[],
         firstDate: journey.startDate,
         lastDate: journey.endDate,
         distanceKm: 0,
       };
       if (!row.places.some((p) => p.id === place.id)) row.places.push(place);
+      if (visitedIds.has(place.id)) row.visitedIds.add(place.id);
       row.lastDate = journey.endDate;
       countries.set(place.countryCode, row);
     }
@@ -278,6 +284,8 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
     row.places.sort((a, b) => a.name.localeCompare(b.name));
     const byCity = new Map<string, Place[]>();
     for (const place of row.places) {
+      // A city only ever passed through in transit is not a city visited.
+      if (!row.visitedIds.has(place.id)) continue;
       byCity.set(place.name, [...(byCity.get(place.name) ?? []), place]);
     }
     row.cities = [...byCity.entries()]

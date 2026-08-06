@@ -777,6 +777,9 @@
           "vehicle": "Airbus A330",
           "cabin": "Economy"
         }
+      ],
+      "transferPlaceIds": [
+        "hkg"
       ]
     },
     {
@@ -1267,7 +1270,8 @@
           "registration": "9V-OJA",
           "cabin": "Economy"
         }
-      ]
+      ],
+      "notes": "The Helsinki stop was under twelve hours but we went into the city, so it counts as a visit rather than a connection."
     },
     {
       "id": "2018-08-23-mzg",
@@ -1530,6 +1534,9 @@
           "registration": "B-5952",
           "cabin": "Economy"
         }
+      ],
+      "transferPlaceIds": [
+        "pvg"
       ]
     },
     {
@@ -1855,6 +1862,9 @@
           "registration": "B-16338",
           "cabin": "Economy"
         }
+      ],
+      "transferPlaceIds": [
+        "kul"
       ]
     },
     {
@@ -1990,6 +2000,9 @@
           "registration": "B-LAZ",
           "cabin": "Business"
         }
+      ],
+      "transferPlaceIds": [
+        "hkg"
       ]
     },
     {
@@ -2068,6 +2081,9 @@
           "registration": "B-16738",
           "cabin": "Economy"
         }
+      ],
+      "transferPlaceIds": [
+        "bkk"
       ]
     },
     {
@@ -2351,6 +2367,9 @@
           "registration": "9V-SCU",
           "cabin": "Business"
         }
+      ],
+      "transferPlaceIds": [
+        "sin"
       ]
     },
     {
@@ -2443,6 +2462,9 @@
           "registration": "B-LBH",
           "cabin": "Economy"
         }
+      ],
+      "transferPlaceIds": [
+        "hkg"
       ]
     },
     {
@@ -2649,6 +2671,9 @@
           "cabin": "Economy",
           "note": "Rebooked from 18 Oct — the original flight was oversold and we volunteered to move"
         }
+      ],
+      "transferPlaceIds": [
+        "yyc"
       ],
       "notes": "We were booked to fly home on 18 October. The flight was oversold, we volunteered to give up our seats, and left the following evening instead."
     },
@@ -2942,6 +2967,9 @@
           "registration": "TC-LMB",
           "cabin": "Economy"
         }
+      ],
+      "transferPlaceIds": [
+        "ist"
       ]
     },
     {
@@ -3017,6 +3045,9 @@
           "registration": "HL-7634",
           "cabin": "Business"
         }
+      ],
+      "transferPlaceIds": [
+        "icn"
       ]
     },
     {
@@ -3101,6 +3132,9 @@
           "durationMinutes": 285,
           "vehicle": "Boeing 787-9"
         }
+      ],
+      "transferPlaceIds": [
+        "sin"
       ]
     },
     {
@@ -3224,6 +3258,10 @@
           "vehicle": "Boeing 787-8",
           "cabin": "Economy"
         }
+      ],
+      "transferPlaceIds": [
+        "icn",
+        "doh"
       ]
     },
     {

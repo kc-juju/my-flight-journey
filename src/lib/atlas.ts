@@ -37,6 +37,16 @@ export function placesOfJourney(journey: Journey, byId: Map<string, Place>): Pla
   return out;
 }
 
+/**
+ * Places actually visited — the same list minus anywhere that was only a
+ * connection. Airports still count; a city seen from a departure lounge does
+ * not.
+ */
+export function citiesOfJourney(journey: Journey, byId: Map<string, Place>): Place[] {
+  const transfers = new Set(journey.transferPlaceIds ?? []);
+  return placesOfJourney(journey, byId).filter((p) => !transfers.has(p.id));
+}
+
 function inclusiveDays(startDate: string, endDate: string): number {
   const start = Date.parse(`${startDate}T00:00:00Z`);
   const end = Date.parse(`${endDate}T00:00:00Z`);
@@ -53,7 +63,7 @@ export function segmentDistanceKm(segment: Segment, byId: Map<string, Place>): n
 
 /** Everything the UI shows about a journey is derived here, never authored. */
 export function journeyMetrics(journey: Journey, byId: Map<string, Place>): JourneyMetrics {
-  const places = placesOfJourney(journey, byId);
+  const visited = citiesOfJourney(journey, byId);
   const legs = travelled(journey);
   const distance = legs.reduce((sum, s) => sum + segmentDistanceKm(s, byId), 0);
   const modes = [...new Set(legs.map((s) => s.mode))];
@@ -62,8 +72,8 @@ export function journeyMetrics(journey: Journey, byId: Map<string, Place>): Jour
     days: inclusiveDays(journey.startDate, journey.endDate),
     segmentCount: legs.length,
     flightCount: legs.filter((s) => s.mode === 'flight').length,
-    cityCount: new Set(places.map((p) => p.name)).size,
-    countryCount: new Set(places.map((p) => p.countryCode)).size,
+    cityCount: new Set(visited.map((p) => p.name)).size,
+    countryCount: new Set(visited.map((p) => p.countryCode)).size,
     distanceKm: Math.round(distance),
     durationMinutes: legs.reduce((sum, s) => sum + (s.durationMinutes ?? 0), 0),
     modes: TRANSPORT_MODES.filter((m) => modes.includes(m)),
@@ -88,10 +98,14 @@ export function atlasMetrics(data: AtlasData): AtlasMetrics {
   let segments = 0;
 
   for (const journey of counted) {
+    // Airports count wherever the aeroplane touched down; cities and
+    // countries only where the journey actually stopped.
     for (const place of placesOfJourney(journey, byId)) {
+      if (place.code) airports.add(place.code);
+    }
+    for (const place of citiesOfJourney(journey, byId)) {
       cities.add(place.name);
       countries.add(place.countryCode);
-      if (place.code) airports.add(place.code);
     }
     for (const segment of travelled(journey)) {
       segments += 1;

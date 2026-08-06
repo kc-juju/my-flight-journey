@@ -53,6 +53,9 @@ HOME_AIRPORTS = {'TPE', 'TSA'}
 HOME_COUNTRY = 'TW'
 # A gap this long without coming home is treated as two separate journeys.
 MAX_AWAY_GAP_DAYS = 60
+# A stop shorter than this is a connection, not a visit. The airport still
+# counts; the city does not.
+TRANSFER_MAX_MINUTES = 12 * 60
 # Emit an explicit `surface` segment where consecutive flights do not connect.
 # Off until the overland legs are logged for real — the gaps are still visible
 # in the itinerary, we just do not draw a line we cannot describe.
@@ -484,6 +487,46 @@ def build():
         seen[base] = n + 1
         if n:
             j['slug'] = f'{base}-{n + 1}'
+
+    # ---- connections ---------------------------------------------------
+    # An intermediate stop counts as a transfer when the gap between landing
+    # and taking off again is short. Timezone-aware, or Doha at 09:00 local
+    # after a Seoul departure would come out negative.
+    from zoneinfo import ZoneInfo
+
+    def moment(iso, tz):
+        if not iso or 'T' not in iso or not tz:
+            return None
+        return dt.datetime.fromisoformat(iso).replace(tzinfo=ZoneInfo(tz))
+
+    zone_of = {p['id']: p.get('timezone') for p in places}
+    removed = []
+    for journey in journeys:
+        entry = notes.get(journey['slug']) or {}
+        forced = {place_id.get(c, c) for c in entry.get('visited', [])}
+        flown = [s for s in journey['segments'] if not s.get('dropped')]
+        transfers = []
+        for i in range(len(flown) - 1):
+            here, nxt = flown[i], flown[i + 1]
+            if here['toPlaceId'] != nxt['fromPlaceId']:
+                continue
+            pid = here['toPlaceId']
+            if pid in forced:
+                continue
+            arrive = moment(here.get('arrival'), zone_of.get(pid))
+            leave = moment(nxt.get('departure'), zone_of.get(pid))
+            if not arrive or not leave:
+                continue
+            minutes = (leave - arrive).total_seconds() / 60
+            if 0 <= minutes < TRANSFER_MAX_MINUTES and pid not in transfers:
+                transfers.append(pid)
+                removed.append((journey['slug'], pid, round(minutes)))
+        if transfers:
+            journey['transferPlaceIds'] = transfers
+
+    print(f'  connections (city not counted): {len(removed)}')
+    for slug, pid, mins in removed:
+        print(f'    {slug:22s} {pid.upper():9s} {mins // 60}h{mins % 60:02d}')
 
     # Attach the hand-written notes now that slugs are final.
     applied = 0

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Journey, Place } from '../../types/journey';
-import { placesOfJourney } from '../../lib/atlas';
+import { citiesOfJourney } from '../../lib/atlas';
 import { asset } from '../../lib/asset';
 import { Icon } from '../ui/Icon';
 
@@ -13,11 +13,12 @@ interface CityGalleryProps {
  * The cities a journey reached, as a carousel.
  *
  * Home is skipped — every journey starts and ends there, so showing it says
- * nothing. If a journey reached nowhere else (a domestic hop), show what
- * there is rather than an empty rail.
+ * nothing, and so are airports that were only a connection. If a journey
+ * reached nowhere else (a domestic hop), show what there is rather than an
+ * empty rail.
  */
 export function CityGallery({ journey, placesById }: CityGalleryProps) {
-  const all = placesOfJourney(journey, placesById);
+  const all = citiesOfJourney(journey, placesById);
   const away = all.filter((p) => !p.home);
   const places = away.length ? away : all;
 

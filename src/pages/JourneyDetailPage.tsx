@@ -13,7 +13,7 @@ import {
   PhotoUploader,
   usePhotoSlots,
 } from '../components/journey/JourneyPhotos';
-import { placesOfJourney } from '../lib/atlas';
+import { citiesOfJourney } from '../lib/atlas';
 import { Icon } from '../components/ui/Icon';
 import { formatDateRange, formatDuration, formatNumber, STATUS_LABEL } from '../lib/format';
 
@@ -42,7 +42,7 @@ export function JourneyDetailPage() {
   const metrics = metricsFor(journey);
   // Same rule as the gallery: home appears on every journey, so it is not a
   // photo worth showing. Fall back to everything for a purely domestic hop.
-  const all = placesOfJourney(journey, placesById);
+  const all = citiesOfJourney(journey, placesById);
   const away = all.filter((p) => !p.home);
   const heroPlaces = away.length ? away : all;
 
