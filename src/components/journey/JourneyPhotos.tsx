@@ -157,10 +157,13 @@ export function PhotoUploader({
     setPending((p) => [...p, ...next]);
   };
 
+  const accepted = pending.filter((p) => p.placement.basis !== 'outside-journey');
+  const rejected = pending.filter((p) => p.placement.basis === 'outside-journey');
+
   const commit = async () => {
     setBusy(true);
     setMessage(null);
-    for (const item of pending) {
+    for (const item of accepted) {
       const { error } = await uploadPhoto({
         file: item.file,
         journeySlug: journey.slug,
@@ -176,8 +179,8 @@ export function PhotoUploader({
         return;
       }
     }
-    pending.forEach((p) => URL.revokeObjectURL(p.preview));
-    setPending([]);
+    accepted.forEach((p) => URL.revokeObjectURL(p.preview));
+    setPending(rejected);
     setBusy(false);
     onUploaded();
   };
@@ -188,8 +191,8 @@ export function PhotoUploader({
     return (
       <div className="rounded-xl border border-dashed border-outline-variant p-stack-md">
         <p className="mb-stack-sm font-body-md text-sm text-on-surface-variant">
-          Sign in to add photos to this journey. Everyone can see them; only you can
-          add or remove them.
+          Photos are public; adding and removing them is limited to the site owner.
+          Sign in with the owner address to manage this journey's photos.
         </p>
         <form
           className="flex flex-wrap gap-2"
@@ -262,16 +265,31 @@ export function PhotoUploader({
         <>
           <ul className="flex flex-wrap gap-stack-sm">
             {pending.map((item, i) => (
-              <li key={item.preview} className="w-40">
+              <li
+                key={item.preview}
+                className={`w-40 ${
+                  item.placement.basis === 'outside-journey' ? 'opacity-60' : ''
+                }`}
+              >
                 <img
                   src={item.preview}
                   alt=""
-                  className="h-28 w-40 rounded-lg object-cover shadow-sm"
+                  className={`h-28 w-40 rounded-lg object-cover shadow-sm ${
+                    item.placement.basis === 'outside-journey'
+                      ? 'grayscale ring-2 ring-error'
+                      : ''
+                  }`}
                 />
                 <p className="mt-1 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
                   {item.naiveLocal ? item.naiveLocal.replace('T', ' ') : 'No capture time'}
                 </p>
-                <p className="font-body-md text-[11px] leading-tight text-on-surface-variant">
+                <p
+                  className={`font-body-md text-[11px] leading-tight ${
+                    item.placement.basis === 'outside-journey'
+                      ? 'text-error'
+                      : 'text-on-surface-variant'
+                  }`}
+                >
                   {basisLabel(item.placement)}
                 </p>
                 <button
@@ -284,13 +302,20 @@ export function PhotoUploader({
               </li>
             ))}
           </ul>
+          {rejected.length > 0 && (
+            <p className="font-body-md text-sm text-on-surface-variant">
+              {rejected.length === 1 ? 'One photo was' : `${rejected.length} photos were`}{' '}
+              taken outside {journey.startDate} — {journey.endDate}, so{' '}
+              {rejected.length === 1 ? 'it is' : 'they are'} not being added.
+            </p>
+          )}
           <button
             type="button"
             onClick={() => void commit()}
-            disabled={busy}
+            disabled={busy || accepted.length === 0}
             className="self-start rounded-full bg-primary px-6 py-2 font-label-caps text-label-caps uppercase text-on-primary disabled:opacity-50"
           >
-            {busy ? 'Uploading…' : `Upload ${pending.length}`}
+            {busy ? 'Uploading…' : `Upload ${accepted.length}`}
           </button>
         </>
       )}

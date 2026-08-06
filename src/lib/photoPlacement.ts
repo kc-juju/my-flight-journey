@@ -16,8 +16,11 @@ export interface PhotoPlacement {
   duringSegment: boolean;
   /** Place whose local clock was used to read the timestamp. */
   place?: Place;
-  /** How the instant was determined. */
-  basis: 'exif-offset' | 'itinerary' | 'unplaced';
+  /**
+   * How the instant was determined.
+   * `outside-journey` means it was determined and it does not belong here.
+   */
+  basis: 'exif-offset' | 'itinerary' | 'unplaced' | 'outside-journey';
   /** Resolved instant, ISO with offset, when it could be determined. */
   instant?: string;
 }
@@ -59,6 +62,28 @@ export function localToInstant(naive: string, timeZone: string): Date {
   offset = zoneOffsetMinutes(timeZone, instant);
   instant = new Date(guess.getTime() - offset * 60_000);
   return instant;
+}
+
+/**
+ * The window a journey occupies, as instants.
+ *
+ * Both ends are taken in the local zone of the place they happen at, and
+ * widened to whole days — a photo taken the morning of departure still belongs
+ * to the trip.
+ */
+export function journeyWindow(
+  journey: Journey,
+  placesById: Map<string, Place>,
+): { start: Date; end: Date } | null {
+  const legs = travelled(journey);
+  if (!legs.length) return null;
+  const firstZone = placesById.get(legs[0].fromPlaceId)?.timezone;
+  const lastZone = placesById.get(legs[legs.length - 1].toPlaceId)?.timezone;
+  if (!firstZone || !lastZone) return null;
+  return {
+    start: localToInstant(`${journey.startDate}T00:00`, firstZone),
+    end: localToInstant(`${journey.endDate}T23:59`, lastZone),
+  };
 }
 
 interface Anchor {
@@ -111,11 +136,21 @@ export function placePhoto(
     return { afterSegmentIndex: legs.length - 1, duringSegment: false, basis: 'unplaced' };
   }
 
+  const window = journeyWindow(journey, placesById);
+
   // ---- exact instant, when the camera recorded its offset -----------------
   if (taken.offsetMinutes != null) {
     const instant = new Date(
       new Date(`${taken.naiveLocal}Z`).getTime() - taken.offsetMinutes * 60_000,
     );
+    if (window && (instant < window.start || instant > window.end)) {
+      return {
+        afterSegmentIndex: -1,
+        duringSegment: false,
+        basis: 'outside-journey',
+        instant: instant.toISOString(),
+      };
+    }
     return {
       ...byInstant(legs, instant, placesById),
       basis: 'exif-offset',
@@ -174,6 +209,11 @@ export function placePhoto(
       };
     }
   }
+  // Nothing in the itinerary contains this moment. If the journey has a
+  // window at all, that is a real answer — the photo is from another trip.
+  if (window) {
+    return { afterSegmentIndex: -1, duringSegment: false, basis: 'outside-journey' };
+  }
   return { afterSegmentIndex: legs.length - 1, duringSegment: false, basis: 'unplaced' };
 }
 
@@ -219,8 +259,10 @@ export function basisLabel(placement: PhotoPlacement): string {
       return placement.place?.timezone
         ? `Read as ${placement.place.timezone} — where you were`
         : 'Placed from the itinerary';
+    case 'outside-journey':
+      return 'Taken outside this journey — not added';
     default:
-      return 'Could not be placed — added at the end';
+      return 'No capture time in the file — added at the end';
   }
 }
 

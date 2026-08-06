@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useAtlas } from '../hooks/useAtlas';
 import { StatisticsCard } from '../components/stats/StatisticsCard';
 import { ImageCredits } from '../components/stats/ImageCredits';
+import { Breakdowns } from '../components/stats/Breakdowns';
 import { Icon } from '../components/ui/Icon';
 import { formatNumber, MODE_ICON, MODE_LABEL } from '../lib/format';
 import { asset } from '../lib/asset';
@@ -177,6 +178,8 @@ export function StatsPage() {
           })}
         </div>
       </section>
+
+      <Breakdowns />
 
       <ImageCredits />
     </div>

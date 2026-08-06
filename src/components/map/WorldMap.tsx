@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import { MapContainer, TileLayer, ZoomControl, useMap } from 'react-leaflet';
 import type { LatLngBoundsExpression } from 'leaflet';
 import type { Journey, Place } from '../../types/journey';
@@ -54,13 +54,25 @@ function FocusController({
   defaultZoom: number;
 }) {
   const map = useMap();
+  const lastFocus = useRef<string | null | undefined>(undefined);
 
   useEffect(() => {
-    if (!focus) {
-      map.flyTo(defaultCenter, defaultZoom, { duration: 0.8 });
+    const id = focus?.id ?? null;
+    // Only move when the focused journey actually changes. The effect used to
+    // depend on freshly-built default arrays, so every unrelated re-render —
+    // hovering a route, say — snapped the map back to where it started.
+    if (lastFocus.current === id) return;
+    const first = lastFocus.current === undefined;
+    lastFocus.current = id;
+
+    if (!id) {
+      // Nothing to focus. Leave the view alone on first mount, and only
+      // return to the default when a journey was actually being shown.
+      if (!first) map.flyTo(defaultCenter, defaultZoom, { duration: 0.8 });
       return;
     }
-    const source = focusPlaces?.length ? focusPlaces : placesOfJourney(focus, placesById);
+
+    const source = focusPlaces?.length ? focusPlaces : placesOfJourney(focus!, placesById);
     const points = source.map((p) => [p.lat, p.lon] as LatLng);
     const bounds = boundsOf(points, 6);
     if (bounds) {
@@ -70,7 +82,8 @@ function FocusController({
         paddingBottomRight: [40, 40],
       });
     }
-  }, [focus, focusPlaces, map, placesById, defaultCenter, defaultZoom]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focus?.id, map]);
 
   return null;
 }

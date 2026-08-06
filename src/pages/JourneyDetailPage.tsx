@@ -6,6 +6,7 @@ import { WorldMap } from '../components/map/WorldMap';
 import { Timeline } from '../components/journey/Timeline';
 import { SegmentCard } from '../components/journey/SegmentCard';
 import { CityGallery } from '../components/journey/CityGallery';
+import { Guestbook } from '../components/guestbook/Guestbook';
 import { HeroCarousel } from '../components/journey/HeroCarousel';
 import {
   PhotoStrip,
@@ -151,6 +152,8 @@ export function JourneyDetailPage() {
               placesById={placesById}
               onUploaded={refreshPhotos}
             />
+
+            <Guestbook journeySlug={journey.slug} variant="inline" />
           </section>
         </div>
 

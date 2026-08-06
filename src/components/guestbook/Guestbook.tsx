@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../hooks/useSupabase';
@@ -9,6 +10,14 @@ interface Entry {
   name: string;
   message: string;
   created_at: string;
+  journey_slug: string | null;
+}
+
+interface GuestbookProps {
+  /** Scope the thread to one journey. Omitted, it is the site-wide book. */
+  journeySlug?: string;
+  /** `page` gets the big heading; `inline` sits inside a journey. */
+  variant?: 'page' | 'inline';
 }
 
 const NAME_MAX = 40;
@@ -27,7 +36,7 @@ function relative(iso: string): string {
   return new Date(then).toISOString().slice(0, 10);
 }
 
-export function Guestbook() {
+export function Guestbook({ journeySlug, variant = 'page' }: GuestbookProps = {}) {
   const { configured, session } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [loading, setLoading] = useState(configured);
@@ -39,14 +48,17 @@ export function Guestbook() {
   const load = useCallback(async () => {
     if (!supabase) return;
     setLoading(true);
-    const { data } = await supabase
+    let query = supabase
       .from('guestbook')
       .select('*')
       .order('created_at', { ascending: false })
       .limit(200);
+    // A journey shows only its own thread; the guestbook page shows everything.
+    if (journeySlug) query = query.eq('journey_slug', journeySlug);
+    const { data } = await query;
     setEntries((data ?? []) as Entry[]);
     setLoading(false);
-  }, []);
+  }, [journeySlug]);
 
   useEffect(() => {
     void load();
@@ -55,9 +67,11 @@ export function Guestbook() {
   if (!configured) {
     return (
       <section className="rounded-xl border border-dashed border-outline-variant p-stack-lg">
-        <h2 className="mb-stack-sm font-headline-md text-headline-md text-on-surface">Guestbook</h2>
+        <h2 className="mb-stack-sm font-headline-md text-headline-md text-on-surface">
+          {journeySlug ? 'Comments' : 'Guestbook'}
+        </h2>
         <p className="font-body-md text-on-surface-variant">
-          The guestbook needs its backend configured before it can accept messages.
+          This needs its backend configured before it can accept messages.
         </p>
       </section>
     );
@@ -74,7 +88,11 @@ export function Guestbook() {
     setStatus(null);
     const { error } = await supabase
       .from('guestbook')
-      .insert({ name: trimmedName, message: trimmedMessage });
+      .insert({
+        name: trimmedName,
+        message: trimmedMessage,
+        journey_slug: journeySlug ?? null,
+      });
     setSending(false);
 
     if (error) {
@@ -95,12 +113,20 @@ export function Guestbook() {
   return (
     <section className="flex flex-col gap-stack-lg">
       <header className="flex flex-col gap-unit">
-        <h1 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
-          Guestbook
-        </h1>
-        <p className="max-w-lg font-body-md text-on-surface-variant">
-          Been somewhere on this map? Recognise a flight? Leave a note.
-        </p>
+        {variant === 'page' ? (
+          <>
+            <h1 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
+              Guestbook
+            </h1>
+            <p className="max-w-lg font-body-md text-on-surface-variant">
+              Been somewhere on this map? Recognise a flight? Leave a note.
+            </p>
+          </>
+        ) : (
+          <h2 className="font-headline-md text-headline-md text-on-surface">
+            Comments
+          </h2>
+        )}
       </header>
 
       <form
@@ -184,6 +210,14 @@ export function Guestbook() {
                 <p className="whitespace-pre-wrap font-body-md text-on-surface-variant">
                   {entry.message}
                 </p>
+                {!journeySlug && entry.journey_slug && (
+                  <Link
+                    to={`/journeys/${entry.journey_slug}`}
+                    className="mt-1 inline-block font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant underline"
+                  >
+                    on {entry.journey_slug}
+                  </Link>
+                )}
               </motion.li>
             ))}
           </AnimatePresence>
