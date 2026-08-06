@@ -66,6 +66,48 @@ export async function readExifTime(file: File): Promise<ExifTime> {
   }
 }
 
+const HEIC_EXTENSION = /\.(heic|heif)$/i;
+
+/**
+ * iPhones hand over HEIC, which no browser will draw and which several
+ * browsers report with an empty MIME type — so sniff the name as well.
+ */
+export function isHeic(file: File): boolean {
+  return /^image\/hei[cf]/i.test(file.type) || HEIC_EXTENSION.test(file.name);
+}
+
+/** Anything a browser will draw, plus the HEIC we are about to convert. */
+export function looksLikeImage(file: File): boolean {
+  return (
+    file.type.startsWith('image/') ||
+    isHeic(file) ||
+    /\.(jpe?g|png|gif|webp|avif|bmp)$/i.test(file.name)
+  );
+}
+
+/**
+ * Give back a file the browser can display.
+ *
+ * The decoder is a 3 MB wasm bundle, so it is only fetched when a HEIC
+ * actually turns up. EXIF is read from the original — conversion drops it.
+ */
+export async function toDisplayable(file: File): Promise<File> {
+  if (!isHeic(file)) return file;
+  const { heicTo } = await import('heic-to');
+  const blob = await heicTo({ blob: file, type: 'image/jpeg', quality: 0.92 });
+  return new File([blob], file.name.replace(HEIC_EXTENSION, '.jpg'), {
+    type: 'image/jpeg',
+    lastModified: file.lastModified,
+  });
+}
+
+/** Does the signed-in account appear on the owner list? */
+export async function amOwner(): Promise<boolean> {
+  if (!supabase) return false;
+  const { data, error } = await supabase.rpc('is_owner');
+  return !error && data === true;
+}
+
 export async function listPhotos(journeySlug: string): Promise<JourneyPhoto[]> {
   if (!supabase) return [];
   const { data, error } = await supabase
@@ -95,7 +137,11 @@ export async function uploadPhoto(args: {
   const up = await supabase.storage
     .from(PHOTO_BUCKET)
     .upload(path, args.file, { cacheControl: '31536000', upsert: false });
-  if (up.error) return { error: up.error.message };
+  if (up.error) {
+    // Name the stage: a storage refusal and a database refusal need
+    // different fixes, and both otherwise read as 'it did not work'.
+    return { error: `Storage rejected the file: ${up.error.message}` };
+  }
 
   const { data, error } = await supabase
     .from('journey_photos')
@@ -115,9 +161,23 @@ export async function uploadPhoto(args: {
   if (error || !data) {
     // Do not leave an orphan file behind if the row could not be written.
     await supabase.storage.from(PHOTO_BUCKET).remove([path]);
-    return { error: error?.message ?? 'Could not save the photo.' };
+    return {
+      error: `The file uploaded but the record was refused: ${
+        error?.message ?? 'unknown error'
+      }`,
+    };
   }
   return { photo: { ...data, url: photoUrl(data.storage_path) } as JourneyPhoto };
+}
+
+/** Edit the note on a photo that is already up. */
+export async function updateCaption(id: string, caption: string): Promise<string | null> {
+  if (!supabase) return 'Supabase is not configured for this site.';
+  const { error } = await supabase
+    .from('journey_photos')
+    .update({ caption: caption.trim() || null })
+    .eq('id', id);
+  return error ? error.message : null;
 }
 
 export async function deletePhoto(photo: JourneyPhoto): Promise<string | null> {

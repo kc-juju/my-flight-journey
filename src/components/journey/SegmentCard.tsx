@@ -112,26 +112,6 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
             <span className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
               <span className="text-on-surface">{formatDayDate(segment.departure)}</span>
               {km > 0 && <span className="text-on-surface">{formatNumber(km)} km</span>}
-              {departurePunctuality && (
-                <span
-                  title="Departure against the schedule"
-                  className="inline-flex items-center gap-1"
-                  style={{ color: departurePunctuality.colour }}
-                >
-                  <Icon name="flight_takeoff" className="text-[12px]" />
-                  {departurePunctuality.label}
-                </span>
-              )}
-              {arrivalPunctuality && (
-                <span
-                  title="Arrival against the schedule"
-                  className="inline-flex items-center gap-1 font-bold"
-                  style={{ color: arrivalPunctuality.colour }}
-                >
-                  <Icon name="flight_land" className="text-[12px]" />
-                  {arrivalPunctuality.label}
-                </span>
-              )}
               {hasClock && (
                 <>
                   <span>
@@ -179,6 +159,37 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
                 <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">
                   No time recorded
                 </span>
+              )}
+
+              {(departurePunctuality || arrivalPunctuality) && (
+                <dl className="mt-stack-sm flex flex-col gap-0.5 md:items-end">
+                  {departurePunctuality && (
+                    <div className="flex items-baseline gap-1.5">
+                      <dt className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                        Off
+                      </dt>
+                      <dd
+                        className="font-label-caps text-[11px] uppercase tracking-widest"
+                        style={{ color: departurePunctuality.colour }}
+                      >
+                        {departurePunctuality.label}
+                      </dd>
+                    </div>
+                  )}
+                  {arrivalPunctuality && (
+                    <div className="flex items-baseline gap-1.5">
+                      <dt className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                        In
+                      </dt>
+                      <dd
+                        className="font-label-caps text-[11px] font-bold uppercase tracking-widest"
+                        style={{ color: arrivalPunctuality.colour }}
+                      >
+                        {arrivalPunctuality.label}
+                      </dd>
+                    </div>
+                  )}
+                </dl>
               )}
             </>
           )}
