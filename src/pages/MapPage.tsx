@@ -53,6 +53,7 @@ export function MapPage() {
           placesById={placesById}
           activeId={active?.id ?? null}
           focus={selected}
+          onRecentre={() => setSelected(null)}
           onHover={handleHover}
           onSelect={openJourney}
         />
