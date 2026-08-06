@@ -9,6 +9,7 @@ import type {
 } from '../types/journey';
 import { TRANSPORT_MODES } from '../types/journey';
 import { distanceKm } from './geo';
+import { localToInstant } from './time';
 
 /** Index places by id so components never scan the array. */
 export function indexPlaces(places: Place[]): Map<string, Place> {
@@ -134,6 +135,28 @@ export function atlasMetrics(data: AtlasData): AtlasMetrics {
     ),
     modeTotals,
   };
+}
+
+/**
+ * Time on the ground between two consecutive legs, in minutes.
+ *
+ * Timezone-aware: Doha departs at 09:00 local after a Seoul arrival at 14:35
+ * local, which is a nine-hour wait, not a five-hour negative one.
+ */
+export function layoverMinutes(
+  before: Segment,
+  after: Segment,
+  byId: Map<string, Place>,
+): number | null {
+  if (before.toPlaceId !== after.fromPlaceId) return null;
+  const zone = byId.get(before.toPlaceId)?.timezone;
+  if (!zone) return null;
+  if (!before.arrival?.includes('T') || !after.departure?.includes('T')) return null;
+  const minutes =
+    (localToInstant(after.departure, zone).getTime() -
+      localToInstant(before.arrival, zone).getTime()) /
+    60_000;
+  return minutes >= 0 ? Math.round(minutes) : null;
 }
 
 export function journeyYear(journey: Journey): number {

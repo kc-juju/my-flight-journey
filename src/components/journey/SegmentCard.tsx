@@ -1,9 +1,11 @@
 import type { Place, Segment } from '../../types/journey';
+import { segmentDistanceKm } from '../../lib/atlas';
 import {
   dayOffset,
   formatClock,
   formatDayDate,
   formatDuration,
+  formatNumber,
   MODE_COLOR,
   MODE_ICON,
   MODE_LABEL,
@@ -26,6 +28,7 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
     .join(' • ');
 
   const overnight = dayOffset(segment.departure, segment.arrival);
+  const km = Math.round(segmentDistanceKm(segment, placesById));
   const dropped = Boolean(segment.dropped);
   // Flights are the spine of a journey; a hop to the next town along the coast
   // should not shout as loudly.
@@ -105,6 +108,7 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
           {segment.departure && (
             <span className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
               <span className="text-on-surface">{formatDayDate(segment.departure)}</span>
+              {km > 0 && <span className="text-on-surface">{formatNumber(km)} km</span>}
               {hasClock && (
                 <>
                   <span>

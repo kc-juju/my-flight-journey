@@ -13,7 +13,7 @@ import {
   PhotoUploader,
   usePhotoSlots,
 } from '../components/journey/JourneyPhotos';
-import { citiesOfJourney } from '../lib/atlas';
+import { citiesOfJourney, layoverMinutes } from '../lib/atlas';
 import { Icon } from '../components/ui/Icon';
 import { formatDateRange, formatDuration, formatNumber, STATUS_LABEL } from '../lib/format';
 
@@ -131,7 +131,17 @@ export function JourneyDetailPage() {
             {photosBefore.length > 0 && (
               <PhotoStrip photos={photosBefore} onDeleted={refreshPhotos} />
             )}
-            {journey.segments.map((segment, index) => (
+            {journey.segments.map((segment, index) => {
+              const next = journey.segments[index + 1];
+              const wait =
+                next && !segment.dropped && !next.dropped
+                  ? layoverMinutes(segment, next, placesById)
+                  : null;
+              const at = placesById.get(segment.toPlaceId);
+              const isTransfer = (journey.transferPlaceIds ?? []).includes(
+                segment.toPlaceId,
+              );
+              return (
               <Fragment key={segment.id}>
                 <SegmentCard segment={segment} placesById={placesById} />
                 {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
@@ -140,8 +150,25 @@ export function JourneyDetailPage() {
                     onDeleted={refreshPhotos}
                   />
                 )}
+
+                {wait !== null && (
+                  <p className="flex flex-wrap items-center gap-2 px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                    <Icon
+                      name={isTransfer ? 'connecting_airports' : 'hotel'}
+                      className="text-[16px]"
+                    />
+                    {formatDuration(wait)} {isTransfer ? 'connecting in' : 'in'}{' '}
+                    {at?.name ?? ''}
+                    {isTransfer && (
+                      <span className="rounded-full border border-outline-variant px-2 py-0.5 text-[9px]">
+                        Not counted as a visit
+                      </span>
+                    )}
+                  </p>
+                )}
               </Fragment>
-            ))}
+              );
+            })}
             <p className="px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
               Total travelling time {formatDuration(metrics.durationMinutes)} ·{' '}
               {formatNumber(metrics.distanceKm)} km great-circle
