@@ -86,8 +86,58 @@ export function MapPage() {
   };
 
   return (
-    <div className="relative flex min-h-[calc(100vh-80px)] w-full flex-col overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <div className="flex min-h-[calc(100vh-80px)] w-full flex-col overflow-hidden">
+      {/* What the map is showing, in numbers */}
+      <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-b border-outline-variant/40 bg-surface px-margin-mobile py-stack-sm lg:px-margin-desktop">
+        <h1 className="font-display-lg text-headline-md text-on-surface">
+          {year === null ? 'Everywhere so far' : `${year} in numbers`}
+        </h1>
+
+        <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
+          <span className="flex items-baseline gap-2">
+            <span className="font-stat-display text-stat-display text-on-surface">
+              {formatNumber(overview.km)}
+            </span>
+            <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+              km travelled
+            </span>
+          </span>
+
+          <span aria-hidden className="hidden h-8 w-px bg-outline-variant/60 sm:block" />
+
+          <dl className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
+            {([
+              ['Journeys', visible.length],
+              ['Flights', overview.flights],
+              ['Countries', overview.countries],
+              ['Cities', overview.cities],
+            ] as const).map(([label, value]) => (
+              <div key={label} className="flex flex-col items-center">
+                <dd className="font-stat-display text-[22px] leading-tight text-on-surface">
+                  {value}
+                </dd>
+                <dt className="font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant">
+                  {label}
+                </dt>
+              </div>
+            ))}
+          </dl>
+
+          {overview.next && overview.days !== null && overview.days >= 0 && (
+            <Link
+              to={`/journeys/${overview.next.slug}`}
+              className="flex items-center gap-2 rounded-full border border-outline-variant/60 px-3 py-1 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant transition-colors hover:border-on-surface-variant hover:text-on-surface"
+            >
+              <Icon name="flight_takeoff" className="text-[14px]" />
+              Next · {overview.days === 0 ? 'today' : `${overview.days} days`}
+            </Link>
+          )}
+        </div>
+      </div>
+
+      {/* The map, and everything that floats over it */}
+      <div className="relative min-h-[560px] flex-1">
+        <div className="absolute inset-0 z-0">
         <WorldMap
           journeys={visible}
           placesById={placesById}
@@ -100,10 +150,10 @@ export function MapPage() {
       </div>
 
       {/* Year filter */}
-      <div className="pointer-events-none absolute left-margin-mobile right-margin-mobile top-stack-md z-[600] flex flex-wrap gap-2 lg:left-margin-desktop lg:right-auto">
-        <div className="pointer-events-auto flex flex-wrap gap-1 rounded-full border border-outline-variant/40 bg-surface/85 p-1 shadow-lg backdrop-blur-xl">
+      <div className="pointer-events-none absolute inset-x-0 top-stack-md z-[600] flex justify-center px-margin-mobile">
+        <div className="pointer-events-auto flex max-w-full flex-nowrap gap-1 overflow-x-auto rounded-full border border-outline-variant/40 bg-surface/85 p-1 shadow-lg backdrop-blur-xl lg:flex-wrap lg:justify-center">
           <FilterChip active={year === null} onClick={() => setYear(null)}>
-            All years
+            All&nbsp;years
           </FilterChip>
           {metrics.years.map((y) => (
             <FilterChip key={y} active={year === y} onClick={() => setYear(y)}>
@@ -113,82 +163,13 @@ export function MapPage() {
         </div>
       </div>
 
-      {/* Overview — what the map is showing, in numbers */}
-      <AnimatePresence>
-        {!selected && (
-          <motion.aside
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="pointer-events-none absolute right-margin-mobile top-[76px] z-[600] hidden w-[300px] lg:right-margin-desktop lg:top-stack-md lg:block"
-          >
-            <div className="pointer-events-auto flex flex-col gap-stack-sm rounded-xl border border-outline-variant/40 bg-surface/85 p-stack-md shadow-2xl backdrop-blur-xl">
-              <div className="flex items-baseline justify-between gap-3">
-                <h2 className="font-display-lg text-headline-md text-on-surface">
-                  {year === null ? 'Everywhere so far' : `${year} in numbers`}
-                </h2>
-                <Link
-                  to="/stats"
-                  className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant underline hover:text-on-surface"
-                >
-                  More
-                </Link>
-              </div>
-
-              <div className="flex items-baseline gap-2">
-                <span className="font-stat-display text-stat-display text-on-surface">
-                  {formatNumber(overview.km)}
-                </span>
-                <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-                  km travelled
-                </span>
-              </div>
-
-              <dl className="grid grid-cols-4 gap-2 border-t border-outline-variant/50 pt-stack-sm">
-                {[
-                  ['Journeys', visible.length],
-                  ['Flights', overview.flights],
-                  ['Countries', overview.countries],
-                  ['Cities', overview.cities],
-                ].map(([label, value]) => (
-                  <div key={label as string} className="flex flex-col">
-                    <dd className="font-stat-display text-[22px] leading-tight text-on-surface">
-                      {value as number}
-                    </dd>
-                    <dt className="font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant">
-                      {label as string}
-                    </dt>
-                  </div>
-                ))}
-              </dl>
-
-              {overview.next && overview.days !== null && overview.days >= 0 && (
-                <Link
-                  to={`/journeys/${overview.next.slug}`}
-                  onMouseEnter={() => setHovered(overview.next!)}
-                  onMouseLeave={() => setHovered(null)}
-                  className="flex items-center gap-2 border-t border-outline-variant/50 pt-stack-sm font-body-md text-sm text-on-surface transition-colors hover:text-tertiary-fixed-dim"
-                >
-                  <Icon name="flight_takeoff" className="text-[16px] text-on-surface-variant" />
-                  <span className="truncate">{overview.next.title}</span>
-                  <span className="ml-auto shrink-0 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-                    {overview.days === 0 ? 'today' : `in ${overview.days}d`}
-                  </span>
-                </Link>
-              )}
-            </div>
-          </motion.aside>
-        )}
-      </AnimatePresence>
-
       <JourneyPopup
         journey={selected ? null : hovered}
         metrics={hovered ? metricsFor(hovered) : null}
         position={pointer}
       />
 
-      {/* Recent journeys */}
+      {/* Recent journeys, along the bottom */}
       <AnimatePresence>
         {!selected && (
           <motion.aside
@@ -196,68 +177,54 @@ export function MapPage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 24 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="pointer-events-none absolute bottom-margin-mobile left-margin-mobile z-[600] w-[calc(100%-40px)] max-w-md lg:bottom-margin-desktop lg:left-margin-desktop"
+            className="pointer-events-none absolute inset-x-0 bottom-margin-mobile z-[600] flex flex-col gap-stack-sm px-margin-mobile lg:bottom-margin-desktop lg:px-margin-desktop lg:pr-20"
           >
-            <div className="pointer-events-auto max-h-[52vh] overflow-y-auto rounded-xl border border-outline-variant/40 bg-surface/85 p-stack-md shadow-2xl backdrop-blur-xl">
-              <h2 className="mb-stack-md flex items-center gap-2 border-b border-outline-variant/50 pb-stack-sm font-display-lg text-headline-md text-on-surface">
-                <Icon name="flight_land" className="text-on-surface-variant" />
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface/85 px-4 py-1.5 font-display-lg text-[18px] text-on-surface shadow-lg backdrop-blur-xl">
+                <Icon name="flight_land" className="text-[18px] text-on-surface-variant" />
                 {year === null ? 'Recent journeys' : `${year} journeys`}
-              </h2>
+              </span>
 
-              {flown.length === 0 && upcoming.length === 0 ? (
-                <p className="py-4 text-sm italic text-on-surface-variant">
-                  No journeys recorded in {year}.
-                </p>
-              ) : (
-                <>
-                  {flown.length > 0 ? (
-                    <div className="flex flex-col gap-6">
-                      {flown.slice(0, 4).map((journey) => (
-                        <JourneyCard
-                          key={journey.id}
-                          journey={journey}
-                          metrics={metricsFor(journey)}
-                          onHoverStart={(j) => !selected && setHovered(j)}
-                          onHoverEnd={() => setHovered(null)}
-                        />
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="py-2 text-sm italic text-on-surface-variant">
-                      Nothing flown {year === null ? 'yet' : `in ${year}`}.
-                    </p>
-                  )}
-
-                  {upcoming.length > 0 && (
-                    <div className="mt-stack-md border-t border-outline-variant/50 pt-stack-sm">
-                      <h3 className="mb-stack-sm flex items-center gap-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-                        <Icon name="flight_takeoff" className="text-[16px]" />
-                        Booked ahead · {upcoming.length}
-                      </h3>
-                      <ul className="flex flex-col gap-2">
-                        {upcoming.map((journey) => (
-                          <li key={journey.id}>
-                            <Link
-                              to={`/journeys/${journey.slug}`}
-                              onMouseEnter={() => !selected && setHovered(journey)}
-                              onMouseLeave={() => setHovered(null)}
-                              className="flex items-baseline justify-between gap-3 rounded-lg px-2 py-1.5 transition-colors hover:bg-surface-container"
-                            >
-                              <span className="font-body-md text-sm text-on-surface">
-                                {journey.title}
-                              </span>
-                              <span className="shrink-0 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-                                {formatMonthYear(journey.startDate)}
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </>
-              )}
+              {upcoming.slice(0, 2).map((journey) => (
+                <Link
+                  key={journey.id}
+                  to={`/journeys/${journey.slug}`}
+                  onMouseEnter={() => setHovered(journey)}
+                  onMouseLeave={() => setHovered(null)}
+                  className="pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface/85 px-3 py-1.5 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant shadow-lg backdrop-blur-xl transition-colors hover:text-on-surface"
+                >
+                  <Icon name="flight_takeoff" className="text-[14px]" />
+                  {journey.title} · {formatMonthYear(journey.startDate)}
+                </Link>
+              ))}
             </div>
+
+            {flown.length > 0 ? (
+              // Stacked on a phone the three cards bury the map, so there
+              // they become one swipeable rail instead.
+              <div className="pointer-events-auto flex snap-x snap-mandatory gap-gutter overflow-x-auto pb-1 lg:grid lg:grid-cols-3 lg:overflow-visible">
+                {flown.slice(0, 3).map((journey) => (
+                  // The card is drawn for a page with a background; over the
+                  // map it needs one of its own or the words sit on coastline.
+                  <div
+                    key={journey.id}
+                    className="w-[86%] shrink-0 snap-start rounded-xl border border-outline-variant/40 bg-surface/90 p-stack-sm shadow-2xl backdrop-blur-xl sm:w-[60%] lg:w-auto lg:shrink"
+                  >
+                    <JourneyCard
+                      journey={journey}
+                      metrics={metricsFor(journey)}
+                      variant="full"
+                      onHoverStart={(j) => !selected && setHovered(j)}
+                      onHoverEnd={() => setHovered(null)}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="pointer-events-auto w-fit rounded-lg bg-surface/85 px-3 py-2 font-body-md text-sm italic text-on-surface-variant shadow-lg backdrop-blur-xl">
+                Nothing flown {year === null ? 'yet' : `in ${year}`}.
+              </p>
+            )}
           </motion.aside>
         )}
       </AnimatePresence>
@@ -339,6 +306,7 @@ export function MapPage() {
           </motion.aside>
         )}
       </AnimatePresence>
+      </div>
     </div>
   );
 }
