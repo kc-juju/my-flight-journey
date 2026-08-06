@@ -1,6 +1,13 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
-const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+/**
+ * An unset GitHub Actions variable arrives as an empty string, not as
+ * undefined — so `??` would happily accept "" and shadow the fallback.
+ */
+const firstSet = (...values: unknown[]): string | undefined =>
+  values.find((v): v is string => typeof v === 'string' && v.trim() !== '');
+
+const url = firstSet(import.meta.env.VITE_SUPABASE_URL);
 
 /**
  * Supabase now issues `sb_publishable_...` keys alongside the older `anon`
@@ -10,8 +17,10 @@ const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
  * Either key is meant to be public — it ships in every Supabase browser app.
  * What protects the data is row-level security, defined in supabase/schema.sql.
  */
-const anonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY ??
-  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY) as string | undefined;
+const anonKey = firstSet(
+  import.meta.env.VITE_SUPABASE_ANON_KEY,
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+);
 export const isSupabaseConfigured = Boolean(url && anonKey);
 
 export const supabase: SupabaseClient | null = isSupabaseConfigured
