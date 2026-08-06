@@ -583,6 +583,7 @@
       "countryCode": "CA",
       "lat": 51.1751,
       "lon": -115.5721,
+      "image": "/images/cities/banff.jpg",
       "timezone": "America/Edmonton"
     },
     {
@@ -592,6 +593,7 @@
       "countryCode": "CA",
       "lat": 51.0867,
       "lon": -115.3481,
+      "image": "/images/cities/canmore.jpg",
       "timezone": "America/Edmonton"
     },
     {
@@ -621,6 +623,7 @@
       "countryCode": "CA",
       "lat": 51.425,
       "lon": -116.1775,
+      "image": "/images/cities/lake-louise.jpg",
       "timezone": "America/Edmonton"
     },
     {

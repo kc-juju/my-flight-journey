@@ -369,5 +369,26 @@
     "licence": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Faloria_Cortina_d%27Ampezzo_10.jpg",
     "article": "Dolomites"
+  },
+  "canmore": {
+    "file": "Canmore_from_Lady_MacDonald_Teahouse.jpg",
+    "author": "Daniel Patterson",
+    "licence": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Canmore_from_Lady_MacDonald_Teahouse.jpg",
+    "article": "Canmore, Alberta"
+  },
+  "banff": {
+    "file": "Town_of_Banff_viewed_from_Sulphur_Mountain.jpg",
+    "author": "Ethan Sahagun",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Town_of_Banff_viewed_from_Sulphur_Mountain.jpg",
+    "article": "Banff, Alberta"
+  },
+  "lake-louise": {
+    "file": "1_lake_louise_pano_2019.jpg",
+    "author": "Chensiyuan",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:1_lake_louise_pano_2019.jpg",
+    "article": "Lake Louise (Alberta)"
   }
 }
