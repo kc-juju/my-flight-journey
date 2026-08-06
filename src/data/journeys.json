@@ -2282,63 +2282,81 @@
           "mode": "train",
           "fromPlaceId": "okj",
           "toPlaceId": "kurashiki",
-          "departure": "2024-02-28"
+          "departure": "2024-02-28",
+          "note": "JR山陽本線 — 16 min between Okayama and Kurashiki • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 16
         },
         {
           "id": "2024-02-28-kurashiki-OKJ-train",
           "mode": "train",
           "fromPlaceId": "kurashiki",
           "toPlaceId": "okj",
-          "departure": "2024-02-28"
+          "departure": "2024-02-28",
+          "note": "JR山陽本線 back to Okayama • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 16
         },
         {
           "id": "2024-02-29-OKJ-KIX-train",
           "mode": "train",
           "fromPlaceId": "okj",
           "toPlaceId": "kix",
-          "departure": "2024-02-29"
+          "departure": "2024-02-29",
+          "note": "Sanyō Shinkansen, Okayama → Shin-Ōsaka — 44 min on a Nozomi • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 44
         },
         {
           "id": "2024-02-29-KIX-kinosaki-train",
           "mode": "train",
           "fromPlaceId": "kix",
           "toPlaceId": "kinosaki",
-          "departure": "2024-02-29"
+          "departure": "2024-02-29",
+          "note": "Limited express Kōnotori, Shin-Ōsaka 08:09 → Kinosaki-Onsen 10:58 • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 169
         },
         {
           "id": "2024-03-01-kinosaki-amanohashidate-train",
           "mode": "train",
           "fromPlaceId": "kinosaki",
           "toPlaceId": "amanohashidate",
-          "departure": "2024-03-01"
+          "departure": "2024-03-01",
+          "note": "Kyoto Tango Railway — the 城崎・天橋立 direct, 09:52 → 11:18 • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 86
         },
         {
           "id": "2024-03-01-amanohashidate-KIX-train",
           "mode": "train",
           "fromPlaceId": "amanohashidate",
           "toPlaceId": "kix",
-          "departure": "2024-03-01"
+          "departure": "2024-03-01",
+          "note": "Limited express Hashidate to Kyoto, about 2h, then on to Osaka • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 150
         },
         {
           "id": "2024-03-02-KIX-himeji-train",
           "mode": "train",
           "fromPlaceId": "kix",
           "toPlaceId": "himeji",
-          "departure": "2024-03-02"
+          "departure": "2024-03-02",
+          "note": "Sanyō Shinkansen, Shin-Ōsaka → Himeji — 30 min on a Hikari or Sakura • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 30
         },
         {
           "id": "2024-03-02-himeji-kobe-train",
           "mode": "train",
           "fromPlaceId": "himeji",
           "toPlaceId": "kobe",
-          "departure": "2024-03-02"
+          "departure": "2024-03-02",
+          "note": "Sanyō Shinkansen, Himeji → Shin-Kōbe — 15 min • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 15
         },
         {
           "id": "2024-03-02-kobe-KIX-train",
           "mode": "train",
           "fromPlaceId": "kobe",
           "toPlaceId": "kix",
-          "departure": "2024-03-02"
+          "departure": "2024-03-02",
+          "note": "JR新快速, Sannomiya → Osaka — 21 min • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 21
         },
         {
           "id": "2024-03-03-CPA567-KIXHKG",
