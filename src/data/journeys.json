@@ -577,6 +577,24 @@
       "timezone": "Europe/Paris"
     },
     {
+      "id": "banff",
+      "name": "Banff",
+      "country": "Canada",
+      "countryCode": "CA",
+      "lat": 51.1751,
+      "lon": -115.5721,
+      "timezone": "America/Edmonton"
+    },
+    {
+      "id": "canmore",
+      "name": "Canmore",
+      "country": "Canada",
+      "countryCode": "CA",
+      "lat": 51.0867,
+      "lon": -115.3481,
+      "timezone": "America/Edmonton"
+    },
+    {
       "id": "cannes",
       "name": "Cannes",
       "country": "France",
@@ -595,6 +613,15 @@
       "lon": 12.1631,
       "image": "/images/cities/dolomites.jpg",
       "timezone": "Europe/Rome"
+    },
+    {
+      "id": "lake-louise",
+      "name": "Lake Louise",
+      "country": "Canada",
+      "countryCode": "CA",
+      "lat": 51.425,
+      "lon": -116.1775,
+      "timezone": "America/Edmonton"
     },
     {
       "id": "menton",
@@ -2705,6 +2732,76 @@
           "cabin": "Economy",
           "departureDelayMinutes": -8,
           "arrivalDelayMinutes": -18
+        },
+        {
+          "id": "2025-10-08-YYC-canmore-car",
+          "mode": "car",
+          "fromPlaceId": "yyc",
+          "toPlaceId": "canmore",
+          "departure": "2025-10-08",
+          "operator": "Hire car",
+          "note": "Picked up at Calgary and driven into the Bow Valley • 114 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 97
+        },
+        {
+          "id": "2025-10-09-canmore-banff-car",
+          "mode": "car",
+          "fromPlaceId": "canmore",
+          "toPlaceId": "banff",
+          "departure": "2025-10-09",
+          "operator": "Hire car",
+          "note": "Up the valley for the day • 27 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 28
+        },
+        {
+          "id": "2025-10-09-banff-canmore-car",
+          "mode": "car",
+          "fromPlaceId": "banff",
+          "toPlaceId": "canmore",
+          "departure": "2025-10-09",
+          "operator": "Hire car",
+          "note": "Back to Canmore for the night • 26 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 26
+        },
+        {
+          "id": "2025-10-10-canmore-lake-louise-car",
+          "mode": "car",
+          "fromPlaceId": "canmore",
+          "toPlaceId": "lake-louise",
+          "departure": "2025-10-10",
+          "operator": "Hire car",
+          "note": "On to the lake • 80 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 70
+        },
+        {
+          "id": "2025-10-10-lake-louise-banff-car",
+          "mode": "car",
+          "fromPlaceId": "lake-louise",
+          "toPlaceId": "banff",
+          "departure": "2025-10-10",
+          "operator": "Hire car",
+          "note": "Down to Banff • 57 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 52
+        },
+        {
+          "id": "2025-10-10-banff-canmore-car",
+          "mode": "car",
+          "fromPlaceId": "banff",
+          "toPlaceId": "canmore",
+          "departure": "2025-10-10",
+          "operator": "Hire car",
+          "note": "Back to Canmore for the night • 26 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 26
+        },
+        {
+          "id": "2025-10-11-canmore-YYC-car",
+          "mode": "car",
+          "fromPlaceId": "canmore",
+          "toPlaceId": "yyc",
+          "departure": "2025-10-11",
+          "operator": "Hire car",
+          "note": "Driven back to Calgary and returned • 111 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 93
         },
         {
           "id": "2025-10-12-WJA221-YYCYZF",

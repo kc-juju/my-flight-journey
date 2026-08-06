@@ -46,5 +46,29 @@
     "countryCode": "IT",
     "lat": 46.6131,
     "lon": 12.1631
+  },
+  {
+    "id": "canmore",
+    "name": "Canmore",
+    "country": "Canada",
+    "countryCode": "CA",
+    "lat": 51.0867,
+    "lon": -115.3481
+  },
+  {
+    "id": "banff",
+    "name": "Banff",
+    "country": "Canada",
+    "countryCode": "CA",
+    "lat": 51.1751,
+    "lon": -115.5721
+  },
+  {
+    "id": "lake-louise",
+    "name": "Lake Louise",
+    "country": "Canada",
+    "countryCode": "CA",
+    "lat": 51.425,
+    "lon": -116.1775
   }
 ]

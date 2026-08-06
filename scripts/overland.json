@@ -9,6 +9,76 @@
     "durationMinutes": 196
   },
   {
+    "journey": "2025-10-04-us-ca",
+    "date": "2025-10-08",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "YYC",
+    "to": "canmore",
+    "durationMinutes": 97,
+    "note": "Picked up at Calgary and driven into the Bow Valley • 114 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-10-04-us-ca",
+    "date": "2025-10-09",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "canmore",
+    "to": "banff",
+    "durationMinutes": 28,
+    "note": "Up the valley for the day • 27 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-10-04-us-ca",
+    "date": "2025-10-09",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "banff",
+    "to": "canmore",
+    "durationMinutes": 26,
+    "note": "Back to Canmore for the night • 26 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-10-04-us-ca",
+    "date": "2025-10-10",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "canmore",
+    "to": "lake-louise",
+    "durationMinutes": 70,
+    "note": "On to the lake • 80 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-10-04-us-ca",
+    "date": "2025-10-10",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "lake-louise",
+    "to": "banff",
+    "durationMinutes": 52,
+    "note": "Down to Banff • 57 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-10-04-us-ca",
+    "date": "2025-10-10",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "banff",
+    "to": "canmore",
+    "durationMinutes": 26,
+    "note": "Back to Canmore for the night • 26 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-10-04-us-ca",
+    "date": "2025-10-11",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "canmore",
+    "to": "YYC",
+    "durationMinutes": 93,
+    "note": "Driven back to Calgary and returned • 111 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
     "journey": "2026-03-28-ph-tr",
     "date": "2026-04-02",
     "mode": "bus",
