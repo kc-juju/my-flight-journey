@@ -66,6 +66,9 @@ export function Breakdowns() {
   const [openFamily, setOpenFamily] = useState<string | null>(null);
 
   const maxYearKm = Math.max(...b.years.map((y) => y.distanceKm), 1);
+  // This section is about airports; the ground-only towns have no code and
+  // belong with their country, not in a list of airports.
+  const airportsOnly = b.airportDetail.filter((row) => Boolean(row.place.code));
 
   return (
     <div className="flex flex-col gap-margin-desktop">
@@ -147,22 +150,17 @@ export function Breakdowns() {
       <section className="flex flex-col gap-stack-md">
         <header className="flex flex-col gap-unit">
           <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
-            Every place
+            Every airport
           </h2>
           <p className="max-w-lg font-body-md text-on-surface-variant">
-            {plural(b.airportDetail.filter((r) => r.place.code).length, 'airport')} and{' '}
-            {plural(
-              b.airportDetail.filter((r) => !r.place.code).length,
-              'town reached on the ground',
-              'towns reached on the ground',
-            )}
-            . Open one to see everywhere it connects to and how many times each
-            link was travelled.
+            {plural(airportsOnly.length, 'airport')}. Open one to see everywhere it
+            connects to and how many times each route was flown. Towns reached on
+            the ground appear under their country above, not here.
           </p>
         </header>
 
         <ul className="flex flex-col gap-stack-sm">
-          {b.airportDetail.map((row) => {
+          {airportsOnly.map((row) => {
             const open = openAirport === row.place.id;
             const maxPartner = row.partners[0]?.count ?? 1;
             return (
@@ -181,7 +179,7 @@ export function Breakdowns() {
                       {row.place.airportName ?? row.place.name}
                     </span>
                     <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-                      {row.place.code ?? 'ground'} · {row.place.country}
+                      {row.place.code} · {row.place.country}
                     </span>
                   </span>
                   <span className="flex items-center gap-3 font-label-caps text-[11px] uppercase tracking-widest text-on-surface-variant">
@@ -201,7 +199,7 @@ export function Breakdowns() {
                     {row.partners.map((partner) => (
                       <li key={partner.place.id} className="flex items-center gap-3">
                         <span className="w-52 shrink-0 truncate font-body-md text-sm text-on-surface">
-                          {row.place.code ?? row.place.name} — {partner.place.code ?? partner.place.name}
+                          {row.place.code} — {partner.place.code ?? partner.place.name}
                           <span className="ml-2 text-on-surface-variant">
                             {partner.place.name}
                           </span>

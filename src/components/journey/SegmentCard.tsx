@@ -27,6 +27,9 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
 
   const overnight = dayOffset(segment.departure, segment.arrival);
   const dropped = Boolean(segment.dropped);
+  // Flights are the spine of a journey; a hop to the next town along the coast
+  // should not shout as loudly.
+  const minor = segment.mode !== 'flight' && !dropped;
   // A date without a "T" means only the day was recorded; no clock to show.
   const hasClock = Boolean(segment.departure?.includes('T') && segment.arrival);
 
@@ -36,10 +39,12 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
 
   return (
     <article
-      className={`group relative flex flex-col items-start gap-stack-md overflow-hidden rounded-xl p-stack-md transition-shadow duration-300 md:flex-row md:items-center ${
+      className={`group relative flex flex-col items-start overflow-hidden rounded-xl transition-shadow duration-300 md:flex-row md:items-center ${
         dropped
-          ? 'border border-dashed border-outline-variant bg-surface-container-low/60 shadow-none'
-          : 'bg-surface-container-lowest shadow-md shadow-primary/5 hover:shadow-lg'
+          ? 'gap-stack-md border border-dashed border-outline-variant bg-surface-container-low/60 p-stack-md shadow-none'
+          : minor
+            ? 'ml-6 gap-stack-sm bg-surface-container-low/70 p-stack-sm shadow-sm'
+            : 'gap-stack-md bg-surface-container-lowest p-stack-md shadow-md shadow-primary/5 hover:shadow-lg'
       }`}
     >
       <span
@@ -49,7 +54,9 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
       />
 
       <div
-        className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-full transition-transform ${
+        className={`flex shrink-0 items-center justify-center rounded-full transition-transform ${
+          minor ? 'h-10 w-10' : 'h-16 w-16'
+        } ${
           dropped
             ? 'bg-surface-container text-on-surface-variant/50'
             : 'bg-surface-container text-primary group-hover:scale-110'
@@ -57,7 +64,7 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
       >
         <Icon
           name={dropped ? 'flight_class' : MODE_ICON[segment.mode]}
-          className="text-[32px]"
+          className={minor ? 'text-[20px]' : 'text-[32px]'}
         />
       </div>
 
@@ -82,11 +89,11 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
               dropped ? 'text-on-surface-variant/60 line-through decoration-2' : ''
             }`}
           >
-            <h4 className="font-headline-md text-headline-md">
+            <h4 className={minor ? 'font-headline-md text-[17px]' : 'font-headline-md text-headline-md'}>
               {from?.airportName ?? from?.name ?? segment.fromPlaceId}
             </h4>
             <Icon name="arrow_right_alt" className="text-[16px] no-underline" />
-            <h4 className="font-headline-md text-headline-md">
+            <h4 className={minor ? 'font-headline-md text-[17px]' : 'font-headline-md text-headline-md'}>
               {to?.airportName ?? to?.name ?? segment.toPlaceId}
             </h4>
           </div>
@@ -125,15 +132,27 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
             </span>
           ) : (
             <>
-              <span
-                className="block font-stat-display text-stat-display"
-                style={{ color: accent }}
-              >
-                {formatDuration(segment.durationMinutes ?? 0)}
-              </span>
-              <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">
-                Duration
-              </span>
+              {segment.durationMinutes ? (
+                <>
+                  <span
+                    className={
+                      minor
+                        ? 'block font-stat-display text-[20px]'
+                        : 'block font-stat-display text-stat-display'
+                    }
+                    style={{ color: accent }}
+                  >
+                    {formatDuration(segment.durationMinutes)}
+                  </span>
+                  <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">
+                    Duration
+                  </span>
+                </>
+              ) : (
+                <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">
+                  No time recorded
+                </span>
+              )}
             </>
           )}
         </div>

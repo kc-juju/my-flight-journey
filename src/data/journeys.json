@@ -587,6 +587,16 @@
       "timezone": "Europe/Paris"
     },
     {
+      "id": "dolomites",
+      "name": "Dolomites",
+      "country": "Italy",
+      "countryCode": "IT",
+      "lat": 46.6131,
+      "lon": 12.1631,
+      "image": "/images/cities/dolomites.jpg",
+      "timezone": "Europe/Rome"
+    },
+    {
       "id": "menton",
       "name": "Menton",
       "country": "France",
@@ -2767,6 +2777,24 @@
           "vehicle": "Airbus A320",
           "registration": "OE-IVL",
           "cabin": "Economy"
+        },
+        {
+          "id": "2026-04-05-VCE-dolomites-car",
+          "mode": "car",
+          "fromPlaceId": "vce",
+          "toPlaceId": "dolomites",
+          "departure": "2026-04-05",
+          "operator": "Hire car",
+          "note": "Picked up at Venice and driven north into the mountains"
+        },
+        {
+          "id": "2026-04-09-dolomites-VCE-car",
+          "mode": "car",
+          "fromPlaceId": "dolomites",
+          "toPlaceId": "vce",
+          "departure": "2026-04-09",
+          "operator": "Hire car",
+          "note": "Driven back to Venice"
         },
         {
           "id": "2026-04-11-THY1868-VCEIST",

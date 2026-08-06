@@ -38,5 +38,13 @@
     "countryCode": "FR",
     "lat": 43.58,
     "lon": 7.1231
+  },
+  {
+    "id": "dolomites",
+    "name": "Dolomites",
+    "country": "Italy",
+    "countryCode": "IT",
+    "lat": 46.6131,
+    "lon": 12.1631
   }
 ]

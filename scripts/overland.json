@@ -63,5 +63,23 @@
     "mode": "train",
     "from": "antibes",
     "to": "nce"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-05",
+    "mode": "car",
+    "from": "VCE",
+    "to": "dolomites",
+    "operator": "Hire car",
+    "note": "Picked up at Venice and driven north into the mountains"
+  },
+  {
+    "journey": "2026-03-28-ph-tr",
+    "date": "2026-04-09",
+    "mode": "car",
+    "from": "dolomites",
+    "to": "VCE",
+    "operator": "Hire car",
+    "note": "Driven back to Venice"
   }
 ]

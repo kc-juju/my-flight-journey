@@ -81,6 +81,7 @@ ARTICLE_OVERRIDES = {
     'menton': 'Menton',
     'cannes': 'Cannes',
     'antibes': 'Antibes',
+    'dolomites': 'Dolomites',
     'HKG': 'Central, Hong Kong',
     'MFM': 'Macau Peninsula',
 }

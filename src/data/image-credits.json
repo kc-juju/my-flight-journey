@@ -362,5 +362,12 @@
     "licence": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Panorama_von_Monaco-La_Turbie.jpg",
     "article": "Monte Carlo"
+  },
+  "dolomites": {
+    "file": "Faloria_Cortina_d'Ampezzo_10.jpg",
+    "author": "kallerna",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Faloria_Cortina_d%27Ampezzo_10.jpg",
+    "article": "Dolomites"
   }
 }
