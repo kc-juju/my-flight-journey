@@ -109,6 +109,24 @@ export const MODE_COLOR: Record<TransportMode, string> = {
   surface: '#b9c7e4',
 };
 
+/**
+ * How a delay should read. Early and roughly-on-time are worth distinguishing
+ * from late; an hour late is worth distinguishing from five minutes.
+ */
+export function punctuality(minutes?: number): {
+  label: string;
+  tone: 'early' | 'ontime' | 'slight' | 'late';
+  colour: string;
+} | null {
+  if (minutes == null) return null;
+  if (minutes <= -5) return { label: `${Math.abs(minutes)}m early`, tone: 'early', colour: '#2f6b46' };
+  if (minutes < 15) return { label: minutes <= 0 ? 'On time' : `${minutes}m late`, tone: 'ontime', colour: '#5e5e5b' };
+  if (minutes < 60) return { label: `${minutes}m late`, tone: 'slight', colour: '#a17f3b' };
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return { label: `${h}h${m ? ` ${m}m` : ''} late`, tone: 'late', colour: '#ba1a1a' };
+}
+
 export const STATUS_LABEL = {
   completed: 'Verified journey',
   planned: 'Booked',

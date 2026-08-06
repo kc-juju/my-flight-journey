@@ -64,6 +64,9 @@ export interface Segment {
   /** Cabin, class of service, seat category… */
   cabin?: string;
   note?: string;
+  /** Minutes against the schedule. Negative is early. */
+  departureDelayMinutes?: number;
+  arrivalDelayMinutes?: number;
   /**
    * Booked but not travelled — an oversold flight given up, a cancelled leg.
    * Shown struck through and excluded from every derived figure.

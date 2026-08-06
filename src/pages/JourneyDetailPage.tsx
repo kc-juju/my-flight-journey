@@ -138,7 +138,11 @@ export function JourneyDetailPage() {
                   ? layoverMinutes(segment, next, placesById)
                   : null;
               const at = placesById.get(segment.toPlaceId);
-              const isTransfer = (journey.transferPlaceIds ?? []).includes(
+              // A short gap is a connection whatever else happened; whether the
+              // city counts is a separate question, and one stop can differ
+              // from another at the same airport on the same trip.
+              const isShort = wait !== null && wait < 12 * 60;
+              const notCounted = (journey.transferPlaceIds ?? []).includes(
                 segment.toPlaceId,
               );
               return (
@@ -154,12 +158,12 @@ export function JourneyDetailPage() {
                 {wait !== null && (
                   <p className="flex flex-wrap items-center gap-2 px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                     <Icon
-                      name={isTransfer ? 'connecting_airports' : 'hotel'}
+                      name={isShort ? 'connecting_airports' : 'hotel'}
                       className="text-[16px]"
                     />
-                    {formatDuration(wait)} {isTransfer ? 'connecting in' : 'in'}{' '}
+                    {formatDuration(wait)} {isShort ? 'connecting in' : 'in'}{' '}
                     {at?.name ?? ''}
-                    {isTransfer && (
+                    {notCounted && (
                       <span className="rounded-full border border-outline-variant px-2 py-0.5 text-[9px]">
                         Not counted as a visit
                       </span>

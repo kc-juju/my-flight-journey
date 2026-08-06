@@ -398,6 +398,11 @@ def build():
                 seg['registration'] = leg['reg']
             if leg.get('cab'):
                 seg['cabin'] = leg['cab'].replace('_', ' ').title()
+            # Minutes late against the schedule; negative means early.
+            if leg.get('dep') is not None:
+                seg['departureDelayMinutes'] = leg['dep']
+            if leg.get('arr') is not None:
+                seg['arrivalDelayMinutes'] = leg['arr']
             segments.append(seg)
 
         # ---- derived identity -----------------------------------------
@@ -506,22 +511,29 @@ def build():
         entry = notes.get(journey['slug']) or {}
         forced = {place_id.get(c, c) for c in entry.get('visited', [])}
         flown = [s for s in journey['segments'] if not s.get('dropped')]
-        transfers = []
+        stays = {}
         for i in range(len(flown) - 1):
             here, nxt = flown[i], flown[i + 1]
             if here['toPlaceId'] != nxt['fromPlaceId']:
                 continue
             pid = here['toPlaceId']
-            if pid in forced:
-                continue
             arrive = moment(here.get('arrival'), zone_of.get(pid))
             leave = moment(nxt.get('departure'), zone_of.get(pid))
             if not arrive or not leave:
                 continue
             minutes = (leave - arrive).total_seconds() / 60
-            if 0 <= minutes < TRANSFER_MAX_MINUTES and pid not in transfers:
+            if minutes >= 0:
+                stays.setdefault(pid, []).append(round(minutes))
+
+        # Calgary was a two-hour connection once and a four-day stay the other
+        # time. Somewhere only counts as a connection if every stop was short.
+        transfers = []
+        for pid, waits in stays.items():
+            if pid in forced:
+                continue
+            if all(w < TRANSFER_MAX_MINUTES for w in waits):
                 transfers.append(pid)
-                removed.append((journey['slug'], pid, round(minutes)))
+                removed.append((journey['slug'], pid, min(waits)))
         if transfers:
             journey['transferPlaceIds'] = transfers
 

@@ -749,7 +749,9 @@
           "arrival": "2008-01-13T17:03",
           "durationMinutes": 123,
           "vehicle": "Airbus A330",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 0,
+          "arrivalDelayMinutes": -12
         },
         {
           "id": "2008-01-19-HDA893-PVGHKG",
@@ -762,7 +764,9 @@
           "arrival": "2008-01-19T18:08",
           "durationMinutes": 166,
           "vehicle": "Airbus A321",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 2,
+          "arrivalDelayMinutes": -2
         },
         {
           "id": "2008-01-19-HDA482-HKGTPE",
@@ -820,7 +824,9 @@
           "arrival": "2010-07-27T09:36",
           "durationMinutes": 96,
           "vehicle": "Airbus A330",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 0,
+          "arrivalDelayMinutes": -9
         },
         {
           "id": "2010-07-31-HDA482-HKGTPE",
@@ -833,7 +839,9 @@
           "arrival": "2010-07-31T20:03",
           "durationMinutes": 102,
           "vehicle": "Airbus A330",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 11,
+          "arrivalDelayMinutes": 8
         }
       ]
     },
@@ -931,7 +939,9 @@
           "durationMinutes": 158,
           "vehicle": "Boeing 737-800",
           "registration": "B-5468",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -9,
+          "arrivalDelayMinutes": -6
         },
         {
           "id": "2016-08-06-CSN3021-KWETPE",
@@ -945,7 +955,9 @@
           "durationMinutes": 144,
           "vehicle": "Boeing 737-800",
           "registration": "B-5468",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -12,
+          "arrivalDelayMinutes": -18
         }
       ]
     },
@@ -988,7 +1000,8 @@
           "durationMinutes": 106,
           "vehicle": "Airbus A320",
           "registration": "B-50008",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 14
         },
         {
           "id": "2017-03-12-TTW304-MFMTPE",
@@ -1045,7 +1058,8 @@
           "durationMinutes": 148,
           "vehicle": "Airbus A320",
           "registration": "B-50008",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "arrivalDelayMinutes": -12
         },
         {
           "id": "2017-09-08-TTW213-KIXTPE",
@@ -1059,7 +1073,8 @@
           "durationMinutes": 149,
           "vehicle": "Airbus A320",
           "registration": "B-50003",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 21
         }
       ]
     },
@@ -1198,7 +1213,9 @@
           "durationMinutes": 680,
           "vehicle": "Airbus A350-900",
           "registration": "OH-LWG",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 4,
+          "arrivalDelayMinutes": -26
         },
         {
           "id": "2018-07-03-FIN1145-HELWAW",
@@ -1212,7 +1229,9 @@
           "durationMinutes": 87,
           "vehicle": "Embraer 190",
           "registration": "OH-LKG",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 3,
+          "arrivalDelayMinutes": -15
         },
         {
           "id": "2018-07-05-WZZ2468-WAWBUD",
@@ -1226,7 +1245,8 @@
           "durationMinutes": 68,
           "vehicle": "Airbus A320",
           "registration": "HA-LWE",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "arrivalDelayMinutes": -7
         },
         {
           "id": "2018-07-10-FIN131-HELSIN",
@@ -1240,7 +1260,9 @@
           "durationMinutes": 675,
           "vehicle": "Airbus A350-900",
           "registration": "OH-LWF",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 210,
+          "arrivalDelayMinutes": 190
         },
         {
           "id": "2018-07-11-FIN1146-WAWHEL",
@@ -1254,7 +1276,9 @@
           "durationMinutes": 92,
           "vehicle": "Embraer 190",
           "registration": "OH-LKR",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -7,
+          "arrivalDelayMinutes": -15
         },
         {
           "id": "2018-07-13-TGW898-SINTPE",
@@ -1268,7 +1292,8 @@
           "durationMinutes": 277,
           "vehicle": "Boeing 787-9",
           "registration": "9V-OJA",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 8
         }
       ],
       "notes": "The Helsinki stop was under twelve hours but we went into the city, so it counts as a visit rather than a connection."
@@ -1312,7 +1337,8 @@
           "durationMinutes": 47,
           "vehicle": "McDonnell Douglas MD-83",
           "registration": "B-28007",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "arrivalDelayMinutes": 2
         },
         {
           "id": "2018-08-25-UIA8610-MZGTSA",
@@ -1326,7 +1352,9 @@
           "durationMinutes": 48,
           "vehicle": "Airbus A321",
           "registration": "B-16221",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -3,
+          "arrivalDelayMinutes": -5
         }
       ]
     },
@@ -1369,7 +1397,9 @@
           "durationMinutes": 221,
           "vehicle": "Boeing 787-8",
           "registration": "9V-OFE",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -4,
+          "arrivalDelayMinutes": 2
         },
         {
           "id": "2018-11-13-TGW893-CTSTPE",
@@ -1383,7 +1413,8 @@
           "durationMinutes": 295,
           "vehicle": "Boeing 787-8",
           "registration": "9V-OFE",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -10
         }
       ]
     },
@@ -1426,7 +1457,9 @@
           "durationMinutes": 136,
           "vehicle": "Airbus A320",
           "registration": "B-50007",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -13,
+          "arrivalDelayMinutes": -12
         },
         {
           "id": "2019-02-22-TTW241-FUKTPE",
@@ -1440,7 +1473,9 @@
           "durationMinutes": 165,
           "vehicle": "Airbus A320",
           "registration": "B-50001",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -4,
+          "arrivalDelayMinutes": -4
         }
       ]
     },
@@ -1489,7 +1524,9 @@
           "durationMinutes": 119,
           "vehicle": "Boeing 787-9",
           "registration": "B-208X",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 1,
+          "arrivalDelayMinutes": -15
         },
         {
           "id": "2019-07-23-CES297-PVGJFK",
@@ -1503,7 +1540,8 @@
           "durationMinutes": 898,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-2002",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -3
         },
         {
           "id": "2019-08-17-CES298-JFKPVG",
@@ -1517,7 +1555,8 @@
           "durationMinutes": 856,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-2023",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "arrivalDelayMinutes": -39
         },
         {
           "id": "2019-08-18-CES5007-PVGTPE",
@@ -1531,7 +1570,8 @@
           "durationMinutes": 121,
           "vehicle": "Airbus A330-200",
           "registration": "B-5952",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -1
         }
       ],
       "transferPlaceIds": [
@@ -1580,7 +1620,9 @@
           "durationMinutes": 118,
           "vehicle": "Airbus A320",
           "registration": "B-50007",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 10,
+          "arrivalDelayMinutes": 13
         },
         {
           "id": "2020-01-19-CPA468-HKGTPE",
@@ -1594,7 +1636,9 @@
           "durationMinutes": 98,
           "vehicle": "Airbus A330-300",
           "registration": "B-LBC",
-          "cabin": "Business"
+          "cabin": "Business",
+          "departureDelayMinutes": 29,
+          "arrivalDelayMinutes": 12
         }
       ]
     },
@@ -1637,7 +1681,8 @@
           "durationMinutes": 216,
           "vehicle": "Airbus A320neo",
           "registration": "B-50025",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -1
         },
         {
           "id": "2022-12-04-TTW235-CTSTPE",
@@ -1651,7 +1696,9 @@
           "durationMinutes": 317,
           "vehicle": "Airbus A320neo",
           "registration": "B-50023",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 0,
+          "arrivalDelayMinutes": 47
         }
       ]
     },
@@ -1694,7 +1741,8 @@
           "durationMinutes": 283,
           "vehicle": "Airbus A330-300",
           "registration": "9M-XXR",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 2
         },
         {
           "id": "2023-02-28-EVA228-KULTPE",
@@ -1708,7 +1756,9 @@
           "durationMinutes": 272,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-16712",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 11,
+          "arrivalDelayMinutes": 3
         }
       ]
     },
@@ -1754,7 +1804,9 @@
           "durationMinutes": 904,
           "vehicle": "Boeing 787-9",
           "registration": "B-17885",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 9,
+          "arrivalDelayMinutes": 43
         },
         {
           "id": "2023-04-10-EVA66-VIETPE",
@@ -1768,7 +1820,9 @@
           "durationMinutes": 717,
           "vehicle": "Boeing 787-9",
           "registration": "B-17882",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 4,
+          "arrivalDelayMinutes": 1
         }
       ]
     },
@@ -1817,7 +1871,9 @@
           "durationMinutes": 267,
           "vehicle": "Airbus A330-300",
           "registration": "B-16336",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 18,
+          "arrivalDelayMinutes": 0
         },
         {
           "id": "2023-10-06-MXD2108-KULPEN",
@@ -1845,7 +1901,8 @@
           "durationMinutes": 63,
           "vehicle": "Boeing 737-800",
           "registration": "9M-LCZ",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -3
         },
         {
           "id": "2023-10-09-EVA228-KULTPE",
@@ -1859,7 +1916,9 @@
           "durationMinutes": 298,
           "vehicle": "Airbus A330-300",
           "registration": "B-16338",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 2,
+          "arrivalDelayMinutes": 5
         }
       ],
       "transferPlaceIds": [
@@ -1905,7 +1964,8 @@
           "durationMinutes": 133,
           "vehicle": "Boeing 787-9",
           "registration": "9V-OJH",
-          "cabin": "Premium Economy"
+          "cabin": "Premium Economy",
+          "departureDelayMinutes": 52
         },
         {
           "id": "2023-11-21-JAL809-NRTTPE",
@@ -1919,7 +1979,9 @@
           "durationMinutes": 230,
           "vehicle": "Boeing 787-8",
           "registration": "JA831J",
-          "cabin": "Business"
+          "cabin": "Business",
+          "departureDelayMinutes": 3,
+          "arrivalDelayMinutes": -17
         }
       ]
     },
@@ -1968,7 +2030,8 @@
           "durationMinutes": 131,
           "vehicle": "Airbus A320",
           "registration": "B-50017",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 14
         },
         {
           "id": "2024-03-03-CPA567-KIXHKG",
@@ -1982,7 +2045,9 @@
           "durationMinutes": 259,
           "vehicle": "Airbus A330-300",
           "registration": "B-LBH",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -2,
+          "arrivalDelayMinutes": -13
         },
         {
           "id": "2024-03-03-CPA402-HKGTPE",
@@ -1996,7 +2061,9 @@
           "durationMinutes": 179,
           "vehicle": "Airbus A330-300",
           "registration": "B-LAZ",
-          "cabin": "Business"
+          "cabin": "Business",
+          "departureDelayMinutes": -4,
+          "arrivalDelayMinutes": 70
         }
       ],
       "transferPlaceIds": [
@@ -2048,7 +2115,9 @@
           "durationMinutes": 243,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-16737",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 7,
+          "arrivalDelayMinutes": 10
         },
         {
           "id": "2024-03-30-EVA67-BKKLHR",
@@ -2062,7 +2131,9 @@
           "durationMinutes": 779,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-16737",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 22,
+          "arrivalDelayMinutes": 1
         },
         {
           "id": "2024-04-07-EVA88-CDGTPE",
@@ -2076,7 +2147,9 @@
           "durationMinutes": 782,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-16738",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 44,
+          "arrivalDelayMinutes": 26
         }
       ],
       "transferPlaceIds": [
@@ -2122,7 +2195,9 @@
           "durationMinutes": 283,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-16708",
-          "cabin": "Premium Economy"
+          "cabin": "Premium Economy",
+          "departureDelayMinutes": 12,
+          "arrivalDelayMinutes": 10
         },
         {
           "id": "2024-06-11-XAX378-KULTPE",
@@ -2136,7 +2211,9 @@
           "durationMinutes": 317,
           "vehicle": "Airbus A330-300",
           "registration": "9M-XXG",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -4,
+          "arrivalDelayMinutes": 18
         }
       ]
     },
@@ -2179,7 +2256,9 @@
           "durationMinutes": 194,
           "vehicle": "Airbus A320neo",
           "registration": "9M-RAB",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 10,
+          "arrivalDelayMinutes": -6
         },
         {
           "id": "2024-11-04-AXM1510-BKITPE",
@@ -2193,7 +2272,9 @@
           "durationMinutes": 206,
           "vehicle": "Airbus A320",
           "registration": "9M-AGU",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 0,
+          "arrivalDelayMinutes": 6
         }
       ]
     },
@@ -2236,7 +2317,9 @@
           "durationMinutes": 149,
           "vehicle": "Airbus A320",
           "registration": "B-50001",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -5,
+          "arrivalDelayMinutes": -6
         },
         {
           "id": "2025-01-02-TTW603-ICNTPE",
@@ -2250,7 +2333,8 @@
           "durationMinutes": 155,
           "vehicle": "Airbus A320neo",
           "registration": "B-50023",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 10
         }
       ]
     },
@@ -2305,7 +2389,9 @@
           "durationMinutes": 283,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-16711",
-          "cabin": "Business"
+          "cabin": "Business",
+          "departureDelayMinutes": 1,
+          "arrivalDelayMinutes": -11
         },
         {
           "id": "2025-01-19-SIA227-SINMEL",
@@ -2319,7 +2405,8 @@
           "durationMinutes": 439,
           "vehicle": "Boeing 777-300 ER",
           "registration": "9V-SWZ",
-          "cabin": "Business"
+          "cabin": "Business",
+          "departureDelayMinutes": 6
         },
         {
           "id": "2025-01-27-VOZ755-MELOOL",
@@ -2333,7 +2420,9 @@
           "durationMinutes": 93,
           "vehicle": "Boeing 737-800",
           "registration": "VH-VUG",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 15,
+          "arrivalDelayMinutes": 38
         },
         {
           "id": "2025-02-01-SIA246-BNESIN",
@@ -2347,7 +2436,8 @@
           "durationMinutes": 460,
           "vehicle": "Airbus A350-900",
           "registration": "9V-SHL",
-          "cabin": "Business"
+          "cabin": "Business",
+          "departureDelayMinutes": 0
         },
         {
           "id": "2025-02-02-SIA876-SINTPE",
@@ -2361,7 +2451,9 @@
           "durationMinutes": 266,
           "vehicle": "Boeing 787-10",
           "registration": "9V-SCU",
-          "cabin": "Business"
+          "cabin": "Business",
+          "departureDelayMinutes": 7,
+          "arrivalDelayMinutes": -12
         }
       ],
       "transferPlaceIds": [
@@ -2413,7 +2505,9 @@
           "durationMinutes": 129,
           "vehicle": "Boeing 777-300",
           "registration": "B-HNG",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 22,
+          "arrivalDelayMinutes": 21
         },
         {
           "id": "2025-03-29-CPA880-HKGLAX",
@@ -2427,7 +2521,9 @@
           "durationMinutes": 758,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-KPI",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 7,
+          "arrivalDelayMinutes": 15
         },
         {
           "id": "2025-04-06-CPA885-LAXHKG",
@@ -2441,7 +2537,9 @@
           "durationMinutes": 935,
           "vehicle": "Boeing 777-300 ER",
           "registration": "B-KQO",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 124,
+          "arrivalDelayMinutes": 129
         },
         {
           "id": "2025-04-07-CPA408-HKGTPE",
@@ -2455,7 +2553,9 @@
           "durationMinutes": 90,
           "vehicle": "Airbus A330-300",
           "registration": "B-LBH",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -4,
+          "arrivalDelayMinutes": -19
         }
       ],
       "transferPlaceIds": [
@@ -2501,7 +2601,9 @@
           "durationMinutes": 213,
           "vehicle": "Boeing 787-9",
           "registration": "9V-OJA",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -5,
+          "arrivalDelayMinutes": 3
         },
         {
           "id": "2025-07-21-TGW871-NRTTPE",
@@ -2515,7 +2617,9 @@
           "durationMinutes": 204,
           "vehicle": "Boeing 787-9",
           "registration": "9V-OJD",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -1,
+          "arrivalDelayMinutes": -47
         }
       ]
     },
@@ -2573,7 +2677,9 @@
           "durationMinutes": 650,
           "vehicle": "Airbus A350-900",
           "registration": "N510DN",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -3,
+          "arrivalDelayMinutes": -33
         },
         {
           "id": "2025-10-06-SEAYVR-bus",
@@ -2596,7 +2702,9 @@
           "durationMinutes": 81,
           "vehicle": "Boeing 737-800",
           "registration": "C-GLRN",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -8,
+          "arrivalDelayMinutes": -18
         },
         {
           "id": "2025-10-12-WJA221-YYCYZF",
@@ -2610,7 +2718,9 @@
           "durationMinutes": 142,
           "vehicle": "Boeing 737-700",
           "registration": "C-GWCN",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 10,
+          "arrivalDelayMinutes": 19
         },
         {
           "id": "2025-10-15-WJA222-YZFYYC",
@@ -2624,7 +2734,9 @@
           "durationMinutes": 122,
           "vehicle": "Boeing 737 MAX 8",
           "registration": "C-GMXB",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 17,
+          "arrivalDelayMinutes": 10
         },
         {
           "id": "2025-10-15-WJA3616-YYCSEA",
@@ -2638,7 +2750,9 @@
           "durationMinutes": 124,
           "vehicle": "DHC-8-400 Dash 8Q",
           "registration": "C-FENJ",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 15,
+          "arrivalDelayMinutes": 8
         },
         {
           "id": "2025-10-18-SEATPE-dropped",
@@ -2664,11 +2778,10 @@
           "vehicle": "Airbus A350-900",
           "registration": "N508DN",
           "cabin": "Economy",
+          "departureDelayMinutes": 18,
+          "arrivalDelayMinutes": 68,
           "note": "Rebooked from 18 Oct — the original flight was oversold and we volunteered to move"
         }
-      ],
-      "transferPlaceIds": [
-        "yyc"
       ],
       "notes": "We were booked to fly home on 18 October. The flight was oversold, we volunteered to give up our seats, and left the following evening instead."
     },
@@ -2711,7 +2824,9 @@
           "durationMinutes": 66,
           "vehicle": "ATR 72",
           "registration": "B-17009",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -1,
+          "arrivalDelayMinutes": 5
         },
         {
           "id": "2026-01-18-UIA8622-MZGTSA",
@@ -2725,7 +2840,8 @@
           "durationMinutes": 50,
           "vehicle": "Airbus A321",
           "registration": "B-16209",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "arrivalDelayMinutes": 0
         }
       ]
     },
@@ -2784,7 +2900,9 @@
           "durationMinutes": 148,
           "vehicle": "Airbus A320",
           "registration": "RP-C8971",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 1,
+          "arrivalDelayMinutes": 4
         },
         {
           "id": "2026-03-29-THY85-MNLIST",
@@ -2798,7 +2916,9 @@
           "durationMinutes": 761,
           "vehicle": "Boeing 777-300 ER",
           "registration": "TC-JJP",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -1,
+          "arrivalDelayMinutes": 0
         },
         {
           "id": "2026-03-30-THY1391-ISTBOD",
@@ -2812,7 +2932,9 @@
           "durationMinutes": 204,
           "vehicle": "Airbus A321neo",
           "registration": "TC-LPY",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -1,
+          "arrivalDelayMinutes": -32
         },
         {
           "id": "2026-04-01-EZY1642-BODNCE",
@@ -2826,7 +2948,9 @@
           "durationMinutes": 86,
           "vehicle": "Airbus A320",
           "registration": "OE-INI",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 72,
+          "arrivalDelayMinutes": 73
         },
         {
           "id": "2026-04-02-nce-eze-bus",
@@ -2912,7 +3036,9 @@
           "durationMinutes": 60,
           "vehicle": "Airbus A320",
           "registration": "OE-IVL",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -11,
+          "arrivalDelayMinutes": -21
         },
         {
           "id": "2026-04-05-VCE-dolomites-car",
@@ -2946,7 +3072,9 @@
           "durationMinutes": 146,
           "vehicle": "Airbus A321neo",
           "registration": "TC-LPF",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 21,
+          "arrivalDelayMinutes": 12
         },
         {
           "id": "2026-04-11-THY124-ISTTPE",
@@ -2960,7 +3088,9 @@
           "durationMinutes": 606,
           "vehicle": "Boeing 787-9",
           "registration": "TC-LMB",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": 250,
+          "arrivalDelayMinutes": 181
         }
       ],
       "notes": "Both Istanbul stops were under twelve hours, but we cleared immigration and went into the city, so it counts as a visit."
@@ -3007,7 +3137,9 @@
           "durationMinutes": 99,
           "vehicle": "Airbus A321neo",
           "registration": "B-KKJ",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "departureDelayMinutes": -16,
+          "arrivalDelayMinutes": -32
         },
         {
           "id": "2026-05-10-AAR746-HKGICN",
@@ -3021,7 +3153,9 @@
           "durationMinutes": 213,
           "vehicle": "Airbus A330-300",
           "registration": "HL-8258",
-          "cabin": "Business"
+          "cabin": "Business",
+          "departureDelayMinutes": -9,
+          "arrivalDelayMinutes": -16
         },
         {
           "id": "2026-05-10-AAR711-ICNTPE",
@@ -3035,7 +3169,9 @@
           "durationMinutes": 152,
           "vehicle": "Airbus A380",
           "registration": "HL-7634",
-          "cabin": "Business"
+          "cabin": "Business",
+          "departureDelayMinutes": 205,
+          "arrivalDelayMinutes": 187
         }
       ],
       "transferPlaceIds": [
