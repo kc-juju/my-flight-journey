@@ -197,7 +197,7 @@ export function MapPage() {
                   const m = metricsFor(selected);
                   return [
                     { label: 'Days', value: m.days },
-                    { label: 'Segments', value: m.segmentCount },
+                    { label: 'Flights', value: m.flightCount },
                     { label: 'Distance', value: `${formatNumber(m.distanceKm)} km` },
                   ].map((s) => (
                     <div key={s.label}>

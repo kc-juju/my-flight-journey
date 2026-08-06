@@ -20,7 +20,7 @@ export function JourneyPopup({ journey, metrics, position }: JourneyPopupProps) 
   const stats = metrics
     ? [
         { label: 'Duration', value: plural(metrics.days, 'day') },
-        { label: 'Legs', value: String(metrics.segmentCount) },
+        { label: 'Flights', value: String(metrics.flightCount) },
         { label: 'Cities', value: String(metrics.cityCount) },
         { label: 'Distance', value: `${formatNumber(metrics.distanceKm)} km` },
       ]
