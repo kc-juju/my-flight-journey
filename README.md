@@ -95,9 +95,10 @@ one. 102 legs become 34 journeys.
   hours counts as a transfer: the airport still counts everywhere airports are
   counted, but the city and its country do not, and it is left out of the
   photo carousel. The gap is measured timezone-aware between landing and the
-  next departure. Thirteen stops across twelve journeys fall this way.
-  `journey-notes.json` can overrule it with `visited` — the Helsinki stop was
-  11h54, six minutes under the line, but the city was walked, so it counts.
+  next departure. Twelve stops across eleven journeys fall this way.
+  `journey-notes.json` overrules it with `visited`, because the clock cannot
+  tell whether anyone left the terminal: Helsinki at 11h54 and Istanbul at
+  9h54 both count as visits — immigration was cleared and the city walked.
 - **City names are the common ones**, not OurAirports' administrative
   municipality (Sepang → Kuala Lumpur, Huxi → Penghu). The overrides and their
   reasons are in the script.

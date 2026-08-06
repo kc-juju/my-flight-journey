@@ -29,5 +29,11 @@
       "HEL"
     ],
     "notes": "The Helsinki stop was under twelve hours but we went into the city, so it counts as a visit rather than a connection."
+  },
+  "2026-03-28-ph-tr": {
+    "visited": [
+      "IST"
+    ],
+    "notes": "Both Istanbul stops were under twelve hours, but we cleared immigration and went into the city, so it counts as a visit."
   }
 }
