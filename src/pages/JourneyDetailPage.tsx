@@ -15,6 +15,7 @@ import {
 } from '../components/journey/JourneyPhotos';
 import { citiesOfJourney, layoverMinutes } from '../lib/atlas';
 import { Icon } from '../components/ui/Icon';
+import { TitleEditor } from '../components/journey/TitleEditor';
 import { formatDateRange, formatDuration, formatNumber, STATUS_LABEL } from '../lib/format';
 
 export function JourneyDetailPage() {
@@ -69,9 +70,7 @@ export function JourneyDetailPage() {
                 {formatDateRange(journey.startDate, journey.endDate)}
               </span>
             </div>
-            <h1 className="mb-2 font-display-lg text-display-lg-mobile text-on-primary drop-shadow-lg md:text-display-lg">
-              {journey.title}
-            </h1>
+            <TitleEditor journey={journey} />
             <p className="max-w-2xl font-body-md text-lg text-on-primary/80 drop-shadow-md">
               {metrics.days} days • {metrics.cityCount} cities • {metrics.countryCount} countries
               • {formatNumber(metrics.distanceKm)} km
