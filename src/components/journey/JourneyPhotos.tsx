@@ -20,6 +20,7 @@ import {
   type PhotoPlacement,
 } from '../../lib/photoPlacement';
 import { placesOfJourney } from '../../lib/atlas';
+import { formatDayDate } from '../../lib/format';
 import { Icon } from '../ui/Icon';
 
 /** Photos grouped by the itinerary position they belong to. */
@@ -103,9 +104,9 @@ export function PhotoStrip({
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
-            className="group flex w-32 flex-col gap-1 sm:w-40"
+            className="group flex w-48 flex-col gap-1 sm:w-64"
           >
-            <div className="relative h-32 w-32 overflow-hidden rounded-xl bg-surface-container shadow-md sm:h-40 sm:w-40">
+            <div className="relative h-48 w-48 overflow-hidden rounded-xl bg-surface-container shadow-md sm:h-64 sm:w-64">
             <img
               src={photo.url}
               alt={photo.caption ?? 'Journey photo'}
@@ -113,11 +114,16 @@ export function PhotoStrip({
               className="h-full w-full object-cover"
             />
             {photo.taken_local && (
-              <span className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary/85 to-transparent px-2 pb-1 pt-4 font-label-caps text-[10px] uppercase tracking-widest text-on-primary">
-                {photo.taken_local.slice(11)}
-                {photo.time_basis === 'itinerary' && (
-                  <span title="Read in the local zone of where you were"> ·&nbsp;local</span>
-                )}
+              <span
+                className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary/85 to-transparent px-2 pb-1 pt-5 font-label-caps text-[11px] uppercase tracking-widest text-on-primary"
+                title={
+                  photo.time_basis === 'exif-offset'
+                    ? 'The clock the camera recorded, in its own time zone'
+                    : 'Read in the local zone of where this journey says you were'
+                }
+              >
+                {formatDayDate(photo.taken_local)} · {photo.taken_local.slice(11)}
+                <span className="text-on-primary/70">&nbsp;local</span>
               </span>
             )}
             {session && (

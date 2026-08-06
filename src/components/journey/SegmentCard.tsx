@@ -132,7 +132,7 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
           )}
         </div>
 
-        <div className="shrink-0 text-left md:text-right">
+        <div className="shrink-0 text-left md:text-center">
           {dropped ? (
             <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">
               Given up
@@ -162,32 +162,32 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
               )}
 
               {(departurePunctuality || arrivalPunctuality) && (
-                <dl className="mt-stack-sm flex flex-col gap-0.5 md:items-end">
+                <dl className="mt-stack-md grid w-fit grid-cols-[auto_auto] gap-x-1.5 gap-y-0.5 md:mx-auto">
                   {departurePunctuality && (
-                    <div className="flex items-baseline gap-1.5">
-                      <dt className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                    <>
+                      <dt className="text-right font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant/70">
                         Off
                       </dt>
                       <dd
-                        className="font-label-caps text-[11px] uppercase tracking-widest"
+                        className="font-label-caps text-[9px] uppercase tracking-widest"
                         style={{ color: departurePunctuality.colour }}
                       >
                         {departurePunctuality.label}
                       </dd>
-                    </div>
+                    </>
                   )}
                   {arrivalPunctuality && (
-                    <div className="flex items-baseline gap-1.5">
-                      <dt className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                    <>
+                      <dt className="text-right font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant/70">
                         In
                       </dt>
                       <dd
-                        className="font-label-caps text-[11px] font-bold uppercase tracking-widest"
+                        className="font-label-caps text-[9px] font-bold uppercase tracking-widest"
                         style={{ color: arrivalPunctuality.colour }}
                       >
                         {arrivalPunctuality.label}
                       </dd>
-                    </div>
+                    </>
                   )}
                 </dl>
               )}
