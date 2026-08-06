@@ -155,7 +155,7 @@ export function MapPage() {
           <FilterChip active={year === null} onClick={() => setYear(null)}>
             All&nbsp;years
           </FilterChip>
-          {metrics.years.map((y) => (
+          {[...metrics.years].reverse().map((y) => (
             <FilterChip key={y} active={year === y} onClick={() => setYear(y)}>
               {y}
             </FilterChip>
