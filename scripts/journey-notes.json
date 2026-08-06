@@ -1,5 +1,5 @@
 {
- "_comment": "Things only the traveller knows. Keyed by journey slug; `segments` annotates a leg by its endpoints. Nothing here is derived — if it is not written down, it is not shown.",
+ "_comment": "Things only the traveller knows. Keyed by journey slug; `segments` annotates a leg by its endpoints; `exclude` drops a journey that was not a shared trip. Nothing here is derived — if it is not written down, it is not shown.",
  "2025-10-04-us-ca": {
   "notes": "We were booked to fly home on 18 October. The flight was oversold, we volunteered to give up our seats, and left the following evening instead.",
   "segments": [
@@ -54,5 +54,26 @@
  },
  "2024-02-27-jp-hk": {
   "label": "Okayama, the San’in coast & Kansai"
+ },
+ "2008-01-13-hk-cn": {
+  "exclude": true
+ },
+ "2010-07-27-hk": {
+  "exclude": true
+ },
+ "2012-07-03-sg": {
+  "exclude": true
+ },
+ "2016-07-30-cn": {
+  "exclude": true
+ },
+ "2017-03-10-mo": {
+  "exclude": true
+ },
+ "2018-11-08-jp": {
+  "exclude": true
+ },
+ "2018-08-23-taiwan": {
+  "exclude": true
  }
 }

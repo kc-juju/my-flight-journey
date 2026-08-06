@@ -1,0 +1,20 @@
+
+/* A rail of cards over the map: the scrollbar has to be visible enough to
+   invite a drag, and quiet enough not to compete with the map beneath. */
+.atlas-rail {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(0 0 0 / 0.25) transparent;
+}
+.atlas-rail::-webkit-scrollbar {
+  height: 8px;
+}
+.atlas-rail::-webkit-scrollbar-track {
+  background: transparent;
+}
+.atlas-rail::-webkit-scrollbar-thumb {
+  background: rgb(0 0 0 / 0.2);
+  border-radius: 999px;
+}
+.atlas-rail:hover::-webkit-scrollbar-thumb {
+  background: rgb(0 0 0 / 0.35);
+}

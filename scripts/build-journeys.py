@@ -526,6 +526,22 @@ def build():
         if n:
             j['slug'] = f'{base}-{n + 1}'
 
+    # ---- journeys somebody else's atlas should hold ---------------------
+    # The flight log is one person's; this atlas is two people's. A trip taken
+    # alone is dropped whole — its legs, places, distance and countries leave
+    # with it — rather than hidden in the interface, so every total on the
+    # site counts the same set of journeys.
+    excluded = {slug for slug, entry in notes.items()
+                if isinstance(entry, dict) and entry.get('exclude')}
+    if excluded:
+        gone = [j['slug'] for j in journeys if j['slug'] in excluded]
+        journeys = [j for j in journeys if j['slug'] not in excluded]
+        for slug in sorted(gone):
+            print(f'  excluded (not a shared trip): {slug}')
+        missing = excluded - set(gone)
+        if missing:
+            print(f'  WARNING: nothing to exclude for {sorted(missing)}')
+
     # ---- connections ---------------------------------------------------
     # An intermediate stop counts as a transfer when the gap between landing
     # and taking off again is short. Timezone-aware, or Doha at 09:00 local
@@ -731,8 +747,19 @@ def build():
             journey['segments'].insert(at, seg)
 
     for slug in notes:
+        if slug in excluded or slug.startswith('_'):
+            continue
         if not any(j['slug'] == slug for j in journeys):
             print(f'  WARNING: note for unknown journey "{slug}"')
+
+    # Excluding journeys can strand a place nothing reaches any more.
+    used_places = {pid for j in journeys for s in j['segments']
+                   for pid in (s['fromPlaceId'], s['toPlaceId'])}
+    stranded = [p for p in places if p['id'] not in used_places]
+    if stranded:
+        places[:] = [p for p in places if p['id'] in used_places]
+        print('  places no longer reached: '
+              + ', '.join(sorted(p['code'] or p['id'] for p in stranded)))
     # Ground legs arrive after the first pass, and they can add a country.
     for journey in journeys:
         retitle(journey)

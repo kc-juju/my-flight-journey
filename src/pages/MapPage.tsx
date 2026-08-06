@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAtlas } from '../hooks/useAtlas';
 import { WorldMap } from '../components/map/WorldMap';
 import { JourneyPopup } from '../components/map/JourneyPopup';
-import { JourneyCard } from '../components/journey/JourneyCard';
 import { Timeline } from '../components/journey/Timeline';
 import { Icon } from '../components/ui/Icon';
 import type { Journey } from '../types/journey';
@@ -200,25 +199,53 @@ export function MapPage() {
             </div>
 
             {flown.length > 0 ? (
-              // Stacked on a phone the three cards bury the map, so there
-              // they become one swipeable rail instead.
-              <div className="pointer-events-auto flex snap-x snap-mandatory gap-gutter overflow-x-auto pb-1 lg:grid lg:grid-cols-3 lg:overflow-visible">
-                {flown.slice(0, 3).map((journey) => (
-                  // The card is drawn for a page with a background; over the
-                  // map it needs one of its own or the words sit on coastline.
-                  <div
-                    key={journey.id}
-                    className="w-[86%] shrink-0 snap-start rounded-xl border border-outline-variant/40 bg-surface/90 p-stack-sm shadow-2xl backdrop-blur-xl sm:w-[60%] lg:w-auto lg:shrink"
-                  >
-                    <JourneyCard
-                      journey={journey}
-                      metrics={metricsFor(journey)}
-                      variant="full"
-                      onHoverStart={(j) => !selected && setHovered(j)}
-                      onHoverEnd={() => setHovered(null)}
-                    />
-                  </div>
-                ))}
+              // Every flown journey, as a rail. Three big cards blocked the
+              // map they were annotating; small ones you can scroll past do
+              // not, and they let the whole list be here rather than a third
+              // of it.
+              <div className="atlas-rail pointer-events-auto flex snap-x gap-3 overflow-x-auto pb-2">
+                {flown.map((journey) => {
+                  const m = metricsFor(journey);
+                  return (
+                    <Link
+                      key={journey.id}
+                      to={`/journeys/${journey.slug}`}
+                      onMouseEnter={() => !selected && setHovered(journey)}
+                      onMouseLeave={() => setHovered(null)}
+                      className={`group flex w-[196px] shrink-0 snap-start gap-3 rounded-xl border bg-surface/90 p-2 shadow-lg backdrop-blur-xl transition-colors ${
+                        active?.id === journey.id
+                          ? 'border-tertiary-fixed-dim'
+                          : 'border-outline-variant/40 hover:border-on-surface-variant/40'
+                      }`}
+                    >
+                      {journey.heroImage ? (
+                        <img
+                          src={asset(journey.heroImage)}
+                          alt=""
+                          loading="lazy"
+                          className="h-14 w-14 shrink-0 rounded-lg object-cover"
+                        />
+                      ) : (
+                        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-surface-container">
+                          <Icon name="public" className="text-[18px] text-on-surface-variant" />
+                        </span>
+                      )}
+
+                      <span className="flex min-w-0 flex-col justify-center">
+                        <span className="font-label-caps text-[9px] uppercase tracking-widest text-tertiary-fixed-dim">
+                          {formatMonthYear(journey.startDate)}
+                        </span>
+                        <span className="line-clamp-2 font-headline-md text-[15px] leading-tight text-on-surface">
+                          {journey.title}
+                        </span>
+                        <span className="truncate font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant">
+                          {m.cityCount} {m.cityCount === 1 ? 'city' : 'cities'} ·{' '}
+                          {formatNumber(m.distanceKm)} km
+                        </span>
+                      </span>
+                    </Link>
+                  );
+                })}
               </div>
             ) : (
               <p className="pointer-events-auto w-fit rounded-lg bg-surface/85 px-3 py-2 font-body-md text-sm italic text-on-surface-variant shadow-lg backdrop-blur-xl">
