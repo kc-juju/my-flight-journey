@@ -48,8 +48,5 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          # Pages has twice taken longer than the ten-minute default to
-          # publish an artifact it had already accepted, failing a build that
-          # was fine. Wait half an hour before calling it lost.
-          timeout: 1800000
+        # deploy-pages caps its own wait at ten minutes, so asking for
+        # longer only earns a warning. Nothing to configure here.
