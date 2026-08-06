@@ -390,5 +390,96 @@
     "licence": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:1_lake_louise_pano_2019.jpg",
     "article": "Lake Louise (Alberta)"
+  },
+  "krakow": {
+    "file": "Krakow_Rynek_Glowny_panorama_2.jpg",
+    "author": "Andrzej Otrębski",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Krakow_Rynek_Glowny_panorama_2.jpg",
+    "article": "Kraków"
+  },
+  "lublin": {
+    "file": "Lublin_Panorama.jpg",
+    "author": "Kanion",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lublin_Panorama.jpg",
+    "article": "Lublin"
+  },
+  "fussen": {
+    "file": "Füssen_-.JPG",
+    "author": "Wolkenkratzer",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:F%C3%BCssen_-.JPG",
+    "article": "Füssen"
+  },
+  "garmisch": {
+    "file": "Garmisch-Partenkirchen.JPG",
+    "author": "Octagon",
+    "licence": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Garmisch-Partenkirchen.JPG",
+    "article": "Garmisch-Partenkirchen"
+  },
+  "salzburg": {
+    "file": "Salzburg_(48489551981).jpg",
+    "author": "Jorge Franganillo",
+    "licence": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Salzburg_(48489551981).jpg",
+    "article": "Salzburg"
+  },
+  "konigssee": {
+    "file": "Königsee_in_Bayern.jpg",
+    "author": "Mtt1734",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:K%C3%B6nigsee_in_Bayern.jpg",
+    "article": "Königssee"
+  },
+  "cesky-krumlov": {
+    "file": "Blick_auf_das_Stadtzentrum_von_Krumau_(2026).jpg",
+    "author": "DominikCK1999",
+    "licence": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Blick_auf_das_Stadtzentrum_von_Krumau_(2026).jpg",
+    "article": "Český Krumlov"
+  },
+  "cambridge": {
+    "file": "Cambridge_-_Kings_College_vue_des_backs.jpg",
+    "author": "Jean-Christophe BENOIST",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cambridge_-_Kings_College_vue_des_backs.jpg",
+    "article": "Cambridge"
+  },
+  "kurashiki": {
+    "file": "251101_Mount_Tsurugata_Kurashiki_Okayama_pref_Japan02s3.jpg",
+    "author": "663highland",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:251101_Mount_Tsurugata_Kurashiki_Okayama_pref_Japan02s3.jpg",
+    "article": "Kurashiki"
+  },
+  "amanohashidate": {
+    "file": "Amanohashidate_aerial_view_2026.jpg",
+    "author": "808PhatBeats",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Amanohashidate_aerial_view_2026.jpg",
+    "article": "Amanohashidate"
+  },
+  "himeji": {
+    "file": "Himeji_castle_in_may_2015.jpg",
+    "author": "Nikos Kitsakis",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Himeji_castle_in_may_2015.jpg",
+    "article": "Himeji Castle"
+  },
+  "kobe": {
+    "file": "Kobe_Port_Tower_and_Maritime_Museum,_November_2016.jpg",
+    "author": "Martin Falbisoner",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kobe_Port_Tower_and_Maritime_Museum,_November_2016.jpg",
+    "article": "Kobe"
+  },
+  "kinosaki": {
+    "file": "Kinosaki_Onsen_by_day.jpg",
+    "author": "Samchan91",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kinosaki_Onsen_by_day.jpg",
+    "article": "Kinosaki, Hyōgo"
   }
 }

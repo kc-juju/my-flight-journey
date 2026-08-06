@@ -573,6 +573,7 @@
       "countryCode": "JP",
       "lat": 35.568,
       "lon": 135.1906,
+      "image": "/images/cities/amanohashidate.jpg",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -602,6 +603,7 @@
       "countryCode": "GB",
       "lat": 52.1976,
       "lon": 0.1392,
+      "image": "/images/cities/cambridge.jpg",
       "timezone": "Europe/London"
     },
     {
@@ -641,6 +643,7 @@
       "countryCode": "DE",
       "lat": 47.5676,
       "lon": 10.6993,
+      "image": "/images/cities/fussen.jpg",
       "timezone": "Europe/Berlin"
     },
     {
@@ -650,6 +653,7 @@
       "countryCode": "DE",
       "lat": 47.4924,
       "lon": 11.0963,
+      "image": "/images/cities/garmisch.jpg",
       "timezone": "Europe/Berlin"
     },
     {
@@ -659,6 +663,7 @@
       "countryCode": "JP",
       "lat": 34.8154,
       "lon": 134.6855,
+      "image": "/images/cities/himeji.jpg",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -668,6 +673,7 @@
       "countryCode": "JP",
       "lat": 35.6237,
       "lon": 134.8138,
+      "image": "/images/cities/kinosaki.jpg",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -677,6 +683,7 @@
       "countryCode": "JP",
       "lat": 34.6932,
       "lon": 135.1944,
+      "image": "/images/cities/kobe.jpg",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -686,6 +693,7 @@
       "countryCode": "PL",
       "lat": 50.0469,
       "lon": 19.9972,
+      "image": "/images/cities/krakow.jpg",
       "timezone": "Europe/Warsaw"
     },
     {
@@ -695,6 +703,7 @@
       "countryCode": "JP",
       "lat": 34.5851,
       "lon": 133.772,
+      "image": "/images/cities/kurashiki.jpg",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -704,6 +713,7 @@
       "countryCode": "DE",
       "lat": 47.5551,
       "lon": 12.9766,
+      "image": "/images/cities/konigssee.jpg",
       "timezone": "Europe/Berlin"
     },
     {
@@ -723,6 +733,7 @@
       "countryCode": "PL",
       "lat": 51.2182,
       "lon": 22.5547,
+      "image": "/images/cities/lublin.jpg",
       "timezone": "Europe/Warsaw"
     },
     {
@@ -752,6 +763,7 @@
       "countryCode": "AT",
       "lat": 47.7981,
       "lon": 13.0465,
+      "image": "/images/cities/salzburg.jpg",
       "timezone": "Europe/Vienna"
     },
     {
@@ -771,6 +783,7 @@
       "countryCode": "CZ",
       "lat": 48.8107,
       "lon": 14.3151,
+      "image": "/images/cities/cesky-krumlov.jpg",
       "timezone": "Europe/Prague"
     }
   ],
