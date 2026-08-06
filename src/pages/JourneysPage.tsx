@@ -16,7 +16,8 @@ export function JourneysPage() {
     () =>
       journeys.filter((j) => {
         if (year !== null && journeyYear(j) !== year) return false;
-        if (collection && j.collectionId !== collection) return false;
+        if (collection && !(j.collectionIds ?? [j.collectionId]).includes(collection))
+          return false;
         if (mode && !j.segments.some((s) => s.mode === mode)) return false;
         return true;
       }),

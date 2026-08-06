@@ -124,7 +124,9 @@ export function StatsPage() {
 
         <div className="grid grid-cols-1 gap-gutter md:grid-cols-2">
           {data.collections.map((collection) => {
-            const inCollection = journeys.filter((j) => j.collectionId === collection.id);
+            const inCollection = journeys.filter((j) =>
+              (j.collectionIds ?? [j.collectionId]).includes(collection.id),
+            );
             return (
               <motion.article
                 key={collection.id}

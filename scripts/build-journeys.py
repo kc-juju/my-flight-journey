@@ -415,6 +415,20 @@ def build():
         farthest = max((leg['d'] for leg in group), key=far)
         region = REGION_BY_COUNTRY.get(airports[farthest]['cty'], 'other')
 
+        # A trip that touches Hong Kong and Korea belongs in both collections.
+        # Home is dropped unless the journey never left it.
+        regions = []
+        for code in visited:
+            r = REGION_BY_COUNTRY.get(code)
+            if r and r not in regions:
+                regions.append(r)
+        home_region = REGION_BY_COUNTRY.get(HOME_COUNTRY)
+        if len(regions) > 1 and home_region in regions:
+            regions.remove(home_region)
+        if region in regions:
+            regions.remove(region)
+        regions.insert(0, region)
+
         if away:
             title = ' · '.join(COUNTRY_NAMES.get(c, c) for c in away[:3])
             if len(away) > 3:
@@ -441,13 +455,14 @@ def build():
             'endDate': last['date'],
             'status': 'planned' if any(leg['future'] for leg in group) else 'completed',
             'collectionId': region,
+            'collectionIds': regions,
             **({'heroImage': hero, 'thumbnail': hero} if hero else {}),
             'highlights': [],
             'stops': stops,
             'segments': segments,
         })
 
-    used = {j['collectionId'] for j in journeys}
+    used = {c for j in journeys for c in j['collectionIds']}
     cover = {}
     for j in journeys:
         if j.get('heroImage'):
@@ -488,6 +503,15 @@ def build():
                         and place_id.get(ann['to']) == seg['toPlaceId']):
                     seg['note'] = ' • '.join(filter(None, [seg.get('note'), ann['note']]))
                     break
+
+        # "Farthest from home" is a decent guess at what a trip was about, but
+        # not always right — a Hong Kong week with a Seoul weekend reads as
+        # Korea. journey-notes.json can say otherwise.
+        if entry.get('collection'):
+            primary = entry['collection']
+            journey['collectionId'] = primary
+            ids = [c for c in journey['collectionIds'] if c != primary]
+            journey['collectionIds'] = [primary, *ids]
 
         for leg in [e for e in overland if e.get('journey') == journey['slug']]:
             leg['_used'] = True

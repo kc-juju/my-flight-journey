@@ -88,8 +88,13 @@ export interface Journey {
   startDate: string;
   endDate: string;
   status: JourneyStatus;
-  /** Groups journeys into curated collections ("Japan", "Europe"). */
+  /** The collection this journey is mostly about. */
   collectionId?: string;
+  /**
+   * Every collection it belongs to — a Hong Kong trip that carried on to
+   * Seoul is in both. The primary one comes first.
+   */
+  collectionIds?: string[];
   heroImage?: string;
   thumbnail?: string;
   /** Long-form travel note. */

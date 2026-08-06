@@ -73,6 +73,19 @@ export function JourneyCard({
 
         <p className="text-sm text-on-surface-variant">{summary}</p>
 
+        {(journey.collectionIds?.length ?? 0) > 1 && (
+          <ul className="mt-2 flex flex-wrap gap-1">
+            {journey.collectionIds!.map((id) => (
+              <li
+                key={id}
+                className="rounded-full border border-outline-variant/60 px-2 py-0.5 font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant"
+              >
+                {id.replace(/-/g, ' ')}
+              </li>
+            ))}
+          </ul>
+        )}
+
         <ul className="mt-2 flex flex-wrap items-center gap-3">
           {metrics.modes.map((mode) => (
             <li

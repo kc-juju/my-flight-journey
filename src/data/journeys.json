@@ -678,6 +678,12 @@
       "image": "/images/cities/MEL.jpg"
     },
     {
+      "id": "middle-east",
+      "title": "Middle East",
+      "blurb": "Doha, as a hinge between continents.",
+      "icon": "travel_explore"
+    },
+    {
       "id": "taiwan",
       "title": "Taiwan",
       "blurb": "Songshan to Magong and back.",
@@ -695,6 +701,9 @@
       "endDate": "2008-01-19",
       "status": "completed",
       "collectionId": "greater-china",
+      "collectionIds": [
+        "greater-china"
+      ],
       "heroImage": "/images/cities/HKG.jpg",
       "thumbnail": "/images/cities/HKG.jpg",
       "highlights": [],
@@ -779,6 +788,9 @@
       "endDate": "2010-07-31",
       "status": "completed",
       "collectionId": "greater-china",
+      "collectionIds": [
+        "greater-china"
+      ],
       "heroImage": "/images/cities/HKG.jpg",
       "thumbnail": "/images/cities/HKG.jpg",
       "highlights": [],
@@ -831,6 +843,9 @@
       "endDate": "2012-07-08",
       "status": "completed",
       "collectionId": "southeast-asia",
+      "collectionIds": [
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/SIN.jpg",
       "thumbnail": "/images/cities/SIN.jpg",
       "highlights": [],
@@ -883,6 +898,9 @@
       "endDate": "2016-08-06",
       "status": "completed",
       "collectionId": "greater-china",
+      "collectionIds": [
+        "greater-china"
+      ],
       "heroImage": "/images/cities/KWE.jpg",
       "thumbnail": "/images/cities/KWE.jpg",
       "highlights": [],
@@ -937,6 +955,9 @@
       "endDate": "2017-03-12",
       "status": "completed",
       "collectionId": "greater-china",
+      "collectionIds": [
+        "greater-china"
+      ],
       "heroImage": "/images/cities/MFM.jpg",
       "thumbnail": "/images/cities/MFM.jpg",
       "highlights": [],
@@ -991,6 +1012,9 @@
       "endDate": "2017-09-08",
       "status": "completed",
       "collectionId": "japan",
+      "collectionIds": [
+        "japan"
+      ],
       "heroImage": "/images/cities/KIX.jpg",
       "thumbnail": "/images/cities/KIX.jpg",
       "highlights": [],
@@ -1045,6 +1069,9 @@
       "endDate": "2018-03-13",
       "status": "completed",
       "collectionId": "japan",
+      "collectionIds": [
+        "japan"
+      ],
       "heroImage": "/images/cities/OKA.jpg",
       "thumbnail": "/images/cities/OKA.jpg",
       "highlights": [],
@@ -1099,6 +1126,10 @@
       "endDate": "2018-07-13",
       "status": "completed",
       "collectionId": "europe",
+      "collectionIds": [
+        "europe",
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/BUD.jpg",
       "thumbnail": "/images/cities/BUD.jpg",
       "highlights": [],
@@ -1247,6 +1278,9 @@
       "endDate": "2018-08-25",
       "status": "completed",
       "collectionId": "taiwan",
+      "collectionIds": [
+        "taiwan"
+      ],
       "heroImage": "/images/cities/MZG.jpg",
       "thumbnail": "/images/cities/MZG.jpg",
       "highlights": [],
@@ -1301,6 +1335,9 @@
       "endDate": "2018-11-13",
       "status": "completed",
       "collectionId": "japan",
+      "collectionIds": [
+        "japan"
+      ],
       "heroImage": "/images/cities/CTS.jpg",
       "thumbnail": "/images/cities/CTS.jpg",
       "highlights": [],
@@ -1355,6 +1392,9 @@
       "endDate": "2019-02-22",
       "status": "completed",
       "collectionId": "japan",
+      "collectionIds": [
+        "japan"
+      ],
       "heroImage": "/images/cities/FUK.jpg",
       "thumbnail": "/images/cities/FUK.jpg",
       "highlights": [],
@@ -1409,6 +1449,10 @@
       "endDate": "2019-08-18",
       "status": "completed",
       "collectionId": "north-america",
+      "collectionIds": [
+        "north-america",
+        "greater-china"
+      ],
       "heroImage": "/images/cities/JFK.jpg",
       "thumbnail": "/images/cities/JFK.jpg",
       "highlights": [],
@@ -1497,6 +1541,9 @@
       "endDate": "2020-01-19",
       "status": "completed",
       "collectionId": "greater-china",
+      "collectionIds": [
+        "greater-china"
+      ],
       "heroImage": "/images/cities/MFM.jpg",
       "thumbnail": "/images/cities/MFM.jpg",
       "highlights": [],
@@ -1554,6 +1601,9 @@
       "endDate": "2022-12-04",
       "status": "completed",
       "collectionId": "japan",
+      "collectionIds": [
+        "japan"
+      ],
       "heroImage": "/images/cities/CTS.jpg",
       "thumbnail": "/images/cities/CTS.jpg",
       "highlights": [],
@@ -1608,6 +1658,9 @@
       "endDate": "2023-02-28",
       "status": "completed",
       "collectionId": "southeast-asia",
+      "collectionIds": [
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/KUL.jpg",
       "thumbnail": "/images/cities/KUL.jpg",
       "highlights": [],
@@ -1662,6 +1715,9 @@
       "endDate": "2023-04-10",
       "status": "completed",
       "collectionId": "europe",
+      "collectionIds": [
+        "europe"
+      ],
       "heroImage": "/images/cities/MUC.jpg",
       "thumbnail": "/images/cities/MUC.jpg",
       "highlights": [],
@@ -1719,6 +1775,9 @@
       "endDate": "2023-10-09",
       "status": "completed",
       "collectionId": "southeast-asia",
+      "collectionIds": [
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/KUL.jpg",
       "thumbnail": "/images/cities/KUL.jpg",
       "highlights": [],
@@ -1807,6 +1866,9 @@
       "endDate": "2023-11-21",
       "status": "completed",
       "collectionId": "japan",
+      "collectionIds": [
+        "japan"
+      ],
       "heroImage": "/images/cities/NRT.jpg",
       "thumbnail": "/images/cities/NRT.jpg",
       "highlights": [],
@@ -1861,6 +1923,10 @@
       "endDate": "2024-03-03",
       "status": "completed",
       "collectionId": "japan",
+      "collectionIds": [
+        "japan",
+        "greater-china"
+      ],
       "heroImage": "/images/cities/OKJ.jpg",
       "thumbnail": "/images/cities/OKJ.jpg",
       "highlights": [],
@@ -1935,6 +2001,10 @@
       "endDate": "2024-04-07",
       "status": "completed",
       "collectionId": "europe",
+      "collectionIds": [
+        "europe",
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/LHR.jpg",
       "thumbnail": "/images/cities/LHR.jpg",
       "highlights": [],
@@ -2009,6 +2079,9 @@
       "endDate": "2024-06-11",
       "status": "completed",
       "collectionId": "southeast-asia",
+      "collectionIds": [
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/KUL.jpg",
       "thumbnail": "/images/cities/KUL.jpg",
       "highlights": [],
@@ -2063,6 +2136,9 @@
       "endDate": "2024-11-04",
       "status": "completed",
       "collectionId": "southeast-asia",
+      "collectionIds": [
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/BKI.jpg",
       "thumbnail": "/images/cities/BKI.jpg",
       "highlights": [],
@@ -2117,6 +2193,9 @@
       "endDate": "2025-01-02",
       "status": "completed",
       "collectionId": "korea",
+      "collectionIds": [
+        "korea"
+      ],
       "heroImage": "/images/cities/ICN.jpg",
       "thumbnail": "/images/cities/ICN.jpg",
       "highlights": [],
@@ -2171,6 +2250,10 @@
       "endDate": "2025-02-02",
       "status": "completed",
       "collectionId": "oceania",
+      "collectionIds": [
+        "oceania",
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/MEL.jpg",
       "thumbnail": "/images/cities/MEL.jpg",
       "highlights": [],
@@ -2279,6 +2362,10 @@
       "endDate": "2025-04-07",
       "status": "completed",
       "collectionId": "north-america",
+      "collectionIds": [
+        "north-america",
+        "greater-china"
+      ],
       "heroImage": "/images/cities/LAX.jpg",
       "thumbnail": "/images/cities/LAX.jpg",
       "highlights": [],
@@ -2367,6 +2454,9 @@
       "endDate": "2025-07-21",
       "status": "completed",
       "collectionId": "japan",
+      "collectionIds": [
+        "japan"
+      ],
       "heroImage": "/images/cities/NRT.jpg",
       "thumbnail": "/images/cities/NRT.jpg",
       "highlights": [],
@@ -2421,6 +2511,9 @@
       "endDate": "2025-10-19",
       "status": "completed",
       "collectionId": "north-america",
+      "collectionIds": [
+        "north-america"
+      ],
       "heroImage": "/images/cities/SEA.jpg",
       "thumbnail": "/images/cities/SEA.jpg",
       "highlights": [],
@@ -2567,6 +2660,9 @@
       "endDate": "2026-01-18",
       "status": "completed",
       "collectionId": "taiwan",
+      "collectionIds": [
+        "taiwan"
+      ],
       "heroImage": "/images/cities/MZG.jpg",
       "thumbnail": "/images/cities/MZG.jpg",
       "highlights": [],
@@ -2621,6 +2717,10 @@
       "endDate": "2026-04-11",
       "status": "completed",
       "collectionId": "europe",
+      "collectionIds": [
+        "europe",
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/BOD.jpg",
       "thumbnail": "/images/cities/BOD.jpg",
       "highlights": [],
@@ -2848,7 +2948,11 @@
       "startDate": "2026-05-07",
       "endDate": "2026-05-10",
       "status": "completed",
-      "collectionId": "korea",
+      "collectionId": "greater-china",
+      "collectionIds": [
+        "greater-china",
+        "korea"
+      ],
       "heroImage": "/images/cities/ICN.jpg",
       "thumbnail": "/images/cities/ICN.jpg",
       "highlights": [],
@@ -2920,6 +3024,10 @@
       "endDate": "2026-08-30",
       "status": "planned",
       "collectionId": "oceania",
+      "collectionIds": [
+        "oceania",
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/PER.jpg",
       "thumbnail": "/images/cities/PER.jpg",
       "highlights": [],
@@ -3000,6 +3108,12 @@
       "endDate": "2026-10-26",
       "status": "planned",
       "collectionId": "europe",
+      "collectionIds": [
+        "europe",
+        "korea",
+        "middle-east",
+        "southeast-asia"
+      ],
       "heroImage": "/images/cities/MAN.jpg",
       "thumbnail": "/images/cities/MAN.jpg",
       "highlights": [],
@@ -3117,6 +3231,9 @@
       "endDate": "2027-01-17",
       "status": "planned",
       "collectionId": "japan",
+      "collectionIds": [
+        "japan"
+      ],
       "heroImage": "/images/cities/HND.jpg",
       "thumbnail": "/images/cities/HND.jpg",
       "highlights": [],
@@ -3191,6 +3308,9 @@
       "endDate": "2027-01-30",
       "status": "planned",
       "collectionId": "greater-china",
+      "collectionIds": [
+        "greater-china"
+      ],
       "heroImage": "/images/cities/HKG.jpg",
       "thumbnail": "/images/cities/HKG.jpg",
       "highlights": [],
