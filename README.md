@@ -87,9 +87,10 @@ one. 102 legs become 34 journeys.
 - **Ground-leg durations come from a published timetable, not a guess.** The
   seven TER legs around Nice carry the fastest scheduled ride between those
   stations, computed from SNCF's open GTFS feed (`transport.data.gouv.fr`) by
-  walking every trip that calls at both stations. The coach up to Èze and the
-  two drives into the Dolomites have no recorded time, and say so rather than
-  showing an invented one.
+  walking every trip that calls at both stations. The road legs — the two
+  drives into the Dolomites, the coach up to Èze, the coach to Vancouver —
+  carry the driving time OSRM returns over OpenStreetMap's road network, which
+  is a road estimate rather than a timetable, and each leg says so.
 - **City names are the common ones**, not OurAirports' administrative
   municipality (Sepang → Kuala Lumpur, Huxi → Penghu). The overrides and their
   reasons are in the script.

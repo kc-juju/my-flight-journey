@@ -5,7 +5,8 @@
     "operator": "FlixBus",
     "from": "SEA",
     "to": "YVR",
-    "note": "Seattle to Vancouver by coach — the atlas only has airport nodes, so the line runs airport to airport"
+    "note": "Seattle to Vancouver by coach — the atlas only has airport nodes, so the line runs airport to airport • 246 km · Driving time by road (OSRM / OpenStreetMap); the coach also stops at the border",
+    "durationMinutes": 196
   },
   {
     "journey": "2026-03-28-ph-tr",
@@ -13,7 +14,8 @@
     "mode": "bus",
     "from": "nce",
     "to": "eze",
-    "note": "Up to the village on the corniche"
+    "note": "Up to the village on the corniche • 22 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+    "durationMinutes": 40
   },
   {
     "journey": "2026-03-28-ph-tr",
@@ -85,7 +87,8 @@
     "from": "VCE",
     "to": "dolomites",
     "operator": "Hire car",
-    "note": "Picked up at Venice and driven north into the mountains"
+    "note": "Picked up at Venice and driven north into the mountains • 161 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+    "durationMinutes": 129
   },
   {
     "journey": "2026-03-28-ph-tr",
@@ -94,6 +97,7 @@
     "from": "dolomites",
     "to": "VCE",
     "operator": "Hire car",
-    "note": "Driven back to Venice"
+    "note": "Driven back to Venice • 161 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+    "durationMinutes": 130
   }
 ]
