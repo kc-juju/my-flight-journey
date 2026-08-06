@@ -500,6 +500,7 @@ def build():
         return dt.datetime.fromisoformat(iso).replace(tzinfo=ZoneInfo(tz))
 
     zone_of = {p['id']: p.get('timezone') for p in places}
+    country_of = {p['id']: p['countryCode'] for p in places}
     removed = []
     for journey in journeys:
         entry = notes.get(journey['slug']) or {}
@@ -524,9 +525,54 @@ def build():
         if transfers:
             journey['transferPlaceIds'] = transfers
 
+        # The title and the collection tags were built before we knew which
+        # stops were connections. A country only ever changed planes in does
+        # not belong in either.
+        transfer_set = set(transfers)
+        seen_here, visited_codes = set(), []
+        for seg in flown:
+            for pid in (seg['fromPlaceId'], seg['toPlaceId']):
+                if pid in transfer_set or pid in seen_here:
+                    continue
+                seen_here.add(pid)
+                code = country_of.get(pid)
+                if code and code not in visited_codes:
+                    visited_codes.append(code)
+        away_codes = [c for c in visited_codes if c != HOME_COUNTRY]
+
+        if away_codes:
+            title = ' · '.join(COUNTRY_NAMES.get(c, c) for c in away_codes[:3])
+            if len(away_codes) > 3:
+                title += f' +{len(away_codes) - 3}'
+            journey['title'] = title
+
+        tags = []
+        for code in visited_codes:
+            r = REGION_BY_COUNTRY.get(code)
+            if r and r not in tags:
+                tags.append(r)
+        home_region = REGION_BY_COUNTRY.get(HOME_COUNTRY)
+        if len(tags) > 1 and home_region in tags:
+            tags.remove(home_region)
+        if tags:
+            primary = journey['collectionId'] if journey['collectionId'] in tags else tags[0]
+            journey['collectionId'] = primary
+            journey['collectionIds'] = [primary, *[t for t in tags if t != primary]]
+
     print(f'  connections (city not counted): {len(removed)}')
     for slug, pid, mins in removed:
         print(f'    {slug:22s} {pid.upper():9s} {mins // 60}h{mins % 60:02d}')
+
+    # "Farthest from home" is a decent guess at what a trip was about, but not
+    # always right. journey-notes.json can say otherwise; it runs last so the
+    # transfer pass cannot undo it.
+    for journey in journeys:
+        wanted = (notes.get(journey['slug']) or {}).get('collection')
+        if not wanted:
+            continue
+        journey['collectionId'] = wanted
+        rest = [c for c in journey.get('collectionIds', []) if c != wanted]
+        journey['collectionIds'] = [wanted, *rest]
 
     # Attach the hand-written notes now that slugs are final.
     applied = 0
@@ -546,15 +592,6 @@ def build():
                         and place_id.get(ann['to']) == seg['toPlaceId']):
                     seg['note'] = ' • '.join(filter(None, [seg.get('note'), ann['note']]))
                     break
-
-        # "Farthest from home" is a decent guess at what a trip was about, but
-        # not always right — a Hong Kong week with a Seoul weekend reads as
-        # Korea. journey-notes.json can say otherwise.
-        if entry.get('collection'):
-            primary = entry['collection']
-            journey['collectionId'] = primary
-            ids = [c for c in journey['collectionIds'] if c != primary]
-            journey['collectionIds'] = [primary, *ids]
 
         for leg in [e for e in overland if e.get('journey') == journey['slug']]:
             leg['_used'] = True

@@ -695,7 +695,7 @@
     {
       "id": "2008-01-13-hkg",
       "slug": "2008-01-13-hk-cn",
-      "title": "Hong Kong · China",
+      "title": "China",
       "subtitle": "TPE → HKG → PVG → HKG → TPE",
       "startDate": "2008-01-13",
       "endDate": "2008-01-19",
@@ -1447,15 +1447,14 @@
     {
       "id": "2019-07-23-jfk",
       "slug": "2019-07-23-cn-us",
-      "title": "China · United States",
+      "title": "United States",
       "subtitle": "TSA → PVG → JFK → PVG → TPE",
       "startDate": "2019-07-23",
       "endDate": "2019-08-18",
       "status": "completed",
       "collectionId": "north-america",
       "collectionIds": [
-        "north-america",
-        "greater-china"
+        "north-america"
       ],
       "heroImage": "/images/cities/JFK.jpg",
       "thumbnail": "/images/cities/JFK.jpg",
@@ -1927,15 +1926,14 @@
     {
       "id": "2024-02-27-okj",
       "slug": "2024-02-27-jp-hk",
-      "title": "Japan · Hong Kong",
+      "title": "Japan",
       "subtitle": "TPE → OKJ → HKG → TPE",
       "startDate": "2024-02-27",
       "endDate": "2024-03-03",
       "status": "completed",
       "collectionId": "japan",
       "collectionIds": [
-        "japan",
-        "greater-china"
+        "japan"
       ],
       "heroImage": "/images/cities/OKJ.jpg",
       "thumbnail": "/images/cities/OKJ.jpg",
@@ -2008,15 +2006,14 @@
     {
       "id": "2024-03-30-lhr",
       "slug": "2024-03-30-th-gb",
-      "title": "Thailand · United Kingdom · France",
+      "title": "United Kingdom · France",
       "subtitle": "TPE → BKK → LHR → TPE",
       "startDate": "2024-03-30",
       "endDate": "2024-04-07",
       "status": "completed",
       "collectionId": "europe",
       "collectionIds": [
-        "europe",
-        "southeast-asia"
+        "europe"
       ],
       "heroImage": "/images/cities/LHR.jpg",
       "thumbnail": "/images/cities/LHR.jpg",
@@ -2260,15 +2257,14 @@
     {
       "id": "2025-01-19-mel",
       "slug": "2025-01-19-sg-au",
-      "title": "Singapore · Australia",
+      "title": "Australia",
       "subtitle": "TPE → SIN → MEL → OOL → SIN → TPE",
       "startDate": "2025-01-19",
       "endDate": "2025-02-02",
       "status": "completed",
       "collectionId": "oceania",
       "collectionIds": [
-        "oceania",
-        "southeast-asia"
+        "oceania"
       ],
       "heroImage": "/images/cities/MEL.jpg",
       "thumbnail": "/images/cities/MEL.jpg",
@@ -2375,15 +2371,14 @@
     {
       "id": "2025-03-28-lax",
       "slug": "2025-03-28-hk-us",
-      "title": "Hong Kong · United States",
+      "title": "United States",
       "subtitle": "TPE → HKG → LAX → HKG → TPE",
       "startDate": "2025-03-28",
       "endDate": "2025-04-07",
       "status": "completed",
       "collectionId": "north-america",
       "collectionIds": [
-        "north-america",
-        "greater-china"
+        "north-america"
       ],
       "heroImage": "/images/cities/LAX.jpg",
       "thumbnail": "/images/cities/LAX.jpg",
@@ -2973,15 +2968,14 @@
     {
       "id": "2026-05-07-icn",
       "slug": "2026-05-07-hk-kr",
-      "title": "Hong Kong · South Korea",
+      "title": "Hong Kong",
       "subtitle": "TPE → HKG → ICN → TPE",
       "startDate": "2026-05-07",
       "endDate": "2026-05-10",
       "status": "completed",
       "collectionId": "greater-china",
       "collectionIds": [
-        "greater-china",
-        "korea"
+        "greater-china"
       ],
       "heroImage": "/images/cities/ICN.jpg",
       "thumbnail": "/images/cities/ICN.jpg",
@@ -3051,15 +3045,14 @@
     {
       "id": "2026-08-22-per",
       "slug": "2026-08-22-sg-au",
-      "title": "Singapore · Australia",
+      "title": "Australia",
       "subtitle": "TPE → SIN → PER → SIN → TPE",
       "startDate": "2026-08-22",
       "endDate": "2026-08-30",
       "status": "planned",
       "collectionId": "oceania",
       "collectionIds": [
-        "oceania",
-        "southeast-asia"
+        "oceania"
       ],
       "heroImage": "/images/cities/PER.jpg",
       "thumbnail": "/images/cities/PER.jpg",
@@ -3138,7 +3131,7 @@
     {
       "id": "2026-10-09-man",
       "slug": "2026-10-09-kr-qa",
-      "title": "South Korea · Qatar · United Kingdom +2",
+      "title": "United Kingdom · Ireland · Thailand",
       "subtitle": "TPE → ICN → DOH → MAN → DOH → BKK → TPE",
       "startDate": "2026-10-09",
       "endDate": "2026-10-26",
@@ -3146,8 +3139,6 @@
       "collectionId": "europe",
       "collectionIds": [
         "europe",
-        "korea",
-        "middle-east",
         "southeast-asia"
       ],
       "heroImage": "/images/cities/MAN.jpg",
