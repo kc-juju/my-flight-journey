@@ -2720,49 +2720,63 @@
           "mode": "train",
           "fromPlaceId": "eze",
           "toPlaceId": "nce",
-          "departure": "2026-04-02"
+          "departure": "2026-04-02",
+          "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)",
+          "durationMinutes": 13
         },
         {
           "id": "2026-04-03-nce-monaco-train",
           "mode": "train",
           "fromPlaceId": "nce",
           "toPlaceId": "monaco",
-          "departure": "2026-04-03"
+          "departure": "2026-04-03",
+          "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)",
+          "durationMinutes": 22
         },
         {
           "id": "2026-04-03-monaco-menton-train",
           "mode": "train",
           "fromPlaceId": "monaco",
           "toPlaceId": "menton",
-          "departure": "2026-04-03"
+          "departure": "2026-04-03",
+          "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)",
+          "durationMinutes": 10
         },
         {
           "id": "2026-04-03-menton-nce-train",
           "mode": "train",
           "fromPlaceId": "menton",
           "toPlaceId": "nce",
-          "departure": "2026-04-03"
+          "departure": "2026-04-03",
+          "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)",
+          "durationMinutes": 35
         },
         {
           "id": "2026-04-04-nce-cannes-train",
           "mode": "train",
           "fromPlaceId": "nce",
           "toPlaceId": "cannes",
-          "departure": "2026-04-04"
+          "departure": "2026-04-04",
+          "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)",
+          "durationMinutes": 27
         },
         {
           "id": "2026-04-04-cannes-antibes-train",
           "mode": "train",
           "fromPlaceId": "cannes",
           "toPlaceId": "antibes",
-          "departure": "2026-04-04"
+          "departure": "2026-04-04",
+          "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)",
+          "durationMinutes": 8
         },
         {
           "id": "2026-04-04-antibes-nce-train",
           "mode": "train",
           "fromPlaceId": "antibes",
           "toPlaceId": "nce",
-          "departure": "2026-04-04"
+          "departure": "2026-04-04",
+          "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)",
+          "durationMinutes": 15
         },
         {
           "id": "2026-04-05-EZY1697-NCEVCE",

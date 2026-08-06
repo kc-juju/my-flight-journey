@@ -20,49 +20,63 @@
     "date": "2026-04-02",
     "mode": "train",
     "from": "eze",
-    "to": "nce"
+    "to": "nce",
+    "durationMinutes": 13,
+    "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)"
   },
   {
     "journey": "2026-03-28-ph-tr",
     "date": "2026-04-03",
     "mode": "train",
     "from": "nce",
-    "to": "monaco"
+    "to": "monaco",
+    "durationMinutes": 22,
+    "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)"
   },
   {
     "journey": "2026-03-28-ph-tr",
     "date": "2026-04-03",
     "mode": "train",
     "from": "monaco",
-    "to": "menton"
+    "to": "menton",
+    "durationMinutes": 10,
+    "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)"
   },
   {
     "journey": "2026-03-28-ph-tr",
     "date": "2026-04-03",
     "mode": "train",
     "from": "menton",
-    "to": "nce"
+    "to": "nce",
+    "durationMinutes": 35,
+    "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)"
   },
   {
     "journey": "2026-03-28-ph-tr",
     "date": "2026-04-04",
     "mode": "train",
     "from": "nce",
-    "to": "cannes"
+    "to": "cannes",
+    "durationMinutes": 27,
+    "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)"
   },
   {
     "journey": "2026-03-28-ph-tr",
     "date": "2026-04-04",
     "mode": "train",
     "from": "cannes",
-    "to": "antibes"
+    "to": "antibes",
+    "durationMinutes": 8,
+    "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)"
   },
   {
     "journey": "2026-03-28-ph-tr",
     "date": "2026-04-04",
     "mode": "train",
     "from": "antibes",
-    "to": "nce"
+    "to": "nce",
+    "durationMinutes": 15,
+    "note": "Fastest scheduled service, SNCF open GTFS (feed of 5 Aug 2026)"
   },
   {
     "journey": "2026-03-28-ph-tr",
