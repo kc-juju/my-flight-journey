@@ -21,6 +21,34 @@ export interface Tally {
   sub?: string;
 }
 
+/** One airport, with everywhere it connects to and how often. */
+export interface AirportRow {
+  place: Place;
+  /** Times this airport was used, counting each departure and each arrival. */
+  calls: number;
+  departures: number;
+  arrivals: number;
+  journeys: number;
+  firstDate: string;
+  lastDate: string;
+  partners: {
+    place: Place;
+    count: number;
+    outbound: number;
+    inbound: number;
+    km: number;
+  }[];
+}
+
+/** Aircraft grouped by family, each keeping the individual models flown. */
+export interface FamilyRow {
+  family: string;
+  manufacturer: string;
+  count: number;
+  km: number;
+  models: Tally[];
+}
+
 export interface YearRow {
   year: number;
   journeys: number;
@@ -34,9 +62,11 @@ export interface YearRow {
 export interface Breakdown {
   countries: CountryRow[];
   airports: Tally[];
+  airportDetail: AirportRow[];
   routes: Tally[];
   operators: Tally[];
   aircraft: Tally[];
+  aircraftFamilies: FamilyRow[];
   cabins: Tally[];
   years: YearRow[];
   longest?: { segment: Segment; journey: Journey; km: number };
@@ -58,11 +88,61 @@ const bump = (map: Map<string, Tally>, key: string, label: string, km = 0, sub?:
 
 const byCount = (a: Tally, b: Tally) => b.count - a.count || a.label.localeCompare(b.label);
 
+/**
+ * Collapse a model name to its family. "Boeing 787-9" and "Boeing 787-10" are
+ * the same aeroplane to a passenger; an A320 and an A321neo are the same
+ * cabin. Anything unrecognised keeps its own name rather than being forced
+ * into a bucket it does not belong in.
+ */
+export function aircraftFamily(model: string): { family: string; manufacturer: string } {
+  const m = model.trim();
+  const boeing = m.match(/Boeing\s*(7\d)7/i);
+  if (boeing) return { family: `Boeing ${boeing[1]}7`, manufacturer: 'Boeing' };
+  if (/A3(1|2)\d/i.test(m)) return { family: 'Airbus A320 family', manufacturer: 'Airbus' };
+  const airbus = m.match(/A(3[3-8]0)/i);
+  if (airbus) return { family: `Airbus A${airbus[1]}`, manufacturer: 'Airbus' };
+  if (/MD-?8\d/i.test(m)) return { family: 'McDonnell Douglas MD-80', manufacturer: 'McDonnell Douglas' };
+  if (/(DHC-?8|Dash\s*8)/i.test(m)) return { family: 'De Havilland Dash 8', manufacturer: 'De Havilland Canada' };
+  if (/ATR\s*\d/i.test(m)) return { family: 'ATR 42/72', manufacturer: 'ATR' };
+  if (/Embraer|E-?Jet|ERJ/i.test(m)) return { family: 'Embraer E-Jet', manufacturer: 'Embraer' };
+  return { family: m, manufacturer: m.split(/\s+/)[0] };
+}
+
 export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>): Breakdown {
   const counted = data.journeys.filter((j) => j.status !== 'bucket');
 
   const countries = new Map<string, CountryRow>();
   const airports = new Map<string, Tally>();
+  const detail = new Map<string, AirportRow>();
+  const journeysPerAirport = new Map<string, Set<string>>();
+
+  const airportRow = (place: Place, date: string): AirportRow => {
+    const row = detail.get(place.id) ?? {
+      place,
+      calls: 0,
+      departures: 0,
+      arrivals: 0,
+      journeys: 0,
+      firstDate: date,
+      lastDate: date,
+      partners: [],
+    };
+    if (date < row.firstDate) row.firstDate = date;
+    if (date > row.lastDate) row.lastDate = date;
+    detail.set(place.id, row);
+    return row;
+  };
+
+  const link = (row: AirportRow, other: Place, km: number, outbound: boolean) => {
+    let partner = row.partners.find((p) => p.place.id === other.id);
+    if (!partner) {
+      partner = { place: other, count: 0, outbound: 0, inbound: 0, km };
+      row.partners.push(partner);
+    }
+    partner.count += 1;
+    if (outbound) partner.outbound += 1;
+    else partner.inbound += 1;
+  };
   const routes = new Map<string, Tally>();
   const operators = new Map<string, Tally>();
   const aircraft = new Map<string, Tally>();
@@ -124,6 +204,10 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
       ) + 1;
 
     for (const place of journeyPlaces) {
+      journeysPerAirport.set(
+        place.id,
+        (journeysPerAirport.get(place.id) ?? new Set<string>()).add(journey.id),
+      );
       const row = countries.get(place.countryCode) ?? {
         code: place.countryCode,
         name: place.country,
@@ -156,11 +240,21 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
         bump(airports, from.id, from.airportName ?? from.name, 0, from.country);
         const row = countries.get(from.countryCode);
         if (row) row.visits += 1;
+        const a = airportRow(from, journey.startDate);
+        a.calls += 1;
+        a.departures += 1;
       }
       if (to) {
         bump(airports, to.id, to.airportName ?? to.name, 0, to.country);
         const row = countries.get(to.countryCode);
         if (row) row.visits += 1;
+        const a = airportRow(to, journey.startDate);
+        a.calls += 1;
+        a.arrivals += 1;
+      }
+      if (from && to && from.id !== to.id) {
+        link(airportRow(from, journey.startDate), to, km, true);
+        link(airportRow(to, journey.startDate), from, km, false);
       }
       if (from && to) {
         const pair = [from.code ?? from.id, to.code ?? to.id].sort().join(' — ');
@@ -187,7 +281,38 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
     ).size;
   }
 
+  for (const [id, set] of journeysPerAirport) {
+    const row = detail.get(id);
+    if (row) row.journeys = set.size;
+  }
+  for (const row of detail.values()) {
+    row.partners.sort((a, b) => b.count - a.count || a.place.name.localeCompare(b.place.name));
+  }
+
+  const families = new Map<string, FamilyRow>();
+  for (const model of aircraft.values()) {
+    const { family, manufacturer } = aircraftFamily(model.label);
+    const row = families.get(family) ?? {
+      family,
+      manufacturer,
+      count: 0,
+      km: 0,
+      models: [] as Tally[],
+    };
+    row.count += model.count;
+    row.km += model.distanceKm ?? 0;
+    row.models.push(model);
+    families.set(family, row);
+  }
+  for (const row of families.values()) row.models.sort(byCount);
+
   return {
+    aircraftFamilies: [...families.values()].sort(
+      (a, b) => b.count - a.count || a.family.localeCompare(b.family),
+    ),
+    airportDetail: [...detail.values()].sort(
+      (a, b) => b.calls - a.calls || a.place.name.localeCompare(b.place.name),
+    ),
     countries: [...countries.values()].sort(
       (a, b) => b.visits - a.visits || a.name.localeCompare(b.name),
     ),
