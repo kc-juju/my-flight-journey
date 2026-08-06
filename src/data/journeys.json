@@ -567,6 +567,15 @@
       "timezone": "America/Edmonton"
     },
     {
+      "id": "amanohashidate",
+      "name": "Amanohashidate",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 35.568,
+      "lon": 135.1906,
+      "timezone": "Asia/Tokyo"
+    },
+    {
       "id": "antibes",
       "name": "Antibes",
       "country": "France",
@@ -585,6 +594,15 @@
       "lon": -115.5721,
       "image": "/images/cities/banff.jpg",
       "timezone": "America/Edmonton"
+    },
+    {
+      "id": "cambridge",
+      "name": "Cambridge",
+      "country": "United Kingdom",
+      "countryCode": "GB",
+      "lat": 52.1976,
+      "lon": 0.1392,
+      "timezone": "Europe/London"
     },
     {
       "id": "canmore",
@@ -617,6 +635,78 @@
       "timezone": "Europe/Rome"
     },
     {
+      "id": "fussen",
+      "name": "Füssen",
+      "country": "Germany",
+      "countryCode": "DE",
+      "lat": 47.5676,
+      "lon": 10.6993,
+      "timezone": "Europe/Berlin"
+    },
+    {
+      "id": "garmisch",
+      "name": "Garmisch-Partenkirchen",
+      "country": "Germany",
+      "countryCode": "DE",
+      "lat": 47.4924,
+      "lon": 11.0963,
+      "timezone": "Europe/Berlin"
+    },
+    {
+      "id": "himeji",
+      "name": "Himeji",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 34.8154,
+      "lon": 134.6855,
+      "timezone": "Asia/Tokyo"
+    },
+    {
+      "id": "kinosaki",
+      "name": "Kinosaki Onsen",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 35.6237,
+      "lon": 134.8138,
+      "timezone": "Asia/Tokyo"
+    },
+    {
+      "id": "kobe",
+      "name": "Kobe",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 34.6932,
+      "lon": 135.1944,
+      "timezone": "Asia/Tokyo"
+    },
+    {
+      "id": "krakow",
+      "name": "Kraków",
+      "country": "Poland",
+      "countryCode": "PL",
+      "lat": 50.0469,
+      "lon": 19.9972,
+      "timezone": "Europe/Warsaw"
+    },
+    {
+      "id": "kurashiki",
+      "name": "Kurashiki",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 34.5851,
+      "lon": 133.772,
+      "timezone": "Asia/Tokyo"
+    },
+    {
+      "id": "konigssee",
+      "name": "Königssee",
+      "country": "Germany",
+      "countryCode": "DE",
+      "lat": 47.5551,
+      "lon": 12.9766,
+      "timezone": "Europe/Berlin"
+    },
+    {
       "id": "lake-louise",
       "name": "Lake Louise",
       "country": "Canada",
@@ -625,6 +715,15 @@
       "lon": -116.1775,
       "image": "/images/cities/lake-louise.jpg",
       "timezone": "America/Edmonton"
+    },
+    {
+      "id": "lublin",
+      "name": "Lublin",
+      "country": "Poland",
+      "countryCode": "PL",
+      "lat": 51.2182,
+      "lon": 22.5547,
+      "timezone": "Europe/Warsaw"
     },
     {
       "id": "menton",
@@ -647,6 +746,15 @@
       "timezone": "Europe/Monaco"
     },
     {
+      "id": "salzburg",
+      "name": "Salzburg",
+      "country": "Austria",
+      "countryCode": "AT",
+      "lat": 47.7981,
+      "lon": 13.0465,
+      "timezone": "Europe/Vienna"
+    },
+    {
       "id": "eze",
       "name": "Èze",
       "country": "France",
@@ -655,6 +763,15 @@
       "lon": 7.3611,
       "image": "/images/cities/eze.jpg",
       "timezone": "Europe/Paris"
+    },
+    {
+      "id": "cesky-krumlov",
+      "name": "Český Krumlov",
+      "country": "Czechia",
+      "countryCode": "CZ",
+      "lat": 48.8107,
+      "lon": 14.3151,
+      "timezone": "Europe/Prague"
     }
   ],
   "collections": [
@@ -1273,6 +1390,33 @@
           "arrivalDelayMinutes": -7
         },
         {
+          "id": "2018-07-07-BUD-krakow-train",
+          "mode": "train",
+          "fromPlaceId": "bud",
+          "toPlaceId": "krakow",
+          "departure": "2018-07-07",
+          "note": "Overnight sleeper, 20:25 → 06:10 the next morning",
+          "durationMinutes": 585
+        },
+        {
+          "id": "2018-07-10-krakow-lublin-train",
+          "mode": "train",
+          "fromPlaceId": "krakow",
+          "toPlaceId": "lublin",
+          "departure": "2018-07-10",
+          "note": "IC 3202 Jadwiga, the through service — 06:30 → 11:51 • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "durationMinutes": 321
+        },
+        {
+          "id": "2018-07-11-lublin-WAW-bus",
+          "mode": "bus",
+          "fromPlaceId": "lublin",
+          "toPlaceId": "waw",
+          "departure": "2018-07-11",
+          "note": "Coach to Warsaw • 183 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 137
+        },
+        {
           "id": "2018-07-11-FIN1146-WAWHEL",
           "mode": "flight",
           "fromPlaceId": "waw",
@@ -1650,6 +1794,15 @@
           "arrivalDelayMinutes": 13
         },
         {
+          "id": "2020-01-18-MFM-HKG-bus",
+          "mode": "bus",
+          "fromPlaceId": "mfm",
+          "toPlaceId": "hkg",
+          "departure": "2020-01-18",
+          "note": "Across the Hong Kong–Zhuhai–Macau bridge; the atlas only has airport nodes, so the line runs airport to airport • 63 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 66
+        },
+        {
           "id": "2020-01-19-CPA468-HKGTPE",
           "mode": "flight",
           "fromPlaceId": "hkg",
@@ -1790,7 +1943,7 @@
     {
       "id": "2023-03-31-muc",
       "slug": "2023-03-31-de-at",
-      "title": "Germany · Austria",
+      "title": "Germany · Austria · Czechia",
       "subtitle": "TPE → MUC → TPE",
       "startDate": "2023-03-31",
       "endDate": "2023-04-10",
@@ -1832,6 +1985,72 @@
           "cabin": "Economy",
           "departureDelayMinutes": 9,
           "arrivalDelayMinutes": 43
+        },
+        {
+          "id": "2023-04-03-MUC-fussen-train",
+          "mode": "train",
+          "fromPlaceId": "muc",
+          "toPlaceId": "fussen",
+          "departure": "2023-04-03",
+          "note": "Fastest scheduled rail from München Hbf, with changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "durationMinutes": 136
+        },
+        {
+          "id": "2023-04-04-fussen-garmisch-train",
+          "mode": "train",
+          "fromPlaceId": "fussen",
+          "toPlaceId": "garmisch",
+          "departure": "2023-04-04",
+          "note": "Fastest scheduled service, with changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "durationMinutes": 125
+        },
+        {
+          "id": "2023-04-04-garmisch-MUC-train",
+          "mode": "train",
+          "fromPlaceId": "garmisch",
+          "toPlaceId": "muc",
+          "departure": "2023-04-04",
+          "note": "Fastest scheduled service back to München Hbf • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "durationMinutes": 148
+        },
+        {
+          "id": "2023-04-05-MUC-salzburg-train",
+          "mode": "train",
+          "fromPlaceId": "muc",
+          "toPlaceId": "salzburg",
+          "departure": "2023-04-05",
+          "note": "EC 115 — München Hbf 08:16 → Salzburg Hbf 09:59, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "durationMinutes": 103
+        },
+        {
+          "id": "2023-04-06-salzburg-konigssee-car",
+          "mode": "car",
+          "fromPlaceId": "salzburg",
+          "toPlaceId": "konigssee",
+          "departure": "2023-04-06",
+          "operator": "Hire car",
+          "note": "Out to the lake • 29 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 35
+        },
+        {
+          "id": "2023-04-06-konigssee-cesky-krumlov-car",
+          "mode": "car",
+          "fromPlaceId": "konigssee",
+          "toPlaceId": "cesky-krumlov",
+          "departure": "2023-04-06",
+          "operator": "Hire car",
+          "note": "On into Bohemia • 238 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 185
+        },
+        {
+          "id": "2023-04-07-cesky-krumlov-VIE-car",
+          "mode": "car",
+          "fromPlaceId": "cesky-krumlov",
+          "toPlaceId": "vie",
+          "departure": "2023-04-07",
+          "operator": "Hire car",
+          "note": "Driven to Vienna • 226 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 195
         },
         {
           "id": "2023-04-10-EVA66-VIETPE",
@@ -2059,6 +2278,69 @@
           "departureDelayMinutes": 14
         },
         {
+          "id": "2024-02-28-OKJ-kurashiki-train",
+          "mode": "train",
+          "fromPlaceId": "okj",
+          "toPlaceId": "kurashiki",
+          "departure": "2024-02-28"
+        },
+        {
+          "id": "2024-02-28-kurashiki-OKJ-train",
+          "mode": "train",
+          "fromPlaceId": "kurashiki",
+          "toPlaceId": "okj",
+          "departure": "2024-02-28"
+        },
+        {
+          "id": "2024-02-29-OKJ-KIX-train",
+          "mode": "train",
+          "fromPlaceId": "okj",
+          "toPlaceId": "kix",
+          "departure": "2024-02-29"
+        },
+        {
+          "id": "2024-02-29-KIX-kinosaki-train",
+          "mode": "train",
+          "fromPlaceId": "kix",
+          "toPlaceId": "kinosaki",
+          "departure": "2024-02-29"
+        },
+        {
+          "id": "2024-03-01-kinosaki-amanohashidate-train",
+          "mode": "train",
+          "fromPlaceId": "kinosaki",
+          "toPlaceId": "amanohashidate",
+          "departure": "2024-03-01"
+        },
+        {
+          "id": "2024-03-01-amanohashidate-KIX-train",
+          "mode": "train",
+          "fromPlaceId": "amanohashidate",
+          "toPlaceId": "kix",
+          "departure": "2024-03-01"
+        },
+        {
+          "id": "2024-03-02-KIX-himeji-train",
+          "mode": "train",
+          "fromPlaceId": "kix",
+          "toPlaceId": "himeji",
+          "departure": "2024-03-02"
+        },
+        {
+          "id": "2024-03-02-himeji-kobe-train",
+          "mode": "train",
+          "fromPlaceId": "himeji",
+          "toPlaceId": "kobe",
+          "departure": "2024-03-02"
+        },
+        {
+          "id": "2024-03-02-kobe-KIX-train",
+          "mode": "train",
+          "fromPlaceId": "kobe",
+          "toPlaceId": "kix",
+          "departure": "2024-03-02"
+        },
+        {
           "id": "2024-03-03-CPA567-KIXHKG",
           "mode": "flight",
           "fromPlaceId": "kix",
@@ -2159,6 +2441,34 @@
           "cabin": "Economy",
           "departureDelayMinutes": 22,
           "arrivalDelayMinutes": 1
+        },
+        {
+          "id": "2024-04-01-LHR-cambridge-train",
+          "mode": "train",
+          "fromPlaceId": "lhr",
+          "toPlaceId": "cambridge",
+          "departure": "2024-04-01",
+          "note": "Great Northern from King’s Cross, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "durationMinutes": 49
+        },
+        {
+          "id": "2024-04-01-cambridge-LHR-train",
+          "mode": "train",
+          "fromPlaceId": "cambridge",
+          "toPlaceId": "lhr",
+          "departure": "2024-04-01",
+          "note": "Great Northern back to King’s Cross, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "durationMinutes": 50
+        },
+        {
+          "id": "2024-04-03-LHR-CDG-train",
+          "mode": "train",
+          "fromPlaceId": "lhr",
+          "toPlaceId": "cdg",
+          "departure": "2024-04-03",
+          "operator": "Eurostar",
+          "note": "Eurostar, St Pancras International → Paris Nord; the atlas only has airport nodes, so the line runs airport to airport • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "durationMinutes": 138
         },
         {
           "id": "2024-04-07-EVA88-CDGTPE",
@@ -2448,6 +2758,15 @@
           "cabin": "Economy",
           "departureDelayMinutes": 15,
           "arrivalDelayMinutes": 38
+        },
+        {
+          "id": "2025-01-30-OOL-BNE-train",
+          "mode": "train",
+          "fromPlaceId": "ool",
+          "toPlaceId": "bne",
+          "departure": "2025-01-30",
+          "note": "Translink line from Varsity Lakes to Roma Street • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "durationMinutes": 81
         },
         {
           "id": "2025-02-01-SIA246-BNESIN",
@@ -2943,7 +3262,7 @@
     {
       "id": "2026-03-28-bod",
       "slug": "2026-03-28-ph-tr",
-      "title": "Philippines · Türkiye · France +1",
+      "title": "Philippines · Türkiye · France +2",
       "subtitle": "TPE → MNL → IST → BOD → NCE → VCE → IST → TPE",
       "startDate": "2026-03-28",
       "endDate": "2026-04-11",

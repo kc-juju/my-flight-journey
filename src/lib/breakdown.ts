@@ -285,7 +285,9 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
         if (!longest || km > longest.km) longest = { segment, journey, km };
         if (!shortest || km < shortest.km) shortest = { segment, journey, km };
       }
-      if (segment.operator) bump(operators, segment.operator, segment.operator, km);
+      // Operators is a list of airlines. A coach company or a hire car is a
+      // way of getting somewhere, not a carrier to be ranked against them.
+      if (flight && segment.operator) bump(operators, segment.operator, segment.operator, km);
       if (segment.vehicle) bump(aircraft, segment.vehicle, segment.vehicle, km);
       if (segment.cabin) bump(cabins, segment.cabin, segment.cabin, km);
     }

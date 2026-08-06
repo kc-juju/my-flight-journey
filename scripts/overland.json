@@ -169,5 +169,207 @@
     "operator": "Hire car",
     "note": "Driven back to Venice • 161 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
     "durationMinutes": 130
+  },
+  {
+    "journey": "2018-07-02-sg-fi",
+    "date": "2018-07-07",
+    "mode": "train",
+    "from": "BUD",
+    "to": "krakow",
+    "durationMinutes": 585,
+    "note": "Overnight sleeper, 20:25 → 06:10 the next morning"
+  },
+  {
+    "journey": "2018-07-02-sg-fi",
+    "date": "2018-07-10",
+    "mode": "train",
+    "from": "krakow",
+    "to": "lublin",
+    "durationMinutes": 321,
+    "note": "IC 3202 Jadwiga, the through service — 06:30 → 11:51 • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+  },
+  {
+    "journey": "2018-07-02-sg-fi",
+    "date": "2018-07-11",
+    "mode": "bus",
+    "from": "lublin",
+    "to": "WAW",
+    "durationMinutes": 137,
+    "note": "Coach to Warsaw • 183 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2020-01-16-mo-hk",
+    "date": "2020-01-18",
+    "mode": "bus",
+    "from": "MFM",
+    "to": "HKG",
+    "durationMinutes": 66,
+    "note": "Across the Hong Kong–Zhuhai–Macau bridge; the atlas only has airport nodes, so the line runs airport to airport • 63 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2023-03-31-de-at",
+    "date": "2023-04-03",
+    "mode": "train",
+    "from": "MUC",
+    "to": "fussen",
+    "durationMinutes": 136,
+    "note": "Fastest scheduled rail from München Hbf, with changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+  },
+  {
+    "journey": "2023-03-31-de-at",
+    "date": "2023-04-04",
+    "mode": "train",
+    "from": "fussen",
+    "to": "garmisch",
+    "durationMinutes": 125,
+    "note": "Fastest scheduled service, with changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+  },
+  {
+    "journey": "2023-03-31-de-at",
+    "date": "2023-04-04",
+    "mode": "train",
+    "from": "garmisch",
+    "to": "MUC",
+    "durationMinutes": 148,
+    "note": "Fastest scheduled service back to München Hbf • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+  },
+  {
+    "journey": "2023-03-31-de-at",
+    "date": "2023-04-05",
+    "mode": "train",
+    "from": "MUC",
+    "to": "salzburg",
+    "durationMinutes": 103,
+    "note": "EC 115 — München Hbf 08:16 → Salzburg Hbf 09:59, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+  },
+  {
+    "journey": "2023-03-31-de-at",
+    "date": "2023-04-06",
+    "mode": "car",
+    "from": "salzburg",
+    "to": "konigssee",
+    "operator": "Hire car",
+    "durationMinutes": 35,
+    "note": "Out to the lake • 29 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2023-03-31-de-at",
+    "date": "2023-04-06",
+    "mode": "car",
+    "from": "konigssee",
+    "to": "cesky-krumlov",
+    "operator": "Hire car",
+    "durationMinutes": 185,
+    "note": "On into Bohemia • 238 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2023-03-31-de-at",
+    "date": "2023-04-07",
+    "mode": "car",
+    "from": "cesky-krumlov",
+    "to": "VIE",
+    "operator": "Hire car",
+    "durationMinutes": 195,
+    "note": "Driven to Vienna • 226 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2024-03-30-th-gb",
+    "date": "2024-04-01",
+    "mode": "train",
+    "from": "LHR",
+    "to": "cambridge",
+    "durationMinutes": 49,
+    "note": "Great Northern from King’s Cross, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+  },
+  {
+    "journey": "2024-03-30-th-gb",
+    "date": "2024-04-01",
+    "mode": "train",
+    "from": "cambridge",
+    "to": "LHR",
+    "durationMinutes": 50,
+    "note": "Great Northern back to King’s Cross, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+  },
+  {
+    "journey": "2024-03-30-th-gb",
+    "date": "2024-04-03",
+    "mode": "train",
+    "from": "LHR",
+    "to": "CDG",
+    "operator": "Eurostar",
+    "durationMinutes": 138,
+    "note": "Eurostar, St Pancras International → Paris Nord; the atlas only has airport nodes, so the line runs airport to airport • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+  },
+  {
+    "journey": "2025-01-19-sg-au",
+    "date": "2025-01-30",
+    "mode": "train",
+    "from": "OOL",
+    "to": "BNE",
+    "durationMinutes": 81,
+    "note": "Translink line from Varsity Lakes to Roma Street • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-02-28",
+    "mode": "train",
+    "from": "OKJ",
+    "to": "kurashiki"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-02-28",
+    "mode": "train",
+    "from": "kurashiki",
+    "to": "OKJ"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-02-29",
+    "mode": "train",
+    "from": "OKJ",
+    "to": "KIX"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-02-29",
+    "mode": "train",
+    "from": "KIX",
+    "to": "kinosaki"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-03-01",
+    "mode": "train",
+    "from": "kinosaki",
+    "to": "amanohashidate"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-03-01",
+    "mode": "train",
+    "from": "amanohashidate",
+    "to": "KIX"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-03-02",
+    "mode": "train",
+    "from": "KIX",
+    "to": "himeji"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-03-02",
+    "mode": "train",
+    "from": "himeji",
+    "to": "kobe"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-03-02",
+    "mode": "train",
+    "from": "kobe",
+    "to": "KIX"
   }
 ]

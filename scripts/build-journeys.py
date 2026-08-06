@@ -92,6 +92,7 @@ COUNTRY_NAMES = {
     'KR': 'South Korea', 'SG': 'Singapore', 'MY': 'Malaysia', 'TH': 'Thailand',
     'PH': 'Philippines', 'US': 'United States', 'CA': 'Canada', 'AU': 'Australia',
     'FI': 'Finland', 'PL': 'Poland', 'HU': 'Hungary', 'DE': 'Germany', 'AT': 'Austria',
+    'CZ': 'Czechia',
     'FR': 'France', 'GB': 'United Kingdom', 'IE': 'Ireland', 'IT': 'Italy',
     'TR': 'Türkiye', 'QA': 'Qatar',
 }
@@ -348,7 +349,7 @@ def build():
             if i:
                 prev_code = group[i - 1]['d']
                 for entry in overland:
-                    if entry.get('_used'):
+                    if entry.get('_used') or entry.get('journey'):
                         continue
                     if entry['from'] != prev_code or entry['to'] != leg['o']:
                         continue
@@ -514,6 +515,40 @@ def build():
 
     zone_of = {p['id']: p.get('timezone') for p in places}
     country_of = {p['id']: p['countryCode'] for p in places}
+    def retitle(journey):
+        """Name a journey after the countries it actually reached."""
+        transfer_set = set(journey.get('transferPlaceIds') or [])
+        flown = [x for x in journey['segments'] if not x.get('dropped')]
+        seen_here, visited_codes = set(), []
+        for seg in flown:
+            for pid in (seg['fromPlaceId'], seg['toPlaceId']):
+                if pid in transfer_set or pid in seen_here:
+                    continue
+                seen_here.add(pid)
+                code = country_of.get(pid)
+                if code and code not in visited_codes:
+                    visited_codes.append(code)
+        away_codes = [c for c in visited_codes if c != HOME_COUNTRY]
+
+        if away_codes:
+            title = ' · '.join(COUNTRY_NAMES.get(c, c) for c in away_codes[:3])
+            if len(away_codes) > 3:
+                title += f' +{len(away_codes) - 3}'
+            journey['title'] = title
+
+        tags = []
+        for code in visited_codes:
+            r = REGION_BY_COUNTRY.get(code)
+            if r and r not in tags:
+                tags.append(r)
+        home_region = REGION_BY_COUNTRY.get(HOME_COUNTRY)
+        if len(tags) > 1 and home_region in tags:
+            tags.remove(home_region)
+        if tags:
+            primary = journey['collectionId'] if journey['collectionId'] in tags else tags[0]
+            journey['collectionId'] = primary
+            journey['collectionIds'] = [primary, *[t for t in tags if t != primary]]
+
     removed = []
     for journey in journeys:
         entry = notes.get(journey['slug']) or {}
@@ -545,40 +580,7 @@ def build():
         if transfers:
             journey['transferPlaceIds'] = transfers
 
-        # The title and the collection tags were built before we knew which
-        # stops were connections. A country only ever changed planes in does
-        # not belong in either.
-        transfer_set = set(transfers)
-        seen_here, visited_codes = set(), []
-        for seg in flown:
-            for pid in (seg['fromPlaceId'], seg['toPlaceId']):
-                if pid in transfer_set or pid in seen_here:
-                    continue
-                seen_here.add(pid)
-                code = country_of.get(pid)
-                if code and code not in visited_codes:
-                    visited_codes.append(code)
-        away_codes = [c for c in visited_codes if c != HOME_COUNTRY]
-
-        if away_codes:
-            title = ' · '.join(COUNTRY_NAMES.get(c, c) for c in away_codes[:3])
-            if len(away_codes) > 3:
-                title += f' +{len(away_codes) - 3}'
-            journey['title'] = title
-
-        tags = []
-        for code in visited_codes:
-            r = REGION_BY_COUNTRY.get(code)
-            if r and r not in tags:
-                tags.append(r)
-        home_region = REGION_BY_COUNTRY.get(HOME_COUNTRY)
-        if len(tags) > 1 and home_region in tags:
-            tags.remove(home_region)
-        if tags:
-            primary = journey['collectionId'] if journey['collectionId'] in tags else tags[0]
-            journey['collectionId'] = primary
-            journey['collectionIds'] = [primary, *[t for t in tags if t != primary]]
-
+        retitle(journey)
     print(f'  connections (city not counted): {len(removed)}')
     for slug, pid, mins in removed:
         print(f'    {slug:22s} {pid.upper():9s} {mins // 60}h{mins % 60:02d}')
@@ -634,7 +636,8 @@ def build():
                     seg['durationMinutes'] = round((back - out).total_seconds() / 60)
                 break
 
-        for leg in [e for e in overland if e.get('journey') == journey['slug']]:
+        for leg in [e for e in overland
+                    if e.get('journey') == journey['slug'] and not e.get('_used')]:
             leg['_used'] = True
             ground = {
                 'id': f"{leg['date']}-{leg['from']}-{leg['to']}-{leg['mode']}",
@@ -652,14 +655,25 @@ def build():
             if leg.get('durationMinutes'):
                 ground['durationMinutes'] = leg['durationMinutes']
 
-            at = len(journey['segments'])
-            last = ''
+            # Position by continuity, not by date alone: a coach recorded with
+            # no clock still leaves from wherever the traveller last arrived,
+            # and a same-day flight it fed into would otherwise come first.
+            day = ground['departure'][:10]
+            at, last = None, ''
             for idx, existing in enumerate(journey['segments']):
                 when = (existing.get('departure') or '')[:10] or last
                 last = when or last
-                if when and when > ground['departure'][:10]:
-                    at = idx
-                    break
+                if (existing.get('toPlaceId') == ground['fromPlaceId']
+                        and when and when <= day):
+                    at = idx + 1
+            if at is None:
+                at, last = len(journey['segments']), ''
+                for idx, existing in enumerate(journey['segments']):
+                    when = (existing.get('departure') or '')[:10] or last
+                    last = when or last
+                    if when and when > day:
+                        at = idx
+                        break
             journey['segments'].insert(at, ground)
 
         for drop in entry.get('dropped', []):
@@ -693,6 +707,10 @@ def build():
     for slug in notes:
         if not any(j['slug'] == slug for j in journeys):
             print(f'  WARNING: note for unknown journey "{slug}"')
+    # Ground legs arrive after the first pass, and they can add a country.
+    for journey in journeys:
+        retitle(journey)
+
     print(f'  journeys annotated: {applied}')
 
     out = {'places': places, 'collections': collections, 'journeys': journeys}

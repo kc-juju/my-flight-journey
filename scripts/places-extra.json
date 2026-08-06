@@ -70,5 +70,109 @@
     "countryCode": "CA",
     "lat": 51.425,
     "lon": -116.1775
+  },
+  {
+    "id": "krakow",
+    "name": "Kraków",
+    "country": "Poland",
+    "countryCode": "PL",
+    "lat": 50.0469,
+    "lon": 19.9972
+  },
+  {
+    "id": "lublin",
+    "name": "Lublin",
+    "country": "Poland",
+    "countryCode": "PL",
+    "lat": 51.2182,
+    "lon": 22.5547
+  },
+  {
+    "id": "fussen",
+    "name": "Füssen",
+    "country": "Germany",
+    "countryCode": "DE",
+    "lat": 47.5676,
+    "lon": 10.6993
+  },
+  {
+    "id": "garmisch",
+    "name": "Garmisch-Partenkirchen",
+    "country": "Germany",
+    "countryCode": "DE",
+    "lat": 47.4924,
+    "lon": 11.0963
+  },
+  {
+    "id": "salzburg",
+    "name": "Salzburg",
+    "country": "Austria",
+    "countryCode": "AT",
+    "lat": 47.7981,
+    "lon": 13.0465
+  },
+  {
+    "id": "konigssee",
+    "name": "Königssee",
+    "country": "Germany",
+    "countryCode": "DE",
+    "lat": 47.5551,
+    "lon": 12.9766
+  },
+  {
+    "id": "cesky-krumlov",
+    "name": "Český Krumlov",
+    "country": "Czechia",
+    "countryCode": "CZ",
+    "lat": 48.8107,
+    "lon": 14.3151
+  },
+  {
+    "id": "cambridge",
+    "name": "Cambridge",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 52.1976,
+    "lon": 0.1392
+  },
+  {
+    "id": "kurashiki",
+    "name": "Kurashiki",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 34.5851,
+    "lon": 133.772
+  },
+  {
+    "id": "kinosaki",
+    "name": "Kinosaki Onsen",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 35.6237,
+    "lon": 134.8138
+  },
+  {
+    "id": "amanohashidate",
+    "name": "Amanohashidate",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 35.568,
+    "lon": 135.1906
+  },
+  {
+    "id": "himeji",
+    "name": "Himeji",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 34.8154,
+    "lon": 134.6855
+  },
+  {
+    "id": "kobe",
+    "name": "Kobe",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 34.6932,
+    "lon": 135.1944
   }
 ]
