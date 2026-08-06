@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Icon } from '../ui/Icon';
+import { AccountMenu } from './AccountMenu';
 import { asset } from '../../lib/asset';
 
 const LINKS = [
@@ -68,9 +68,7 @@ export function Navbar() {
               </NavLink>
             ))}
           </nav>
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
-            <Icon name="person" className="text-[18px] text-on-primary" />
-          </div>
+          <AccountMenu />
         </div>
       </div>
     </header>

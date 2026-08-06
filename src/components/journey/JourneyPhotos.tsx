@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import type { Journey, Place } from '../../types/journey';
 import { useAuth } from '../../hooks/useSupabase';
 import {
-  amOwner,
   deletePhoto,
   listPhotos,
   looksLikeImage,
@@ -20,6 +19,7 @@ import {
   type PhotoPlacement,
 } from '../../lib/photoPlacement';
 import { placesOfJourney } from '../../lib/atlas';
+import { useOwner } from '../../hooks/useOwner';
 import { formatDayDate } from '../../lib/format';
 import { Icon } from '../ui/Icon';
 
@@ -218,23 +218,13 @@ export function PhotoUploader({
   placesById: Map<string, Place>;
   onUploaded: () => void;
 }) {
-  const { session, signIn, signOut, loading, redirectTo } = useAuth();
+  const { session, loading } = useAuth();
   const [pending, setPending] = useState<PendingPhoto[]>([]);
   const [busy, setBusy] = useState(false);
-  const [email, setEmail] = useState('');
   const [message, setMessage] = useState<string | null>(null);
-  const [owner, setOwner] = useState<boolean | null>(null);
+  const owner = useOwner();
   const [reading, setReading] = useState(0);
   const input = useRef<HTMLInputElement>(null);
-
-  // Being signed in is not the same as being allowed to upload.
-  useEffect(() => {
-    if (!session) {
-      setOwner(null);
-      return;
-    }
-    void amOwner().then(setOwner);
-  }, [session]);
 
   const accept = async (files: FileList | null) => {
     if (!files?.length) return;
@@ -329,63 +319,12 @@ export function PhotoUploader({
 
   if (loading) return null;
 
-  if (!session) {
-    return (
-      <div className="rounded-xl border border-dashed border-outline-variant p-stack-md">
-        <p className="mb-stack-sm font-body-md text-sm text-on-surface-variant">
-          Photos are public; adding and removing them is limited to the site owner.
-          Sign in with the owner address to manage this journey's photos.
-        </p>
-        <form
-          className="flex flex-wrap gap-2"
-          onSubmit={async (e) => {
-            e.preventDefault();
-            const error = await signIn(email);
-            setMessage(
-              error ??
-                `Check your inbox. The link returns to ${redirectTo} — that address has ` +
-                  'to be allow-listed in Supabase, or the link goes to localhost.',
-            );
-          }}
-        >
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-            className="flex-1 rounded-lg border border-outline-variant bg-surface-container-lowest px-3 py-2 font-body-md text-sm text-on-surface"
-          />
-          <button
-            type="submit"
-            className="rounded-full bg-primary px-5 py-2 font-label-caps text-label-caps uppercase text-on-primary"
-          >
-            Email me a link
-          </button>
-        </form>
-        {message && (
-          <p className="mt-stack-sm font-body-md text-sm text-on-surface-variant">{message}</p>
-        )}
-      </div>
-    );
-  }
+  // Signing in happens once, in the header. Down here we only ask whether it
+  // has happened: no session, no uploader, no second login form to explain.
+  if (!session) return null;
 
   return (
     <div className="flex flex-col gap-stack-sm rounded-xl border border-dashed border-outline-variant p-stack-md">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-          Signed in as {session.user.email}
-          {owner === false && ' — not on the owner list'}
-        </span>
-        <button
-          type="button"
-          onClick={() => void signOut()}
-          className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-on-surface"
-        >
-          Sign out
-        </button>
-      </div>
-
       {owner === false && (
         <p className="rounded-lg bg-error-container px-3 py-2 font-body-md text-sm text-on-error-container">
           This address is not in <code>site_owners</code>, so uploads will be refused.

@@ -16,11 +16,14 @@ import {
 import { citiesOfJourney, layoverMinutes } from '../lib/atlas';
 import { Icon } from '../components/ui/Icon';
 import { TitleEditor } from '../components/journey/TitleEditor';
+import { NoteEditor } from '../components/journey/NoteEditor';
+import { useOwner } from '../hooks/useOwner';
 import { formatDateRange, formatDuration, formatNumber, STATUS_LABEL } from '../lib/format';
 
 export function JourneyDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const { journeyBySlug, placesById, metricsFor } = useAtlas();
+  const owner = useOwner() === true;
   const journey = slug ? journeyBySlug(slug) : undefined;
 
   if (!journey) {
@@ -81,7 +84,7 @@ export function JourneyDetailPage() {
 
       <div className="relative z-10 mx-auto mt-stack-lg grid w-full max-w-container grid-cols-1 gap-stack-lg px-margin-mobile lg:grid-cols-12 lg:px-margin-desktop">
         <div className="flex flex-col gap-stack-lg lg:col-span-8">
-          {journey.notes && (
+          {(journey.notes || owner) && (
             <motion.article
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -97,9 +100,7 @@ export function JourneyDetailPage() {
                 <Icon name="menu_book" filled className="text-[24px] text-tertiary-fixed-dim" />
                 Travel notes
               </h2>
-              <p className="font-body-lg leading-relaxed text-on-surface-variant first-letter:float-left first-letter:mr-3 first-letter:font-display-lg first-letter:text-5xl first-letter:text-primary">
-                {journey.notes}
-              </p>
+              <NoteEditor journey={journey} />
 
               {journey.highlights.length > 0 && (
                 <div className="mt-stack-lg flex flex-wrap gap-stack-sm border-t border-surface-variant pt-stack-md">

@@ -4,7 +4,7 @@ import {
 import raw from '../data/journeys.json';
 import type { AtlasData, Journey, JourneyMetrics, Place } from '../types/journey';
 import { atlasMetrics, indexPlaces, journeyMetrics, sortByDateDesc } from '../lib/atlas';
-import { listTitles, setTitle, type TitleOverrides } from '../lib/titles';
+import { listOverrides, setOverride, type Overrides } from '../lib/titles';
 
 const data = raw as unknown as AtlasData;
 
@@ -15,8 +15,13 @@ interface AtlasContextValue {
   metrics: ReturnType<typeof atlasMetrics>;
   metricsFor: (journey: Journey) => JourneyMetrics;
   journeyBySlug: (slug: string) => Journey | undefined;
-  /** Rename a journey, or pass '' to go back to the generated title. */
-  renameJourney: (slug: string, title: string) => Promise<string | null>;
+  /**
+   * Write a journey's title or its note. Passing '' clears that field, and
+   * clearing both returns the journey to what the build generated.
+   */
+  editJourney: (slug: string, field: 'title' | 'note', value: string) => Promise<string | null>;
+  /** What has been written over the generated text for this journey. */
+  overrideFor: (slug: string) => { title?: string; note?: string } | undefined;
 }
 
 const AtlasContext = createContext<AtlasContextValue | null>(null);
@@ -24,11 +29,11 @@ const AtlasContext = createContext<AtlasContextValue | null>(null);
 export function AtlasProvider({ children }: { children: ReactNode }) {
   // Titles the owner has overruled. They live in Supabase rather than the
   // build so a rename survives the next rebuild and everyone sees it.
-  const [overrides, setOverrides] = useState<TitleOverrides>({});
+  const [overrides, setOverrides] = useState<Overrides>({});
 
   useEffect(() => {
     let live = true;
-    void listTitles().then((rows) => {
+    void listOverrides().then((rows) => {
       if (live) setOverrides(rows);
     });
     return () => {
@@ -36,27 +41,35 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  const rename = useCallback(async (slug: string, title: string) => {
-    const error = await setTitle(slug, title);
-    if (error) return error;
-    setOverrides((current) => {
-      const next = { ...current };
-      const wanted = title.trim();
-      if (wanted) next[slug] = wanted;
-      else delete next[slug];
-      return next;
-    });
-    return null;
-  }, []);
+  const edit = useCallback(
+    async (slug: string, field: 'title' | 'note', value: string) => {
+      const error = await setOverride(slug, field, value, overrides[slug]);
+      if (error) return error;
+      setOverrides((current) => {
+        const next = { ...current };
+        const row = { ...next[slug], [field]: value.trim() || undefined };
+        if (!row.title && !row.note) delete next[slug];
+        else next[slug] = row;
+        return next;
+      });
+      return null;
+    },
+    [overrides],
+  );
 
   const value = useMemo<AtlasContextValue>(() => {
     const placesById = indexPlaces(data.places);
     const journeys = [...data.journeys]
       .map((journey) => {
-        const title = overrides[journey.slug];
-        // A hand-written title also stands in for the region label, so the
-        // collection lists call the journey what its owner calls it.
-        return title ? { ...journey, title, label: title } : journey;
+        const over = overrides[journey.slug];
+        if (!over) return journey;
+        return {
+          ...journey,
+          // A hand-written title also stands in for the region label, so the
+          // collection lists call the journey what its owner calls it.
+          ...(over.title ? { title: over.title, label: over.title } : {}),
+          ...(over.note ? { notes: over.note } : {}),
+        };
       })
       .sort(sortByDateDesc);
     const cache = new Map<string, JourneyMetrics>();
@@ -74,9 +87,10 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
         return computed;
       },
       journeyBySlug: (slug) => journeys.find((j) => j.slug === slug),
-      renameJourney: rename,
+      editJourney: edit,
+      overrideFor: (slug: string) => overrides[slug],
     };
-  }, [overrides, rename]);
+  }, [overrides, edit]);
 
   return <AtlasContext.Provider value={value}>{children}</AtlasContext.Provider>;
 }

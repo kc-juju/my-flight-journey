@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { Journey } from '../../types/journey';
 import { useAtlas } from '../../hooks/useAtlas';
-import { useAuth } from '../../hooks/useSupabase';
-import { amOwner } from '../../lib/photos';
+import { useOwner } from '../../hooks/useOwner';
 import { Icon } from '../ui/Icon';
 
 /**
@@ -13,21 +12,12 @@ import { Icon } from '../ui/Icon';
  * rather than leaving a journey with no name at all.
  */
 export function TitleEditor({ journey }: { journey: Journey }) {
-  const { renameJourney } = useAtlas();
-  const { session } = useAuth();
-  const [owner, setOwner] = useState(false);
+  const { editJourney } = useAtlas();
+  const owner = useOwner() === true;
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(journey.title);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!session) {
-      setOwner(false);
-      return;
-    }
-    void amOwner().then(setOwner);
-  }, [session]);
 
   useEffect(() => {
     setDraft(journey.title);
@@ -36,7 +26,7 @@ export function TitleEditor({ journey }: { journey: Journey }) {
   const save = async (value: string) => {
     setBusy(true);
     setError(null);
-    const failed = await renameJourney(journey.slug, value);
+    const failed = await editJourney(journey.slug, 'title', value);
     setBusy(false);
     if (failed) {
       setError(failed);
