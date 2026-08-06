@@ -10,6 +10,7 @@
       "lat": 5.932743,
       "lon": 116.049324,
       "image": "/images/cities/BKI.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Kuching"
     },
     {
@@ -22,6 +23,7 @@
       "lat": 13.6811,
       "lon": 100.747002,
       "image": "/images/cities/BKK.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Bangkok"
     },
     {
@@ -34,6 +36,7 @@
       "lat": -27.384199142456055,
       "lon": 153.11700439453125,
       "image": "/images/cities/BNE.jpg",
+      "continent": "Oceania",
       "timezone": "Australia/Brisbane"
     },
     {
@@ -46,6 +49,7 @@
       "lat": 44.82865,
       "lon": -0.715356,
       "image": "/images/cities/BOD.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Paris"
     },
     {
@@ -58,6 +62,7 @@
       "lat": 47.43018,
       "lon": 19.262393,
       "image": "/images/cities/BUD.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Budapest"
     },
     {
@@ -70,6 +75,7 @@
       "lat": 49.00896,
       "lon": 2.554117,
       "image": "/images/cities/CDG.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Paris"
     },
     {
@@ -82,6 +88,7 @@
       "lat": 42.774753,
       "lon": 141.690414,
       "image": "/images/cities/CTS.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -94,6 +101,7 @@
       "lat": 25.273056,
       "lon": 51.608056,
       "image": "/images/cities/DOH.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Qatar"
     },
     {
@@ -106,6 +114,7 @@
       "lat": 53.428713,
       "lon": -6.262121,
       "image": "/images/cities/DUB.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Dublin"
     },
     {
@@ -118,6 +127,7 @@
       "lat": 33.585899353027344,
       "lon": 130.4510040283203,
       "image": "/images/cities/FUK.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -130,6 +140,7 @@
       "lat": 60.318363,
       "lon": 24.963341,
       "image": "/images/cities/HEL.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Helsinki"
     },
     {
@@ -142,6 +153,7 @@
       "lat": 41.77,
       "lon": 140.822006,
       "image": "/images/cities/HKD.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -154,6 +166,7 @@
       "lat": 22.31184,
       "lon": 113.914862,
       "image": "/images/cities/HKG.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Hong_Kong"
     },
     {
@@ -166,6 +179,7 @@
       "lat": 35.549678,
       "lon": 139.786958,
       "image": "/images/cities/HND.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -178,6 +192,7 @@
       "lat": 37.469101,
       "lon": 126.450996,
       "image": "/images/cities/ICN.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Seoul"
     },
     {
@@ -190,6 +205,7 @@
       "lat": 41.274874,
       "lon": 28.732136,
       "image": "/images/cities/IST.jpg",
+      "continent": "Eurasia",
       "timezone": "Europe/Istanbul"
     },
     {
@@ -202,6 +218,7 @@
       "lat": 34.780853,
       "lon": 135.440829,
       "image": "/images/cities/ITM.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -214,6 +231,7 @@
       "lat": 40.639447,
       "lon": -73.779317,
       "image": "/images/cities/JFK.jpg",
+      "continent": "North America",
       "timezone": "America/New_York"
     },
     {
@@ -226,6 +244,7 @@
       "lat": 34.427299,
       "lon": 135.244003,
       "image": "/images/cities/KIX.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -238,6 +257,7 @@
       "lat": 2.74558,
       "lon": 101.709999,
       "image": "/images/cities/KUL.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Kuala_Lumpur"
     },
     {
@@ -250,6 +270,7 @@
       "lat": 26.541805,
       "lon": 106.80402,
       "image": "/images/cities/KWE.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Shanghai"
     },
     {
@@ -262,6 +283,7 @@
       "lat": 33.942501,
       "lon": -118.407997,
       "image": "/images/cities/LAX.jpg",
+      "continent": "North America",
       "timezone": "America/Los_Angeles"
     },
     {
@@ -274,6 +296,7 @@
       "lat": 51.470748,
       "lon": -0.459909,
       "image": "/images/cities/LHR.jpg",
+      "continent": "Europe",
       "timezone": "Europe/London"
     },
     {
@@ -286,6 +309,7 @@
       "lat": 53.349375,
       "lon": -2.279521,
       "image": "/images/cities/MAN.jpg",
+      "continent": "Europe",
       "timezone": "Europe/London"
     },
     {
@@ -298,6 +322,7 @@
       "lat": -37.670732,
       "lon": 144.837898,
       "image": "/images/cities/MEL.jpg",
+      "continent": "Oceania",
       "timezone": "Australia/Melbourne"
     },
     {
@@ -310,6 +335,7 @@
       "lat": 22.149599,
       "lon": 113.592003,
       "image": "/images/cities/MFM.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Macau"
     },
     {
@@ -322,6 +348,7 @@
       "lat": 14.5086,
       "lon": 121.019997,
       "image": "/images/cities/MNL.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Manila"
     },
     {
@@ -334,6 +361,7 @@
       "lat": 48.353802,
       "lon": 11.7861,
       "image": "/images/cities/MUC.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Berlin"
     },
     {
@@ -346,6 +374,7 @@
       "lat": 23.568701,
       "lon": 119.627998,
       "image": "/images/cities/MZG.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Taipei"
     },
     {
@@ -358,6 +387,7 @@
       "lat": 43.658401,
       "lon": 7.21587,
       "image": "/images/cities/NCE.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Paris"
     },
     {
@@ -370,6 +400,7 @@
       "lat": 35.76858,
       "lon": 140.388714,
       "image": "/images/cities/NRT.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -382,6 +413,7 @@
       "lat": 26.192437,
       "lon": 127.639804,
       "image": "/images/cities/OKA.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -394,6 +426,7 @@
       "lat": 34.756901,
       "lon": 133.854996,
       "image": "/images/cities/OKJ.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -406,6 +439,7 @@
       "lat": -28.165962,
       "lon": 153.506641,
       "image": "/images/cities/OOL.jpg",
+      "continent": "Oceania",
       "timezone": "Australia/Sydney"
     },
     {
@@ -418,6 +452,7 @@
       "lat": 5.296303,
       "lon": 100.276185,
       "image": "/images/cities/PEN.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Kuala_Lumpur"
     },
     {
@@ -430,6 +465,7 @@
       "lat": -31.94029998779297,
       "lon": 115.96700286865234,
       "image": "/images/cities/PER.jpg",
+      "continent": "Oceania",
       "timezone": "Australia/Perth"
     },
     {
@@ -442,6 +478,7 @@
       "lat": 31.1434,
       "lon": 121.805,
       "image": "/images/cities/PVG.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Shanghai"
     },
     {
@@ -454,6 +491,7 @@
       "lat": 47.447943,
       "lon": -122.310276,
       "image": "/images/cities/SEA.jpg",
+      "continent": "North America",
       "timezone": "America/Los_Angeles"
     },
     {
@@ -466,6 +504,7 @@
       "lat": 1.35019,
       "lon": 103.994003,
       "image": "/images/cities/SIN.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Singapore"
     },
     {
@@ -479,6 +518,7 @@
       "lon": 121.233002,
       "home": true,
       "image": "/images/cities/TPE.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Taipei"
     },
     {
@@ -492,6 +532,7 @@
       "lon": 121.552822,
       "home": true,
       "image": "/images/cities/TSA.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Taipei"
     },
     {
@@ -504,6 +545,7 @@
       "lat": 45.505299,
       "lon": 12.3519,
       "image": "/images/cities/VCE.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Rome"
     },
     {
@@ -516,6 +558,7 @@
       "lat": 48.110298,
       "lon": 16.5697,
       "image": "/images/cities/VIE.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Vienna"
     },
     {
@@ -528,6 +571,7 @@
       "lat": 52.165699,
       "lon": 20.9671,
       "image": "/images/cities/WAW.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Warsaw"
     },
     {
@@ -540,6 +584,7 @@
       "lat": 49.193901,
       "lon": -123.183998,
       "image": "/images/cities/YVR.jpg",
+      "continent": "North America",
       "timezone": "America/Vancouver"
     },
     {
@@ -552,6 +597,7 @@
       "lat": 51.118822,
       "lon": -114.009933,
       "image": "/images/cities/YYC.jpg",
+      "continent": "North America",
       "timezone": "America/Edmonton"
     },
     {
@@ -564,6 +610,7 @@
       "lat": 62.462799,
       "lon": -114.440002,
       "image": "/images/cities/YZF.jpg",
+      "continent": "North America",
       "timezone": "America/Edmonton"
     },
     {
@@ -574,6 +621,7 @@
       "lat": 35.568,
       "lon": 135.1906,
       "image": "/images/cities/amanohashidate.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -584,6 +632,7 @@
       "lat": 43.58,
       "lon": 7.1231,
       "image": "/images/cities/antibes.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Paris"
     },
     {
@@ -594,6 +643,7 @@
       "lat": 51.1751,
       "lon": -115.5721,
       "image": "/images/cities/banff.jpg",
+      "continent": "North America",
       "timezone": "America/Edmonton"
     },
     {
@@ -604,6 +654,7 @@
       "lat": 52.1976,
       "lon": 0.1392,
       "image": "/images/cities/cambridge.jpg",
+      "continent": "Europe",
       "timezone": "Europe/London"
     },
     {
@@ -614,6 +665,7 @@
       "lat": 51.0867,
       "lon": -115.3481,
       "image": "/images/cities/canmore.jpg",
+      "continent": "North America",
       "timezone": "America/Edmonton"
     },
     {
@@ -624,6 +676,7 @@
       "lat": 43.5525,
       "lon": 7.0214,
       "image": "/images/cities/cannes.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Paris"
     },
     {
@@ -634,6 +687,7 @@
       "lat": 46.6131,
       "lon": 12.1631,
       "image": "/images/cities/dolomites.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Rome"
     },
     {
@@ -644,6 +698,7 @@
       "lat": 47.5676,
       "lon": 10.6993,
       "image": "/images/cities/fussen.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Berlin"
     },
     {
@@ -654,6 +709,7 @@
       "lat": 47.4924,
       "lon": 11.0963,
       "image": "/images/cities/garmisch.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Berlin"
     },
     {
@@ -664,6 +720,7 @@
       "lat": 34.8154,
       "lon": 134.6855,
       "image": "/images/cities/himeji.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -674,6 +731,7 @@
       "lat": 35.6237,
       "lon": 134.8138,
       "image": "/images/cities/kinosaki.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -684,6 +742,7 @@
       "lat": 34.6932,
       "lon": 135.1944,
       "image": "/images/cities/kobe.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -694,6 +753,7 @@
       "lat": 50.0469,
       "lon": 19.9972,
       "image": "/images/cities/krakow.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Warsaw"
     },
     {
@@ -704,6 +764,7 @@
       "lat": 34.5851,
       "lon": 133.772,
       "image": "/images/cities/kurashiki.jpg",
+      "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
     {
@@ -714,6 +775,7 @@
       "lat": 47.5551,
       "lon": 12.9766,
       "image": "/images/cities/konigssee.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Berlin"
     },
     {
@@ -724,6 +786,7 @@
       "lat": 51.425,
       "lon": -116.1775,
       "image": "/images/cities/lake-louise.jpg",
+      "continent": "North America",
       "timezone": "America/Edmonton"
     },
     {
@@ -734,6 +797,7 @@
       "lat": 51.2182,
       "lon": 22.5547,
       "image": "/images/cities/lublin.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Warsaw"
     },
     {
@@ -744,6 +808,7 @@
       "lat": 43.7747,
       "lon": 7.4997,
       "image": "/images/cities/menton.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Paris"
     },
     {
@@ -754,6 +819,7 @@
       "lat": 43.7311,
       "lon": 7.42,
       "image": "/images/cities/monaco.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Monaco"
     },
     {
@@ -764,6 +830,7 @@
       "lat": 47.7981,
       "lon": 13.0465,
       "image": "/images/cities/salzburg.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Vienna"
     },
     {
@@ -774,6 +841,7 @@
       "lat": 43.7278,
       "lon": 7.3611,
       "image": "/images/cities/eze.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Paris"
     },
     {
@@ -784,6 +852,7 @@
       "lat": 48.8107,
       "lon": 14.3151,
       "image": "/images/cities/cesky-krumlov.jpg",
+      "continent": "Europe",
       "timezone": "Europe/Prague"
     }
   ],

@@ -87,6 +87,21 @@ COLLECTIONS = [
     ('taiwan', 'Taiwan', 'Songshan to Magong and back.'),
 ]
 
+# Which landmass a country is filed under. Hong Kong and Macau are listed
+# separately from China above, so they are named here too.
+CONTINENTS = {
+    # Türkiye straddles the Bosphorus; the UN geoscheme files it under
+    # Western Asia, which beats a continent with one country in it.
+    'Asia': ['TW', 'JP', 'HK', 'MO', 'CN', 'KR', 'SG', 'MY', 'TH', 'PH', 'ID',
+             'VN', 'IN', 'AE', 'QA', 'TR'],
+    'Europe': ['FI', 'PL', 'HU', 'DE', 'AT', 'CZ', 'FR', 'IT', 'MC', 'GB', 'IE', 'NL', 'ES', 'PT', 'CH', 'BE', 'DK', 'SE', 'NO'],
+    'North America': ['US', 'CA', 'MX'],
+    'Oceania': ['AU', 'NZ'],
+    'South America': ['BR', 'AR', 'CL', 'PE'],
+    'Africa': ['ZA', 'EG', 'MA', 'KE'],
+}
+CONTINENT_BY_COUNTRY = {c: name for name, codes in CONTINENTS.items() for c in codes}
+
 COUNTRY_NAMES = {
     'TW': 'Taiwan', 'JP': 'Japan', 'HK': 'Hong Kong', 'MO': 'Macau', 'CN': 'China',
     'KR': 'South Korea', 'SG': 'Singapore', 'MY': 'Malaysia', 'TH': 'Thailand',
@@ -261,6 +276,15 @@ def build():
             continue
         if place['id'] in have_image_by_id:
             place['image'] = f"/images/cities/{place['id']}.jpg"
+    unfiled = set()
+    for place in places:
+        where = CONTINENT_BY_COUNTRY.get(place['countryCode'])
+        if where:
+            place['continent'] = where
+        else:
+            unfiled.add(place['countryCode'])
+    if unfiled:
+        print(f'  WARNING: no continent for {sorted(unfiled)}')
     places.sort(key=lambda p: (p.get('code') or '~', p['name']))
 
     place_id = {p['code']: p['id'] for p in places if p.get('code')}

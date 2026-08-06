@@ -79,13 +79,24 @@ export function Breakdowns() {
             Every country
           </h2>
           <p className="max-w-lg font-body-md text-on-surface-variant">
-            {b.countries.length} countries and territories. Open one to see the
-            cities, and the airports or stations reached in each.
+            {b.countries.length} countries and territories across{' '}
+            {plural(b.continents.length, 'continent')}. Open one to see the cities, and
+            the airports or stations reached in each.
           </p>
         </header>
 
+        {b.continents.map((continent) => (
+        <section key={continent.name} className="flex flex-col gap-stack-sm">
+          <div className="flex items-baseline justify-between gap-3 border-b border-outline-variant/50 pb-1">
+            <h3 className="font-headline-md text-[20px] text-on-surface">{continent.name}</h3>
+            <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+              {plural(continent.countries.length, 'country', 'countries')} ·{' '}
+              {plural(continent.cities, 'city', 'cities')}
+            </span>
+          </div>
+
         <ul className="grid grid-cols-1 gap-stack-sm md:grid-cols-2">
-          {b.countries.map((row) => {
+          {continent.countries.map((row) => {
             const open = openCountry === row.code;
             return (
               <li
@@ -108,7 +119,9 @@ export function Breakdowns() {
                     </span>
                   </span>
                   <span className="flex items-center gap-2 font-label-caps text-[11px] uppercase tracking-widest text-on-surface-variant">
-                    {plural(row.cities.length, 'city', 'cities')}
+                    {row.cities.length
+                      ? plural(row.cities.length, 'city', 'cities')
+                      : 'Connection only'}
                     <Icon name={open ? 'expand_less' : 'expand_more'} className="text-[16px]" />
                   </span>
                 </button>
@@ -144,6 +157,8 @@ export function Breakdowns() {
             );
           })}
         </ul>
+        </section>
+        ))}
       </section>
 
       {/* ----------------------------------------------------- airports -- */}

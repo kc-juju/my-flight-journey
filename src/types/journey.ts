@@ -30,6 +30,8 @@ export interface Place {
   airportName?: string;
   country: string;
   countryCode: string;
+  /** Landmass the country is filed under, for grouping the atlas. */
+  continent?: string;
   lat: number;
   lon: number;
   /**

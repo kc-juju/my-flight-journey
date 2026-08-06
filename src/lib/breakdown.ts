@@ -5,6 +5,7 @@ import { citiesOfJourney, placesOfJourney, segmentDistanceKm, travelled } from '
 export interface CountryRow {
   code: string;
   name: string;
+  continent: string;
   visits: number;
   journeys: number;
   places: Place[];
@@ -66,8 +67,15 @@ export interface YearRow {
   newCountries: string[];
 }
 
+export interface ContinentRow {
+  name: string;
+  countries: CountryRow[];
+  cities: number;
+}
+
 export interface Breakdown {
   countries: CountryRow[];
+  continents: ContinentRow[];
   airportDetail: AirportRow[];
   routes: Tally[];
   operators: Tally[];
@@ -214,6 +222,7 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
       const row = countries.get(place.countryCode) ?? {
         code: place.countryCode,
         name: place.country,
+        continent: place.continent ?? 'Elsewhere',
         visits: 0,
         journeys: 0,
         places: [] as Place[],
@@ -306,6 +315,22 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
       .sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  // Countries grouped by landmass, biggest first — a reader looking for
+  // Japan should not have to scan a list of twenty-five.
+  const byContinent = new Map<string, CountryRow[]>();
+  for (const row of [...countries.values()].sort(
+    (a, b) => b.visits - a.visits || a.name.localeCompare(b.name),
+  )) {
+    byContinent.set(row.continent, [...(byContinent.get(row.continent) ?? []), row]);
+  }
+  const continents: ContinentRow[] = [...byContinent.entries()]
+    .map(([name, rows]) => ({
+      name,
+      countries: rows,
+      cities: rows.reduce((sum, r) => sum + r.cities.length, 0),
+    }))
+    .sort((a, b) => b.countries.length - a.countries.length || a.name.localeCompare(b.name));
+
   const yearRows = [...years.values()].sort((a, b) => a.year - b.year);
   for (const row of yearRows) {
     row.countries = new Set(
@@ -347,6 +372,7 @@ export function buildBreakdown(data: AtlasData, placesById: Map<string, Place>):
     airportDetail: [...detail.values()].sort(
       (a, b) => b.calls - a.calls || a.place.name.localeCompare(b.place.name),
     ),
+    continents,
     countries: [...countries.values()].sort(
       (a, b) => b.visits - a.visits || a.name.localeCompare(b.name),
     ),
