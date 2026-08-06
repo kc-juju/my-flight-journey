@@ -4,6 +4,8 @@
 --   1. Only listed owners may add or remove photos. Without this, anyone who
 --      signs in with any email address can upload to your journeys, because
 --      "authenticated" means nothing more than "proved they can read an inbox".
+--      Any number of addresses can be owners, and any owner can remove any
+--      photo — the point is a shared album, not private lockers.
 --   2. Comments can belong to a journey, so each journey carries its own
 --      thread instead of everything landing in one global guestbook.
 
@@ -16,10 +18,20 @@ create table if not exists public.site_owners (
 alter table public.site_owners enable row level security;
 -- Nobody reads this table from the browser; the checks below run as definer.
 
--- Replace with your own address. The magic link is sent here, so it must be
--- an inbox you can actually open.
-insert into public.site_owners (email) values ('jimwu@synology.com')
+-- List every address that may manage photos. The magic link is sent to these
+-- inboxes, so each has to be one you can actually open. Add as many as you
+-- like — two people sharing a trip, a work address and a personal one.
+--
+-- Matching is case-insensitive (see is_owner below).
+insert into public.site_owners (email) values
+  ('jimwu@synology.com')
+  -- , ('someone.else@example.com')
 on conflict (email) do nothing;
+
+-- Later, without re-running this file:
+--   add:    insert into public.site_owners (email) values ('new@example.com');
+--   remove: delete from public.site_owners where lower(email) = 'old@example.com';
+--   list:   select * from public.site_owners;
 
 create or replace function public.is_owner()
 returns boolean

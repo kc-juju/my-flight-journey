@@ -95,7 +95,10 @@ the two variables below are missing the app still builds and runs — the
 guestbook shows a short notice and the uploader stays hidden.
 
 1. Create a project at supabase.com.
-2. Run `supabase/schema.sql` in the SQL editor. It creates the `journey_photos`
+2. Run `supabase/schema.sql` in the SQL editor, then
+   `supabase/002-owners-and-journey-comments.sql`. The second one restricts
+   photo management to the addresses listed in `site_owners` — add a row per
+   person — and gives each journey its own comment thread. It creates the `journey_photos`
    and `guestbook` tables, the `journey-photos` storage bucket, and the
    row-level security that makes a public key safe: anyone may read, anyone may
    sign the guestbook, only signed-in accounts may add or delete photos.
