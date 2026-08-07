@@ -101,7 +101,8 @@ export interface JourneyEvent {
   /** Local start time, when it is known. */
   time?: string;
   detail?: string;
-  kind?: 'ballgame';
+  /** Which game it was: baseball, basketball, football, and so on. */
+  kind?: string;
   /** Where the score or the times came from. */
   source?: string;
 }

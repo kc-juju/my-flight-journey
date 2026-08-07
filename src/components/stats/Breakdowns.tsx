@@ -1,7 +1,12 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAtlas } from '../../hooks/useAtlas';
+import type { Place } from '../../types/journey';
 import { buildBreakdown, type Tally } from '../../lib/breakdown';
-import { formatDuration, formatNumber, MODE_ICON, MODE_LABEL, plural } from '../../lib/format';
+import {
+  formatDayDate, formatDuration, formatNumber, MODE_ICON, MODE_LABEL, plural,
+} from '../../lib/format';
+import { sportOf } from '../../lib/sports';
 import { Icon } from '../ui/Icon';
 
 function RankTable({ title, rows, unit, limit = 10 }: {
@@ -69,6 +74,42 @@ export function Breakdowns() {
   // This section is about airports; the ground-only towns have no code and
   // belong with their country, not in a list of airports.
   const airportsOnly = b.airportDetail.filter((row) => Boolean(row.place.code));
+
+  // Games are written by hand rather than derived, so they are gathered here
+  // rather than in buildBreakdown with everything the flight log implies.
+  const ballgames = useMemo(() => {
+    const games = data.journeys
+      .filter((j) => j.status !== 'bucket')
+      .flatMap((journey) =>
+        (journey.events ?? [])
+          .filter((e) => sportOf(e.kind))
+          .map((event) => ({ event, journey })),
+      )
+      .sort((a, b2) => b2.event.date.localeCompare(a.event.date));
+
+    const grounds = new Map<string, { place?: Place; games: typeof games }>();
+    const teams = new Map<string, number>();
+    const sports = new Map<string, number>();
+    for (const game of games) {
+      const key = game.event.placeId;
+      const row = grounds.get(key) ?? { place: placesById.get(key), games: [] };
+      row.games.push(game);
+      grounds.set(key, row);
+      // 'A vs B' is how a fixture is written; either side is a team seen.
+      for (const side of game.event.title.split(/\s+vs\.?\s+/i)) {
+        const name = side.trim();
+        if (name) teams.set(name, (teams.get(name) ?? 0) + 1);
+      }
+      const label = sportOf(game.event.kind)?.label;
+      if (label) sports.set(label, (sports.get(label) ?? 0) + 1);
+    }
+    return {
+      games,
+      grounds: [...grounds.values()].sort((x, y) => y.games.length - x.games.length),
+      teams: [...teams.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0])),
+      sports: [...sports.entries()].sort((x, y) => y[1] - x[1]),
+    };
+  }, [data, placesById]);
 
   return (
     <div className="flex flex-col gap-margin-desktop">
@@ -153,6 +194,95 @@ export function Breakdowns() {
         </section>
         ))}
       </section>
+
+      {/* ---------------------------------------------------- ballgames -- */}
+      {ballgames.games.length > 0 && (
+        <section className="flex flex-col gap-stack-md">
+          <header className="flex flex-col gap-unit">
+            <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
+              Every ground
+            </h2>
+            <p className="max-w-lg font-body-md text-on-surface-variant">
+              {plural(ballgames.games.length, 'game')} at{' '}
+              {plural(ballgames.grounds.length, 'ground')}
+              {ballgames.sports.length > 0 &&
+                ` · ${ballgames.sports.map(([s2, n]) => `${s2.toLowerCase()} ×${n}`).join(', ')}`}
+              . Watched on the way to somewhere else; scores are from the
+              leagues' own records.
+            </p>
+          </header>
+
+          <ul className="flex flex-col gap-stack-sm">
+            {ballgames.grounds.map(({ place, games }) => (
+              <li
+                key={place?.id ?? games[0].event.placeId}
+                className="rounded-xl bg-surface-container-lowest p-stack-md shadow-sm"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-3">
+                  <span className="flex items-baseline gap-2">
+                    <Icon
+                      name={sportOf(games[0].event.kind)?.icon ?? 'local_activity'}
+                      className="text-[16px] text-tertiary-fixed-dim"
+                    />
+                    <span className="font-headline-md text-[18px] text-on-surface">
+                      {place?.name ?? games[0].event.placeId}
+                    </span>
+                    <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                      {place?.country}
+                    </span>
+                  </span>
+                  <span className="font-label-caps text-[11px] uppercase tracking-widest text-on-surface-variant">
+                    {plural(games.length, 'game')}
+                  </span>
+                </div>
+
+                <ol className="mt-stack-sm flex flex-col gap-2 border-t border-outline-variant/50 pt-stack-sm">
+                  {games.map(({ event, journey }) => (
+                    <li key={event.date + event.title}>
+                      <Link
+                        to={`/journeys/${journey.slug}`}
+                        className="flex flex-wrap items-baseline justify-between gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-surface-container"
+                      >
+                        <span className="font-body-md text-sm text-on-surface">{event.title}</span>
+                        <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                          {formatDayDate(event.date)}
+                          {event.time && ` · ${event.time}`}
+                        </span>
+                      </Link>
+                      {event.detail && (
+                        <p className="px-2 font-body-md text-xs text-on-surface-variant">
+                          {event.detail}
+                        </p>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </li>
+            ))}
+          </ul>
+
+          {ballgames.teams.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                Teams seen
+              </span>
+              {ballgames.teams.map(([team, count]) => (
+                <span
+                  key={team}
+                  className="rounded-full border border-outline-variant/60 px-3 py-1 font-body-md text-sm text-on-surface"
+                >
+                  {team}
+                  {count > 1 && (
+                    <span className="ml-2 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                      ×{count}
+                    </span>
+                  )}
+                </span>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
 
       {/* ----------------------------------------------------- airports -- */}
       <section className="flex flex-col gap-stack-md">

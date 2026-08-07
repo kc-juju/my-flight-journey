@@ -1,8 +1,7 @@
 import type { JourneyEvent, Place } from '../../types/journey';
 import { formatDayDate } from '../../lib/format';
+import { sportOf } from '../../lib/sports';
 import { Icon } from '../ui/Icon';
-
-const ICON: Record<string, string> = { ballgame: 'sports_baseball' };
 
 /**
  * Something that happened on the journey without anybody moving.
@@ -19,19 +18,17 @@ export function EventCard({
   placesById: Map<string, Place>;
 }) {
   const at = placesById.get(event.placeId);
+  const sport = sportOf(event.kind);
 
   return (
     <article className="flex items-start gap-4 rounded-xl border border-dashed border-tertiary-fixed-dim/60 bg-tertiary-fixed-dim/5 p-stack-sm">
       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-tertiary-fixed-dim/15">
-        <Icon
-          name={ICON[event.kind ?? ''] ?? 'local_activity'}
-          className="text-[22px] text-primary"
-        />
+        <Icon name={sport?.icon ?? 'local_activity'} className="text-[22px] text-primary" />
       </span>
 
       <div className="flex min-w-0 flex-col">
         <span className="font-label-caps text-label-caps uppercase tracking-widest text-tertiary-fixed-dim">
-          {event.kind === 'ballgame' ? 'Ballgame' : 'On the day'}
+          {sport?.label ?? 'On the day'}
           {at && ` · ${at.name}`}
         </span>
 

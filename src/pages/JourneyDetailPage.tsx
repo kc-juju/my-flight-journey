@@ -49,17 +49,23 @@ export function JourneyDetailPage() {
     );
   }
 
-  // Each event follows the last leg that happened on or before its date, so a
-  // match lands after the trains that reached the ground rather than before
-  // them. Keyed by the leg's index in journey.segments.
+  // An event follows the leg that arrived at it: the train to Koshien, not
+  // whatever else happened later that day. Where nothing arrives there — an
+  // event in the city you are already staying in — it follows the last leg of
+  // the day instead. Keyed by the leg's index in journey.segments.
   const eventsAfter = useMemo(() => {
     const map = new Map<number, JourneyEvent[]>();
     const legs = journey?.segments ?? [];
     for (const event of journey?.events ?? []) {
-      let target = -1;
+      let arrival = -1;
+      let sameDay = -1;
       legs.forEach((segment, i) => {
-        if ((segment.departure ?? '').slice(0, 10) <= event.date) target = i;
+        const day = (segment.departure ?? '').slice(0, 10);
+        if (day > event.date) return;
+        sameDay = i;
+        if (day === event.date && segment.toPlaceId === event.placeId) arrival = i;
       });
+      const target = arrival >= 0 ? arrival : sameDay;
       map.set(target, [...(map.get(target) ?? []), event]);
     }
     return map;
