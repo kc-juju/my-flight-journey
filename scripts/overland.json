@@ -155,20 +155,20 @@
     "date": "2026-04-05",
     "mode": "car",
     "from": "VCE",
-    "to": "dolomites",
+    "to": "laion",
     "operator": "Hire car",
-    "note": "Picked up at Venice and driven north into the mountains • 161 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
-    "durationMinutes": 129
+    "note": "Picked up at Venice and driven up to the Val Gardena • 224 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+    "durationMinutes": 207
   },
   {
     "journey": "2026-03-28-ph-tr",
     "date": "2026-04-09",
     "mode": "car",
-    "from": "dolomites",
+    "from": "laion",
     "to": "VCE",
     "operator": "Hire car",
-    "note": "Driven back to Venice • 161 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
-    "durationMinutes": 130
+    "note": "Driven back down to Venice • 223 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+    "durationMinutes": 207
   },
   {
     "journey": "2018-07-02-sg-fi",

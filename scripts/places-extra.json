@@ -40,15 +40,6 @@
     "lon": 7.1231
   },
   {
-    "id": "dolomites",
-    "name": "Dolomites",
-    "country": "Italy",
-    "countryCode": "IT",
-    "lat": 46.6131,
-    "lon": 12.1631,
-    "kind": "landscape"
-  },
-  {
     "id": "canmore",
     "name": "Canmore",
     "country": "Canada",
@@ -178,5 +169,13 @@
     "countryCode": "JP",
     "lat": 34.6932,
     "lon": 135.1944
+  },
+  {
+    "id": "laion",
+    "name": "Laion",
+    "country": "Italy",
+    "countryCode": "IT",
+    "lat": 46.6105,
+    "lon": 11.5996
   }
 ]

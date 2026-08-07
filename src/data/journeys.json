@@ -668,18 +668,6 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "dolomites",
-      "name": "Dolomites",
-      "country": "Italy",
-      "countryCode": "IT",
-      "lat": 46.6131,
-      "lon": 12.1631,
-      "kind": "landscape",
-      "image": "/images/cities/dolomites.jpg",
-      "continent": "Europe",
-      "timezone": "Europe/Rome"
-    },
-    {
       "id": "fussen",
       "name": "Füssen",
       "country": "Germany",
@@ -767,6 +755,17 @@
       "image": "/images/cities/konigssee.jpg",
       "continent": "Europe",
       "timezone": "Europe/Berlin"
+    },
+    {
+      "id": "laion",
+      "name": "Laion",
+      "country": "Italy",
+      "countryCode": "IT",
+      "lat": 46.6105,
+      "lon": 11.5996,
+      "image": "/images/cities/laion.jpg",
+      "continent": "Europe",
+      "timezone": "Europe/Rome"
     },
     {
       "id": "lake-louise",
@@ -3103,24 +3102,24 @@
           "arrivalDelayMinutes": -21
         },
         {
-          "id": "2026-04-05-VCE-dolomites-car",
+          "id": "2026-04-05-VCE-laion-car",
           "mode": "car",
           "fromPlaceId": "vce",
-          "toPlaceId": "dolomites",
+          "toPlaceId": "laion",
           "departure": "2026-04-05",
           "operator": "Hire car",
-          "note": "Picked up at Venice and driven north into the mountains • 161 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
-          "durationMinutes": 129
+          "note": "Picked up at Venice and driven up to the Val Gardena • 224 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 207
         },
         {
-          "id": "2026-04-09-dolomites-VCE-car",
+          "id": "2026-04-09-laion-VCE-car",
           "mode": "car",
-          "fromPlaceId": "dolomites",
+          "fromPlaceId": "laion",
           "toPlaceId": "vce",
           "departure": "2026-04-09",
           "operator": "Hire car",
-          "note": "Driven back to Venice • 161 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
-          "durationMinutes": 130
+          "note": "Driven back down to Venice • 223 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 207
         },
         {
           "id": "2026-04-11-THY1868-VCEIST",
