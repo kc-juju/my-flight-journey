@@ -132,23 +132,16 @@ export function Breakdowns() {
                 </p>
 
                 {open && (
-                  <ul className="mt-stack-sm flex flex-col gap-stack-sm border-t border-outline-variant/50 pt-stack-sm">
+                  <ul className="mt-stack-sm flex flex-wrap gap-2 border-t border-outline-variant/50 pt-stack-sm">
+                    {/* Names only. Which airport served which city is a
+                        different question, and 'Every airport' below answers
+                        it — repeating the codes here said it twice. */}
                     {row.cities.map((city) => (
-                      <li key={city.name}>
-                        <span className="font-body-md text-sm text-on-surface">{city.name}</span>
-                        <ul className="ml-3 mt-0.5 flex flex-col gap-0.5 border-l border-outline-variant/50 pl-3">
-                          {city.places.map((place) => (
-                            <li
-                              key={place.id}
-                              className="flex items-baseline justify-between gap-3 font-body-md text-xs text-on-surface-variant"
-                            >
-                              <span>{place.airportName ?? place.name}</span>
-                              <span className="font-label-caps text-[10px] uppercase tracking-widest">
-                                {place.code ?? 'ground'}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
+                      <li
+                        key={city.name}
+                        className="rounded-full border border-outline-variant/60 px-3 py-1 font-body-md text-sm text-on-surface"
+                      >
+                        {city.name}
                       </li>
                     ))}
                   </ul>
