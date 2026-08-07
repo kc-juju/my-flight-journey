@@ -607,5 +607,19 @@
     "licence": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Parc_Disneyland_-_Chessy_(FR77)_-_2025-10-13_-_1.jpg",
     "article": "Disneyland Paris"
+  },
+  "asahikawa": {
+    "file": "Asahikawa - Asahikawa6012.jpg",
+    "author": "lumoplank",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Asahikawa_-_Asahikawa6012.jpg",
+    "article": "Asahikawa"
+  },
+  "otaru": {
+    "file": "Otaru - Otaru181.jpg",
+    "author": "lumoplank",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Otaru_-_Otaru181.jpg",
+    "article": "Otaru"
   }
 }

@@ -684,5 +684,45 @@
     "to": "HND",
     "durationMinutes": 25,
     "note": "JR Keiyō line back into Tokyo"
+  },
+  {
+    "journey": "2022-12-01-jp",
+    "date": "2022-12-01",
+    "mode": "train",
+    "operator": "JR Hokkaido",
+    "from": "CTS",
+    "to": "asahikawa",
+    "durationMinutes": 85,
+    "note": "Limited express Kamui or Lilac — 1h 25m over 136.8 km • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2022-12-01-jp",
+    "date": "2022-12-02",
+    "mode": "train",
+    "operator": "JR Hokkaido",
+    "from": "asahikawa",
+    "to": "CTS",
+    "durationMinutes": 85,
+    "note": "Limited express back to Sapporo • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2022-12-01-jp",
+    "date": "2022-12-03",
+    "mode": "train",
+    "operator": "JR Hokkaido",
+    "from": "CTS",
+    "to": "otaru",
+    "durationMinutes": 34,
+    "note": "Rapid Airport along the Hakodate line — 34 minutes • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2022-12-01-jp",
+    "date": "2022-12-03",
+    "mode": "train",
+    "operator": "JR Hokkaido",
+    "from": "otaru",
+    "to": "CTS",
+    "durationMinutes": 34,
+    "note": "Rapid Airport back to Sapporo • Published fastest timing on the current timetable, not the service actually taken"
   }
 ]

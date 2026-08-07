@@ -328,5 +328,21 @@
     "lat": 35.6327,
     "lon": 139.8814,
     "kind": "landscape"
+  },
+  {
+    "id": "asahikawa",
+    "name": "Asahikawa",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 43.7706,
+    "lon": 142.365
+  },
+  {
+    "id": "otaru",
+    "name": "Otaru",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 43.1907,
+    "lon": 140.9946
   }
 ]

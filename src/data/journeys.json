@@ -646,6 +646,17 @@
       "timezone": "Australia/Melbourne"
     },
     {
+      "id": "asahikawa",
+      "name": "Asahikawa",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 43.7706,
+      "lon": 142.365,
+      "image": "/images/cities/asahikawa.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
+    },
+    {
       "id": "banff",
       "name": "Banff",
       "country": "Canada",
@@ -937,6 +948,17 @@
       "image": "/images/cities/monaco.jpg",
       "continent": "Europe",
       "timezone": "Europe/Monaco"
+    },
+    {
+      "id": "otaru",
+      "name": "Otaru",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 43.1907,
+      "lon": 140.9946,
+      "image": "/images/cities/otaru.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "page",
@@ -1699,6 +1721,46 @@
           "registration": "B-50025",
           "cabin": "Economy",
           "departureDelayMinutes": -1
+        },
+        {
+          "id": "2022-12-01-CTS-asahikawa-train",
+          "mode": "train",
+          "fromPlaceId": "cts",
+          "toPlaceId": "asahikawa",
+          "departure": "2022-12-01",
+          "operator": "JR Hokkaido",
+          "note": "Limited express Kamui or Lilac — 1h 25m over 136.8 km • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 85
+        },
+        {
+          "id": "2022-12-02-asahikawa-CTS-train",
+          "mode": "train",
+          "fromPlaceId": "asahikawa",
+          "toPlaceId": "cts",
+          "departure": "2022-12-02",
+          "operator": "JR Hokkaido",
+          "note": "Limited express back to Sapporo • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 85
+        },
+        {
+          "id": "2022-12-03-CTS-otaru-train",
+          "mode": "train",
+          "fromPlaceId": "cts",
+          "toPlaceId": "otaru",
+          "departure": "2022-12-03",
+          "operator": "JR Hokkaido",
+          "note": "Rapid Airport along the Hakodate line — 34 minutes • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 34
+        },
+        {
+          "id": "2022-12-03-otaru-CTS-train",
+          "mode": "train",
+          "fromPlaceId": "otaru",
+          "toPlaceId": "cts",
+          "departure": "2022-12-03",
+          "operator": "JR Hokkaido",
+          "note": "Rapid Airport back to Sapporo • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 34
         },
         {
           "id": "2022-12-04-TTW235-CTSTPE",
