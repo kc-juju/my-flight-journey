@@ -2138,7 +2138,7 @@
           "toPlaceId": "jfk",
           "departure": "2019-08-08T15:00",
           "arrival": "2019-08-08T19:40",
-          "note": "Greyhound out of Boston at 15:00, into New York at 19:40; the atlas hangs New York on its airport node, so the line runs to there",
+          "note": "Greyhound schedule GLI2519 out of Boston at 15:00, into New York at 19:40; the atlas hangs New York on its airport node, so the line runs to there",
           "durationMinutes": 280
         },
         {
