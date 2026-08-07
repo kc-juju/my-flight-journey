@@ -284,5 +284,49 @@
     "countryCode": "MY",
     "lat": 2.1943,
     "lon": 102.2487
+  },
+  {
+    "id": "disneyland-paris",
+    "name": "Disneyland Paris",
+    "country": "France",
+    "countryCode": "FR",
+    "lat": 48.8723,
+    "lon": 2.7757,
+    "kind": "landscape"
+  },
+  {
+    "id": "versailles",
+    "name": "Versailles",
+    "country": "France",
+    "countryCode": "FR",
+    "lat": 48.8044,
+    "lon": 2.1203
+  },
+  {
+    "id": "disneyland-california",
+    "name": "Disneyland California",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 33.8137,
+    "lon": -117.9197,
+    "kind": "landscape"
+  },
+  {
+    "id": "hong-kong-disneyland",
+    "name": "Hong Kong Disneyland",
+    "country": "Hong Kong",
+    "countryCode": "HK",
+    "lat": 22.3131,
+    "lon": 114.041,
+    "kind": "landscape"
+  },
+  {
+    "id": "tokyo-disneyland",
+    "name": "Tokyo Disneyland",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 35.6327,
+    "lon": 139.8814,
+    "kind": "landscape"
   }
 ]

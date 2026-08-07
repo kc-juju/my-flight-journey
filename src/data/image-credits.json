@@ -572,5 +572,40 @@
     "licence": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Melaka_View.jpg",
     "article": "Malacca City"
+  },
+  "disneyland-california": {
+    "file": "Sleeping_Beauty_Castle_-_February_2024.png",
+    "author": "Parksfan1955",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sleeping_Beauty_Castle_-_February_2024.png",
+    "article": "Disneyland"
+  },
+  "hong-kong-disneyland": {
+    "file": "Hong_Kong_Disneyland_Castle.jpg",
+    "author": "Ashwin Kumar",
+    "licence": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Disneyland_Castle.jpg",
+    "article": "Hong Kong Disneyland"
+  },
+  "tokyo-disneyland": {
+    "file": "Tokyo_Disneyland_Cinderella_Castle_2023-07-02.jpg",
+    "author": "LMP 2001",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tokyo_Disneyland_Cinderella_Castle_2023-07-02.jpg",
+    "article": "Tokyo Disneyland"
+  },
+  "versailles": {
+    "file": "Vue_aérienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3.0_-_081_(cropped).jpg",
+    "author": "ToucanWings",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Vue_a%C3%A9rienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3.0_-_081_(cropped).jpg",
+    "article": "Palace of Versailles"
+  },
+  "disneyland-paris": {
+    "file": "Parc Disneyland - Chessy (FR77) - 2025-10-13 - 1.jpg",
+    "author": "Chabe01",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Parc_Disneyland_-_Chessy_(FR77)_-_2025-10-13_-_1.jpg",
+    "article": "Disneyland Paris"
   }
 }

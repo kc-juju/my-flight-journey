@@ -122,12 +122,17 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
                 <>
                   <span>
                     {formatClock(segment.departure)} → {formatClock(segment.arrival)}
-                    {overnight > 0 && (
-                      <sup className="ml-0.5 text-tertiary-fixed-dim">+{overnight}</sup>
+                    {overnight !== 0 && (
+                      // Eastbound over the date line a flight lands the day
+                      // before it left, and 00:32 → 22:10 with nothing said
+                      // reads as twenty-one hours in the air.
+                      <sup className="ml-0.5 text-tertiary-fixed-dim">
+                        {overnight > 0 ? `+${overnight}` : overnight}
+                      </sup>
                     )}
                     {' local'}
                   </span>
-                  {overnight > 0 && (
+                  {overnight !== 0 && (
                     <span className="text-on-surface-variant/70">
                       arrives {formatDayDate(segment.arrival)}
                     </span>

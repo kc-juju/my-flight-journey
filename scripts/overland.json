@@ -588,5 +588,101 @@
     "to": "KUL",
     "durationMinutes": 105,
     "note": "Coach back up to Kuala Lumpur • 123 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2024-03-30-th-gb",
+    "date": "2024-04-04",
+    "mode": "train",
+    "from": "CDG",
+    "to": "disneyland-paris",
+    "durationMinutes": 40,
+    "note": "RER A out to Marne-la-Vallée–Chessy, about 40 minutes from central Paris"
+  },
+  {
+    "journey": "2024-03-30-th-gb",
+    "date": "2024-04-04",
+    "mode": "train",
+    "from": "disneyland-paris",
+    "to": "CDG",
+    "durationMinutes": 40,
+    "note": "RER A back into Paris"
+  },
+  {
+    "journey": "2024-03-30-th-gb",
+    "date": "2024-04-05",
+    "mode": "train",
+    "from": "CDG",
+    "to": "versailles",
+    "durationMinutes": 40,
+    "note": "Out to Versailles Château–Rive Gauche • Fastest scheduled service (Transitous open GTFS)"
+  },
+  {
+    "journey": "2024-03-30-th-gb",
+    "date": "2024-04-05",
+    "mode": "train",
+    "from": "versailles",
+    "to": "CDG",
+    "durationMinutes": 40,
+    "note": "Back into Paris"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-04-01",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "LAX",
+    "to": "disneyland-california",
+    "durationMinutes": 45,
+    "note": "Down to Anaheim for the day • 53 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-04-01",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "disneyland-california",
+    "to": "LAX",
+    "durationMinutes": 48,
+    "note": "Back into Los Angeles • 55 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2026-05-07-hk-kr",
+    "date": "2026-05-08",
+    "mode": "train",
+    "operator": "MTR",
+    "from": "HKG",
+    "to": "hong-kong-disneyland",
+    "durationMinutes": 35,
+    "note": "Tung Chung line to Sunny Bay, then the Disneyland Resort line • Fastest scheduled service (Transitous open GTFS)"
+  },
+  {
+    "journey": "2026-05-07-hk-kr",
+    "date": "2026-05-08",
+    "mode": "train",
+    "operator": "MTR",
+    "from": "hong-kong-disneyland",
+    "to": "HKG",
+    "durationMinutes": 35,
+    "note": "Back on the MTR"
+  },
+  {
+    "journey": "2023-11-17-jp",
+    "date": "2023-11-20",
+    "mode": "train",
+    "operator": "JR East",
+    "from": "HND",
+    "to": "tokyo-disneyland",
+    "durationMinutes": 25,
+    "note": "JR Keiyō line to Maihama, about 25 minutes from Tokyo Station"
+  },
+  {
+    "journey": "2023-11-17-jp",
+    "date": "2023-11-20",
+    "mode": "train",
+    "operator": "JR East",
+    "from": "tokyo-disneyland",
+    "to": "HND",
+    "durationMinutes": 25,
+    "note": "JR Keiyō line back into Tokyo"
   }
 ]

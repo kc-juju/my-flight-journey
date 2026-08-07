@@ -701,6 +701,30 @@
       "timezone": "Europe/Paris"
     },
     {
+      "id": "disneyland-california",
+      "name": "Disneyland California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 33.8137,
+      "lon": -117.9197,
+      "kind": "landscape",
+      "image": "/images/cities/disneyland-california.jpg",
+      "continent": "North America",
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "disneyland-paris",
+      "name": "Disneyland Paris",
+      "country": "France",
+      "countryCode": "FR",
+      "lat": 48.8723,
+      "lon": 2.7757,
+      "kind": "landscape",
+      "image": "/images/cities/disneyland-paris.jpg",
+      "continent": "Europe",
+      "timezone": "Europe/Paris"
+    },
+    {
       "id": "fussen",
       "name": "Füssen",
       "country": "Germany",
@@ -755,6 +779,18 @@
       "image": "/images/cities/himeji.jpg",
       "continent": "Asia",
       "timezone": "Asia/Tokyo"
+    },
+    {
+      "id": "hong-kong-disneyland",
+      "name": "Hong Kong Disneyland",
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "lat": 22.3131,
+      "lon": 114.041,
+      "kind": "landscape",
+      "image": "/images/cities/hong-kong-disneyland.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Hong_Kong"
     },
     {
       "id": "kinosaki",
@@ -968,6 +1004,29 @@
       "image": "/images/cities/san-remo.jpg",
       "continent": "Oceania",
       "timezone": "Australia/Melbourne"
+    },
+    {
+      "id": "tokyo-disneyland",
+      "name": "Tokyo Disneyland",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 35.6327,
+      "lon": 139.8814,
+      "kind": "landscape",
+      "image": "/images/cities/tokyo-disneyland.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
+    },
+    {
+      "id": "versailles",
+      "name": "Versailles",
+      "country": "France",
+      "countryCode": "FR",
+      "lat": 48.8044,
+      "lon": 2.1203,
+      "image": "/images/cities/versailles.jpg",
+      "continent": "Europe",
+      "timezone": "Europe/Paris"
     },
     {
       "id": "eze",
@@ -1985,6 +2044,26 @@
           "departureDelayMinutes": 52
         },
         {
+          "id": "2023-11-20-HND-tokyo-disneyland-train",
+          "mode": "train",
+          "fromPlaceId": "hnd",
+          "toPlaceId": "tokyo-disneyland",
+          "departure": "2023-11-20",
+          "operator": "JR East",
+          "note": "JR Keiyō line to Maihama, about 25 minutes from Tokyo Station",
+          "durationMinutes": 25
+        },
+        {
+          "id": "2023-11-20-tokyo-disneyland-HND-train",
+          "mode": "train",
+          "fromPlaceId": "tokyo-disneyland",
+          "toPlaceId": "hnd",
+          "departure": "2023-11-20",
+          "operator": "JR East",
+          "note": "JR Keiyō line back into Tokyo",
+          "durationMinutes": 25
+        },
+        {
           "id": "2023-11-21-JAL809-NRTTPE",
           "mode": "flight",
           "fromPlaceId": "nrt",
@@ -2261,6 +2340,42 @@
           "operator": "Eurostar",
           "note": "Eurostar, St Pancras International → Paris Nord; the atlas only has airport nodes, so the line runs airport to airport • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
           "durationMinutes": 138
+        },
+        {
+          "id": "2024-04-04-CDG-disneyland-paris-train",
+          "mode": "train",
+          "fromPlaceId": "cdg",
+          "toPlaceId": "disneyland-paris",
+          "departure": "2024-04-04",
+          "note": "RER A out to Marne-la-Vallée–Chessy, about 40 minutes from central Paris",
+          "durationMinutes": 40
+        },
+        {
+          "id": "2024-04-04-disneyland-paris-CDG-train",
+          "mode": "train",
+          "fromPlaceId": "disneyland-paris",
+          "toPlaceId": "cdg",
+          "departure": "2024-04-04",
+          "note": "RER A back into Paris",
+          "durationMinutes": 40
+        },
+        {
+          "id": "2024-04-05-CDG-versailles-train",
+          "mode": "train",
+          "fromPlaceId": "cdg",
+          "toPlaceId": "versailles",
+          "departure": "2024-04-05",
+          "note": "Out to Versailles Château–Rive Gauche • Fastest scheduled service (Transitous open GTFS)",
+          "durationMinutes": 40
+        },
+        {
+          "id": "2024-04-05-versailles-CDG-train",
+          "mode": "train",
+          "fromPlaceId": "versailles",
+          "toPlaceId": "cdg",
+          "departure": "2024-04-05",
+          "note": "Back into Paris",
+          "durationMinutes": 40
         },
         {
           "id": "2024-04-07-EVA88-CDGTPE",
@@ -2798,6 +2913,26 @@
           "operator": "Hire car",
           "note": "Back to Los Angeles that evening • 201 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
           "durationMinutes": 149
+        },
+        {
+          "id": "2025-04-01-LAX-disneyland-california-car",
+          "mode": "car",
+          "fromPlaceId": "lax",
+          "toPlaceId": "disneyland-california",
+          "departure": "2025-04-01",
+          "operator": "Hire car",
+          "note": "Down to Anaheim for the day • 53 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 45
+        },
+        {
+          "id": "2025-04-01-disneyland-california-LAX-car",
+          "mode": "car",
+          "fromPlaceId": "disneyland-california",
+          "toPlaceId": "lax",
+          "departure": "2025-04-01",
+          "operator": "Hire car",
+          "note": "Back into Los Angeles • 55 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 48
         },
         {
           "id": "2025-04-02-LAX-las-vegas-car",
@@ -3547,6 +3682,26 @@
           "cabin": "Economy",
           "departureDelayMinutes": -16,
           "arrivalDelayMinutes": -32
+        },
+        {
+          "id": "2026-05-08-HKG-hong-kong-disneyland-train",
+          "mode": "train",
+          "fromPlaceId": "hkg",
+          "toPlaceId": "hong-kong-disneyland",
+          "departure": "2026-05-08",
+          "operator": "MTR",
+          "note": "Tung Chung line to Sunny Bay, then the Disneyland Resort line • Fastest scheduled service (Transitous open GTFS)",
+          "durationMinutes": 35
+        },
+        {
+          "id": "2026-05-08-hong-kong-disneyland-HKG-train",
+          "mode": "train",
+          "fromPlaceId": "hong-kong-disneyland",
+          "toPlaceId": "hkg",
+          "departure": "2026-05-08",
+          "operator": "MTR",
+          "note": "Back on the MTR",
+          "durationMinutes": 35
         },
         {
           "id": "2026-05-10-AAR746-HKGICN",
