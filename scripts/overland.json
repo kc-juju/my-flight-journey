@@ -754,7 +754,9 @@
     "from": "asahikawa",
     "to": "CTS",
     "durationMinutes": 85,
-    "note": "Limited express back to Sapporo • Published fastest timing on the current timetable, not the service actually taken"
+    "note": "Limited express Lilac 34 off platform 4 at 16:30, into Sapporo at 17:55; the timetable now numbers the 16:30 departure 32, but the board that day said 34",
+    "departure": "16:30",
+    "arrival": "17:55"
   },
   {
     "journey": "2022-12-01-jp",

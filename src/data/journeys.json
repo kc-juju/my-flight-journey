@@ -2372,9 +2372,10 @@
           "mode": "train",
           "fromPlaceId": "asahikawa",
           "toPlaceId": "cts",
-          "departure": "2022-12-02",
+          "departure": "2022-12-02T16:30",
+          "arrival": "2022-12-02T17:55",
           "operator": "JR Hokkaido",
-          "note": "Limited express back to Sapporo • Published fastest timing on the current timetable, not the service actually taken",
+          "note": "Limited express Lilac 34 off platform 4 at 16:30, into Sapporo at 17:55; the timetable now numbers the 16:30 departure 32, but the board that day said 34",
           "durationMinutes": 85
         },
         {
