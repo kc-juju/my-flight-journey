@@ -1647,8 +1647,8 @@
           "toPlaceId": "takeo-onsen",
           "departure": "2019-02-20",
           "operator": "JR Kyushu",
-          "note": "Limited express Relay Kamome out of Hakata • Published fastest timing on the current timetable, not the service actually taken",
-          "durationMinutes": 50
+          "note": "Limited express Kamome out of Hakata • Published timing for the limited express Kamome as it then ran, not the service actually taken",
+          "durationMinutes": 65
         },
         {
           "id": "2019-02-20-takeo-onsen-nagasaki-train",
@@ -1657,8 +1657,8 @@
           "toPlaceId": "nagasaki",
           "departure": "2019-02-20",
           "operator": "JR Kyushu",
-          "note": "Nishi-Kyushu Shinkansen Kamome — 30 minutes to Nagasaki • Published fastest timing on the current timetable, not the service actually taken",
-          "durationMinutes": 30
+          "note": "On the same Kamome down to Nagasaki • Published timing for the limited express Kamome as it then ran, not the service actually taken",
+          "durationMinutes": 50
         },
         {
           "id": "2019-02-20-nagasaki-FUK-train",
@@ -1667,8 +1667,8 @@
           "toPlaceId": "fuk",
           "departure": "2019-02-20",
           "operator": "JR Kyushu",
-          "note": "Straight back to Hakata — 1h 20m at best • Published fastest timing on the current timetable, not the service actually taken",
-          "durationMinutes": 80
+          "note": "Kamome straight back to Hakata — 1h 55m through • Published timing for the limited express Kamome as it then ran, not the service actually taken",
+          "durationMinutes": 115
         },
         {
           "id": "2019-02-21-FUK-kumamoto-train",
