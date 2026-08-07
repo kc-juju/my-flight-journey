@@ -390,9 +390,13 @@ def build():
                         if entry.get(key):
                             ground[key] = entry[key]
                     # Clock times are optional — the date alone is honest when
-                    # that is all that was remembered.
-                    if entry.get('departure'):
-                        ground['departure'] = f"{entry['date']}T{entry['departure']}"
+                    # that is all that was remembered. Something has to be
+                    # recorded though: with no date at all the leg shows none
+                    # and the nights either side of it cannot be counted.
+                    ground['departure'] = (
+                        f"{entry['date']}T{entry['departure']}"
+                        if entry.get('departure') else entry['date']
+                    )
                     if entry.get('arrival'):
                         arr_date = entry.get('arrivalDate', entry['date'])
                         ground['arrival'] = f"{arr_date}T{entry['arrival']}"

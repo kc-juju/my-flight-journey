@@ -2814,6 +2814,7 @@
           "toPlaceId": "yvr",
           "operator": "FlixBus",
           "note": "Seattle to Vancouver by coach — the atlas only has airport nodes, so the line runs airport to airport • 246 km · Driving time by road (OSRM / OpenStreetMap); the coach also stops at the border",
+          "departure": "2025-10-06",
           "durationMinutes": 196
         },
         {
