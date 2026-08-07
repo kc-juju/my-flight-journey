@@ -5,7 +5,7 @@ A personal travel atlas. Not a flight tracker — the primary entity is a
 carries trains, cars, buses, ferries, walking, and `surface` for movement the
 log records without saying how.
 
-**Live:** https://jim841019g.github.io/my-flight-journey/
+**Live:** https://kc-juju.github.io/my-flight-journey/
 
 ## Stack
 
