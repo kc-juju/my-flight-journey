@@ -3587,9 +3587,10 @@
           "mode": "train",
           "fromPlaceId": "ool",
           "toPlaceId": "bne",
-          "departure": "2025-01-30",
-          "note": "Translink line from Varsity Lakes to Roma Street • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
-          "durationMinutes": 81
+          "departure": "2025-01-30T10:09",
+          "arrival": "2025-01-30T11:53",
+          "note": "On the G:link around 10:09 and off at Helensvale about 10:43, then the 10:54 train, into Brisbane around 11:53 — times as remembered, so the ends are approximate",
+          "durationMinutes": 104
         },
         {
           "id": "2025-02-01-SIA246-BNESIN",
