@@ -2530,9 +2530,10 @@
           "mode": "train",
           "fromPlaceId": "garmisch",
           "toPlaceId": "muc",
-          "departure": "2023-04-04",
-          "note": "Fastest scheduled service back to München Hbf • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
-          "durationMinutes": 148
+          "departure": "2023-04-04T16:05",
+          "arrival": "2023-04-04T17:26",
+          "note": "Garmisch-Partenkirchen 16:05 → München Hbf 17:26",
+          "durationMinutes": 81
         },
         {
           "id": "2023-04-05-MUC-salzburg-train",

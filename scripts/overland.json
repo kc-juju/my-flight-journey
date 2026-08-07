@@ -234,8 +234,10 @@
     "mode": "train",
     "from": "garmisch",
     "to": "MUC",
-    "durationMinutes": 148,
-    "note": "Fastest scheduled service back to München Hbf • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+    "durationMinutes": 81,
+    "note": "Garmisch-Partenkirchen 16:05 → München Hbf 17:26",
+    "departure": "16:05",
+    "arrival": "17:26"
   },
   {
     "journey": "2023-03-31-de-at",
