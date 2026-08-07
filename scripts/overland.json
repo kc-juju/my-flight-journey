@@ -188,8 +188,10 @@
     "mode": "train",
     "from": "krakow",
     "to": "lublin",
-    "durationMinutes": 321,
-    "note": "IC 3202 Jadwiga, the through service — 06:30 → 11:51 • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+    "durationMinutes": 326,
+    "note": "Out of Kraków at 04:21 on IC 35102, changing to TLK 633, into Lublin at 09:47",
+    "departure": "04:21",
+    "arrival": "09:47"
   },
   {
     "journey": "2018-07-02-sg-fi",
