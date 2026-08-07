@@ -826,6 +826,16 @@
       "timezone": "Asia/Tokyo"
     },
     {
+      "id": "hizen-yamaguchi",
+      "name": "Hizen-Yamaguchi",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 33.2167,
+      "lon": 130.1547,
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
+    },
+    {
       "id": "hong-kong-disneyland",
       "name": "Hong Kong Disneyland",
       "country": "Hong Kong",
@@ -1645,30 +1655,47 @@
           "mode": "train",
           "fromPlaceId": "fuk",
           "toPlaceId": "takeo-onsen",
-          "departure": "2019-02-20",
+          "departure": "2019-02-20T08:34",
+          "arrival": "2019-02-20T09:40",
           "operator": "JR Kyushu",
-          "note": "Limited express Kamome out of Hakata • Published timing for the limited express Kamome as it then ran, not the service actually taken",
-          "durationMinutes": 65
+          "reference": "Huis Ten Bosch 3",
+          "note": "Limited express Huis Ten Bosch 3, Hakata 08:34 → Takeo-Onsen 09:40",
+          "durationMinutes": 66
         },
         {
-          "id": "2019-02-20-takeo-onsen-nagasaki-train",
+          "id": "2019-02-20-takeo-onsen-hizen-yamaguchi-train",
           "mode": "train",
           "fromPlaceId": "takeo-onsen",
-          "toPlaceId": "nagasaki",
-          "departure": "2019-02-20",
+          "toPlaceId": "hizen-yamaguchi",
+          "departure": "2019-02-20T13:12",
+          "arrival": "2019-02-20T13:27",
           "operator": "JR Kyushu",
-          "note": "On the same Kamome down to Nagasaki • Published timing for the limited express Kamome as it then ran, not the service actually taken",
-          "durationMinutes": 50
+          "note": "Local along the Sasebo line to Hizen-Yamaguchi, since renamed Kōhoku",
+          "durationMinutes": 15
+        },
+        {
+          "id": "2019-02-20-hizen-yamaguchi-nagasaki-train",
+          "mode": "train",
+          "fromPlaceId": "hizen-yamaguchi",
+          "toPlaceId": "nagasaki",
+          "departure": "2019-02-20T13:42",
+          "arrival": "2019-02-20T14:50",
+          "operator": "JR Kyushu",
+          "reference": "Kamome 21",
+          "note": "Limited express Kamome 21, 13:42 → 14:50",
+          "durationMinutes": 68
         },
         {
           "id": "2019-02-20-nagasaki-FUK-train",
           "mode": "train",
           "fromPlaceId": "nagasaki",
           "toPlaceId": "fuk",
-          "departure": "2019-02-20",
+          "departure": "2019-02-20T20:50",
+          "arrival": "2019-02-20T22:51",
           "operator": "JR Kyushu",
-          "note": "Kamome straight back to Hakata — 1h 55m through • Published timing for the limited express Kamome as it then ran, not the service actually taken",
-          "durationMinutes": 115
+          "reference": "Kamome 46",
+          "note": "Limited express Kamome 46 straight back, 20:50 → 22:51",
+          "durationMinutes": 121
         },
         {
           "id": "2019-02-21-FUK-kumamoto-train",
@@ -1706,6 +1733,9 @@
           "departureDelayMinutes": -4,
           "arrivalDelayMinutes": -4
         }
+      ],
+      "transferPlaceIds": [
+        "hizen-yamaguchi"
       ]
     },
     {
@@ -2562,10 +2592,10 @@
           "arrivalDelayMinutes": 70
         }
       ],
+      "label": "Okayama, the San’in coast & Kansai",
       "transferPlaceIds": [
         "hkg"
-      ],
-      "label": "Okayama, the San’in coast & Kansai"
+      ]
     },
     {
       "id": "2024-03-30-lhr",

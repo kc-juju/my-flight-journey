@@ -56,6 +56,8 @@ MAX_AWAY_GAP_DAYS = 60
 # A stop shorter than this is a connection, not a visit. The airport still
 # counts; the city does not.
 TRANSFER_MAX_MINUTES = 12 * 60
+# Changing trains is a connection at a much shorter gap than changing planes.
+GROUND_CHANGE_MINUTES = 60
 # Emit an explicit `surface` segment where consecutive flights do not connect.
 # Off until the overland legs are logged for real — the gaps are still visible
 # in the itinerary, we just do not draw a line we cannot describe.
@@ -597,7 +599,7 @@ def build():
             journey['collectionIds'] = [primary, *[t for t in tags if t != primary]]
 
     removed = []
-    for journey in journeys:
+    def mark_transfers(journey):
         entry = notes.get(journey['slug']) or {}
         forced = {place_id.get(c, c) for c in entry.get('visited', [])}
         flown = [s for s in journey['segments'] if not s.get('dropped')]
@@ -609,11 +611,31 @@ def build():
             pid = here['toPlaceId']
             arrive = moment(here.get('arrival'), zone_of.get(pid))
             leave = moment(nxt.get('departure'), zone_of.get(pid))
-            if not arrive or not leave:
+            if arrive and leave:
+                minutes = round((leave - arrive).total_seconds() / 60)
+            else:
+                # A ground leg carries a date and no clock, so the gap cannot
+                # be measured. A night between the dates still proves somebody
+                # slept here, which no connection involves; a same-day gap
+                # proves nothing either way, and guessing it is zero would
+                # turn every day trip into a place passed through.
+                a = (here.get('arrival') or here.get('departure') or '')[:10]
+                b = (nxt.get('departure') or '')[:10]
+                if not a or not b:
+                    continue
+                nights = (dt.date.fromisoformat(b) - dt.date.fromisoformat(a)).days
+                if nights < 1:
+                    continue
+                minutes = nights * 24 * 60
+            if minutes < 0:
                 continue
-            minutes = (leave - arrive).total_seconds() / 60
-            if minutes >= 0:
-                stays.setdefault(pid, []).append(round(minutes))
+            # Changing planes and changing trains are different sizes of
+            # pause: half a day between flights is still a connection, but
+            # three hours in a spa town is a visit.
+            air = here['mode'] == 'flight' and nxt['mode'] == 'flight'
+            stays.setdefault(pid, []).append(
+                (minutes, TRANSFER_MAX_MINUTES if air else GROUND_CHANGE_MINUTES)
+            )
 
         # Calgary was a two-hour connection once and a four-day stay the other
         # time. Somewhere only counts as a connection if every stop was short.
@@ -621,12 +643,14 @@ def build():
         for pid, waits in stays.items():
             if pid in forced:
                 continue
-            if all(w < TRANSFER_MAX_MINUTES for w in waits):
+            if all(w < limit for w, limit in waits):
                 transfers.append(pid)
-                removed.append((journey['slug'], pid, min(waits)))
+                removed.append((journey['slug'], pid, min(w for w, _ in waits)))
         if transfers:
             journey['transferPlaceIds'] = transfers
 
+    for journey in journeys:
+        mark_transfers(journey)
         retitle(journey)
     print(f'  connections (city not counted): {len(removed)}')
     for slug, pid, mins in removed:
@@ -773,8 +797,12 @@ def build():
         places[:] = [p for p in places if p['id'] in used_places]
         print('  places no longer reached: '
               + ', '.join(sorted(p['code'] or p['id'] for p in stranded)))
-    # Ground legs arrive after the first pass, and they can add a country.
+    # Ground legs arrive after the first pass. They can add a country, and a
+    # fifteen-minute change of train is a connection like any other.
+    removed.clear()
     for journey in journeys:
+        journey.pop('transferPlaceIds', None)
+        mark_transfers(journey)
         retitle(journey)
 
     # A trip that reached a Disney park is tagged as such, on top of wherever
