@@ -869,8 +869,10 @@
     "operator": "JR Kyushu",
     "from": "kumamoto",
     "to": "FUK",
-    "durationMinutes": 32,
-    "note": "Shinkansen back to Hakata • Published fastest timing on the current timetable, not the service actually taken"
+    "durationMinutes": 39,
+    "note": "Kyushu Shinkansen Sakura 566 out of Kumamoto at 17:35, into Hakata about 39 minutes later; the arrival is worked from that length, not read off a ticket",
+    "departure": "17:35",
+    "arrival": "18:14"
   },
   {
     "journey": "2018-03-10-jp",

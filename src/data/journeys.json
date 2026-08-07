@@ -2004,10 +2004,11 @@
           "mode": "train",
           "fromPlaceId": "kumamoto",
           "toPlaceId": "fuk",
-          "departure": "2019-02-21",
+          "departure": "2019-02-21T17:35",
+          "arrival": "2019-02-21T18:14",
           "operator": "JR Kyushu",
-          "note": "Shinkansen back to Hakata • Published fastest timing on the current timetable, not the service actually taken",
-          "durationMinutes": 32
+          "note": "Kyushu Shinkansen Sakura 566 out of Kumamoto at 17:35, into Hakata about 39 minutes later; the arrival is worked from that length, not read off a ticket",
+          "durationMinutes": 39
         },
         {
           "id": "2019-02-22-TTW241-FUKTPE",
