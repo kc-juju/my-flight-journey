@@ -724,5 +724,53 @@
     "to": "CTS",
     "durationMinutes": 34,
     "note": "Rapid Airport back to Sapporo • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2019-07-23-cn-us",
+    "date": "2019-07-28",
+    "mode": "car",
+    "operator": "Family car",
+    "from": "JFK",
+    "to": "philadelphia",
+    "durationMinutes": 148,
+    "note": "Down the turnpike for the afternoon • 176 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2019-07-23-cn-us",
+    "date": "2019-07-28",
+    "mode": "car",
+    "operator": "Family car",
+    "from": "philadelphia",
+    "to": "washington",
+    "durationMinutes": 184,
+    "note": "On to Washington that evening • 221 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2019-07-23-cn-us",
+    "date": "2019-07-30",
+    "mode": "car",
+    "operator": "Family car",
+    "from": "washington",
+    "to": "JFK",
+    "durationMinutes": 308,
+    "note": "The long drive back up to New York • 386 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2019-07-23-cn-us",
+    "date": "2019-08-06",
+    "mode": "bus",
+    "from": "JFK",
+    "to": "boston",
+    "durationMinutes": 275,
+    "note": "Coach up the coast; the atlas hangs New York on its airport node, so the line runs from there • 344 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2019-07-23-cn-us",
+    "date": "2019-08-08",
+    "mode": "bus",
+    "from": "boston",
+    "to": "JFK",
+    "durationMinutes": 275,
+    "note": "Coach back down to New York • 343 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
   }
 ]

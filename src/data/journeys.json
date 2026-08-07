@@ -668,6 +668,16 @@
       "timezone": "America/Edmonton"
     },
     {
+      "id": "boston",
+      "name": "Boston",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 42.3588,
+      "lon": -71.0578,
+      "continent": "North America",
+      "timezone": "America/New_York"
+    },
+    {
       "id": "byron-bay",
       "name": "Byron Bay",
       "country": "Australia",
@@ -972,6 +982,16 @@
       "timezone": "America/Phoenix"
     },
     {
+      "id": "philadelphia",
+      "name": "Philadelphia",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 39.9527,
+      "lon": -75.1635,
+      "continent": "North America",
+      "timezone": "America/New_York"
+    },
+    {
       "id": "puffing-billy",
       "name": "Puffing Billy",
       "country": "Australia",
@@ -1049,6 +1069,16 @@
       "image": "/images/cities/versailles.jpg",
       "continent": "Europe",
       "timezone": "Europe/Paris"
+    },
+    {
+      "id": "washington",
+      "name": "Washington",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 38.8951,
+      "lon": -77.0364,
+      "continent": "North America",
+      "timezone": "America/New_York"
     },
     {
       "id": "eze",
@@ -1571,6 +1601,54 @@
           "registration": "B-2002",
           "cabin": "Economy",
           "departureDelayMinutes": -3
+        },
+        {
+          "id": "2019-07-28-JFK-philadelphia-car",
+          "mode": "car",
+          "fromPlaceId": "jfk",
+          "toPlaceId": "philadelphia",
+          "departure": "2019-07-28",
+          "operator": "Family car",
+          "note": "Down the turnpike for the afternoon • 176 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 148
+        },
+        {
+          "id": "2019-07-28-philadelphia-washington-car",
+          "mode": "car",
+          "fromPlaceId": "philadelphia",
+          "toPlaceId": "washington",
+          "departure": "2019-07-28",
+          "operator": "Family car",
+          "note": "On to Washington that evening • 221 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 184
+        },
+        {
+          "id": "2019-07-30-washington-JFK-car",
+          "mode": "car",
+          "fromPlaceId": "washington",
+          "toPlaceId": "jfk",
+          "departure": "2019-07-30",
+          "operator": "Family car",
+          "note": "The long drive back up to New York • 386 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 308
+        },
+        {
+          "id": "2019-08-06-JFK-boston-bus",
+          "mode": "bus",
+          "fromPlaceId": "jfk",
+          "toPlaceId": "boston",
+          "departure": "2019-08-06",
+          "note": "Coach up the coast; the atlas hangs New York on its airport node, so the line runs from there • 344 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 275
+        },
+        {
+          "id": "2019-08-08-boston-JFK-bus",
+          "mode": "bus",
+          "fromPlaceId": "boston",
+          "toPlaceId": "jfk",
+          "departure": "2019-08-08",
+          "note": "Coach back down to New York • 343 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 275
         },
         {
           "id": "2019-08-17-CES298-JFKPVG",

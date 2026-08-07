@@ -344,5 +344,29 @@
     "countryCode": "JP",
     "lat": 43.1907,
     "lon": 140.9946
+  },
+  {
+    "id": "philadelphia",
+    "name": "Philadelphia",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 39.9527,
+    "lon": -75.1635
+  },
+  {
+    "id": "washington",
+    "name": "Washington",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 38.8951,
+    "lon": -77.0364
+  },
+  {
+    "id": "boston",
+    "name": "Boston",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 42.3588,
+    "lon": -71.0578
   }
 ]

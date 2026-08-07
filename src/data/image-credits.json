@@ -621,5 +621,26 @@
     "licence": "CC0",
     "source": "https://commons.wikimedia.org/wiki/File:Otaru_-_Otaru181.jpg",
     "article": "Otaru"
+  },
+  "philadelphia": {
+    "file": "Philadelphia_skyline_20240528_(cropped_2-1).jpg",
+    "author": "颐园居",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Philadelphia_skyline_20240528_(cropped_2-1).jpg",
+    "article": "Philadelphia"
+  },
+  "washington": {
+    "file": "12-07-13-washington-by-RalfR-08.jpg",
+    "author": "Ralf Roletschek (talk) - Infos über Fahrräder auf fahrradmonteur.de Wikis in der Ausbildung",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:12-07-13-washington-by-RalfR-08.jpg",
+    "article": "Washington, D.C."
+  },
+  "boston": {
+    "file": "ISH_WC_Boston4.jpg",
+    "author": "Ian Howard",
+    "licence": "CC BY 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:ISH_WC_Boston4.jpg",
+    "article": "Boston"
   }
 }
