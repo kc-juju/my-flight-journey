@@ -180,12 +180,18 @@ export function JourneyDetailPage() {
               }
 
               const { index, segment } = row;
-              const next = journey.segments[index + 1];
+              // The next leg actually travelled. A flight given up — the
+              // oversold one home from Seattle — sits between the arrival and
+              // the flight eventually taken, and reading the gap against it
+              // lost four nights in Seattle entirely.
+              const next = journey.segments.slice(index + 1).find((s) => !s.dropped);
               // A stay is only drawn between two ordinary legs. Arriving at a
               // base, or leaving one, is what the block above already says.
-              const intoBase = rows[rowIndex + 1]?.kind === 'base';
+              const intoBase = rows
+                .slice(rowIndex + 1)
+                .find((r) => r.kind === 'base' || !r.segment.dropped)?.kind === 'base';
               const stay =
-                next && !intoBase && !segment.dropped && !next.dropped
+                next && !intoBase && !segment.dropped
                   ? stayBetween(segment, next, placesById)
                   : null;
               const at = placesById.get(segment.toPlaceId);

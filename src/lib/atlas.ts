@@ -188,7 +188,10 @@ export type Stay = { minutes: number } | { nights: number } | null;
 
 export function stayBetween(before: Segment, after: Segment, byId: Map<string, Place>): Stay {
   const exact = layoverMinutes(before, after, byId);
-  if (exact !== null) return { minutes: exact };
+  // Under a day, the hours are the point: a two-hour gap is a connection and
+  // an overnight one is not. Past that nobody counts in hours — four days in
+  // Seattle is four nights, not '3d 20h'.
+  if (exact !== null && exact < 24 * 60) return { minutes: exact };
 
   if (before.toPlaceId !== after.fromPlaceId) return null;
   const from = (before.arrival ?? before.departure)?.slice(0, 10);
