@@ -276,5 +276,13 @@
     "countryCode": "KR",
     "lat": 37.3705,
     "lon": 128.3903
+  },
+  {
+    "id": "malacca",
+    "name": "Malacca",
+    "country": "Malaysia",
+    "countryCode": "MY",
+    "lat": 2.1943,
+    "lon": 102.2487
   }
 ]

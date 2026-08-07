@@ -22,6 +22,11 @@ interface SegmentCardProps {
 export function SegmentCard({ segment, placesById }: SegmentCardProps) {
   const from = placesById.get(segment.fromPlaceId);
   const to = placesById.get(segment.toPlaceId);
+
+  // A coach leaves a city, not a terminal. The airport's own name belongs on
+  // a flight; everywhere else the place is what the traveller would say.
+  const label = (place?: Place) =>
+    place && (segment.mode === 'flight' ? (place.airportName ?? place.name) : place.name);
   const accent = MODE_COLOR[segment.mode];
 
   const heading = [MODE_LABEL[segment.mode].toUpperCase(), segment.reference]
@@ -97,11 +102,11 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
             }`}
           >
             <h4 className={minor ? 'font-headline-md text-[17px]' : 'font-headline-md text-headline-md'}>
-              {from?.airportName ?? from?.name ?? segment.fromPlaceId}
+              {label(from) ?? segment.fromPlaceId}
             </h4>
             <Icon name="arrow_right_alt" className="text-[16px] no-underline" />
             <h4 className={minor ? 'font-headline-md text-[17px]' : 'font-headline-md text-headline-md'}>
-              {to?.airportName ?? to?.name ?? segment.toPlaceId}
+              {label(to) ?? segment.toPlaceId}
             </h4>
           </div>
 

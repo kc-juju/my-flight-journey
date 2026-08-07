@@ -870,6 +870,17 @@
       "timezone": "Europe/Warsaw"
     },
     {
+      "id": "malacca",
+      "name": "Malacca",
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "lat": 2.1943,
+      "lon": 102.2487,
+      "image": "/images/cities/malacca.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Kuala_Lumpur"
+    },
+    {
       "id": "menton",
       "name": "Menton",
       "country": "France",
@@ -2314,6 +2325,24 @@
           "cabin": "Premium Economy",
           "departureDelayMinutes": 12,
           "arrivalDelayMinutes": 10
+        },
+        {
+          "id": "2024-06-08-KUL-malacca-bus",
+          "mode": "bus",
+          "fromPlaceId": "kul",
+          "toPlaceId": "malacca",
+          "departure": "2024-06-08",
+          "note": "Straight onto the coach at the airport • 119 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 103
+        },
+        {
+          "id": "2024-06-10-malacca-KUL-bus",
+          "mode": "bus",
+          "fromPlaceId": "malacca",
+          "toPlaceId": "kul",
+          "departure": "2024-06-10",
+          "note": "Coach back up to Kuala Lumpur • 123 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 105
         },
         {
           "id": "2024-06-11-XAX378-KULTPE",

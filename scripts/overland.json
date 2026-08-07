@@ -570,5 +570,23 @@
     "arrival": "12:23",
     "durationMinutes": 77,
     "note": "KTX back to Seoul, 11:06 → 12:23"
+  },
+  {
+    "journey": "2024-06-08-my",
+    "date": "2024-06-08",
+    "mode": "bus",
+    "from": "KUL",
+    "to": "malacca",
+    "durationMinutes": 103,
+    "note": "Straight onto the coach at the airport • 119 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2024-06-08-my",
+    "date": "2024-06-10",
+    "mode": "bus",
+    "from": "malacca",
+    "to": "KUL",
+    "durationMinutes": 105,
+    "note": "Coach back up to Kuala Lumpur • 123 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
   }
 ]
