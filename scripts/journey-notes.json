@@ -75,5 +75,16 @@
  },
  "2018-08-23-taiwan": {
   "exclude": true
+ },
+ "2023-10-06-my": {
+  "segments": [
+   {
+    "from": "KUL",
+    "to": "PEN",
+    "date": "2023-10-06",
+    "vehicle": "Boeing 737 MAX 8",
+    "note": "A 737 MAX 8, not the 737-900ER the flight log recorded; Flightradar24 agrees"
+   }
+  ]
  }
 }

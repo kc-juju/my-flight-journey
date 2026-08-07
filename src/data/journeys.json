@@ -1968,9 +1968,10 @@
           "departure": "2023-10-06T14:40",
           "arrival": "2023-10-06T15:40",
           "durationMinutes": 60,
-          "vehicle": "Boeing 737-900ER",
+          "vehicle": "Boeing 737 MAX 8",
           "registration": "9M-LRM",
-          "cabin": "Economy"
+          "cabin": "Economy",
+          "note": "A 737 MAX 8, not the 737-900ER the flight log recorded; Flightradar24 agrees"
         },
         {
           "id": "2023-10-09-MXD2101-PENKUL",

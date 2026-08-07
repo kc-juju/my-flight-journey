@@ -670,6 +670,12 @@ def build():
                 # what the delay is measured against, so it is recovered from
                 # the figures already there and the punctuality recomputed
                 # rather than carried over from the record being replaced.
+                # The flight log names the aircraft from schedule metadata,
+                # which is sometimes a different aeroplane from the one that
+                # turned up. The traveller sat in it; they win.
+                for field in ('vehicle', 'registration', 'cabin', 'operator'):
+                    if ann.get(field):
+                        seg[field] = ann[field]
                 for end, key, delay in (('departure', 'actualDeparture', 'departureDelayMinutes'),
                                         ('arrival', 'actualArrival', 'arrivalDelayMinutes')):
                     if not ann.get(key) or not seg.get(end):
