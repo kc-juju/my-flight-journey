@@ -796,7 +796,7 @@ def build():
     if stranded:
         places[:] = [p for p in places if p['id'] in used_places]
         print('  places no longer reached: '
-              + ', '.join(sorted(p['code'] or p['id'] for p in stranded)))
+              + ', '.join(sorted(p.get('code') or p['id'] for p in stranded)))
     # Ground legs arrive after the first pass. They can add a country, and a
     # fifteen-minute change of train is a connection like any other.
     removed.clear()

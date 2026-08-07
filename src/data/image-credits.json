@@ -684,5 +684,33 @@
     "licence": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:People_inside_the_tank_of_Okinawa_Churaumi_Aquarium.jpg",
     "article": "Okinawa Churaumi Aquarium"
+  },
+  "usj": {
+    "file": "USJ_5years.JPG",
+    "author": "Momopy~commonswiki",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:USJ_5years.JPG",
+    "article": "Universal Studios Japan"
+  },
+  "kyoto": {
+    "file": "Kyoto,_Japan_(49667780482).jpg",
+    "author": "Nina R from Africa",
+    "licence": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kyoto,_Japan_(49667780482).jpg",
+    "article": "Kyoto"
+  },
+  "nara": {
+    "file": "Nara Park - panoramio (2).jpg",
+    "author": "Feri88",
+    "licence": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nara_Park_-_panoramio_(2).jpg",
+    "article": "Nara Park"
+  },
+  "koshien": {
+    "file": "Hanshin Koshien Stadium 2007-9.jpg",
+    "author": "User:DX Broadrec",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hanshin_Koshien_Stadium_2007-9.jpg",
+    "article": "Hanshin Koshien Stadium"
   }
 }

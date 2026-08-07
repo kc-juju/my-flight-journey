@@ -861,31 +861,6 @@
     "date": "2019-02-20",
     "mode": "train",
     "operator": "JR Kyushu",
-    "from": "takeo-onsen",
-    "to": "hizen-yamaguchi",
-    "departure": "13:12",
-    "arrival": "13:27",
-    "durationMinutes": 15,
-    "note": "Local along the Sasebo line to Hizen-Yamaguchi, since renamed Kōhoku"
-  },
-  {
-    "journey": "2019-02-19-jp",
-    "date": "2019-02-20",
-    "mode": "train",
-    "operator": "JR Kyushu",
-    "reference": "Kamome 21",
-    "from": "hizen-yamaguchi",
-    "to": "nagasaki",
-    "departure": "13:42",
-    "arrival": "14:50",
-    "durationMinutes": 68,
-    "note": "Limited express Kamome 21, 13:42 → 14:50"
-  },
-  {
-    "journey": "2019-02-19-jp",
-    "date": "2019-02-20",
-    "mode": "train",
-    "operator": "JR Kyushu",
     "reference": "Kamome 46",
     "from": "nagasaki",
     "to": "FUK",
@@ -893,5 +868,108 @@
     "arrival": "22:51",
     "durationMinutes": 121,
     "note": "Limited express Kamome 46 straight back, 20:50 → 22:51"
+  },
+  {
+    "journey": "2019-02-19-jp",
+    "date": "2019-02-20",
+    "mode": "train",
+    "operator": "JR Kyushu",
+    "reference": "Kamome 21",
+    "from": "takeo-onsen",
+    "to": "nagasaki",
+    "departure": "13:12",
+    "arrival": "14:50",
+    "durationMinutes": 98,
+    "note": "Down to Nagasaki, changing at Hizen-Yamaguchi onto Kamome 21 — 13:12 → 14:50"
+  },
+  {
+    "journey": "2017-09-03-jp",
+    "date": "2017-09-03",
+    "mode": "train",
+    "operator": "Hanshin",
+    "from": "KIX",
+    "to": "koshien",
+    "durationMinutes": 16,
+    "note": "Hanshin limited express out to the ballpark — 16 minutes • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2017-09-03-jp",
+    "date": "2017-09-03",
+    "mode": "train",
+    "operator": "Hanshin",
+    "from": "koshien",
+    "to": "kobe",
+    "durationMinutes": 18,
+    "note": "Along the Hanshin main line to Sannomiya — 18 minutes • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2017-09-03-jp",
+    "date": "2017-09-03",
+    "mode": "train",
+    "operator": "JR West",
+    "from": "kobe",
+    "to": "KIX",
+    "durationMinutes": 21,
+    "note": "JR special rapid back to Osaka — 21 minutes • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2017-09-03-jp",
+    "date": "2017-09-04",
+    "mode": "train",
+    "operator": "JR West",
+    "from": "KIX",
+    "to": "usj",
+    "durationMinutes": 12,
+    "note": "Osaka loop line and the Yumesaki branch to Universal City • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2017-09-03-jp",
+    "date": "2017-09-04",
+    "mode": "train",
+    "operator": "JR West",
+    "from": "usj",
+    "to": "KIX",
+    "durationMinutes": 12,
+    "note": "Back into Osaka • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2017-09-03-jp",
+    "date": "2017-09-06",
+    "mode": "train",
+    "operator": "JR West",
+    "from": "KIX",
+    "to": "nara",
+    "durationMinutes": 50,
+    "note": "Yamatoji rapid to Nara — about 50 minutes • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2017-09-03-jp",
+    "date": "2017-09-06",
+    "mode": "train",
+    "operator": "JR West",
+    "from": "nara",
+    "to": "KIX",
+    "durationMinutes": 50,
+    "note": "Yamatoji rapid back • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2017-09-03-jp",
+    "date": "2017-09-07",
+    "mode": "train",
+    "operator": "JR West",
+    "from": "KIX",
+    "to": "kyoto",
+    "durationMinutes": 29,
+    "note": "JR special rapid to Kyoto — 29 minutes • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2017-09-03-jp",
+    "date": "2017-09-07",
+    "mode": "train",
+    "operator": "JR West",
+    "from": "kyoto",
+    "to": "KIX",
+    "durationMinutes": 29,
+    "note": "Special rapid back to Osaka • Published fastest timing on the current timetable, not the service actually taken"
   }
 ]

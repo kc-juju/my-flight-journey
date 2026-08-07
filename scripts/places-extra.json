@@ -425,5 +425,38 @@
     "countryCode": "JP",
     "lat": 33.2167,
     "lon": 130.1547
+  },
+  {
+    "id": "koshien",
+    "name": "Koshien",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 34.7214,
+    "lon": 135.3616
+  },
+  {
+    "id": "usj",
+    "name": "Universal Studios Japan",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 34.6656,
+    "lon": 135.4325,
+    "kind": "landscape"
+  },
+  {
+    "id": "nara",
+    "name": "Nara",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 34.6845,
+    "lon": 135.8048
+  },
+  {
+    "id": "kyoto",
+    "name": "Kyoto",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 35.0116,
+    "lon": 135.7681
   }
 ]
