@@ -2510,9 +2510,10 @@
           "mode": "train",
           "fromPlaceId": "muc",
           "toPlaceId": "fussen",
-          "departure": "2023-04-03",
-          "note": "Fastest scheduled rail from München Hbf, with changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
-          "durationMinutes": 136
+          "departure": "2023-04-03T11:39",
+          "arrival": "2023-04-03T13:46",
+          "note": "München Hbf 11:39 → Füssen 13:46",
+          "durationMinutes": 127
         },
         {
           "id": "2023-04-04-fussen-garmisch-train",
