@@ -458,5 +458,77 @@
     "countryCode": "JP",
     "lat": 35.0116,
     "lon": 135.7681
+  },
+  {
+    "id": "citi-field",
+    "name": "Citi Field",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 40.7573,
+    "lon": -73.8459,
+    "kind": "landscape"
+  },
+  {
+    "id": "nationals-park",
+    "name": "Nationals Park",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 38.8727,
+    "lon": -77.0075,
+    "kind": "landscape"
+  },
+  {
+    "id": "yankee-stadium",
+    "name": "Yankee Stadium",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 40.8296,
+    "lon": -73.9265,
+    "kind": "landscape"
+  },
+  {
+    "id": "fenway-park",
+    "name": "Fenway Park",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 42.3465,
+    "lon": -71.0971,
+    "kind": "landscape"
+  },
+  {
+    "id": "dodger-stadium",
+    "name": "Dodger Stadium",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 34.0736,
+    "lon": -118.2398,
+    "kind": "landscape"
+  },
+  {
+    "id": "petco-park",
+    "name": "Petco Park",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 32.7072,
+    "lon": -117.1569,
+    "kind": "landscape"
+  },
+  {
+    "id": "angel-stadium",
+    "name": "Angel Stadium",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 33.8003,
+    "lon": -117.8817,
+    "kind": "landscape"
+  },
+  {
+    "id": "t-mobile-park",
+    "name": "T-Mobile Park",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 47.5914,
+    "lon": -122.3325,
+    "kind": "landscape"
   }
 ]

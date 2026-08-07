@@ -806,6 +806,7 @@ def build():
     # Excluding journeys can strand a place nothing reaches any more.
     used_places = {pid for j in journeys for s in j['segments']
                    for pid in (s['fromPlaceId'], s['toPlaceId'])}
+    used_places |= {e['placeId'] for j in journeys for e in j.get('events', [])}
     stranded = [p for p in places if p['id'] not in used_places]
     if stranded:
         places[:] = [p for p in places if p['id'] in used_places]

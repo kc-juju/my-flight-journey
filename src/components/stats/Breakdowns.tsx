@@ -66,6 +66,18 @@ function RankTable({ title, rows, unit, limit = 10 }: {
 export function Breakdowns() {
   const { data, placesById } = useAtlas();
   const b = useMemo(() => buildBreakdown(data, placesById), [data, placesById]);
+  // The page is an index first: every section states its size and opens on
+  // demand, so the whole atlas is not scrolled past to reach the extremes.
+  const [openSections, setOpenSections] = useState<Set<string>>(new Set());
+  const isOpen = (key: string) => openSections.has(key);
+  const toggleSection = (key: string) =>
+    setOpenSections((current) => {
+      const next = new Set(current);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+
   const [openCountry, setOpenCountry] = useState<string | null>(null);
   const [openAirport, setOpenAirport] = useState<string | null>(null);
   const [openFamily, setOpenFamily] = useState<string | null>(null);
@@ -97,7 +109,9 @@ export function Breakdowns() {
       grounds.set(key, row);
       // 'A vs B' is how a fixture is written; either side is a team seen.
       for (const side of game.event.title.split(/\s+vs\.?\s+/i)) {
-        const name = side.trim();
+        // Anything after a comma qualifies the fixture — 'game two', a round
+        // of the playoffs — and is not part of the team's name.
+        const name = side.split(',')[0].trim();
         if (name) teams.set(name, (teams.get(name) ?? 0) + 1);
       }
       const label = sportOf(game.event.kind)?.label;
@@ -115,16 +129,28 @@ export function Breakdowns() {
     <div className="flex flex-col gap-margin-desktop">
       {/* ---------------------------------------------------- countries -- */}
       <section className="flex flex-col gap-stack-md">
-        <header className="flex flex-col gap-unit">
+        <button
+            type="button"
+            onClick={() => toggleSection('countries')}
+            aria-expanded={isOpen('countries')}
+            className="flex flex-col gap-unit text-left"
+          >
           <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
             Every country
+            <Icon
+              name={isOpen('countries') ? 'expand_less' : 'expand_more'}
+              className="ml-3 align-middle text-[24px] text-on-surface-variant"
+            />
           </h2>
           <p className="max-w-lg font-body-md text-on-surface-variant">
             {b.countries.length} countries and territories across{' '}
             {plural(b.continents.length, 'continent')}. Open one to see the cities, and
             the airports or stations reached in each.
           </p>
-        </header>
+        </button>
+
+        {isOpen('countries') && (
+          <>
 
         {b.continents.map((continent) => (
         <section key={continent.name} className="flex flex-col gap-stack-sm">
@@ -193,14 +219,25 @@ export function Breakdowns() {
         </ul>
         </section>
         ))}
+          </>
+        )}
       </section>
 
       {/* ---------------------------------------------------- ballgames -- */}
       {ballgames.games.length > 0 && (
         <section className="flex flex-col gap-stack-md">
-          <header className="flex flex-col gap-unit">
+          <button
+              type="button"
+              onClick={() => toggleSection('grounds')}
+              aria-expanded={isOpen('grounds')}
+              className="flex flex-col gap-unit text-left"
+            >
             <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
               Every ground
+              <Icon
+                name={isOpen('grounds') ? 'expand_less' : 'expand_more'}
+                className="ml-3 align-middle text-[24px] text-on-surface-variant"
+              />
             </h2>
             <p className="max-w-lg font-body-md text-on-surface-variant">
               {plural(ballgames.games.length, 'game')} at{' '}
@@ -210,7 +247,10 @@ export function Breakdowns() {
               . Watched on the way to somewhere else; scores are from the
               leagues' own records.
             </p>
-          </header>
+          </button>
+
+          {isOpen('grounds') && (
+            <>
 
           <ul className="flex flex-col gap-stack-sm">
             {ballgames.grounds.map(({ place, games }) => (
@@ -281,21 +321,35 @@ export function Breakdowns() {
               ))}
             </div>
           )}
+            </>
+          )}
         </section>
       )}
 
       {/* ----------------------------------------------------- airports -- */}
       <section className="flex flex-col gap-stack-md">
-        <header className="flex flex-col gap-unit">
+        <button
+            type="button"
+            onClick={() => toggleSection('airports')}
+            aria-expanded={isOpen('airports')}
+            className="flex flex-col gap-unit text-left"
+          >
           <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
             Every airport
+            <Icon
+              name={isOpen('airports') ? 'expand_less' : 'expand_more'}
+              className="ml-3 align-middle text-[24px] text-on-surface-variant"
+            />
           </h2>
           <p className="max-w-lg font-body-md text-on-surface-variant">
             {plural(airportsOnly.length, 'airport')}. Open one to see everywhere it
             connects to and how many times each route was flown. Towns reached on
             the ground appear under their country above, not here.
           </p>
-        </header>
+        </button>
+
+        {isOpen('airports') && (
+          <>
 
         <ul className="flex flex-col gap-stack-sm">
           {airportsOnly.map((row) => {
@@ -360,6 +414,8 @@ export function Breakdowns() {
             );
           })}
         </ul>
+          </>
+        )}
       </section>
 
       {/* ------------------------------------------------------- rankings -- */}
@@ -453,11 +509,23 @@ export function Breakdowns() {
 
       {/* ---------------------------------------------------------- years -- */}
       <section className="flex flex-col gap-stack-md">
-        <header className="flex flex-col gap-unit">
+        <button
+            type="button"
+            onClick={() => toggleSection('years')}
+            aria-expanded={isOpen('years')}
+            className="flex flex-col gap-unit text-left"
+          >
           <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
             Year by year
+            <Icon
+              name={isOpen('years') ? 'expand_less' : 'expand_more'}
+              className="ml-3 align-middle text-[24px] text-on-surface-variant"
+            />
           </h2>
-        </header>
+        </button>
+
+        {isOpen('years') && (
+          <>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[620px] border-collapse text-sm">
             <thead>
@@ -505,6 +573,8 @@ export function Breakdowns() {
             </tbody>
           </table>
         </div>
+          </>
+        )}
       </section>
 
       {/* --------------------------------------------------------- extremes */}
