@@ -633,8 +633,10 @@
     "mode": "bus",
     "from": "malacca",
     "to": "KUL",
-    "durationMinutes": 105,
-    "note": "Coach back up to Kuala Lumpur • 123 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+    "durationMinutes": 135,
+    "note": "Coach out of Melaka Sentral at 13:30, into KLIA2 at 15:45 as ticketed — this one really did run to the airport door",
+    "departure": "13:30",
+    "arrival": "15:45"
   },
   {
     "journey": "2024-03-30-th-gb",
