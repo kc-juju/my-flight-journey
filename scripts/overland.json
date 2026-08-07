@@ -381,8 +381,10 @@
     "mode": "train",
     "from": "kinosaki",
     "to": "amanohashidate",
-    "durationMinutes": 86,
-    "note": "Kyoto Tango Railway — the 城崎・天橋立 direct, 09:52 → 11:18 • Published fastest timing on the current timetable, not the service actually taken"
+    "durationMinutes": 102,
+    "note": "Limited express Kinosaki 12 out at 10:34 for the fourteen minutes to Toyooka, then the Kyoto Tango Railway on to Amanohashidate, off around 12:16",
+    "departure": "10:34",
+    "arrival": "12:16"
   },
   {
     "journey": "2024-02-27-jp-hk",
