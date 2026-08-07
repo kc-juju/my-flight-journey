@@ -2516,13 +2516,14 @@
           "durationMinutes": 127
         },
         {
-          "id": "2023-04-04-fussen-garmisch-train",
-          "mode": "train",
+          "id": "2023-04-04-fussen-garmisch-bus",
+          "mode": "bus",
           "fromPlaceId": "fussen",
           "toPlaceId": "garmisch",
-          "departure": "2023-04-04",
-          "note": "Fastest scheduled service, with changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
-          "durationMinutes": 125
+          "departure": "2023-04-04T08:15",
+          "arrival": "2023-04-04T10:22",
+          "note": "The train was not running, so a coach — boarded 08:15, off at 10:22",
+          "durationMinutes": 127
         },
         {
           "id": "2023-04-04-garmisch-MUC-train",

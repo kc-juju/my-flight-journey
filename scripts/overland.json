@@ -220,11 +220,13 @@
   {
     "journey": "2023-03-31-de-at",
     "date": "2023-04-04",
-    "mode": "train",
+    "mode": "bus",
     "from": "fussen",
     "to": "garmisch",
-    "durationMinutes": 125,
-    "note": "Fastest scheduled service, with changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+    "durationMinutes": 127,
+    "note": "The train was not running, so a coach — boarded 08:15, off at 10:22",
+    "departure": "08:15",
+    "arrival": "10:22"
   },
   {
     "journey": "2023-03-31-de-at",
