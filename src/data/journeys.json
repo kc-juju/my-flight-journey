@@ -2537,9 +2537,12 @@
           "mode": "train",
           "fromPlaceId": "muc",
           "toPlaceId": "salzburg",
-          "departure": "2023-04-05",
-          "note": "EC 115 — München Hbf 08:16 → Salzburg Hbf 09:59, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
-          "durationMinutes": 103
+          "departure": "2023-04-05T07:49",
+          "arrival": "2023-04-05T09:21",
+          "operator": "WESTbahn",
+          "reference": "963",
+          "note": "Train 963, München Hbf 07:49 → Salzburg 09:21",
+          "durationMinutes": 92
         },
         {
           "id": "2023-04-06-salzburg-konigssee-car",

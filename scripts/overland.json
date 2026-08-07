@@ -239,8 +239,12 @@
     "mode": "train",
     "from": "MUC",
     "to": "salzburg",
-    "durationMinutes": 103,
-    "note": "EC 115 — München Hbf 08:16 → Salzburg Hbf 09:59, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+    "durationMinutes": 92,
+    "note": "Train 963, München Hbf 07:49 → Salzburg 09:21",
+    "operator": "WESTbahn",
+    "reference": "963",
+    "departure": "07:49",
+    "arrival": "09:21"
   },
   {
     "journey": "2023-03-31-de-at",
