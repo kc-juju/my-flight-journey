@@ -2126,18 +2126,20 @@
           "mode": "bus",
           "fromPlaceId": "jfk",
           "toPlaceId": "boston",
-          "departure": "2019-08-06",
-          "note": "Coach up the coast; the atlas hangs New York on its airport node, so the line runs from there • 344 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
-          "durationMinutes": 275
+          "departure": "2019-08-06T10:00",
+          "arrival": "2019-08-06T14:20",
+          "note": "Greyhound schedule GLI2508 out of New York at 10:00, into Boston at 14:20; the atlas hangs New York on its airport node, so the line runs from there",
+          "durationMinutes": 260
         },
         {
           "id": "2019-08-08-boston-JFK-bus",
           "mode": "bus",
           "fromPlaceId": "boston",
           "toPlaceId": "jfk",
-          "departure": "2019-08-08",
-          "note": "Coach back down to New York • 343 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
-          "durationMinutes": 275
+          "departure": "2019-08-08T15:00",
+          "arrival": "2019-08-08T19:40",
+          "note": "Greyhound out of Boston at 15:00, into New York at 19:40; the atlas hangs New York on its airport node, so the line runs to there",
+          "durationMinutes": 280
         },
         {
           "id": "2019-08-17-CES298-JFKPVG",

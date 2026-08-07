@@ -806,8 +806,10 @@
     "mode": "bus",
     "from": "JFK",
     "to": "boston",
-    "durationMinutes": 275,
-    "note": "Coach up the coast; the atlas hangs New York on its airport node, so the line runs from there • 344 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+    "durationMinutes": 260,
+    "note": "Greyhound schedule GLI2508 out of New York at 10:00, into Boston at 14:20; the atlas hangs New York on its airport node, so the line runs from there",
+    "departure": "10:00",
+    "arrival": "14:20"
   },
   {
     "journey": "2019-07-23-cn-us",
@@ -815,8 +817,10 @@
     "mode": "bus",
     "from": "boston",
     "to": "JFK",
-    "durationMinutes": 275,
-    "note": "Coach back down to New York • 343 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+    "durationMinutes": 280,
+    "note": "Greyhound out of Boston at 15:00, into New York at 19:40; the atlas hangs New York on its airport node, so the line runs to there",
+    "departure": "15:00",
+    "arrival": "19:40"
   },
   {
     "journey": "2019-02-19-jp",
