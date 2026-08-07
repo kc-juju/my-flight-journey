@@ -61,7 +61,18 @@
   "label": "Istanbul, the Riviera & the Dolomites"
  },
  "2023-03-31-de-at": {
-  "label": "Bavaria, Salzburg & Bohemia"
+  "label": "Bavaria, Salzburg & Bohemia",
+  "events": [
+   {
+    "date": "2023-04-04",
+    "place": "allianz-arena",
+    "kind": "football",
+    "time": "20:45",
+    "title": "Bayern Munich vs Freiburg",
+    "detail": "DFB-Pokal quarter-final · Freiburg won 2–1 · 75,000 in the stands",
+    "source": "Wikipedia match record"
+   }
+  ]
  },
  "2024-02-27-jp-hk": {
   "label": "Okayama, the San’in coast & Kansai"
@@ -199,6 +210,14 @@
     "source": "MLB official record"
    },
    {
+    "date": "2025-03-31",
+    "place": "crypto-arena",
+    "kind": "basketball",
+    "title": "Lakers vs Rockets",
+    "detail": "Los Angeles won 104–98 · 18,997 in the stands",
+    "source": "Wikipedia season record"
+   },
+   {
     "date": "2025-04-05",
     "place": "angel-stadium",
     "kind": "baseball",
@@ -241,6 +260,19 @@
     "title": "Swallows vs Carp",
     "detail": "Tokyo Yakult won 8–7 · 25,904 in the stands",
     "source": "NPB official record"
+   }
+  ]
+ },
+ "2024-03-30-th-gb": {
+  "events": [
+   {
+    "date": "2024-04-02",
+    "place": "london-stadium",
+    "kind": "football",
+    "time": "20:15",
+    "title": "West Ham United vs Tottenham Hotspur",
+    "detail": "Premier League · drawn 1–1 · 62,469 in the stands",
+    "source": "Wikipedia match record"
    }
   ]
  }

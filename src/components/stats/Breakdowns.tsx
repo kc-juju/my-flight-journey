@@ -6,7 +6,7 @@ import { buildBreakdown, type Tally } from '../../lib/breakdown';
 import {
   formatDayDate, formatDuration, formatNumber, MODE_ICON, MODE_LABEL, plural,
 } from '../../lib/format';
-import { sportOf } from '../../lib/sports';
+import { SPORTS, sportOf } from '../../lib/sports';
 import { BallparkMap, type Park } from './BallparkMap';
 import mlbParks from '../../data/mlb-parks.json';
 import npbParks from '../../data/npb-parks.json';
@@ -81,6 +81,7 @@ export function Breakdowns() {
       return next;
     });
 
+  const [sport, setSport] = useState<string | null>(null);
   const [openCountry, setOpenCountry] = useState<string | null>(null);
   const [openAirport, setOpenAirport] = useState<string | null>(null);
   const [openFamily, setOpenFamily] = useState<string | null>(null);
@@ -117,14 +118,18 @@ export function Breakdowns() {
         const name = side.split(',')[0].trim();
         if (name) teams.set(name, (teams.get(name) ?? 0) + 1);
       }
-      const label = sportOf(game.event.kind)?.label;
-      if (label) sports.set(label, (sports.get(label) ?? 0) + 1);
+      const kind = game.event.kind;
+      if (kind && sportOf(kind)) sports.set(kind, (sports.get(kind) ?? 0) + 1);
     }
     return {
       games,
       grounds: [...grounds.values()].sort((x, y) => y.games.length - x.games.length),
       teams: [...teams.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0])),
-      sports: [...sports.entries()].sort((x, y) => y[1] - x[1]),
+      sports: [...sports.entries()]
+        .map(([kind, count]) => [kind, SPORTS[kind]?.label ?? kind, count] as const)
+        .sort((x, y) => y[2] - x[2]),
+      repeats: [...teams.entries()].filter(([, n]) => n > 1).sort((x, y) => y[1] - x[1]),
+      onceOnly: [...teams.values()].filter((n) => n === 1).length,
       groundPlaces: [...grounds.values()]
         .map((g) => g.place)
         .filter(Boolean) as Place[],
@@ -249,7 +254,9 @@ export function Breakdowns() {
               {plural(ballgames.games.length, 'game')} at{' '}
               {plural(ballgames.grounds.length, 'ground')}
               {ballgames.sports.length > 0 &&
-                ` · ${ballgames.sports.map(([s2, n]) => `${s2.toLowerCase()} ×${n}`).join(', ')}`}
+                ` · ${ballgames.sports
+                  .map(([, label, n]) => `${label.toLowerCase()} ×${n}`)
+                  .join(', ')}`}
               . Watched on the way to somewhere else; scores are from the
               leagues' own records.
             </p>
@@ -257,93 +264,87 @@ export function Breakdowns() {
 
           {isOpen('grounds') && (
             <>
-              <div className="grid grid-cols-1 gap-gutter lg:grid-cols-2">
-                <BallparkMap
-                  title="Major League grounds"
-                  parks={mlbParks as Park[]}
-                  visited={ballgames.groundPlaces}
-                  center={[39.5, -96]}
-                  zoom={3}
-                />
-                <BallparkMap
-                  title="Nippon Professional Baseball grounds"
-                  parks={npbParks as Park[]}
-                  visited={ballgames.groundPlaces}
-                  center={[37.5, 137]}
-                  zoom={4}
-                />
-              </div>
-
-
-          <ul className="flex flex-col gap-stack-sm">
-            {ballgames.grounds.map(({ place, games }) => (
-              <li
-                key={place?.id ?? games[0].event.placeId}
-                className="rounded-xl bg-surface-container-lowest p-stack-md shadow-sm"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-3">
-                  <span className="flex items-baseline gap-2">
-                    <Icon
-                      name={sportOf(games[0].event.kind)?.icon ?? 'local_activity'}
-                      className="text-[16px] text-tertiary-fixed-dim"
-                    />
-                    <span className="font-headline-md text-[18px] text-on-surface">
-                      {place?.name ?? games[0].event.placeId}
-                    </span>
-                    <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-                      {place?.country}
-                    </span>
-                  </span>
-                  <span className="font-label-caps text-[11px] uppercase tracking-widest text-on-surface-variant">
-                    {plural(games.length, 'game')}
-                  </span>
-                </div>
-
-                <ol className="mt-stack-sm flex flex-col gap-2 border-t border-outline-variant/50 pt-stack-sm">
-                  {games.map(({ event, journey }) => (
-                    <li key={event.date + event.title}>
-                      <Link
-                        to={`/journeys/${journey.slug}`}
-                        className="flex flex-wrap items-baseline justify-between gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-surface-container"
-                      >
-                        <span className="font-body-md text-sm text-on-surface">{event.title}</span>
-                        <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-                          {formatDayDate(event.date)}
-                          {event.time && ` · ${event.time}`}
-                        </span>
-                      </Link>
-                      {event.detail && (
-                        <p className="px-2 font-body-md text-xs text-on-surface-variant">
-                          {event.detail}
-                        </p>
-                      )}
-                    </li>
+              {ballgames.sports.length > 1 && (
+                <div className="flex flex-wrap gap-2">
+                  <Chip active={sport === null} onClick={() => setSport(null)}>
+                    All · {ballgames.games.length}
+                  </Chip>
+                  {ballgames.sports.map(([kind, label, count]) => (
+                    <Chip key={kind} active={sport === kind} onClick={() => setSport(kind)}>
+                      {label} · {count}
+                    </Chip>
                   ))}
-                </ol>
-              </li>
-            ))}
-          </ul>
+                </div>
+              )}
 
-          {ballgames.teams.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-                Teams seen
-              </span>
-              {ballgames.teams.map(([team, count]) => (
-                <span
-                  key={team}
-                  className="rounded-full border border-outline-variant/60 px-3 py-1 font-body-md text-sm text-on-surface"
-                >
-                  {team}
-                  {count > 1 && (
-                    <span className="ml-2 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-                      ×{count}
+              {/* The maps are baseball's; they say nothing about a cup tie. */}
+              {(sport === null || sport === 'baseball') && (
+                <div className="grid grid-cols-1 gap-gutter lg:grid-cols-2">
+                  <BallparkMap
+                    title="Major League grounds"
+                    parks={mlbParks as Park[]}
+                    visited={ballgames.groundPlaces}
+                    center={[39.5, -96]}
+                    zoom={3}
+                  />
+                  <BallparkMap
+                    title="Nippon Professional Baseball grounds"
+                    parks={npbParks as Park[]}
+                    visited={ballgames.groundPlaces}
+                    center={[37.5, 137]}
+                    zoom={4}
+                  />
+                </div>
+              )}
+
+              {/* One line per game, newest first: the log a ticket stub keeps. */}
+              <ol className="flex flex-col divide-y divide-outline-variant/40 rounded-xl bg-surface-container-lowest px-stack-md shadow-sm">
+                {ballgames.games
+                  .filter(({ event }) => !sport || event.kind === sport)
+                  .map(({ event, journey }) => {
+                    const at = placesById.get(event.placeId);
+                    return (
+                      <li key={event.date + event.title + (event.time ?? '')}>
+                        <Link
+                          to={`/journeys/${journey.slug}`}
+                          className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-stack-sm transition-colors hover:text-tertiary-fixed-dim"
+                        >
+                          <Icon
+                            name={sportOf(event.kind)?.icon ?? 'local_activity'}
+                            className="text-[16px] text-tertiary-fixed-dim"
+                          />
+                          <span className="w-24 shrink-0 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                            {formatDayDate(event.date)}
+                          </span>
+                          <span className="font-body-md text-sm text-on-surface">
+                            {event.title}
+                          </span>
+                          <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                            {at?.name}
+                          </span>
+                          <span className="ml-auto font-body-md text-xs text-on-surface-variant">
+                            {event.detail}
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+              </ol>
+
+              {ballgames.repeats.length > 0 && (
+                <p className="flex flex-wrap items-center gap-2 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                  Seen more than once
+                  {ballgames.repeats.map(([team, count]) => (
+                    <span
+                      key={team}
+                      className="rounded-full border border-outline-variant/60 px-3 py-1 text-on-surface"
+                    >
+                      {team} ×{count}
                     </span>
-                  )}
-                </span>
-              ))}
-            </div>
-          )}
+                  ))}
+                  <span>· {ballgames.onceOnly} others seen once</span>
+                </p>
+              )}
             </>
           )}
         </section>
@@ -644,5 +645,30 @@ export function Breakdowns() {
           })}
       </section>
     </div>
+  );
+}
+
+function Chip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`rounded-full border px-3 py-1.5 font-label-caps text-[11px] uppercase tracking-widest transition-colors ${
+        active
+          ? 'border-primary bg-primary text-on-primary'
+          : 'border-outline-variant/60 text-on-surface-variant hover:border-on-surface-variant'
+      }`}
+    >
+      {children}
+    </button>
   );
 }

@@ -548,5 +548,32 @@
     "lat": 35.6745,
     "lon": 139.7172,
     "kind": "landscape"
+  },
+  {
+    "id": "allianz-arena",
+    "name": "Allianz Arena",
+    "country": "Germany",
+    "countryCode": "DE",
+    "lat": 48.2188,
+    "lon": 11.6236,
+    "kind": "landscape"
+  },
+  {
+    "id": "london-stadium",
+    "name": "London Stadium",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 51.5386,
+    "lon": -0.0166,
+    "kind": "landscape"
+  },
+  {
+    "id": "crypto-arena",
+    "name": "Crypto.com Arena",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 34.043,
+    "lon": -118.2673,
+    "kind": "landscape"
   }
 ]

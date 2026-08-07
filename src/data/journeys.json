@@ -601,6 +601,17 @@
       "timezone": "America/Edmonton"
     },
     {
+      "id": "allianz-arena",
+      "name": "Allianz Arena",
+      "country": "Germany",
+      "countryCode": "DE",
+      "lat": 48.2188,
+      "lon": 11.6236,
+      "kind": "landscape",
+      "continent": "Europe",
+      "timezone": "Europe/Berlin"
+    },
+    {
       "id": "amanohashidate",
       "name": "Amanohashidate",
       "country": "Japan",
@@ -766,6 +777,17 @@
       "kind": "landscape",
       "continent": "North America",
       "timezone": "America/New_York"
+    },
+    {
+      "id": "crypto-arena",
+      "name": "Crypto.com Arena",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 34.043,
+      "lon": -118.2673,
+      "kind": "landscape",
+      "continent": "North America",
+      "timezone": "America/Los_Angeles"
     },
     {
       "id": "disneyland-california",
@@ -1015,6 +1037,17 @@
       "image": "/images/cities/london-bridge.jpg",
       "continent": "Oceania",
       "timezone": "Australia/Melbourne"
+    },
+    {
+      "id": "london-stadium",
+      "name": "London Stadium",
+      "country": "United Kingdom",
+      "countryCode": "GB",
+      "lat": 51.5386,
+      "lon": -0.0166,
+      "kind": "landscape",
+      "continent": "Europe",
+      "timezone": "Europe/London"
     },
     {
       "id": "lublin",
@@ -2544,7 +2577,18 @@
           "arrivalDelayMinutes": 1
         }
       ],
-      "label": "Bavaria, Salzburg & Bohemia"
+      "label": "Bavaria, Salzburg & Bohemia",
+      "events": [
+        {
+          "date": "2023-04-04",
+          "placeId": "allianz-arena",
+          "title": "Bayern Munich vs Freiburg",
+          "detail": "DFB-Pokal quarter-final · Freiburg won 2–1 · 75,000 in the stands",
+          "kind": "football",
+          "time": "20:45",
+          "source": "Wikipedia match record"
+        }
+      ]
     },
     {
       "id": "2023-10-06-kul",
@@ -3059,6 +3103,17 @@
           "cabin": "Economy",
           "departureDelayMinutes": 44,
           "arrivalDelayMinutes": 26
+        }
+      ],
+      "events": [
+        {
+          "date": "2024-04-02",
+          "placeId": "london-stadium",
+          "title": "West Ham United vs Tottenham Hotspur",
+          "detail": "Premier League · drawn 1–1 · 62,469 in the stands",
+          "kind": "football",
+          "time": "20:15",
+          "source": "Wikipedia match record"
         }
       ],
       "transferPlaceIds": [
@@ -3713,6 +3768,14 @@
           "kind": "baseball",
           "time": "16:10",
           "source": "MLB official record"
+        },
+        {
+          "date": "2025-03-31",
+          "placeId": "crypto-arena",
+          "title": "Lakers vs Rockets",
+          "detail": "Los Angeles won 104–98 · 18,997 in the stands",
+          "kind": "basketball",
+          "source": "Wikipedia season record"
         },
         {
           "date": "2025-04-05",
