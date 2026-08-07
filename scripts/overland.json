@@ -413,7 +413,8 @@
     "mode": "train",
     "from": "himeji",
     "to": "maiko",
-    "note": "Local trains the whole way back, getting off at Maiko for the Akashi Kaikyō Bridge; no times were kept"
+    "note": "Local trains the whole way back, getting off at Maiko for the Akashi Kaikyō Bridge • Length as travelled, times not kept",
+    "durationMinutes": 33
   },
   {
     "journey": "2024-02-27-jp-hk",
@@ -421,7 +422,8 @@
     "mode": "train",
     "from": "maiko",
     "to": "kobe",
-    "note": "On into Kobe on another local; no times were kept"
+    "note": "On into Kobe on another local • Length as travelled, times not kept",
+    "durationMinutes": 25
   },
   {
     "journey": "2024-02-27-jp-hk",
@@ -429,8 +431,8 @@
     "mode": "train",
     "from": "kobe",
     "to": "KIX",
-    "durationMinutes": 21,
-    "note": "JR新快速, Sannomiya → Osaka — 21 min • Published fastest timing on the current timetable, not the service actually taken"
+    "durationMinutes": 29,
+    "note": "Local back into Osaka • Length as travelled, times not kept"
   },
   {
     "journey": "2025-03-28-hk-us",

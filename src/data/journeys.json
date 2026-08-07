@@ -2957,7 +2957,8 @@
           "fromPlaceId": "himeji",
           "toPlaceId": "maiko",
           "departure": "2024-03-02",
-          "note": "Local trains the whole way back, getting off at Maiko for the Akashi Kaikyō Bridge; no times were kept"
+          "note": "Local trains the whole way back, getting off at Maiko for the Akashi Kaikyō Bridge • Length as travelled, times not kept",
+          "durationMinutes": 33
         },
         {
           "id": "2024-03-02-maiko-kobe-train",
@@ -2965,7 +2966,8 @@
           "fromPlaceId": "maiko",
           "toPlaceId": "kobe",
           "departure": "2024-03-02",
-          "note": "On into Kobe on another local; no times were kept"
+          "note": "On into Kobe on another local • Length as travelled, times not kept",
+          "durationMinutes": 25
         },
         {
           "id": "2024-03-02-kobe-KIX-train",
@@ -2973,8 +2975,8 @@
           "fromPlaceId": "kobe",
           "toPlaceId": "kix",
           "departure": "2024-03-02",
-          "note": "JR新快速, Sannomiya → Osaka — 21 min • Published fastest timing on the current timetable, not the service actually taken",
-          "durationMinutes": 21
+          "note": "Local back into Osaka • Length as travelled, times not kept",
+          "durationMinutes": 29
         },
         {
           "id": "2024-03-03-CPA567-KIXHKG",
