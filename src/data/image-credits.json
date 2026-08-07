@@ -481,5 +481,40 @@
     "licence": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Lajen_aus_Tagusens.JPG",
     "article": "Lajen"
+  },
+  "san-diego": {
+    "file": "La_Jolla_Shores_view_(cropped).jpg",
+    "author": "Dirk Hansen",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:La_Jolla_Shores_view_(cropped).jpg",
+    "article": "San Diego"
+  },
+  "las-vegas": {
+    "file": "Las_Vegas_from_above_(40064746644).jpg",
+    "author": "Mike McBey",
+    "licence": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Las_Vegas_from_above_(40064746644).jpg",
+    "article": "Las Vegas"
+  },
+  "grand-canyon": {
+    "file": "Canyon_River_Tree_(165872763).jpeg",
+    "author": "Lennart Sikkema",
+    "licence": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Canyon_River_Tree_(165872763).jpeg",
+    "article": "Grand Canyon"
+  },
+  "page": {
+    "file": "Blick auf Page AZ.JPG",
+    "author": "Patrick Pelster",
+    "licence": "CC BY-SA 3.0 de",
+    "source": "https://commons.wikimedia.org/wiki/File:Blick_auf_Page_AZ.JPG",
+    "article": "Page, Arizona"
+  },
+  "anaheim": {
+    "file": "Sleeping_beauty_castle_dlr_2019.jpg",
+    "author": "CrispyCream27",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sleeping_beauty_castle_dlr_2019.jpg",
+    "article": "Anaheim, California"
   }
 }

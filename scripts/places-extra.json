@@ -177,5 +177,46 @@
     "countryCode": "IT",
     "lat": 46.6105,
     "lon": 11.5996
+  },
+  {
+    "id": "san-diego",
+    "name": "San Diego",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 32.7174,
+    "lon": -117.1628
+  },
+  {
+    "id": "las-vegas",
+    "name": "Las Vegas",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 36.1674,
+    "lon": -115.1484
+  },
+  {
+    "id": "grand-canyon",
+    "name": "Grand Canyon",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 36.0578,
+    "lon": -112.1282,
+    "kind": "landscape"
+  },
+  {
+    "id": "page",
+    "name": "Page",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 36.9148,
+    "lon": -111.4573
+  },
+  {
+    "id": "anaheim",
+    "name": "Anaheim",
+    "country": "United States",
+    "countryCode": "US",
+    "lat": 33.8348,
+    "lon": -117.9117
   }
 ]

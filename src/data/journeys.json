@@ -613,6 +613,17 @@
       "timezone": "Asia/Tokyo"
     },
     {
+      "id": "anaheim",
+      "name": "Anaheim",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 33.8348,
+      "lon": -117.9117,
+      "image": "/images/cities/anaheim.jpg",
+      "continent": "North America",
+      "timezone": "America/Los_Angeles"
+    },
+    {
       "id": "antibes",
       "name": "Antibes",
       "country": "France",
@@ -688,6 +699,18 @@
       "image": "/images/cities/garmisch.jpg",
       "continent": "Europe",
       "timezone": "Europe/Berlin"
+    },
+    {
+      "id": "grand-canyon",
+      "name": "Grand Canyon",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 36.0578,
+      "lon": -112.1282,
+      "kind": "landscape",
+      "image": "/images/cities/grand-canyon.jpg",
+      "continent": "North America",
+      "timezone": "America/Phoenix"
     },
     {
       "id": "himeji",
@@ -780,6 +803,17 @@
       "timezone": "America/Edmonton"
     },
     {
+      "id": "las-vegas",
+      "name": "Las Vegas",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 36.1674,
+      "lon": -115.1484,
+      "image": "/images/cities/las-vegas.jpg",
+      "continent": "North America",
+      "timezone": "America/Los_Angeles"
+    },
+    {
       "id": "lublin",
       "name": "Lublin",
       "country": "Poland",
@@ -813,6 +847,17 @@
       "timezone": "Europe/Monaco"
     },
     {
+      "id": "page",
+      "name": "Page",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 36.9148,
+      "lon": -111.4573,
+      "image": "/images/cities/page.jpg",
+      "continent": "North America",
+      "timezone": "America/Phoenix"
+    },
+    {
       "id": "salzburg",
       "name": "Salzburg",
       "country": "Austria",
@@ -822,6 +867,17 @@
       "image": "/images/cities/salzburg.jpg",
       "continent": "Europe",
       "timezone": "Europe/Vienna"
+    },
+    {
+      "id": "san-diego",
+      "name": "San Diego",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 32.7174,
+      "lon": -117.1628,
+      "image": "/images/cities/san-diego.jpg",
+      "continent": "North America",
+      "timezone": "America/Los_Angeles"
     },
     {
       "id": "eze",
@@ -2514,6 +2570,86 @@
           "cabin": "Economy",
           "departureDelayMinutes": 7,
           "arrivalDelayMinutes": 15
+        },
+        {
+          "id": "2025-03-30-LAX-san-diego-car",
+          "mode": "car",
+          "fromPlaceId": "lax",
+          "toPlaceId": "san-diego",
+          "departure": "2025-03-30",
+          "operator": "Hire car",
+          "note": "Down the coast for the day • 200 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 148
+        },
+        {
+          "id": "2025-03-30-san-diego-LAX-car",
+          "mode": "car",
+          "fromPlaceId": "san-diego",
+          "toPlaceId": "lax",
+          "departure": "2025-03-30",
+          "operator": "Hire car",
+          "note": "Back to Los Angeles that evening • 201 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 149
+        },
+        {
+          "id": "2025-04-02-LAX-las-vegas-car",
+          "mode": "car",
+          "fromPlaceId": "lax",
+          "toPlaceId": "las-vegas",
+          "departure": "2025-04-02",
+          "operator": "Hire car",
+          "note": "Out across the Mojave • 460 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 319
+        },
+        {
+          "id": "2025-04-03-las-vegas-grand-canyon-car",
+          "mode": "car",
+          "fromPlaceId": "las-vegas",
+          "toPlaceId": "grand-canyon",
+          "departure": "2025-04-03",
+          "operator": "Hire car",
+          "note": "East to the South Rim • 445 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 320
+        },
+        {
+          "id": "2025-04-03-grand-canyon-page-car",
+          "mode": "car",
+          "fromPlaceId": "grand-canyon",
+          "toPlaceId": "page",
+          "departure": "2025-04-03",
+          "operator": "Hire car",
+          "note": "On to Page for the night • 222 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 184
+        },
+        {
+          "id": "2025-04-04-page-las-vegas-car",
+          "mode": "car",
+          "fromPlaceId": "page",
+          "toPlaceId": "las-vegas",
+          "departure": "2025-04-04",
+          "operator": "Hire car",
+          "note": "Back west to Las Vegas • 438 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 321
+        },
+        {
+          "id": "2025-04-05-las-vegas-anaheim-car",
+          "mode": "car",
+          "fromPlaceId": "las-vegas",
+          "toPlaceId": "anaheim",
+          "departure": "2025-04-05",
+          "operator": "Hire car",
+          "note": "South to Anaheim • 422 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 293
+        },
+        {
+          "id": "2025-04-06-anaheim-LAX-car",
+          "mode": "car",
+          "fromPlaceId": "anaheim",
+          "toPlaceId": "lax",
+          "departure": "2025-04-06",
+          "operator": "Hire car",
+          "note": "To the airport, and the car returned • 53 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 45
         },
         {
           "id": "2025-04-06-CPA885-LAXHKG",

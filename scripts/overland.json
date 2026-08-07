@@ -389,5 +389,85 @@
     "to": "KIX",
     "durationMinutes": 21,
     "note": "JR新快速, Sannomiya → Osaka — 21 min • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-03-30",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "LAX",
+    "to": "san-diego",
+    "durationMinutes": 148,
+    "note": "Down the coast for the day • 200 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-03-30",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "san-diego",
+    "to": "LAX",
+    "durationMinutes": 149,
+    "note": "Back to Los Angeles that evening • 201 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-04-02",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "LAX",
+    "to": "las-vegas",
+    "durationMinutes": 319,
+    "note": "Out across the Mojave • 460 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-04-03",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "las-vegas",
+    "to": "grand-canyon",
+    "durationMinutes": 320,
+    "note": "East to the South Rim • 445 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-04-03",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "grand-canyon",
+    "to": "page",
+    "durationMinutes": 184,
+    "note": "On to Page for the night • 222 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-04-04",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "page",
+    "to": "las-vegas",
+    "durationMinutes": 321,
+    "note": "Back west to Las Vegas • 438 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-04-05",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "las-vegas",
+    "to": "anaheim",
+    "durationMinutes": 293,
+    "note": "South to Anaheim • 422 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-03-28-hk-us",
+    "date": "2025-04-06",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "anaheim",
+    "to": "LAX",
+    "durationMinutes": 45,
+    "note": "To the airport, and the car returned • 53 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
   }
 ]
