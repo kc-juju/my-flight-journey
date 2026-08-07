@@ -3362,8 +3362,9 @@
           "toPlaceId": "icn",
           "departure": "2024-12-30T11:06",
           "arrival": "2024-12-30T12:23",
-          "operator": "KTX",
-          "note": "KTX back to Seoul, 11:06 → 12:23",
+          "operator": "Korail",
+          "reference": "KTX 842",
+          "note": "KTX 842, Pyeongchang 11:06 → Cheongnyangni 12:23; the atlas hangs Seoul on its airport node, so the line runs there rather than to the station",
           "durationMinutes": 77
         },
         {

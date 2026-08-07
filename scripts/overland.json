@@ -580,13 +580,14 @@
     "journey": "2024-12-27-kr",
     "date": "2024-12-30",
     "mode": "train",
-    "operator": "KTX",
+    "operator": "Korail",
     "from": "pyeongchang",
     "to": "ICN",
     "departure": "11:06",
     "arrival": "12:23",
     "durationMinutes": 77,
-    "note": "KTX back to Seoul, 11:06 → 12:23"
+    "note": "KTX 842, Pyeongchang 11:06 → Cheongnyangni 12:23; the atlas hangs Seoul on its airport node, so the line runs there rather than to the station",
+    "reference": "KTX 842"
   },
   {
     "journey": "2024-06-08-my",
