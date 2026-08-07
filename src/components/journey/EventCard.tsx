@@ -2,6 +2,7 @@ import type { JourneyEvent, Place } from '../../types/journey';
 import { formatDayDate } from '../../lib/format';
 import { sportOf } from '../../lib/sports';
 import { Icon } from '../ui/Icon';
+import { MickeyEars } from '../ui/MickeyEars';
 
 /**
  * Something that happened on the journey without anybody moving.
@@ -19,16 +20,35 @@ export function EventCard({
 }) {
   const at = placesById.get(event.placeId);
   const sport = sportOf(event.kind);
+  const disney = event.kind === 'disney';
 
   return (
-    <article className="flex items-start gap-4 rounded-xl border border-dashed border-tertiary-fixed-dim/60 bg-tertiary-fixed-dim/5 p-stack-sm">
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-tertiary-fixed-dim/15">
-        <Icon name={sport?.icon ?? 'local_activity'} className="text-[22px] text-primary" />
+    <article
+      className={`flex items-start gap-4 rounded-xl border border-dashed p-stack-sm ${
+        disney
+          ? 'border-[#2c6fd1]/45 bg-[#2c6fd1]/[0.06]'
+          : 'border-tertiary-fixed-dim/60 bg-tertiary-fixed-dim/5'
+      }`}
+    >
+      <span
+        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${
+          disney ? 'bg-[#2c6fd1]/12' : 'bg-tertiary-fixed-dim/15'
+        }`}
+      >
+        {disney ? (
+          <MickeyEars className="h-6 w-6 text-[#2c6fd1]" />
+        ) : (
+          <Icon name={sport?.icon ?? 'local_activity'} className="text-[22px] text-primary" />
+        )}
       </span>
 
       <div className="flex min-w-0 flex-col">
-        <span className="font-label-caps text-label-caps uppercase tracking-widest text-tertiary-fixed-dim">
-          {sport?.label ?? 'On the day'}
+        <span
+          className={`font-label-caps text-label-caps uppercase tracking-widest ${
+            disney ? 'text-[#2c6fd1]' : 'text-tertiary-fixed-dim'
+          }`}
+        >
+          {sport?.label ?? (disney ? 'Park day' : 'On the day')}
           {at && ` · ${at.name}`}
         </span>
 
@@ -45,6 +65,11 @@ export function EventCard({
         <span className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
           <span className="text-on-surface">{formatDayDate(event.date)}</span>
           {event.time && <span>{event.time} local</span>}
+          {event.from && event.to && (
+            <span>
+              {event.from} → {event.to} local
+            </span>
+          )}
           {event.source && <span className="text-on-surface-variant/70">{event.source}</span>}
         </span>
       </div>

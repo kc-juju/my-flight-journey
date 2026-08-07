@@ -685,6 +685,8 @@ def build():
                     **({'detail': e['detail']} if e.get('detail') else {}),
                     **({'kind': e['kind']} if e.get('kind') else {}),
                     **({'time': e['time']} if e.get('time') else {}),
+                    **({'from': e['from']} if e.get('from') else {}),
+                    **({'to': e['to']} if e.get('to') else {}),
                     **({'source': e['source']} if e.get('source') else {}),
                 }
                 for e in sorted(entry['events'], key=lambda e: e['date'])

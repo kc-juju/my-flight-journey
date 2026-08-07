@@ -100,6 +100,9 @@ export interface JourneyEvent {
   title: string;
   /** Local start time, when it is known. */
   time?: string;
+  /** For something that lasted a day: when you arrived and when you left. */
+  from?: string;
+  to?: string;
   detail?: string;
   /** Which game it was: baseball, basketball, football, and so on. */
   kind?: string;

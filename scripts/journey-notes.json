@@ -34,7 +34,15 @@
   ]
  },
  "2026-05-07-hk-kr": {
-  "collection": "greater-china"
+  "collection": "greater-china",
+  "events": [
+   {
+    "date": "2026-05-08",
+    "place": "hong-kong-disneyland",
+    "kind": "disney",
+    "title": "Hong Kong Disneyland"
+   }
+  ]
  },
  "2018-07-02-sg-fi": {
   "visited": [
@@ -218,6 +226,12 @@
     "source": "Wikipedia season record"
    },
    {
+    "date": "2025-04-01",
+    "place": "disneyland-california",
+    "kind": "disney",
+    "title": "Disneyland California"
+   },
+   {
     "date": "2025-04-05",
     "place": "angel-stadium",
     "kind": "baseball",
@@ -247,6 +261,12 @@
     "title": "Korea vs Chinese Taipei",
     "detail": "Asia Professional Baseball Championship · Korea won 6–1 · 9,603 in the stands",
     "source": "NPB official record"
+   },
+   {
+    "date": "2023-11-20",
+    "place": "tokyo-disneyland",
+    "kind": "disney",
+    "title": "Tokyo Disneyland"
    }
   ]
  },
@@ -273,6 +293,12 @@
     "title": "West Ham United vs Tottenham Hotspur",
     "detail": "Premier League · drawn 1–1 · 62,469 in the stands",
     "source": "Wikipedia match record"
+   },
+   {
+    "date": "2024-04-04",
+    "place": "disneyland-paris",
+    "kind": "disney",
+    "title": "Disneyland Paris"
    }
   ]
  },

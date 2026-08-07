@@ -2805,6 +2805,12 @@
           "kind": "baseball",
           "time": "19:01",
           "source": "NPB official record"
+        },
+        {
+          "date": "2023-11-20",
+          "placeId": "tokyo-disneyland",
+          "title": "Tokyo Disneyland",
+          "kind": "disney"
         }
       ]
     },
@@ -3132,6 +3138,12 @@
           "kind": "football",
           "time": "20:15",
           "source": "Wikipedia match record"
+        },
+        {
+          "date": "2024-04-04",
+          "placeId": "disneyland-paris",
+          "title": "Disneyland Paris",
+          "kind": "disney"
         }
       ],
       "transferPlaceIds": [
@@ -3828,6 +3840,12 @@
           "detail": "Los Angeles won 104–98 · 18,997 in the stands",
           "kind": "basketball",
           "source": "Wikipedia season record"
+        },
+        {
+          "date": "2025-04-01",
+          "placeId": "disneyland-california",
+          "title": "Disneyland California",
+          "kind": "disney"
         },
         {
           "date": "2025-04-05",
@@ -4569,6 +4587,14 @@
           "cabin": "Business",
           "departureDelayMinutes": 205,
           "arrivalDelayMinutes": 187
+        }
+      ],
+      "events": [
+        {
+          "date": "2026-05-08",
+          "placeId": "hong-kong-disneyland",
+          "title": "Hong Kong Disneyland",
+          "kind": "disney"
         }
       ],
       "transferPlaceIds": [
