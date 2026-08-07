@@ -2361,10 +2361,11 @@
           "mode": "train",
           "fromPlaceId": "cts",
           "toPlaceId": "asahikawa",
-          "departure": "2022-12-01",
+          "departure": "2022-12-01T17:30",
+          "arrival": "2022-12-01T19:05",
           "operator": "JR Hokkaido",
-          "note": "Limited express Kamui or Lilac — 1h 25m over 136.8 km • Published fastest timing on the current timetable, not the service actually taken",
-          "durationMinutes": 85
+          "note": "Limited express Okhotsk 3 for Abashiri off platform 9 at 17:30, six stops up the Hakodate line, into Asahikawa at 19:05",
+          "durationMinutes": 95
         },
         {
           "id": "2022-12-02-asahikawa-CTS-train",
