@@ -381,10 +381,10 @@
     "mode": "train",
     "from": "kinosaki",
     "to": "amanohashidate",
-    "durationMinutes": 102,
-    "note": "Limited express Kinosaki 12 out at 10:34 for the fourteen minutes to Toyooka, then the Kyoto Tango Railway on to Amanohashidate, off around 12:16",
+    "durationMinutes": 81,
+    "note": "Limited express Kinosaki 12 out at 10:34 for the fourteen minutes to Toyooka, then Tango Railway 4002D at 10:54, off at Amanohashidate at 11:55",
     "departure": "10:34",
-    "arrival": "12:16"
+    "arrival": "11:55"
   },
   {
     "journey": "2024-02-27-jp-hk",

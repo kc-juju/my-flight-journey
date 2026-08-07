@@ -2917,9 +2917,9 @@
           "fromPlaceId": "kinosaki",
           "toPlaceId": "amanohashidate",
           "departure": "2024-03-01T10:34",
-          "arrival": "2024-03-01T12:16",
-          "note": "Limited express Kinosaki 12 out at 10:34 for the fourteen minutes to Toyooka, then the Kyoto Tango Railway on to Amanohashidate, off around 12:16",
-          "durationMinutes": 102
+          "arrival": "2024-03-01T11:55",
+          "note": "Limited express Kinosaki 12 out at 10:34 for the fourteen minutes to Toyooka, then Tango Railway 4002D at 10:54, off at Amanohashidate at 11:55",
+          "durationMinutes": 81
         },
         {
           "id": "2024-03-01-amanohashidate-KIX-train",
