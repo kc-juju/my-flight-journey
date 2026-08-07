@@ -7,6 +7,9 @@ import {
   formatDayDate, formatDuration, formatNumber, MODE_ICON, MODE_LABEL, plural,
 } from '../../lib/format';
 import { sportOf } from '../../lib/sports';
+import { BallparkMap, type Park } from './BallparkMap';
+import mlbParks from '../../data/mlb-parks.json';
+import npbParks from '../../data/npb-parks.json';
 import { Icon } from '../ui/Icon';
 
 function RankTable({ title, rows, unit, limit = 10 }: {
@@ -122,6 +125,9 @@ export function Breakdowns() {
       grounds: [...grounds.values()].sort((x, y) => y.games.length - x.games.length),
       teams: [...teams.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0])),
       sports: [...sports.entries()].sort((x, y) => y[1] - x[1]),
+      groundPlaces: [...grounds.values()]
+        .map((g) => g.place)
+        .filter(Boolean) as Place[],
     };
   }, [data, placesById]);
 
@@ -251,6 +257,23 @@ export function Breakdowns() {
 
           {isOpen('grounds') && (
             <>
+              <div className="grid grid-cols-1 gap-gutter lg:grid-cols-2">
+                <BallparkMap
+                  title="Major League grounds"
+                  parks={mlbParks as Park[]}
+                  visited={ballgames.groundPlaces}
+                  center={[39.5, -96]}
+                  zoom={3}
+                />
+                <BallparkMap
+                  title="Nippon Professional Baseball grounds"
+                  parks={npbParks as Park[]}
+                  visited={ballgames.groundPlaces}
+                  center={[37.5, 137]}
+                  zoom={4}
+                />
+              </div>
+
 
           <ul className="flex flex-col gap-stack-sm">
             {ballgames.grounds.map(({ place, games }) => (

@@ -1039,6 +1039,17 @@
       "timezone": "Asia/Kuala_Lumpur"
     },
     {
+      "id": "jingu-stadium",
+      "name": "Meiji Jingu Stadium",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 35.6745,
+      "lon": 139.7172,
+      "kind": "landscape",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
+    },
+    {
       "id": "menton",
       "name": "Menton",
       "country": "France",
@@ -1235,6 +1246,17 @@
       "lon": 139.8814,
       "kind": "landscape",
       "image": "/images/cities/tokyo-disneyland.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
+    },
+    {
+      "id": "tokyo-dome",
+      "name": "Tokyo Dome",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 35.7056,
+      "lon": 139.752,
+      "kind": "landscape",
       "continent": "Asia",
       "timezone": "Asia/Tokyo"
     },
@@ -2703,6 +2725,26 @@
           "departureDelayMinutes": 3,
           "arrivalDelayMinutes": -17
         }
+      ],
+      "events": [
+        {
+          "date": "2023-11-18",
+          "placeId": "tokyo-dome",
+          "title": "Japan vs Australia",
+          "detail": "Asia Professional Baseball Championship · Japan won 10–0, called after eight · 37,221 in the stands",
+          "kind": "baseball",
+          "time": "12:03",
+          "source": "NPB official record"
+        },
+        {
+          "date": "2023-11-18",
+          "placeId": "tokyo-dome",
+          "title": "Korea vs Chinese Taipei",
+          "detail": "Asia Professional Baseball Championship · Korea won 6–1 · 9,603 in the stands",
+          "kind": "baseball",
+          "time": "19:01",
+          "source": "NPB official record"
+        }
       ]
     },
     {
@@ -3744,6 +3786,17 @@
           "cabin": "Economy",
           "departureDelayMinutes": -1,
           "arrivalDelayMinutes": -47
+        }
+      ],
+      "events": [
+        {
+          "date": "2025-07-20",
+          "placeId": "jingu-stadium",
+          "title": "Swallows vs Carp",
+          "detail": "Tokyo Yakult won 8–7 · 25,904 in the stands",
+          "kind": "baseball",
+          "time": "18:00",
+          "source": "NPB official record"
         }
       ]
     },

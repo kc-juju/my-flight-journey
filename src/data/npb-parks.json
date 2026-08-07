@@ -1,0 +1,74 @@
+[
+ {
+  "park": "Meiji Jingu Stadium",
+  "team": "Tokyo Yakult Swallows",
+  "lat": 35.6745155,
+  "lon": 139.717213
+ },
+ {
+  "park": "Tokyo Dome",
+  "team": "Yomiuri Giants",
+  "lat": 35.7055706,
+  "lon": 139.7519705
+ },
+ {
+  "park": "Hanshin Koshien Stadium",
+  "team": "Hanshin Tigers",
+  "lat": 34.7213722,
+  "lon": 135.3616473
+ },
+ {
+  "park": "Vantelin Dome Nagoya",
+  "team": "Chunichi Dragons",
+  "lat": 35.1859965,
+  "lon": 136.9473974
+ },
+ {
+  "park": "Mazda Stadium",
+  "team": "Hiroshima Toyo Carp",
+  "lat": 34.3919121,
+  "lon": 132.4846195
+ },
+ {
+  "park": "Yokohama Stadium",
+  "team": "Yokohama DeNA BayStars",
+  "lat": 35.443279,
+  "lon": 139.6408444
+ },
+ {
+  "park": "Kyocera Dome Osaka",
+  "team": "Orix Buffaloes",
+  "lat": 34.6693028,
+  "lon": 135.4760931
+ },
+ {
+  "park": "ZOZO Marine Stadium",
+  "team": "Chiba Lotte Marines",
+  "lat": 35.6452339,
+  "lon": 140.0308604
+ },
+ {
+  "park": "Rakuten Mobile Park Miyagi",
+  "team": "Tohoku Rakuten Golden Eagles",
+  "lat": 38.2561388,
+  "lon": 140.902664
+ },
+ {
+  "park": "Belluna Dome",
+  "team": "Saitama Seibu Lions",
+  "lat": 35.7685378,
+  "lon": 139.420466
+ },
+ {
+  "park": "Mizuho PayPay Dome",
+  "team": "Fukuoka SoftBank Hawks",
+  "lat": 33.5953196,
+  "lon": 130.3621171
+ },
+ {
+  "park": "Es Con Field Hokkaido",
+  "team": "Hokkaido Nippon-Ham Fighters",
+  "lat": 42.9901478,
+  "lon": 141.5497986
+ }
+]

@@ -530,5 +530,23 @@
     "lat": 47.5914,
     "lon": -122.3325,
     "kind": "landscape"
+  },
+  {
+    "id": "tokyo-dome",
+    "name": "Tokyo Dome",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 35.7056,
+    "lon": 139.752,
+    "kind": "landscape"
+  },
+  {
+    "id": "jingu-stadium",
+    "name": "Meiji Jingu Stadium",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 35.6745,
+    "lon": 139.7172,
+    "kind": "landscape"
   }
 ]

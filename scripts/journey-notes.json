@@ -208,5 +208,40 @@
     "source": "MLB official record"
    }
   ]
+ },
+ "2023-11-17-jp": {
+  "events": [
+   {
+    "date": "2023-11-18",
+    "place": "tokyo-dome",
+    "kind": "baseball",
+    "time": "12:03",
+    "title": "Japan vs Australia",
+    "detail": "Asia Professional Baseball Championship · Japan won 10–0, called after eight · 37,221 in the stands",
+    "source": "NPB official record"
+   },
+   {
+    "date": "2023-11-18",
+    "place": "tokyo-dome",
+    "kind": "baseball",
+    "time": "19:01",
+    "title": "Korea vs Chinese Taipei",
+    "detail": "Asia Professional Baseball Championship · Korea won 6–1 · 9,603 in the stands",
+    "source": "NPB official record"
+   }
+  ]
+ },
+ "2025-07-18-jp": {
+  "events": [
+   {
+    "date": "2025-07-20",
+    "place": "jingu-stadium",
+    "kind": "baseball",
+    "time": "18:00",
+    "title": "Swallows vs Carp",
+    "detail": "Tokyo Yakult won 8–7 · 25,904 in the stands",
+    "source": "NPB official record"
+   }
+  ]
  }
 }

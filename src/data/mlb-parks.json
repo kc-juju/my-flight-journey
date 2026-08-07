@@ -1,0 +1,182 @@
+[
+ {
+  "park": "American Family Field",
+  "team": "Milwaukee Brewers",
+  "lat": 43.02838,
+  "lon": -87.97099
+ },
+ {
+  "park": "Angel Stadium",
+  "team": "Los Angeles Angels",
+  "lat": 33.80019044,
+  "lon": -117.8823996
+ },
+ {
+  "park": "Busch Stadium",
+  "team": "St. Louis Cardinals",
+  "lat": 38.62256667,
+  "lon": -90.19286667
+ },
+ {
+  "park": "Chase Field",
+  "team": "Arizona Diamondbacks",
+  "lat": 33.445302,
+  "lon": -112.066687
+ },
+ {
+  "park": "Citi Field",
+  "team": "New York Mets",
+  "lat": 40.75753012,
+  "lon": -73.84559155
+ },
+ {
+  "park": "Citizens Bank Park",
+  "team": "Philadelphia Phillies",
+  "lat": 39.90539086,
+  "lon": -75.16716957
+ },
+ {
+  "park": "Comerica Park",
+  "team": "Detroit Tigers",
+  "lat": 42.3391151,
+  "lon": -83.048695
+ },
+ {
+  "park": "Coors Field",
+  "team": "Colorado Rockies",
+  "lat": 39.756042,
+  "lon": -104.994136
+ },
+ {
+  "park": "Daikin Park",
+  "team": "Houston Astros",
+  "lat": 29.756967,
+  "lon": -95.355509
+ },
+ {
+  "park": "Dodger Stadium",
+  "team": "Los Angeles Dodgers",
+  "lat": 34.07368,
+  "lon": -118.24053
+ },
+ {
+  "park": "Fenway Park",
+  "team": "Boston Red Sox",
+  "lat": 42.346456,
+  "lon": -71.097441
+ },
+ {
+  "park": "George M. Steinbrenner Field",
+  "team": "Tampa Bay Rays",
+  "lat": 27.97997,
+  "lon": -82.50702
+ },
+ {
+  "park": "Globe Life Field",
+  "team": "Texas Rangers",
+  "lat": 32.747299,
+  "lon": -97.081818
+ },
+ {
+  "park": "Great American Ball Park",
+  "team": "Cincinnati Reds",
+  "lat": 39.097389,
+  "lon": -84.506611
+ },
+ {
+  "park": "Kauffman Stadium",
+  "team": "Kansas City Royals",
+  "lat": 39.051567,
+  "lon": -94.480483
+ },
+ {
+  "park": "Nationals Park",
+  "team": "Washington Nationals",
+  "lat": 38.872861,
+  "lon": -77.007501
+ },
+ {
+  "park": "Oracle Park",
+  "team": "San Francisco Giants",
+  "lat": 37.778383,
+  "lon": -122.389448
+ },
+ {
+  "park": "Oriole Park at Camden Yards",
+  "team": "Baltimore Orioles",
+  "lat": 39.283787,
+  "lon": -76.621689
+ },
+ {
+  "park": "PNC Park",
+  "team": "Pittsburgh Pirates",
+  "lat": 40.446904,
+  "lon": -80.005753
+ },
+ {
+  "park": "Petco Park",
+  "team": "San Diego Padres",
+  "lat": 32.707861,
+  "lon": -117.157278
+ },
+ {
+  "park": "Progressive Field",
+  "team": "Cleveland Guardians",
+  "lat": 41.495861,
+  "lon": -81.685255
+ },
+ {
+  "park": "Rate Field",
+  "team": "Chicago White Sox",
+  "lat": 41.83,
+  "lon": -87.634167
+ },
+ {
+  "park": "Rogers Centre",
+  "team": "Toronto Blue Jays",
+  "lat": 43.64155,
+  "lon": -79.38915
+ },
+ {
+  "park": "Sutter Health Park",
+  "team": "Athletics",
+  "lat": 38.57994,
+  "lon": -121.51246
+ },
+ {
+  "park": "T-Mobile Park",
+  "team": "Seattle Mariners",
+  "lat": 47.591333,
+  "lon": -122.33251
+ },
+ {
+  "park": "Target Field",
+  "team": "Minnesota Twins",
+  "lat": 44.981829,
+  "lon": -93.277891
+ },
+ {
+  "park": "Truist Park",
+  "team": "Atlanta Braves",
+  "lat": 33.890672,
+  "lon": -84.467641
+ },
+ {
+  "park": "Wrigley Field",
+  "team": "Chicago Cubs",
+  "lat": 41.948171,
+  "lon": -87.655503
+ },
+ {
+  "park": "Yankee Stadium",
+  "team": "New York Yankees",
+  "lat": 40.82919482,
+  "lon": -73.9264977
+ },
+ {
+  "park": "loanDepot park",
+  "team": "Miami Marlins",
+  "lat": 25.77796236,
+  "lon": -80.21951795
+ }
+]
