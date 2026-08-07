@@ -17,6 +17,8 @@ import { citiesOfJourney, itineraryRows, stayBetween } from '../lib/atlas';
 import { Icon } from '../components/ui/Icon';
 import { TitleEditor } from '../components/journey/TitleEditor';
 import { NoteEditor } from '../components/journey/NoteEditor';
+import { EventCard } from '../components/journey/EventCard';
+import type { JourneyEvent } from '../types/journey';
 import { useOwner } from '../hooks/useOwner';
 import { formatDateRange, formatDuration, formatNumber, plural, STATUS_LABEL } from '../lib/format';
 
@@ -46,6 +48,130 @@ export function JourneyDetailPage() {
       </div>
     );
   }
+
+  // Each event follows the last leg that happened on or before its date, so a
+  // match lands after the trains that reached the ground rather than before
+  // them. Keyed by the leg's index in journey.segments.
+  const eventsAfter = useMemo(() => {
+    const map = new Map<number, JourneyEvent[]>();
+    const legs = journey?.segments ?? [];
+    for (const event of journey?.events ?? []) {
+      let target = -1;
+      legs.forEach((segment, i) => {
+        if ((segment.departure ?? '').slice(0, 10) <= event.date) target = i;
+      });
+      map.set(target, [...(map.get(target) ?? []), event]);
+    }
+    return map;
+  }, [journey]);
+
+  const eventsFor = (index: number) => eventsAfter.get(index) ?? [];
+
+  // One row of the itinerary: a leg on its own, or a base with its days out.
+  const renderRow = (row: (typeof rows)[number], rowIndex: number) => {
+                if (row.kind === 'base') {
+                  const at = placesById.get(row.placeId);
+                  return (
+                    <section
+                      key={`base-${row.placeId}-${row.legs[0].index}`}
+                      className="rounded-xl border border-outline-variant/50 bg-surface-container-lowest/40 p-stack-sm"
+                    >
+                      <h3 className="mb-stack-sm flex flex-wrap items-center gap-2 px-1 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                        <Icon name="hotel" className="text-[16px]" />
+                        <span className="text-on-surface">{at?.name ?? ''}</span>
+                        {row.nights && <span>· {plural(row.nights, 'night')}</span>}
+                        <span className="text-on-surface-variant/70">
+                          {/* Days out, not legs: three days on the Riviera are
+                              eight train rides, and eight is not the story. */}
+                          · {plural(
+                            new Set(
+                              row.legs
+                                .map(({ segment }) => segment.departure?.slice(0, 10))
+                                .filter(Boolean),
+                            ).size,
+                            'day out',
+                            'days out',
+                          )}
+                        </span>
+                      </h3>
+
+                      <div className="flex flex-col gap-stack-sm">
+                        {row.legs.map(({ index, segment }) => (
+                          <Fragment key={segment.id}>
+                            <SegmentCard segment={segment} placesById={placesById} />
+                            {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
+                              <PhotoStrip
+                                photos={photoSlots.get(travelledIndex(index)) ?? []}
+                                onDeleted={refreshPhotos}
+                              />
+                            )}
+                            {eventsFor(index).map((event) => (
+                              <EventCard
+                                key={event.date + event.title}
+                                event={event}
+                                placesById={placesById}
+                              />
+                            ))}
+                          </Fragment>
+                        ))}
+                      </div>
+                    </section>
+                  );
+                }
+
+                const { index, segment } = row;
+                // The next leg actually travelled. A flight given up — the
+                // oversold one home from Seattle — sits between the arrival and
+                // the flight eventually taken, and reading the gap against it
+                // lost four nights in Seattle entirely.
+                const next = journey.segments.slice(index + 1).find((s) => !s.dropped);
+                // A stay is only drawn between two ordinary legs. Arriving at a
+                // base, or leaving one, is what the block above already says.
+                const intoBase = rows
+                  .slice(rowIndex + 1)
+                  .find((r) => r.kind === 'base' || !r.segment.dropped)?.kind === 'base';
+                const stay =
+                  next && !intoBase && !segment.dropped
+                    ? stayBetween(segment, next, placesById)
+                    : null;
+                const at = placesById.get(segment.toPlaceId);
+                const isShort = stay !== null && 'minutes' in stay && stay.minutes < 12 * 60;
+                const notCounted = (journey.transferPlaceIds ?? []).includes(segment.toPlaceId);
+
+                return (
+                  <Fragment key={segment.id}>
+                    <SegmentCard segment={segment} placesById={placesById} />
+                    {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
+                      <PhotoStrip
+                        photos={photoSlots.get(travelledIndex(index)) ?? []}
+                        onDeleted={refreshPhotos}
+                      />
+                    )}
+
+                    {eventsFor(index).map((event) => (
+                      <EventCard key={event.date + event.title} event={event} placesById={placesById} />
+                    ))}
+
+                    {stay !== null && (
+                      <p className="flex flex-wrap items-center gap-2 px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                        <Icon
+                          name={isShort ? 'connecting_airports' : 'hotel'}
+                          className="text-[16px]"
+                        />
+                        {'minutes' in stay
+                          ? `${formatDuration(stay.minutes)} ${isShort ? 'connecting in' : 'in'}`
+                          : `${plural(stay.nights, 'night')} in`}{' '}
+                        {at?.name ?? ''}
+                        {notCounted && (
+                          <span className="rounded-full border border-outline-variant px-2 py-0.5 text-[9px]">
+                            Not counted as a visit
+                          </span>
+                        )}
+                      </p>
+                    )}
+                  </Fragment>
+                );
+  };
 
   const metrics = metricsFor(journey);
   // Same rule as the gallery: home appears on every journey, so it is not a
@@ -135,99 +261,10 @@ export function JourneyDetailPage() {
             {photosBefore.length > 0 && (
               <PhotoStrip photos={photosBefore} onDeleted={refreshPhotos} />
             )}
-            {rows.map((row, rowIndex) => {
-              if (row.kind === 'base') {
-                const at = placesById.get(row.placeId);
-                return (
-                  <section
-                    key={`base-${row.placeId}-${row.legs[0].index}`}
-                    className="rounded-xl border border-outline-variant/50 bg-surface-container-lowest/40 p-stack-sm"
-                  >
-                    <h3 className="mb-stack-sm flex flex-wrap items-center gap-2 px-1 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-                      <Icon name="hotel" className="text-[16px]" />
-                      <span className="text-on-surface">{at?.name ?? ''}</span>
-                      {row.nights && <span>· {plural(row.nights, 'night')}</span>}
-                      <span className="text-on-surface-variant/70">
-                        {/* Days out, not legs: three days on the Riviera are
-                            eight train rides, and eight is not the story. */}
-                        · {plural(
-                          new Set(
-                            row.legs
-                              .map(({ segment }) => segment.departure?.slice(0, 10))
-                              .filter(Boolean),
-                          ).size,
-                          'day out',
-                          'days out',
-                        )}
-                      </span>
-                    </h3>
+            {rows.map((row, rowIndex) => (
+              <Fragment key={`row-${rowIndex}`}>{renderRow(row, rowIndex)}</Fragment>
+            ))}
 
-                    <div className="flex flex-col gap-stack-sm">
-                      {row.legs.map(({ index, segment }) => (
-                        <Fragment key={segment.id}>
-                          <SegmentCard segment={segment} placesById={placesById} />
-                          {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
-                            <PhotoStrip
-                              photos={photoSlots.get(travelledIndex(index)) ?? []}
-                              onDeleted={refreshPhotos}
-                            />
-                          )}
-                        </Fragment>
-                      ))}
-                    </div>
-                  </section>
-                );
-              }
-
-              const { index, segment } = row;
-              // The next leg actually travelled. A flight given up — the
-              // oversold one home from Seattle — sits between the arrival and
-              // the flight eventually taken, and reading the gap against it
-              // lost four nights in Seattle entirely.
-              const next = journey.segments.slice(index + 1).find((s) => !s.dropped);
-              // A stay is only drawn between two ordinary legs. Arriving at a
-              // base, or leaving one, is what the block above already says.
-              const intoBase = rows
-                .slice(rowIndex + 1)
-                .find((r) => r.kind === 'base' || !r.segment.dropped)?.kind === 'base';
-              const stay =
-                next && !intoBase && !segment.dropped
-                  ? stayBetween(segment, next, placesById)
-                  : null;
-              const at = placesById.get(segment.toPlaceId);
-              const isShort = stay !== null && 'minutes' in stay && stay.minutes < 12 * 60;
-              const notCounted = (journey.transferPlaceIds ?? []).includes(segment.toPlaceId);
-
-              return (
-                <Fragment key={segment.id}>
-                  <SegmentCard segment={segment} placesById={placesById} />
-                  {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
-                    <PhotoStrip
-                      photos={photoSlots.get(travelledIndex(index)) ?? []}
-                      onDeleted={refreshPhotos}
-                    />
-                  )}
-
-                  {stay !== null && (
-                    <p className="flex flex-wrap items-center gap-2 px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-                      <Icon
-                        name={isShort ? 'connecting_airports' : 'hotel'}
-                        className="text-[16px]"
-                      />
-                      {'minutes' in stay
-                        ? `${formatDuration(stay.minutes)} ${isShort ? 'connecting in' : 'in'}`
-                        : `${plural(stay.nights, 'night')} in`}{' '}
-                      {at?.name ?? ''}
-                      {notCounted && (
-                        <span className="rounded-full border border-outline-variant px-2 py-0.5 text-[9px]">
-                          Not counted as a visit
-                        </span>
-                      )}
-                    </p>
-                  )}
-                </Fragment>
-              );
-            })}
             <p className="px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
               Total travelling time {formatDuration(metrics.durationMinutes)} ·{' '}
               {formatNumber(metrics.distanceKm)} km great-circle

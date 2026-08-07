@@ -86,5 +86,18 @@
     "note": "A 737 MAX 8, not the 737-900ER the flight log recorded; Flightradar24 agrees"
    }
   ]
+ },
+ "2017-09-03-jp": {
+  "events": [
+   {
+    "date": "2017-09-03",
+    "place": "koshien",
+    "kind": "ballgame",
+    "time": "18:00",
+    "title": "Hanshin Tigers vs Chunichi Dragons",
+    "detail": "Chunichi won 4–2 · 41,856 in the stands",
+    "source": "NPB official record"
+   }
+  ]
  }
 }

@@ -88,12 +88,32 @@ export interface Stop {
   label?: string;
 }
 
+/**
+ * Something the journey was for: a match, a concert, a ceremony.
+ *
+ * Not a segment — nobody moved — and not derivable from a flight log, so it
+ * is written by hand and placed in the itinerary by its date.
+ */
+export interface JourneyEvent {
+  date: string;
+  placeId: string;
+  title: string;
+  /** Local start time, when it is known. */
+  time?: string;
+  detail?: string;
+  kind?: 'ballgame';
+  /** Where the score or the times came from. */
+  source?: string;
+}
+
 export interface Journey {
   id: string;
   slug: string;
   title: string;
   /** A region this journey is better known by, when one fits. */
   label?: string;
+  /** Things that happened on the way that were not travel. */
+  events?: JourneyEvent[];
   /** One-line positioning under the title. */
   subtitle?: string;
   /** ISO date. */

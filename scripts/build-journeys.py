@@ -675,6 +675,20 @@ def build():
             applied += 1
         if entry.get('label'):
             journey['label'] = entry['label']
+        if entry.get('events'):
+            # Written by hand: a flight log cannot know why anybody went.
+            journey['events'] = [
+                {
+                    'date': e['date'],
+                    'placeId': place_id.get(e['place'], e['place']),
+                    'title': e['title'],
+                    **({'detail': e['detail']} if e.get('detail') else {}),
+                    **({'kind': e['kind']} if e.get('kind') else {}),
+                    **({'time': e['time']} if e.get('time') else {}),
+                    **({'source': e['source']} if e.get('source') else {}),
+                }
+                for e in sorted(entry['events'], key=lambda e: e['date'])
+            ]
         if entry.get('notes'):
             journey['notes'] = entry['notes']
         if entry.get('highlights'):
