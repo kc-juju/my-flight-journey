@@ -2128,7 +2128,7 @@
           "toPlaceId": "boston",
           "departure": "2019-08-06T10:00",
           "arrival": "2019-08-06T14:20",
-          "note": "Greyhound out of New York at 10:00, into Boston at 14:20; the atlas hangs New York on its airport node, so the line runs from there",
+          "note": "Greyhound out of New York at 10:00, into Boston at 14:20 as ticketed; the atlas hangs New York on its airport node, so the line runs from there",
           "durationMinutes": 260
         },
         {
@@ -2138,7 +2138,7 @@
           "toPlaceId": "jfk",
           "departure": "2019-08-08T15:00",
           "arrival": "2019-08-08T19:40",
-          "note": "Greyhound out of Boston at 15:00, into New York at 19:40; the atlas hangs New York on its airport node, so the line runs to there",
+          "note": "Greyhound out of Boston at 15:00, into New York at 19:40 as ticketed; the atlas hangs New York on its airport node, so the line runs to there",
           "durationMinutes": 280
         },
         {
@@ -4045,9 +4045,10 @@
           "fromPlaceId": "sea",
           "toPlaceId": "yvr",
           "operator": "FlixBus",
-          "note": "Seattle to Vancouver by coach — the atlas only has airport nodes, so the line runs airport to airport • 246 km · Driving time by road (OSRM / OpenStreetMap); the coach also stops at the border",
-          "departure": "2025-10-06",
-          "durationMinutes": 196
+          "note": "Coach out of Seattle Bus Station at 07:30, into Pacific Central at 11:30 as ticketed, the border crossing included",
+          "departure": "2025-10-06T07:30",
+          "arrival": "2025-10-06T11:30",
+          "durationMinutes": 240
         },
         {
           "id": "2025-10-08-WJA108-YVRYYC",

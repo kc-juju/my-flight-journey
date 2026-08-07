@@ -5,8 +5,10 @@
     "operator": "FlixBus",
     "from": "SEA",
     "to": "YVR",
-    "note": "Seattle to Vancouver by coach — the atlas only has airport nodes, so the line runs airport to airport • 246 km · Driving time by road (OSRM / OpenStreetMap); the coach also stops at the border",
-    "durationMinutes": 196
+    "note": "Coach out of Seattle Bus Station at 07:30, into Pacific Central at 11:30 as ticketed, the border crossing included",
+    "durationMinutes": 240,
+    "departure": "07:30",
+    "arrival": "11:30"
   },
   {
     "journey": "2025-10-04-us-ca",
@@ -807,7 +809,7 @@
     "from": "JFK",
     "to": "boston",
     "durationMinutes": 260,
-    "note": "Greyhound out of New York at 10:00, into Boston at 14:20; the atlas hangs New York on its airport node, so the line runs from there",
+    "note": "Greyhound out of New York at 10:00, into Boston at 14:20 as ticketed; the atlas hangs New York on its airport node, so the line runs from there",
     "departure": "10:00",
     "arrival": "14:20"
   },
@@ -818,7 +820,7 @@
     "from": "boston",
     "to": "JFK",
     "durationMinutes": 280,
-    "note": "Greyhound out of Boston at 15:00, into New York at 19:40; the atlas hangs New York on its airport node, so the line runs to there",
+    "note": "Greyhound out of Boston at 15:00, into New York at 19:40 as ticketed; the atlas hangs New York on its airport node, so the line runs to there",
     "departure": "15:00",
     "arrival": "19:40"
   },
