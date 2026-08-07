@@ -642,5 +642,47 @@
     "licence": "CC BY 2.5",
     "source": "https://commons.wikimedia.org/wiki/File:ISH_WC_Boston4.jpg",
     "article": "Boston"
+  },
+  "mojiko": {
+    "file": "門司港駅正面.jpg",
+    "author": "jason199567",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%E9%96%80%E5%8F%B8%E6%B8%AF%E9%A7%85%E6%AD%A3%E9%9D%A2.jpg",
+    "article": "Mojikō Station"
+  },
+  "takeo-onsen": {
+    "file": "Takeoonsen rohmon 20221021.jpg",
+    "author": "Suicasmo",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Takeoonsen_rohmon_20221021.jpg",
+    "article": "Takeo Onsen"
+  },
+  "nagasaki": {
+    "file": "Nagasaki_City_View_from_Glover_Garden,_Nagasaki_2014.jpg",
+    "author": "Tomio344456",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nagasaki_City_View_from_Glover_Garden,_Nagasaki_2014.jpg",
+    "article": "Nagasaki"
+  },
+  "kumamoto": {
+    "file": "Kumamoto Castle Keep Tower 20221022-3.jpg",
+    "author": "Suicasmo",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kumamoto_Castle_Keep_Tower_20221022-3.jpg",
+    "article": "Kumamoto Castle"
+  },
+  "chatan": {
+    "file": "Mihama_Town_Resort_American_Village_3.JPG",
+    "author": "Abasaa",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Mihama_Town_Resort_American_Village_3.JPG",
+    "article": "Chatan, Okinawa"
+  },
+  "churaumi": {
+    "file": "People inside the tank of Okinawa Churaumi Aquarium.jpg",
+    "author": "Pauloleong2002",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:People_inside_the_tank_of_Okinawa_Churaumi_Aquarium.jpg",
+    "article": "Okinawa Churaumi Aquarium"
   }
 }

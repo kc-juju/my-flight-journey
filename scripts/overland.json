@@ -772,5 +772,105 @@
     "to": "JFK",
     "durationMinutes": 275,
     "note": "Coach back down to New York • 343 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2019-02-19-jp",
+    "date": "2019-02-19",
+    "mode": "train",
+    "operator": "JR Kyushu",
+    "from": "FUK",
+    "to": "mojiko",
+    "durationMinutes": 86,
+    "note": "Rapid along the Kagoshima line to the old port • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2019-02-19-jp",
+    "date": "2019-02-19",
+    "mode": "train",
+    "operator": "JR Kyushu",
+    "from": "mojiko",
+    "to": "FUK",
+    "durationMinutes": 86,
+    "note": "Back down the line to Fukuoka • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2019-02-19-jp",
+    "date": "2019-02-20",
+    "mode": "train",
+    "operator": "JR Kyushu",
+    "from": "FUK",
+    "to": "takeo-onsen",
+    "durationMinutes": 50,
+    "note": "Limited express Relay Kamome out of Hakata • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2019-02-19-jp",
+    "date": "2019-02-20",
+    "mode": "train",
+    "operator": "JR Kyushu",
+    "from": "takeo-onsen",
+    "to": "nagasaki",
+    "durationMinutes": 30,
+    "note": "Nishi-Kyushu Shinkansen Kamome — 30 minutes to Nagasaki • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2019-02-19-jp",
+    "date": "2019-02-20",
+    "mode": "train",
+    "operator": "JR Kyushu",
+    "from": "nagasaki",
+    "to": "FUK",
+    "durationMinutes": 80,
+    "note": "Straight back to Hakata — 1h 20m at best • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2019-02-19-jp",
+    "date": "2019-02-21",
+    "mode": "train",
+    "operator": "JR Kyushu",
+    "from": "FUK",
+    "to": "kumamoto",
+    "durationMinutes": 32,
+    "note": "Kyushu Shinkansen Mizuho — 32 minutes • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2019-02-19-jp",
+    "date": "2019-02-21",
+    "mode": "train",
+    "operator": "JR Kyushu",
+    "from": "kumamoto",
+    "to": "FUK",
+    "durationMinutes": 32,
+    "note": "Shinkansen back to Hakata • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2018-03-10-jp",
+    "date": "2018-03-11",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "OKA",
+    "to": "chatan",
+    "durationMinutes": 42,
+    "note": "Up the west coast to the American Village at Mihama • 31 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2018-03-10-jp",
+    "date": "2018-03-12",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "chatan",
+    "to": "churaumi",
+    "durationMinutes": 92,
+    "note": "North to the aquarium at Motobu • 73 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2018-03-10-jp",
+    "date": "2018-03-12",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "churaumi",
+    "to": "OKA",
+    "durationMinutes": 122,
+    "note": "The long way back down to Naha • 100 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
   }
 ]

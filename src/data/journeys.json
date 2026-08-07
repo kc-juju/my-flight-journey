@@ -674,6 +674,7 @@
       "countryCode": "US",
       "lat": 42.3588,
       "lon": -71.0578,
+      "image": "/images/cities/boston.jpg",
       "continent": "North America",
       "timezone": "America/New_York"
     },
@@ -720,6 +721,29 @@
       "image": "/images/cities/cannes.jpg",
       "continent": "Europe",
       "timezone": "Europe/Paris"
+    },
+    {
+      "id": "chatan",
+      "name": "Chatan",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 26.3165,
+      "lon": 127.7574,
+      "image": "/images/cities/chatan.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
+    },
+    {
+      "id": "churaumi",
+      "name": "Churaumi Aquarium",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 26.6944,
+      "lon": 127.878,
+      "kind": "landscape",
+      "image": "/images/cities/churaumi.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "disneyland-california",
@@ -847,6 +871,17 @@
       "timezone": "Europe/Warsaw"
     },
     {
+      "id": "kumamoto",
+      "name": "Kumamoto",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 32.8034,
+      "lon": 130.7083,
+      "image": "/images/cities/kumamoto.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
+    },
+    {
       "id": "kurashiki",
       "name": "Kurashiki",
       "country": "Japan",
@@ -949,6 +984,17 @@
       "timezone": "Europe/Paris"
     },
     {
+      "id": "mojiko",
+      "name": "Mojikō",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 33.9449,
+      "lon": 130.9613,
+      "image": "/images/cities/mojiko.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
+    },
+    {
       "id": "monaco",
       "name": "Monaco",
       "country": "Monaco",
@@ -958,6 +1004,17 @@
       "image": "/images/cities/monaco.jpg",
       "continent": "Europe",
       "timezone": "Europe/Monaco"
+    },
+    {
+      "id": "nagasaki",
+      "name": "Nagasaki",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 32.7502,
+      "lon": 129.8781,
+      "image": "/images/cities/nagasaki.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
     },
     {
       "id": "otaru",
@@ -988,6 +1045,7 @@
       "countryCode": "US",
       "lat": 39.9527,
       "lon": -75.1635,
+      "image": "/images/cities/philadelphia.jpg",
       "continent": "North America",
       "timezone": "America/New_York"
     },
@@ -1048,6 +1106,17 @@
       "timezone": "Australia/Melbourne"
     },
     {
+      "id": "takeo-onsen",
+      "name": "Takeo-Onsen",
+      "country": "Japan",
+      "countryCode": "JP",
+      "lat": 33.1936,
+      "lon": 130.0194,
+      "image": "/images/cities/takeo-onsen.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Tokyo"
+    },
+    {
       "id": "tokyo-disneyland",
       "name": "Tokyo Disneyland",
       "country": "Japan",
@@ -1077,6 +1146,7 @@
       "countryCode": "US",
       "lat": 38.8951,
       "lon": -77.0364,
+      "image": "/images/cities/washington.jpg",
       "continent": "North America",
       "timezone": "America/New_York"
     },
@@ -1274,6 +1344,36 @@
           "vehicle": "Airbus A320",
           "registration": "JA813P",
           "cabin": "Economy"
+        },
+        {
+          "id": "2018-03-11-OKA-chatan-car",
+          "mode": "car",
+          "fromPlaceId": "oka",
+          "toPlaceId": "chatan",
+          "departure": "2018-03-11",
+          "operator": "Hire car",
+          "note": "Up the west coast to the American Village at Mihama • 31 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 42
+        },
+        {
+          "id": "2018-03-12-chatan-churaumi-car",
+          "mode": "car",
+          "fromPlaceId": "chatan",
+          "toPlaceId": "churaumi",
+          "departure": "2018-03-12",
+          "operator": "Hire car",
+          "note": "North to the aquarium at Motobu • 73 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 92
+        },
+        {
+          "id": "2018-03-12-churaumi-OKA-car",
+          "mode": "car",
+          "fromPlaceId": "churaumi",
+          "toPlaceId": "oka",
+          "departure": "2018-03-12",
+          "operator": "Hire car",
+          "note": "The long way back down to Naha • 100 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 122
         },
         {
           "id": "2018-03-13-APJ921-OKATPE",
@@ -1519,6 +1619,76 @@
           "cabin": "Economy",
           "departureDelayMinutes": -13,
           "arrivalDelayMinutes": -12
+        },
+        {
+          "id": "2019-02-19-FUK-mojiko-train",
+          "mode": "train",
+          "fromPlaceId": "fuk",
+          "toPlaceId": "mojiko",
+          "departure": "2019-02-19",
+          "operator": "JR Kyushu",
+          "note": "Rapid along the Kagoshima line to the old port • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 86
+        },
+        {
+          "id": "2019-02-19-mojiko-FUK-train",
+          "mode": "train",
+          "fromPlaceId": "mojiko",
+          "toPlaceId": "fuk",
+          "departure": "2019-02-19",
+          "operator": "JR Kyushu",
+          "note": "Back down the line to Fukuoka • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 86
+        },
+        {
+          "id": "2019-02-20-FUK-takeo-onsen-train",
+          "mode": "train",
+          "fromPlaceId": "fuk",
+          "toPlaceId": "takeo-onsen",
+          "departure": "2019-02-20",
+          "operator": "JR Kyushu",
+          "note": "Limited express Relay Kamome out of Hakata • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 50
+        },
+        {
+          "id": "2019-02-20-takeo-onsen-nagasaki-train",
+          "mode": "train",
+          "fromPlaceId": "takeo-onsen",
+          "toPlaceId": "nagasaki",
+          "departure": "2019-02-20",
+          "operator": "JR Kyushu",
+          "note": "Nishi-Kyushu Shinkansen Kamome — 30 minutes to Nagasaki • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 30
+        },
+        {
+          "id": "2019-02-20-nagasaki-FUK-train",
+          "mode": "train",
+          "fromPlaceId": "nagasaki",
+          "toPlaceId": "fuk",
+          "departure": "2019-02-20",
+          "operator": "JR Kyushu",
+          "note": "Straight back to Hakata — 1h 20m at best • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 80
+        },
+        {
+          "id": "2019-02-21-FUK-kumamoto-train",
+          "mode": "train",
+          "fromPlaceId": "fuk",
+          "toPlaceId": "kumamoto",
+          "departure": "2019-02-21",
+          "operator": "JR Kyushu",
+          "note": "Kyushu Shinkansen Mizuho — 32 minutes • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 32
+        },
+        {
+          "id": "2019-02-21-kumamoto-FUK-train",
+          "mode": "train",
+          "fromPlaceId": "kumamoto",
+          "toPlaceId": "fuk",
+          "departure": "2019-02-21",
+          "operator": "JR Kyushu",
+          "note": "Shinkansen back to Hakata • Published fastest timing on the current timetable, not the service actually taken",
+          "durationMinutes": 32
         },
         {
           "id": "2019-02-22-TTW241-FUKTPE",

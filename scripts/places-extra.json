@@ -368,5 +368,54 @@
     "countryCode": "US",
     "lat": 42.3588,
     "lon": -71.0578
+  },
+  {
+    "id": "mojiko",
+    "name": "Mojikō",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 33.9449,
+    "lon": 130.9613
+  },
+  {
+    "id": "takeo-onsen",
+    "name": "Takeo-Onsen",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 33.1936,
+    "lon": 130.0194
+  },
+  {
+    "id": "nagasaki",
+    "name": "Nagasaki",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 32.7502,
+    "lon": 129.8781
+  },
+  {
+    "id": "kumamoto",
+    "name": "Kumamoto",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 32.8034,
+    "lon": 130.7083
+  },
+  {
+    "id": "chatan",
+    "name": "Chatan",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 26.3165,
+    "lon": 127.7574
+  },
+  {
+    "id": "churaumi",
+    "name": "Churaumi Aquarium",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 26.6944,
+    "lon": 127.878,
+    "kind": "landscape"
   }
 ]
