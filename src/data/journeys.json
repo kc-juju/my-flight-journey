@@ -3061,8 +3061,9 @@
           "mode": "train",
           "fromPlaceId": "lhr",
           "toPlaceId": "cambridge",
-          "departure": "2024-04-01",
-          "note": "Great Northern from King’s Cross, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "departure": "2024-04-01T09:41",
+          "arrival": "2024-04-01T10:30",
+          "note": "Out of King’s Cross at 09:41, into Cambridge at 10:30; the atlas only has airport nodes, so the line runs from Heathrow",
           "durationMinutes": 49
         },
         {
