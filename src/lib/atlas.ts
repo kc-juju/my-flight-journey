@@ -223,3 +223,71 @@ export function journeyYear(journey: Journey): number {
 export function sortByDateDesc(a: Journey, b: Journey): number {
   return a.startDate < b.startDate ? 1 : a.startDate > b.startDate ? -1 : 0;
 }
+
+/**
+ * One row of an itinerary: either a leg on its own, or a base — somewhere
+ * the traveller slept for a few nights and went out from each day.
+ *
+ * Without this, four day trips out of Nice read as four separate one-night
+ * stays there, which is not what a week on the Riviera felt like.
+ */
+export type ItineraryRow =
+  | { kind: 'leg'; index: number; segment: Segment }
+  | { kind: 'base'; placeId: string; nights: number | null; legs: { index: number; segment: Segment }[] };
+
+export function itineraryRows(journey: Journey, byId: Map<string, Place>): ItineraryRow[] {
+  // Indices point into journey.segments so photographs and dropped legs keep
+  // the places they already had.
+  const legs = journey.segments;
+  const rows: ItineraryRow[] = [];
+
+  const slept = (a: Segment, b: Segment) => {
+    const stay = stayBetween(a, b, byId);
+    return stay !== null && ('nights' in stay || stay.minutes >= 12 * 60);
+  };
+
+  let i = 0;
+  while (i < legs.length) {
+    if (legs[i].dropped) {
+      rows.push({ kind: 'leg', index: i, segment: legs[i] });
+      i += 1;
+      continue;
+    }
+    const base = legs[i].fromPlaceId;
+
+    // How far can a loop out of here run? The last return to base wins, but
+    // only while every night away from base is nought: sleeping somewhere
+    // else means that place is a stop in its own right, not a day out.
+    let end = -1;
+    for (let j = i; j < legs.length; j += 1) {
+      if (legs[j].dropped) break;
+      if (j > i && legs[j].fromPlaceId !== legs[j - 1].toPlaceId) break;
+      if (j > i && legs[j - 1].toPlaceId !== base && slept(legs[j - 1], legs[j])) break;
+      if (legs[j].toPlaceId === base) end = j;
+    }
+
+    if (end > i) {
+      const before = i > 0 ? legs[i - 1] : null;
+      const after = legs[end + 1] ?? null;
+      const from = (before?.arrival ?? before?.departure ?? legs[i].departure)?.slice(0, 10);
+      const to = (after?.departure ?? legs[end].arrival ?? legs[end].departure)?.slice(0, 10);
+      const nights =
+        from && to
+          ? Math.round((Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 86_400_000)
+          : null;
+      rows.push({
+        kind: 'base',
+        placeId: base,
+        nights: nights && nights > 0 ? nights : null,
+        legs: legs.slice(i, end + 1).map((segment, n) => ({ index: i + n, segment })),
+      });
+      i = end + 1;
+      continue;
+    }
+
+    rows.push({ kind: 'leg', index: i, segment: legs[i] });
+    i += 1;
+  }
+
+  return rows;
+}

@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAtlas } from '../hooks/useAtlas';
@@ -13,7 +13,7 @@ import {
   PhotoUploader,
   usePhotoSlots,
 } from '../components/journey/JourneyPhotos';
-import { citiesOfJourney, stayBetween } from '../lib/atlas';
+import { citiesOfJourney, itineraryRows, stayBetween } from '../lib/atlas';
 import { Icon } from '../components/ui/Icon';
 import { TitleEditor } from '../components/journey/TitleEditor';
 import { NoteEditor } from '../components/journey/NoteEditor';
@@ -25,6 +25,10 @@ export function JourneyDetailPage() {
   const { journeyBySlug, placesById, metricsFor } = useAtlas();
   const owner = useOwner() === true;
   const journey = slug ? journeyBySlug(slug) : undefined;
+  const rows = useMemo(
+    () => (journey ? itineraryRows(journey, placesById) : []),
+    [journey, placesById],
+  );
 
   if (!journey) {
     return (
@@ -131,48 +135,91 @@ export function JourneyDetailPage() {
             {photosBefore.length > 0 && (
               <PhotoStrip photos={photosBefore} onDeleted={refreshPhotos} />
             )}
-            {journey.segments.map((segment, index) => {
+            {rows.map((row, rowIndex) => {
+              if (row.kind === 'base') {
+                const at = placesById.get(row.placeId);
+                return (
+                  <section
+                    key={`base-${row.placeId}-${row.legs[0].index}`}
+                    className="rounded-xl border border-outline-variant/50 bg-surface-container-lowest/40 p-stack-sm"
+                  >
+                    <h3 className="mb-stack-sm flex flex-wrap items-center gap-2 px-1 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                      <Icon name="hotel" className="text-[16px]" />
+                      <span className="text-on-surface">{at?.name ?? ''}</span>
+                      {row.nights && <span>· {plural(row.nights, 'night')}</span>}
+                      <span className="text-on-surface-variant/70">
+                        {/* Days out, not legs: three days on the Riviera are
+                            eight train rides, and eight is not the story. */}
+                        · {plural(
+                          new Set(
+                            row.legs
+                              .map(({ segment }) => segment.departure?.slice(0, 10))
+                              .filter(Boolean),
+                          ).size,
+                          'day out',
+                          'days out',
+                        )}
+                      </span>
+                    </h3>
+
+                    <div className="flex flex-col gap-stack-sm">
+                      {row.legs.map(({ index, segment }) => (
+                        <Fragment key={segment.id}>
+                          <SegmentCard segment={segment} placesById={placesById} />
+                          {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
+                            <PhotoStrip
+                              photos={photoSlots.get(travelledIndex(index)) ?? []}
+                              onDeleted={refreshPhotos}
+                            />
+                          )}
+                        </Fragment>
+                      ))}
+                    </div>
+                  </section>
+                );
+              }
+
+              const { index, segment } = row;
               const next = journey.segments[index + 1];
+              // A stay is only drawn between two ordinary legs. Arriving at a
+              // base, or leaving one, is what the block above already says.
+              const intoBase = rows[rowIndex + 1]?.kind === 'base';
               const stay =
-                next && !segment.dropped && !next.dropped
+                next && !intoBase && !segment.dropped && !next.dropped
                   ? stayBetween(segment, next, placesById)
                   : null;
               const at = placesById.get(segment.toPlaceId);
-              // A short gap is a connection whatever else happened; whether the
-              // city counts is a separate question, and one stop can differ
-              // from another at the same airport on the same trip.
               const isShort = stay !== null && 'minutes' in stay && stay.minutes < 12 * 60;
-              const notCounted = (journey.transferPlaceIds ?? []).includes(
-                segment.toPlaceId,
-              );
-              return (
-              <Fragment key={segment.id}>
-                <SegmentCard segment={segment} placesById={placesById} />
-                {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
-                  <PhotoStrip
-                    photos={photoSlots.get(travelledIndex(index)) ?? []}
-                    onDeleted={refreshPhotos}
-                  />
-                )}
+              const notCounted = (journey.transferPlaceIds ?? []).includes(segment.toPlaceId);
 
-                {stay !== null && (
-                  <p className="flex flex-wrap items-center gap-2 px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-                    <Icon
-                      name={isShort ? 'connecting_airports' : 'hotel'}
-                      className="text-[16px]"
+              return (
+                <Fragment key={segment.id}>
+                  <SegmentCard segment={segment} placesById={placesById} />
+                  {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
+                    <PhotoStrip
+                      photos={photoSlots.get(travelledIndex(index)) ?? []}
+                      onDeleted={refreshPhotos}
                     />
-                    {'minutes' in stay
-                      ? `${formatDuration(stay.minutes)} ${isShort ? 'connecting in' : 'in'}`
-                      : `${plural(stay.nights, 'night')} in`}{' '}
-                    {at?.name ?? ''}
-                    {notCounted && (
-                      <span className="rounded-full border border-outline-variant px-2 py-0.5 text-[9px]">
-                        Not counted as a visit
-                      </span>
-                    )}
-                  </p>
-                )}
-              </Fragment>
+                  )}
+
+                  {stay !== null && (
+                    <p className="flex flex-wrap items-center gap-2 px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                      <Icon
+                        name={isShort ? 'connecting_airports' : 'hotel'}
+                        className="text-[16px]"
+                      />
+                      {'minutes' in stay
+                        ? `${formatDuration(stay.minutes)} ${isShort ? 'connecting in' : 'in'}`
+                        : `${plural(stay.nights, 'night')} in`}{' '}
+                      {at?.name ?? ''}
+                      {notCounted && (
+                        <span className="rounded-full border border-outline-variant px-2 py-0.5 text-[9px]">
+                          Not counted as a visit
+                        </span>
+                      )}
+                    </p>
+                  )}
+                </Fragment>
               );
             })}
             <p className="px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
