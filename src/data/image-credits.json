@@ -516,5 +516,47 @@
     "licence": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Sleeping_beauty_castle_dlr_2019.jpg",
     "article": "Anaheim, California"
+  },
+  "geelong": {
+    "file": "Geelong_Town_Hall_(cropped).JPG",
+    "author": "Mattinbgn",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Geelong_Town_Hall_(cropped).JPG",
+    "article": "Geelong"
+  },
+  "san-remo": {
+    "file": "1_san_remo_victoria_aerial_pano_2021.jpg",
+    "author": "Chensiyuan",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:1_san_remo_victoria_aerial_pano_2021.jpg",
+    "article": "San Remo, Victoria"
+  },
+  "puffing-billy": {
+    "file": "Puffing-Billy-Lok_6A_(2).jpg",
+    "author": "No machine-readable author provided. Ralf 69~commonswiki assumed (based on copyright claims).",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Puffing-Billy-Lok_6A_(2).jpg",
+    "article": "Puffing Billy Railway"
+  },
+  "apollo-bay": {
+    "file": "Apollo_Bay_from_Mariners_Lookout.jpg",
+    "author": "Marcus Wong Wongm",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Apollo_Bay_from_Mariners_Lookout.jpg",
+    "article": "Apollo Bay"
+  },
+  "london-bridge": {
+    "file": "LondonArch2014.jpg",
+    "author": "Stefan Schäfer, Lich",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:LondonArch2014.jpg",
+    "article": "London Bridge (Victoria)"
+  },
+  "byron-bay": {
+    "file": "Byron_Bay_Lighthouse,_Beach_and_Hinterland_in_the_Northern_Rivers,_NSW,_Australia.jpg",
+    "author": "Kpravin2",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Byron_Bay_Lighthouse,_Beach_and_Hinterland_in_the_Northern_Rivers,_NSW,_Australia.jpg",
+    "article": "Byron Bay"
   }
 }

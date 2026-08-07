@@ -218,5 +218,55 @@
     "countryCode": "US",
     "lat": 33.8348,
     "lon": -117.9117
+  },
+  {
+    "id": "apollo-bay",
+    "name": "Apollo Bay",
+    "country": "Australia",
+    "countryCode": "AU",
+    "lat": -38.7547,
+    "lon": 143.6691
+  },
+  {
+    "id": "london-bridge",
+    "name": "London Bridge",
+    "country": "Australia",
+    "countryCode": "AU",
+    "lat": -38.6218,
+    "lon": 142.9316,
+    "kind": "landscape"
+  },
+  {
+    "id": "geelong",
+    "name": "Geelong",
+    "country": "Australia",
+    "countryCode": "AU",
+    "lat": -38.1493,
+    "lon": 144.3598
+  },
+  {
+    "id": "san-remo",
+    "name": "San Remo",
+    "country": "Australia",
+    "countryCode": "AU",
+    "lat": -38.5215,
+    "lon": 145.3694
+  },
+  {
+    "id": "puffing-billy",
+    "name": "Puffing Billy",
+    "country": "Australia",
+    "countryCode": "AU",
+    "lat": -37.9097,
+    "lon": 145.3549,
+    "kind": "landscape"
+  },
+  {
+    "id": "byron-bay",
+    "name": "Byron Bay",
+    "country": "Australia",
+    "countryCode": "AU",
+    "lat": -28.6483,
+    "lon": 153.6178
   }
 ]

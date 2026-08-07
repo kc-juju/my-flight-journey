@@ -635,6 +635,17 @@
       "timezone": "Europe/Paris"
     },
     {
+      "id": "apollo-bay",
+      "name": "Apollo Bay",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -38.7547,
+      "lon": 143.6691,
+      "image": "/images/cities/apollo-bay.jpg",
+      "continent": "Oceania",
+      "timezone": "Australia/Melbourne"
+    },
+    {
       "id": "banff",
       "name": "Banff",
       "country": "Canada",
@@ -644,6 +655,17 @@
       "image": "/images/cities/banff.jpg",
       "continent": "North America",
       "timezone": "America/Edmonton"
+    },
+    {
+      "id": "byron-bay",
+      "name": "Byron Bay",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -28.6483,
+      "lon": 153.6178,
+      "image": "/images/cities/byron-bay.jpg",
+      "continent": "Oceania",
+      "timezone": "Australia/Sydney"
     },
     {
       "id": "cambridge",
@@ -699,6 +721,17 @@
       "image": "/images/cities/garmisch.jpg",
       "continent": "Europe",
       "timezone": "Europe/Berlin"
+    },
+    {
+      "id": "geelong",
+      "name": "Geelong",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -38.1493,
+      "lon": 144.3598,
+      "image": "/images/cities/geelong.jpg",
+      "continent": "Oceania",
+      "timezone": "Australia/Melbourne"
     },
     {
       "id": "grand-canyon",
@@ -814,6 +847,18 @@
       "timezone": "America/Los_Angeles"
     },
     {
+      "id": "london-bridge",
+      "name": "London Bridge",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -38.6218,
+      "lon": 142.9316,
+      "kind": "landscape",
+      "image": "/images/cities/london-bridge.jpg",
+      "continent": "Oceania",
+      "timezone": "Australia/Melbourne"
+    },
+    {
       "id": "lublin",
       "name": "Lublin",
       "country": "Poland",
@@ -858,6 +903,18 @@
       "timezone": "America/Phoenix"
     },
     {
+      "id": "puffing-billy",
+      "name": "Puffing Billy",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -37.9097,
+      "lon": 145.3549,
+      "kind": "landscape",
+      "image": "/images/cities/puffing-billy.jpg",
+      "continent": "Oceania",
+      "timezone": "Australia/Melbourne"
+    },
+    {
       "id": "salzburg",
       "name": "Salzburg",
       "country": "Austria",
@@ -878,6 +935,17 @@
       "image": "/images/cities/san-diego.jpg",
       "continent": "North America",
       "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "san-remo",
+      "name": "San Remo",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -38.5215,
+      "lon": 145.3694,
+      "image": "/images/cities/san-remo.jpg",
+      "continent": "Oceania",
+      "timezone": "Australia/Melbourne"
     },
     {
       "id": "eze",
@@ -2446,6 +2514,66 @@
           "departureDelayMinutes": 6
         },
         {
+          "id": "2025-01-22-MEL-apollo-bay-car",
+          "mode": "car",
+          "fromPlaceId": "mel",
+          "toPlaceId": "apollo-bay",
+          "departure": "2025-01-22",
+          "operator": "Hire car",
+          "note": "Out along the Great Ocean Road, by way of Lorne • 197 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 183
+        },
+        {
+          "id": "2025-01-23-apollo-bay-london-bridge-car",
+          "mode": "car",
+          "fromPlaceId": "apollo-bay",
+          "toPlaceId": "london-bridge",
+          "departure": "2025-01-23",
+          "operator": "Hire car",
+          "note": "West past the Twelve Apostles • 103 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 96
+        },
+        {
+          "id": "2025-01-23-london-bridge-geelong-car",
+          "mode": "car",
+          "fromPlaceId": "london-bridge",
+          "toPlaceId": "geelong",
+          "departure": "2025-01-23",
+          "operator": "Hire car",
+          "note": "Inland to Geelong for the night • 169 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 142
+        },
+        {
+          "id": "2025-01-24-geelong-san-remo-car",
+          "mode": "car",
+          "fromPlaceId": "geelong",
+          "toPlaceId": "san-remo",
+          "departure": "2025-01-24",
+          "operator": "Hire car",
+          "note": "East to San Remo, at the bridge to Phillip Island • 196 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 157
+        },
+        {
+          "id": "2025-01-25-san-remo-puffing-billy-car",
+          "mode": "car",
+          "fromPlaceId": "san-remo",
+          "toPlaceId": "puffing-billy",
+          "departure": "2025-01-25",
+          "operator": "Hire car",
+          "note": "Up into the Dandenongs for the steam railway • 98 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 83
+        },
+        {
+          "id": "2025-01-25-puffing-billy-MEL-car",
+          "mode": "car",
+          "fromPlaceId": "puffing-billy",
+          "toPlaceId": "mel",
+          "departure": "2025-01-25",
+          "operator": "Hire car",
+          "note": "Back down to Melbourne • 66 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 67
+        },
+        {
           "id": "2025-01-27-VOZ755-MELOOL",
           "mode": "flight",
           "fromPlaceId": "mel",
@@ -2460,6 +2588,26 @@
           "cabin": "Economy",
           "departureDelayMinutes": 15,
           "arrivalDelayMinutes": 38
+        },
+        {
+          "id": "2025-01-29-OOL-byron-bay-car",
+          "mode": "car",
+          "fromPlaceId": "ool",
+          "toPlaceId": "byron-bay",
+          "departure": "2025-01-29",
+          "operator": "Hire car",
+          "note": "South over the border for the day • 68 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 55
+        },
+        {
+          "id": "2025-01-29-byron-bay-OOL-car",
+          "mode": "car",
+          "fromPlaceId": "byron-bay",
+          "toPlaceId": "ool",
+          "departure": "2025-01-29",
+          "operator": "Hire car",
+          "note": "Back up to the Gold Coast • 69 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 55
         },
         {
           "id": "2025-01-30-OOL-BNE-train",

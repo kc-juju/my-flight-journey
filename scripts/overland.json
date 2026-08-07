@@ -469,5 +469,85 @@
     "to": "LAX",
     "durationMinutes": 45,
     "note": "To the airport, and the car returned • 53 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-01-19-sg-au",
+    "date": "2025-01-22",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "MEL",
+    "to": "apollo-bay",
+    "durationMinutes": 183,
+    "note": "Out along the Great Ocean Road, by way of Lorne • 197 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-01-19-sg-au",
+    "date": "2025-01-23",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "apollo-bay",
+    "to": "london-bridge",
+    "durationMinutes": 96,
+    "note": "West past the Twelve Apostles • 103 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-01-19-sg-au",
+    "date": "2025-01-23",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "london-bridge",
+    "to": "geelong",
+    "durationMinutes": 142,
+    "note": "Inland to Geelong for the night • 169 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-01-19-sg-au",
+    "date": "2025-01-24",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "geelong",
+    "to": "san-remo",
+    "durationMinutes": 157,
+    "note": "East to San Remo, at the bridge to Phillip Island • 196 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-01-19-sg-au",
+    "date": "2025-01-25",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "san-remo",
+    "to": "puffing-billy",
+    "durationMinutes": 83,
+    "note": "Up into the Dandenongs for the steam railway • 98 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-01-19-sg-au",
+    "date": "2025-01-25",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "puffing-billy",
+    "to": "MEL",
+    "durationMinutes": 67,
+    "note": "Back down to Melbourne • 66 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-01-19-sg-au",
+    "date": "2025-01-29",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "OOL",
+    "to": "byron-bay",
+    "durationMinutes": 55,
+    "note": "South over the border for the day • 68 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2025-01-19-sg-au",
+    "date": "2025-01-29",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "byron-bay",
+    "to": "OOL",
+    "durationMinutes": 55,
+    "note": "Back up to the Gold Coast • 69 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
   }
 ]
