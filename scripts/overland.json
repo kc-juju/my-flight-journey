@@ -807,7 +807,7 @@
     "from": "JFK",
     "to": "boston",
     "durationMinutes": 260,
-    "note": "Greyhound schedule GLI2508 out of New York at 10:00, into Boston at 14:20; the atlas hangs New York on its airport node, so the line runs from there",
+    "note": "Greyhound out of New York at 10:00, into Boston at 14:20; the atlas hangs New York on its airport node, so the line runs from there",
     "departure": "10:00",
     "arrival": "14:20"
   },
@@ -818,7 +818,7 @@
     "from": "boston",
     "to": "JFK",
     "durationMinutes": 280,
-    "note": "Greyhound schedule GLI2519 out of Boston at 15:00, into New York at 19:40; the atlas hangs New York on its airport node, so the line runs to there",
+    "note": "Greyhound out of Boston at 15:00, into New York at 19:40; the atlas hangs New York on its airport node, so the line runs to there",
     "departure": "15:00",
     "arrival": "19:40"
   },
