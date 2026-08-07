@@ -2926,9 +2926,9 @@
           "mode": "train",
           "fromPlaceId": "amanohashidate",
           "toPlaceId": "kix",
-          "departure": "2024-03-01",
-          "note": "Limited express Hashidate to Kyoto, about 2h, then on to Osaka • Published fastest timing on the current timetable, not the service actually taken",
-          "durationMinutes": 150
+          "departure": "2024-03-01T15:51",
+          "note": "Limited express Hashidate 6 out of Amanohashidate at 15:51, into Kyoto at 18:07, then an express down the line to Osaka — only the first leg is ticketed, so the arrival is left open",
+          "durationMinutes": 176
         },
         {
           "id": "2024-03-02-KIX-himeji-train",

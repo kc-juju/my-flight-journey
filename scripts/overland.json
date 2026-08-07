@@ -392,8 +392,9 @@
     "mode": "train",
     "from": "amanohashidate",
     "to": "KIX",
-    "durationMinutes": 150,
-    "note": "Limited express Hashidate to Kyoto, about 2h, then on to Osaka • Published fastest timing on the current timetable, not the service actually taken"
+    "durationMinutes": 176,
+    "note": "Limited express Hashidate 6 out of Amanohashidate at 15:51, into Kyoto at 18:07, then an express down the line to Osaka — only the first leg is ticketed, so the arrival is left open",
+    "departure": "15:51"
   },
   {
     "journey": "2024-02-27-jp-hk",
