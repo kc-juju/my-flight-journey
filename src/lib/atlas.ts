@@ -176,6 +176,30 @@ export function atlasMetrics(data: AtlasData): AtlasMetrics {
  * Timezone-aware: Doha departs at 09:00 local after a Seoul arrival at 14:35
  * local, which is a nine-hour wait, not a five-hour negative one.
  */
+/**
+ * How long the traveller stayed somewhere between two legs.
+ *
+ * Flights carry a clock, so the gap is exact. A drive is recorded with a
+ * date and no time — nobody remembers when they set off — and an exact
+ * figure would be invented. Counting nights from the dates says what is
+ * actually known.
+ */
+export type Stay = { minutes: number } | { nights: number } | null;
+
+export function stayBetween(before: Segment, after: Segment, byId: Map<string, Place>): Stay {
+  const exact = layoverMinutes(before, after, byId);
+  if (exact !== null) return { minutes: exact };
+
+  if (before.toPlaceId !== after.fromPlaceId) return null;
+  const from = (before.arrival ?? before.departure)?.slice(0, 10);
+  const to = after.departure?.slice(0, 10);
+  if (!from || !to) return null;
+  const nights = Math.round(
+    (Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 86_400_000,
+  );
+  return nights > 0 ? { nights } : null;
+}
+
 export function layoverMinutes(
   before: Segment,
   after: Segment,

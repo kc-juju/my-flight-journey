@@ -13,12 +13,12 @@ import {
   PhotoUploader,
   usePhotoSlots,
 } from '../components/journey/JourneyPhotos';
-import { citiesOfJourney, layoverMinutes } from '../lib/atlas';
+import { citiesOfJourney, stayBetween } from '../lib/atlas';
 import { Icon } from '../components/ui/Icon';
 import { TitleEditor } from '../components/journey/TitleEditor';
 import { NoteEditor } from '../components/journey/NoteEditor';
 import { useOwner } from '../hooks/useOwner';
-import { formatDateRange, formatDuration, formatNumber, STATUS_LABEL } from '../lib/format';
+import { formatDateRange, formatDuration, formatNumber, plural, STATUS_LABEL } from '../lib/format';
 
 export function JourneyDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -133,15 +133,15 @@ export function JourneyDetailPage() {
             )}
             {journey.segments.map((segment, index) => {
               const next = journey.segments[index + 1];
-              const wait =
+              const stay =
                 next && !segment.dropped && !next.dropped
-                  ? layoverMinutes(segment, next, placesById)
+                  ? stayBetween(segment, next, placesById)
                   : null;
               const at = placesById.get(segment.toPlaceId);
               // A short gap is a connection whatever else happened; whether the
               // city counts is a separate question, and one stop can differ
               // from another at the same airport on the same trip.
-              const isShort = wait !== null && wait < 12 * 60;
+              const isShort = stay !== null && 'minutes' in stay && stay.minutes < 12 * 60;
               const notCounted = (journey.transferPlaceIds ?? []).includes(
                 segment.toPlaceId,
               );
@@ -155,13 +155,15 @@ export function JourneyDetailPage() {
                   />
                 )}
 
-                {wait !== null && (
+                {stay !== null && (
                   <p className="flex flex-wrap items-center gap-2 px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                     <Icon
                       name={isShort ? 'connecting_airports' : 'hotel'}
                       className="text-[16px]"
                     />
-                    {formatDuration(wait)} {isShort ? 'connecting in' : 'in'}{' '}
+                    {'minutes' in stay
+                      ? `${formatDuration(stay.minutes)} ${isShort ? 'connecting in' : 'in'}`
+                      : `${plural(stay.nights, 'night')} in`}{' '}
                     {at?.name ?? ''}
                     {notCounted && (
                       <span className="rounded-full border border-outline-variant px-2 py-0.5 text-[9px]">
