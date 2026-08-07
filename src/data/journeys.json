@@ -607,6 +607,7 @@
       "countryCode": "JP",
       "lat": 35.568,
       "lon": 135.1906,
+      "kind": "landscape",
       "image": "/images/cities/amanohashidate.jpg",
       "continent": "Asia",
       "timezone": "Asia/Tokyo"
@@ -673,6 +674,7 @@
       "countryCode": "IT",
       "lat": 46.6131,
       "lon": 12.1631,
+      "kind": "landscape",
       "image": "/images/cities/dolomites.jpg",
       "continent": "Europe",
       "timezone": "Europe/Rome"
@@ -761,6 +763,7 @@
       "countryCode": "DE",
       "lat": 47.5551,
       "lon": 12.9766,
+      "kind": "landscape",
       "image": "/images/cities/konigssee.jpg",
       "continent": "Europe",
       "timezone": "Europe/Berlin"
@@ -772,6 +775,7 @@
       "countryCode": "CA",
       "lat": 51.425,
       "lon": -116.1775,
+      "kind": "landscape",
       "image": "/images/cities/lake-louise.jpg",
       "continent": "North America",
       "timezone": "America/Edmonton"

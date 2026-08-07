@@ -45,7 +45,8 @@
     "country": "Italy",
     "countryCode": "IT",
     "lat": 46.6131,
-    "lon": 12.1631
+    "lon": 12.1631,
+    "kind": "landscape"
   },
   {
     "id": "canmore",
@@ -69,7 +70,8 @@
     "country": "Canada",
     "countryCode": "CA",
     "lat": 51.425,
-    "lon": -116.1775
+    "lon": -116.1775,
+    "kind": "landscape"
   },
   {
     "id": "krakow",
@@ -117,7 +119,8 @@
     "country": "Germany",
     "countryCode": "DE",
     "lat": 47.5551,
-    "lon": 12.9766
+    "lon": 12.9766,
+    "kind": "landscape"
   },
   {
     "id": "cesky-krumlov",
@@ -157,7 +160,8 @@
     "country": "Japan",
     "countryCode": "JP",
     "lat": 35.568,
-    "lon": 135.1906
+    "lon": 135.1906,
+    "kind": "landscape"
   },
   {
     "id": "himeji",

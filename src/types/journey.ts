@@ -32,6 +32,11 @@ export interface Place {
   countryCode: string;
   /** Landmass the country is filed under, for grouping the atlas. */
   continent?: string;
+  /**
+   * What sort of place it is. A lake or a mountain range is somewhere you
+   * went, not somewhere you stayed, so it is not counted among the cities.
+   */
+  kind?: 'landscape';
   lat: number;
   lon: number;
   /**

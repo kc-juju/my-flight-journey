@@ -45,7 +45,14 @@ export function placesOfJourney(journey: Journey, byId: Map<string, Place>): Pla
  */
 export function citiesOfJourney(journey: Journey, byId: Map<string, Place>): Place[] {
   const transfers = new Set(journey.transferPlaceIds ?? []);
-  return placesOfJourney(journey, byId).filter((p) => !transfers.has(p.id));
+  return placesOfJourney(journey, byId).filter(
+    (p) => !transfers.has(p.id) && p.kind !== 'landscape',
+  );
+}
+
+/** Everywhere the journey reached that is not a town: lakes, peaks, views. */
+export function landscapesOfJourney(journey: Journey, byId: Map<string, Place>): Place[] {
+  return placesOfJourney(journey, byId).filter((p) => p.kind === 'landscape');
 }
 
 /**

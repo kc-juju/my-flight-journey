@@ -55,8 +55,10 @@ export function MapPage() {
         for (const id of [segment.fromPlaceId, segment.toPlaceId]) {
           const place = placesById.get(id);
           if (!place || place.home || transfers.has(id)) continue;
-          cities.add(place.name);
+          // A country still counts when all you saw of it was a mountain
+          // range; the city tally does not.
           countries.add(place.countryCode);
+          if (place.kind !== 'landscape') cities.add(place.name);
         }
       }
       km += metricsFor(journey).distanceKm;
