@@ -624,8 +624,8 @@
     "mode": "bus",
     "from": "KUL",
     "to": "malacca",
-    "durationMinutes": 103,
-    "note": "Straight onto the coach at the airport • 119 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+    "note": "Transnasional out of KLIA Terminal 1 at 16:00, gate 4, seat 1C; the ticket gives no arrival, so none is claimed",
+    "departure": "16:00"
   },
   {
     "journey": "2024-06-08-my",
