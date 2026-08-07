@@ -40,7 +40,10 @@
     "date": "2026-05-08",
     "place": "hong-kong-disneyland",
     "kind": "disney",
-    "title": "Hong Kong Disneyland"
+    "title": "Hong Kong Disneyland",
+    "from": "12:02",
+    "to": "20:52",
+    "source": "First and last photograph of the day"
    }
   ]
  },
@@ -229,7 +232,11 @@
     "date": "2025-04-01",
     "place": "disneyland-california",
     "kind": "disney",
-    "title": "Disneyland California"
+    "title": "Disneyland California",
+    "from": "10:09",
+    "to": "22:11",
+    "detail": "Disneyland Park itself, not California Adventure",
+    "source": "First and last photograph of the day"
    },
    {
     "date": "2025-04-05",
@@ -266,7 +273,11 @@
     "date": "2023-11-20",
     "place": "tokyo-disneyland",
     "kind": "disney",
-    "title": "Tokyo Disneyland"
+    "title": "Tokyo Disneyland",
+    "from": "10:41",
+    "to": "20:32",
+    "detail": "Tokyo Disneyland — the Land, not the Sea",
+    "source": "First and last photograph of the day"
    }
   ]
  },
@@ -298,7 +309,11 @@
     "date": "2024-04-04",
     "place": "disneyland-paris",
     "kind": "disney",
-    "title": "Disneyland Paris"
+    "title": "Disneyland Paris",
+    "from": "11:52",
+    "to": "23:11",
+    "detail": "Both parks: Disneyland Park and Walt Disney Studios",
+    "source": "First and last photograph of the day"
    }
   ]
  },

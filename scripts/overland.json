@@ -213,9 +213,11 @@
     "from": "MUC",
     "to": "fussen",
     "durationMinutes": 127,
-    "note": "München Hbf 11:39 → Füssen 13:46",
+    "note": "RB 58122 out of München Hbf at 11:39, RB 77 on from Buchloe at 12:29, into Füssen at 13:46",
     "departure": "11:39",
-    "arrival": "13:46"
+    "arrival": "13:46",
+    "reference": "RB 58122 / RB 77",
+    "operator": "DB / BRB"
   },
   {
     "journey": "2023-03-31-de-at",
@@ -223,10 +225,11 @@
     "mode": "bus",
     "from": "fussen",
     "to": "garmisch",
-    "durationMinutes": 127,
-    "note": "The train was not running, so a coach — boarded 08:15, off at 10:22",
-    "departure": "08:15",
-    "arrival": "10:22"
+    "durationMinutes": 135,
+    "note": "The train was not running, so two coaches: bus 73 from Füssen at 08:05, bus 9606 on from the Echelsbach bridge at 09:02, into Garmisch at 10:20",
+    "departure": "08:05",
+    "arrival": "10:20",
+    "reference": "Bus 73 / Bus 9606"
   },
   {
     "journey": "2023-03-31-de-at",
@@ -235,9 +238,11 @@
     "from": "garmisch",
     "to": "MUC",
     "durationMinutes": 81,
-    "note": "Garmisch-Partenkirchen 16:05 → München Hbf 17:26",
+    "note": "RB 6 straight through, Garmisch-Partenkirchen 16:05 → München Hbf 17:26",
     "departure": "16:05",
-    "arrival": "17:26"
+    "arrival": "17:26",
+    "reference": "RB 6",
+    "operator": "DB"
   },
   {
     "journey": "2023-03-31-de-at",

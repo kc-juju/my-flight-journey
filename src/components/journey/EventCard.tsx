@@ -1,5 +1,5 @@
 import type { JourneyEvent, Place } from '../../types/journey';
-import { formatDayDate } from '../../lib/format';
+import { formatDayDate, formatDuration } from '../../lib/format';
 import { sportOf } from '../../lib/sports';
 import { Icon } from '../ui/Icon';
 import { MickeyEars } from '../ui/MickeyEars';
@@ -21,6 +21,13 @@ export function EventCard({
   const at = placesById.get(event.placeId);
   const sport = sportOf(event.kind);
   const disney = event.kind === 'disney';
+  // Both ends are local clock times at the same place, so the difference is
+  // simply how long the day lasted.
+  const spanMinutes =
+    event.from && event.to
+      ? (Number(event.to.slice(0, 2)) * 60 + Number(event.to.slice(3, 5))) -
+        (Number(event.from.slice(0, 2)) * 60 + Number(event.from.slice(3, 5)))
+      : null;
 
   return (
     <article
@@ -66,9 +73,14 @@ export function EventCard({
           <span className="text-on-surface">{formatDayDate(event.date)}</span>
           {event.time && <span>{event.time} local</span>}
           {event.from && event.to && (
-            <span>
-              {event.from} → {event.to} local
-            </span>
+            <>
+              <span>
+                {event.from} → {event.to} local
+              </span>
+              {spanMinutes !== null && spanMinutes > 0 && (
+                <span className="text-on-surface">{formatDuration(spanMinutes)} in the park</span>
+              )}
+            </>
           )}
           {event.source && <span className="text-on-surface-variant/70">{event.source}</span>}
         </span>

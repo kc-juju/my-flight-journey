@@ -2512,7 +2512,9 @@
           "toPlaceId": "fussen",
           "departure": "2023-04-03T11:39",
           "arrival": "2023-04-03T13:46",
-          "note": "München Hbf 11:39 → Füssen 13:46",
+          "operator": "DB / BRB",
+          "reference": "RB 58122 / RB 77",
+          "note": "RB 58122 out of München Hbf at 11:39, RB 77 on from Buchloe at 12:29, into Füssen at 13:46",
           "durationMinutes": 127
         },
         {
@@ -2520,10 +2522,11 @@
           "mode": "bus",
           "fromPlaceId": "fussen",
           "toPlaceId": "garmisch",
-          "departure": "2023-04-04T08:15",
-          "arrival": "2023-04-04T10:22",
-          "note": "The train was not running, so a coach — boarded 08:15, off at 10:22",
-          "durationMinutes": 127
+          "departure": "2023-04-04T08:05",
+          "arrival": "2023-04-04T10:20",
+          "reference": "Bus 73 / Bus 9606",
+          "note": "The train was not running, so two coaches: bus 73 from Füssen at 08:05, bus 9606 on from the Echelsbach bridge at 09:02, into Garmisch at 10:20",
+          "durationMinutes": 135
         },
         {
           "id": "2023-04-04-garmisch-MUC-train",
@@ -2532,7 +2535,9 @@
           "toPlaceId": "muc",
           "departure": "2023-04-04T16:05",
           "arrival": "2023-04-04T17:26",
-          "note": "Garmisch-Partenkirchen 16:05 → München Hbf 17:26",
+          "operator": "DB",
+          "reference": "RB 6",
+          "note": "RB 6 straight through, Garmisch-Partenkirchen 16:05 → München Hbf 17:26",
           "durationMinutes": 81
         },
         {
@@ -2810,7 +2815,11 @@
           "date": "2023-11-20",
           "placeId": "tokyo-disneyland",
           "title": "Tokyo Disneyland",
-          "kind": "disney"
+          "detail": "Tokyo Disneyland — the Land, not the Sea",
+          "kind": "disney",
+          "from": "10:41",
+          "to": "20:32",
+          "source": "First and last photograph of the day"
         }
       ]
     },
@@ -3143,7 +3152,11 @@
           "date": "2024-04-04",
           "placeId": "disneyland-paris",
           "title": "Disneyland Paris",
-          "kind": "disney"
+          "detail": "Both parks: Disneyland Park and Walt Disney Studios",
+          "kind": "disney",
+          "from": "11:52",
+          "to": "23:11",
+          "source": "First and last photograph of the day"
         }
       ],
       "transferPlaceIds": [
@@ -3845,7 +3858,11 @@
           "date": "2025-04-01",
           "placeId": "disneyland-california",
           "title": "Disneyland California",
-          "kind": "disney"
+          "detail": "Disneyland Park itself, not California Adventure",
+          "kind": "disney",
+          "from": "10:09",
+          "to": "22:11",
+          "source": "First and last photograph of the day"
         },
         {
           "date": "2025-04-05",
@@ -4594,7 +4611,10 @@
           "date": "2026-05-08",
           "placeId": "hong-kong-disneyland",
           "title": "Hong Kong Disneyland",
-          "kind": "disney"
+          "kind": "disney",
+          "from": "12:02",
+          "to": "20:52",
+          "source": "First and last photograph of the day"
         }
       ],
       "transferPlaceIds": [
