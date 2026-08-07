@@ -402,17 +402,26 @@
     "mode": "train",
     "from": "KIX",
     "to": "himeji",
-    "durationMinutes": 30,
-    "note": "Sanyō Shinkansen Sakura 555 down to Himeji; the service is known but not the clock, so the length is still a scheduled figure"
+    "durationMinutes": 29,
+    "note": "Sanyō Shinkansen Sakura 555 out of Shin-Ōsaka at 12:20, Himeji at 12:49; JR West has since renumbered the service, so the clock comes from its present-day equivalent rather than the ticket",
+    "departure": "12:20",
+    "arrival": "12:49"
   },
   {
     "journey": "2024-02-27-jp-hk",
     "date": "2024-03-02",
     "mode": "train",
     "from": "himeji",
+    "to": "maiko",
+    "note": "Local trains the whole way back, getting off at Maiko for the Akashi Kaikyō Bridge; no times were kept"
+  },
+  {
+    "journey": "2024-02-27-jp-hk",
+    "date": "2024-03-02",
+    "mode": "train",
+    "from": "maiko",
     "to": "kobe",
-    "durationMinutes": 15,
-    "note": "Sanyō Shinkansen, Himeji → Shin-Kōbe — 15 min • Published fastest timing on the current timetable, not the service actually taken"
+    "note": "On into Kobe on another local; no times were kept"
   },
   {
     "journey": "2024-02-27-jp-hk",

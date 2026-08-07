@@ -584,5 +584,14 @@
     "lat": -37.8216,
     "lon": 144.9786,
     "kind": "landscape"
+  },
+  {
+    "id": "maiko",
+    "name": "Maiko",
+    "country": "Japan",
+    "countryCode": "JP",
+    "lat": 34.6335,
+    "lon": 135.0338,
+    "kind": "landscape"
   }
 ]
