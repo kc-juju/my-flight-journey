@@ -85,6 +85,9 @@ COLLECTIONS = [
     ('oceania', 'Oceania', 'The southern hemisphere runs.'),
     ('middle-east', 'Middle East', 'Doha, as a hinge between continents.'),
     ('taiwan', 'Taiwan', 'Songshan to Magong and back.'),
+    # A theme rather than a region: these journeys are filed under their
+    # continent as well.
+    ('disney', 'Disney Parks', 'Four castles on three continents.'),
 ]
 
 # Which landmass a country is filed under. Hong Kong and Macau are listed
@@ -767,6 +770,25 @@ def build():
     # Ground legs arrive after the first pass, and they can add a country.
     for journey in journeys:
         retitle(journey)
+
+    # A trip that reached a Disney park is tagged as such, on top of wherever
+    # in the world it happened. The parks only arrive with the ground legs,
+    # so this runs after they are merged.
+    disney_places = {p['id'] for p in places if 'disney' in p['id']}
+    for journey in journeys:
+        if not any(s['fromPlaceId'] in disney_places or s['toPlaceId'] in disney_places
+                   for s in journey['segments'] if not s.get('dropped')):
+            continue
+        if 'disney' not in journey['collectionIds']:
+            journey['collectionIds'] = [*journey['collectionIds'], 'disney']
+    if any('disney' in j['collectionIds'] for j in journeys):
+        title, blurb = next((t, b) for c, t, b in COLLECTIONS if c == 'disney')
+        hero = next((j.get('heroImage') for j in journeys
+                     if 'disney' in j['collectionIds'] and j.get('heroImage')), None)
+        collections.append({
+            'id': 'disney', 'title': title, 'blurb': blurb, 'icon': 'castle',
+            **({'image': hero} if hero else {}),
+        })
 
     print(f'  journeys annotated: {applied}')
 
