@@ -177,7 +177,7 @@
     "from": "BUD",
     "to": "krakow",
     "durationMinutes": 585,
-    "note": "Overnight sleeper, 20:25 → 06:10 the next morning"
+    "note": "Overnight sleeper, 20:25 → 06:10 the next morning, as remembered"
   },
   {
     "journey": "2018-07-02-sg-fi",
@@ -305,7 +305,7 @@
     "from": "cambridge",
     "to": "LHR",
     "durationMinutes": 50,
-    "note": "Great Northern back to King’s Cross, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)"
+    "note": "Great Northern back into King’s Cross • Published timing rather than the service actually taken"
   },
   {
     "journey": "2024-03-30-th-gb",
@@ -616,7 +616,7 @@
     "from": "CDG",
     "to": "disneyland-paris",
     "durationMinutes": 40,
-    "note": "RER A out to Marne-la-Vallée–Chessy, about 40 minutes from central Paris"
+    "note": "RER A out to Marne-la-Vallée–Chessy, about 40 minutes from central Paris • Published timing rather than the service actually taken"
   },
   {
     "journey": "2024-03-30-th-gb",
@@ -625,7 +625,7 @@
     "from": "disneyland-paris",
     "to": "CDG",
     "durationMinutes": 40,
-    "note": "RER A back into Paris"
+    "note": "RER A back into Paris • Published timing rather than the service actually taken"
   },
   {
     "journey": "2024-03-30-th-gb",
@@ -634,7 +634,7 @@
     "from": "CDG",
     "to": "versailles",
     "durationMinutes": 40,
-    "note": "Out to Versailles Château–Rive Gauche • Fastest scheduled service (Transitous open GTFS)"
+    "note": "Out to Versailles Château–Rive Gauche • Published timing rather than the service actually taken"
   },
   {
     "journey": "2024-03-30-th-gb",
@@ -643,7 +643,7 @@
     "from": "versailles",
     "to": "CDG",
     "durationMinutes": 40,
-    "note": "Back into Paris"
+    "note": "Back into Paris • Published timing rather than the service actually taken"
   },
   {
     "journey": "2025-03-28-hk-us",
@@ -683,7 +683,7 @@
     "from": "hong-kong-disneyland",
     "to": "HKG",
     "durationMinutes": 35,
-    "note": "Back on the MTR"
+    "note": "Back on the MTR • Fastest scheduled service (Transitous open GTFS)"
   },
   {
     "journey": "2023-11-17-jp",
@@ -693,7 +693,7 @@
     "from": "HND",
     "to": "tokyo-disneyland",
     "durationMinutes": 25,
-    "note": "JR Keiyō line to Maihama, about 25 minutes from Tokyo Station"
+    "note": "JR Keiyō line to Maihama, about 25 minutes from Tokyo Station • Published timing rather than the service actually taken"
   },
   {
     "journey": "2023-11-17-jp",
@@ -703,7 +703,7 @@
     "from": "tokyo-disneyland",
     "to": "HND",
     "durationMinutes": 25,
-    "note": "JR Keiyō line back into Tokyo"
+    "note": "JR Keiyō line back into Tokyo • Published timing rather than the service actually taken"
   },
   {
     "journey": "2022-12-01-jp",

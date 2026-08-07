@@ -1804,7 +1804,7 @@
           "fromPlaceId": "bud",
           "toPlaceId": "krakow",
           "departure": "2018-07-07",
-          "note": "Overnight sleeper, 20:25 → 06:10 the next morning",
+          "note": "Overnight sleeper, 20:25 → 06:10 the next morning, as remembered",
           "durationMinutes": 585
         },
         {
@@ -2762,7 +2762,7 @@
           "toPlaceId": "tokyo-disneyland",
           "departure": "2023-11-20",
           "operator": "JR East",
-          "note": "JR Keiyō line to Maihama, about 25 minutes from Tokyo Station",
+          "note": "JR Keiyō line to Maihama, about 25 minutes from Tokyo Station • Published timing rather than the service actually taken",
           "durationMinutes": 25
         },
         {
@@ -2772,7 +2772,7 @@
           "toPlaceId": "hnd",
           "departure": "2023-11-20",
           "operator": "JR East",
-          "note": "JR Keiyō line back into Tokyo",
+          "note": "JR Keiyō line back into Tokyo • Published timing rather than the service actually taken",
           "durationMinutes": 25
         },
         {
@@ -3072,7 +3072,7 @@
           "fromPlaceId": "cambridge",
           "toPlaceId": "lhr",
           "departure": "2024-04-01",
-          "note": "Great Northern back to King’s Cross, no changes • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
+          "note": "Great Northern back into King’s Cross • Published timing rather than the service actually taken",
           "durationMinutes": 50
         },
         {
@@ -3092,7 +3092,7 @@
           "fromPlaceId": "cdg",
           "toPlaceId": "disneyland-paris",
           "departure": "2024-04-04",
-          "note": "RER A out to Marne-la-Vallée–Chessy, about 40 minutes from central Paris",
+          "note": "RER A out to Marne-la-Vallée–Chessy, about 40 minutes from central Paris • Published timing rather than the service actually taken",
           "durationMinutes": 40
         },
         {
@@ -3101,7 +3101,7 @@
           "fromPlaceId": "disneyland-paris",
           "toPlaceId": "cdg",
           "departure": "2024-04-04",
-          "note": "RER A back into Paris",
+          "note": "RER A back into Paris • Published timing rather than the service actually taken",
           "durationMinutes": 40
         },
         {
@@ -3110,7 +3110,7 @@
           "fromPlaceId": "cdg",
           "toPlaceId": "versailles",
           "departure": "2024-04-05",
-          "note": "Out to Versailles Château–Rive Gauche • Fastest scheduled service (Transitous open GTFS)",
+          "note": "Out to Versailles Château–Rive Gauche • Published timing rather than the service actually taken",
           "durationMinutes": 40
         },
         {
@@ -3119,7 +3119,7 @@
           "fromPlaceId": "versailles",
           "toPlaceId": "cdg",
           "departure": "2024-04-05",
-          "note": "Back into Paris",
+          "note": "Back into Paris • Published timing rather than the service actually taken",
           "durationMinutes": 40
         },
         {
@@ -4572,7 +4572,7 @@
           "toPlaceId": "hkg",
           "departure": "2026-05-08",
           "operator": "MTR",
-          "note": "Back on the MTR",
+          "note": "Back on the MTR • Fastest scheduled service (Transitous open GTFS)",
           "durationMinutes": 35
         },
         {
