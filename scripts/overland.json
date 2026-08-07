@@ -177,7 +177,10 @@
     "from": "BUD",
     "to": "krakow",
     "durationMinutes": 585,
-    "note": "Overnight sleeper, 20:25 → 06:10 the next morning, as remembered"
+    "note": "EN 476 Metropol off platform 7 at 20:25, through Bratislava at 23:01 and Břeclav at 23:55, into Kraków Główny at 06:10",
+    "departure": "20:25",
+    "arrival": "06:10",
+    "arrivalDate": "2018-07-08"
   },
   {
     "journey": "2018-07-02-sg-fi",
