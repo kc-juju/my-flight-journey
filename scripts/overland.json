@@ -304,8 +304,10 @@
     "mode": "train",
     "from": "cambridge",
     "to": "LHR",
-    "durationMinutes": 50,
-    "note": "Great Northern back into King’s Cross • Published timing rather than the service actually taken"
+    "durationMinutes": 48,
+    "note": "Out of Cambridge at 18:44, into King’s Cross around 19:32; the atlas only has airport nodes, so the line runs to Heathrow",
+    "departure": "18:44",
+    "arrival": "19:32"
   },
   {
     "journey": "2024-03-30-th-gb",
