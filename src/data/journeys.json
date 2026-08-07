@@ -1083,6 +1083,17 @@
       "timezone": "Asia/Tokyo"
     },
     {
+      "id": "melbourne-park",
+      "name": "Melbourne Park",
+      "country": "Australia",
+      "countryCode": "AU",
+      "lat": -37.8216,
+      "lon": 144.9786,
+      "kind": "landscape",
+      "continent": "Oceania",
+      "timezone": "Australia/Melbourne"
+    },
+    {
       "id": "menton",
       "name": "Menton",
       "country": "France",
@@ -3047,10 +3058,11 @@
           "mode": "train",
           "fromPlaceId": "lhr",
           "toPlaceId": "cdg",
-          "departure": "2024-04-03",
+          "departure": "2024-04-03T16:31",
+          "arrival": "2024-04-03T19:58",
           "operator": "Eurostar",
-          "note": "Eurostar, St Pancras International → Paris Nord; the atlas only has airport nodes, so the line runs airport to airport • Fastest scheduled service (Transitous open GTFS, timetable of Aug 2026)",
-          "durationMinutes": 138
+          "note": "Eurostar, St Pancras International 16:31 → Paris Nord 19:58; the atlas only has airport nodes, so the line runs airport to airport",
+          "durationMinutes": 147
         },
         {
           "id": "2024-04-04-CDG-disneyland-paris-train",
@@ -3545,6 +3557,40 @@
           "cabin": "Business",
           "departureDelayMinutes": 7,
           "arrivalDelayMinutes": -12
+        }
+      ],
+      "events": [
+        {
+          "date": "2025-01-21",
+          "placeId": "melbourne-park",
+          "title": "Badosa vs Gauff",
+          "detail": "Australian Open quarter-final, Rod Laver Arena · Badosa won 7–5, 6–4",
+          "kind": "tennis",
+          "source": "Wikipedia draw record"
+        },
+        {
+          "date": "2025-01-21",
+          "placeId": "melbourne-park",
+          "title": "Zverev vs Paul",
+          "detail": "Australian Open quarter-final, Rod Laver Arena · Zverev won 7–6, 7–6, 2–6, 6–1",
+          "kind": "tennis",
+          "source": "Wikipedia draw record"
+        },
+        {
+          "date": "2025-01-21",
+          "placeId": "melbourne-park",
+          "title": "Hsieh / Ostapenko vs Kostyuk / Ruse",
+          "detail": "Australian Open women's doubles quarter-final, on an outside court · Hsieh and Ostapenko won 6–2, 5–7, 7–5",
+          "kind": "tennis",
+          "source": "Wikipedia draw record"
+        },
+        {
+          "date": "2025-01-26",
+          "placeId": "melbourne-park",
+          "title": "Siniaková / Townsend vs Hsieh / Ostapenko",
+          "detail": "Australian Open women's doubles final, Rod Laver Arena · Siniaková and Townsend won 6–2, 6–7(4), 6–3",
+          "kind": "tennis",
+          "source": "Wikipedia draw record"
         }
       ],
       "transferPlaceIds": [

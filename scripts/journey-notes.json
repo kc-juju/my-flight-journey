@@ -275,5 +275,41 @@
     "source": "Wikipedia match record"
    }
   ]
+ },
+ "2025-01-19-sg-au": {
+  "events": [
+   {
+    "date": "2025-01-21",
+    "place": "melbourne-park",
+    "kind": "tennis",
+    "title": "Badosa vs Gauff",
+    "detail": "Australian Open quarter-final, Rod Laver Arena · Badosa won 7–5, 6–4",
+    "source": "Wikipedia draw record"
+   },
+   {
+    "date": "2025-01-21",
+    "place": "melbourne-park",
+    "kind": "tennis",
+    "title": "Zverev vs Paul",
+    "detail": "Australian Open quarter-final, Rod Laver Arena · Zverev won 7–6, 7–6, 2–6, 6–1",
+    "source": "Wikipedia draw record"
+   },
+   {
+    "date": "2025-01-21",
+    "place": "melbourne-park",
+    "kind": "tennis",
+    "title": "Hsieh / Ostapenko vs Kostyuk / Ruse",
+    "detail": "Australian Open women's doubles quarter-final, on an outside court · Hsieh and Ostapenko won 6–2, 5–7, 7–5",
+    "source": "Wikipedia draw record"
+   },
+   {
+    "date": "2025-01-26",
+    "place": "melbourne-park",
+    "kind": "tennis",
+    "title": "Siniaková / Townsend vs Hsieh / Ostapenko",
+    "detail": "Australian Open women's doubles final, Rod Laver Arena · Siniaková and Townsend won 6–2, 6–7(4), 6–3",
+    "source": "Wikipedia draw record"
+   }
+  ]
  }
 }

@@ -575,5 +575,14 @@
     "lat": 34.043,
     "lon": -118.2673,
     "kind": "landscape"
+  },
+  {
+    "id": "melbourne-park",
+    "name": "Melbourne Park",
+    "country": "Australia",
+    "countryCode": "AU",
+    "lat": -37.8216,
+    "lon": 144.9786,
+    "kind": "landscape"
   }
 ]
