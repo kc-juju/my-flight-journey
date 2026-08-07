@@ -549,5 +549,26 @@
     "to": "OOL",
     "durationMinutes": 55,
     "note": "Back up to the Gold Coast • 69 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2024-12-27-kr",
+    "date": "2024-12-29",
+    "mode": "bus",
+    "from": "ICN",
+    "to": "pyeongchang",
+    "durationMinutes": 191,
+    "note": "Coach east to the ski fields; the atlas only has the airport node for Seoul, so the line runs from there • 214 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable"
+  },
+  {
+    "journey": "2024-12-27-kr",
+    "date": "2024-12-30",
+    "mode": "train",
+    "operator": "KTX",
+    "from": "pyeongchang",
+    "to": "ICN",
+    "departure": "11:06",
+    "arrival": "12:23",
+    "durationMinutes": 77,
+    "note": "KTX back to Seoul, 11:06 → 12:23"
   }
 ]

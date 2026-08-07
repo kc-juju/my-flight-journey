@@ -915,6 +915,17 @@
       "timezone": "Australia/Melbourne"
     },
     {
+      "id": "pyeongchang",
+      "name": "Pyeongchang",
+      "country": "South Korea",
+      "countryCode": "KR",
+      "lat": 37.3705,
+      "lon": 128.3903,
+      "image": "/images/cities/pyeongchang.jpg",
+      "continent": "Asia",
+      "timezone": "Asia/Seoul"
+    },
+    {
       "id": "salzburg",
       "name": "Salzburg",
       "country": "Austria",
@@ -2425,6 +2436,26 @@
           "cabin": "Economy",
           "departureDelayMinutes": -5,
           "arrivalDelayMinutes": -6
+        },
+        {
+          "id": "2024-12-29-ICN-pyeongchang-bus",
+          "mode": "bus",
+          "fromPlaceId": "icn",
+          "toPlaceId": "pyeongchang",
+          "departure": "2024-12-29",
+          "note": "Coach east to the ski fields; the atlas only has the airport node for Seoul, so the line runs from there • 214 km · Driving time by road (OSRM / OpenStreetMap), not a published timetable",
+          "durationMinutes": 191
+        },
+        {
+          "id": "2024-12-30-pyeongchang-ICN-train",
+          "mode": "train",
+          "fromPlaceId": "pyeongchang",
+          "toPlaceId": "icn",
+          "departure": "2024-12-30T11:06",
+          "arrival": "2024-12-30T12:23",
+          "operator": "KTX",
+          "note": "KTX back to Seoul, 11:06 → 12:23",
+          "durationMinutes": 77
         },
         {
           "id": "2025-01-02-TTW603-ICNTPE",

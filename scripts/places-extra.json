@@ -268,5 +268,13 @@
     "countryCode": "AU",
     "lat": -28.6483,
     "lon": 153.6178
+  },
+  {
+    "id": "pyeongchang",
+    "name": "Pyeongchang",
+    "country": "South Korea",
+    "countryCode": "KR",
+    "lat": 37.3705,
+    "lon": 128.3903
   }
 ]
