@@ -166,6 +166,15 @@
     "title": "Red Sox vs Royals",
     "detail": "Boston won 5–4 · 41,578 in the stands",
     "source": "MLB official record"
+   },
+   {
+    "date": "2019-08-12",
+    "place": "yankee-stadium",
+    "kind": "baseball",
+    "time": "13:05",
+    "title": "Yankees vs Orioles",
+    "detail": "First game of a split doubleheader · New York won 8–5 · 42,843 in the stands",
+    "source": "MLB official record"
    }
   ]
  },

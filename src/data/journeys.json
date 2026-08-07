@@ -2145,6 +2145,15 @@
           "kind": "baseball",
           "time": "19:10",
           "source": "MLB official record"
+        },
+        {
+          "date": "2019-08-12",
+          "placeId": "yankee-stadium",
+          "title": "Yankees vs Orioles",
+          "detail": "First game of a split doubleheader · New York won 8–5 · 42,843 in the stands",
+          "kind": "baseball",
+          "time": "13:05",
+          "source": "MLB official record"
         }
       ],
       "transferPlaceIds": [
