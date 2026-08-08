@@ -110,7 +110,7 @@ export function MapPage() {
     <div className="flex min-h-[calc(100vh-80px)] w-full flex-col overflow-hidden">
       {/* Narrow screens keep the numbers in a bar: there is no room to float a
           card without it landing on the year chips. */}
-      <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-b border-outline-variant/40 bg-surface px-margin-mobile py-stack-sm lg:hidden">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-b border-outline-variant/70 bg-surface px-margin-mobile py-stack-sm lg:hidden">
         <h1 className="font-display-lg text-headline-md text-on-surface">
           {year === null ? 'Everywhere so far' : `${year} in numbers`}
         </h1>
@@ -156,7 +156,7 @@ export function MapPage() {
 
       {/* Year filter */}
       <div className="pointer-events-none absolute inset-x-0 top-stack-md z-[600] flex justify-center px-margin-mobile">
-        <div className="pointer-events-auto flex max-w-full flex-nowrap gap-1 overflow-x-auto rounded-full border border-outline-variant/40 bg-surface/85 p-1 shadow-lg backdrop-blur-xl lg:flex-wrap lg:justify-center">
+        <div className="pointer-events-auto flex max-w-full flex-nowrap gap-1 overflow-x-auto rounded-full border border-outline-variant/70 bg-surface-container-lowest/95 p-1 shadow-lg backdrop-blur-xl lg:flex-wrap lg:justify-center">
           <FilterChip active={year === null} onClick={() => setYear(null)}>
             All&nbsp;years
           </FilterChip>
@@ -179,7 +179,7 @@ export function MapPage() {
             transition={{ duration: 0.35, ease: 'easeOut' }}
             className="pointer-events-none absolute right-margin-desktop top-margin-desktop z-[600] hidden w-[304px] lg:block"
           >
-            <div className="pointer-events-auto flex flex-col gap-stack-sm rounded-2xl border border-outline-variant/40 bg-surface/90 p-stack-md shadow-xl backdrop-blur-xl">
+            <div className="pointer-events-auto flex flex-col gap-stack-sm rounded-2xl border border-outline-variant/70 bg-surface-container-lowest/95 p-stack-md shadow-xl backdrop-blur-xl">
               <div className="flex items-baseline justify-between gap-4">
                 <h1 className="font-display-lg text-headline-md leading-tight text-on-surface">
                   {year === null ? 'Everywhere so far' : `${year} in numbers`}
@@ -201,7 +201,7 @@ export function MapPage() {
                 </span>
               </span>
 
-              <dl className="grid grid-cols-4 gap-2 border-t border-outline-variant/40 pt-stack-sm">
+              <dl className="grid grid-cols-4 gap-2 border-t border-outline-variant/70 pt-stack-sm">
                 {stats.map(([label, value]) => (
                   <div key={label} className="flex flex-col">
                     <dd className="font-stat-display text-[20px] leading-tight text-on-surface">
@@ -219,7 +219,7 @@ export function MapPage() {
                   to={`/journeys/${overview.next.slug}`}
                   onMouseEnter={() => setHovered(overview.next ?? null)}
                   onMouseLeave={() => setHovered(null)}
-                  className="flex items-center justify-between gap-3 border-t border-outline-variant/40 pt-stack-sm text-on-surface-variant transition-colors hover:text-on-surface"
+                  className="flex items-center justify-between gap-3 border-t border-outline-variant/70 pt-stack-sm text-on-surface-variant transition-colors hover:text-on-surface"
                 >
                   <span className="flex min-w-0 items-center gap-2">
                     <Icon name="flight_takeoff" className="text-[16px]" />
@@ -259,7 +259,7 @@ export function MapPage() {
               <button
                 type="button"
                 onClick={() => setExpanded((open) => !open)}
-                className="pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface/85 px-4 py-1.5 font-display-lg text-[18px] text-on-surface shadow-lg backdrop-blur-xl transition-colors hover:border-on-surface-variant/40"
+                className="pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/70 bg-surface-container-lowest/95 px-4 py-1.5 font-display-lg text-[18px] text-on-surface shadow-lg backdrop-blur-xl transition-colors hover:border-on-surface-variant/40"
                 aria-expanded={expanded}
               >
                 <Icon name="flight_land" className="text-[18px] text-on-surface-variant" />
@@ -279,7 +279,7 @@ export function MapPage() {
                   onMouseLeave={() => setHovered(null)}
                   // The stats card names the next trip already, so on a wide
                   // screen the first pill would only say it twice.
-                  className={`pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface/85 px-3 py-1.5 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant shadow-lg backdrop-blur-xl transition-colors hover:text-on-surface ${
+                  className={`pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/70 bg-surface-container-lowest/95 px-3 py-1.5 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant shadow-lg backdrop-blur-xl transition-colors hover:text-on-surface ${
                     i === 0 ? 'lg:hidden' : ''
                   }`}
                 >
@@ -335,7 +335,7 @@ export function MapPage() {
                 </motion.div>
               </>
             ) : (
-              <p className="pointer-events-auto w-fit rounded-lg bg-surface/85 px-3 py-2 font-body-md text-sm italic text-on-surface-variant shadow-lg backdrop-blur-xl">
+              <p className="pointer-events-auto w-fit rounded-lg bg-surface-container-lowest/95 px-3 py-2 font-body-md text-sm italic text-on-surface-variant shadow-lg backdrop-blur-xl">
                 Nothing flown {year === null ? 'yet' : `in ${year}`}.
               </p>
             )}
@@ -352,7 +352,7 @@ export function MapPage() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
-            className="absolute right-0 top-0 z-[700] flex h-full w-full max-w-md flex-col overflow-y-auto border-l border-outline-variant/30 bg-surface/95 shadow-[-4px_0_24px_rgba(0,0,0,0.1)] backdrop-blur-2xl"
+            className="absolute right-0 top-0 z-[700] flex h-full w-full max-w-md flex-col overflow-y-auto border-l border-outline-variant/30 bg-surface-container-lowest/97 shadow-[-4px_0_24px_rgba(0,0,0,0.1)] backdrop-blur-2xl"
             aria-label={`${selected.title} details`}
           >
             <div className="flex-1 p-stack-md">
@@ -449,10 +449,10 @@ function JourneyChip({
       to={`/journeys/${journey.slug}`}
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
-      className={`group flex gap-3 rounded-xl border bg-surface/90 p-2 shadow-lg backdrop-blur-xl transition-colors ${
+      className={`group flex gap-3 rounded-xl border bg-surface-container-lowest/95 p-2 shadow-lg backdrop-blur-xl transition-colors ${
         active
           ? 'border-tertiary-fixed-dim'
-          : 'border-outline-variant/40 hover:border-on-surface-variant/40'
+          : 'border-outline-variant/70 hover:border-on-surface-variant/40'
       } ${className}`}
     >
       {journey.heroImage ? (

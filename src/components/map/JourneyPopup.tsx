@@ -35,7 +35,7 @@ export function JourneyPopup({ journey, metrics, position }: JourneyPopupProps) 
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.22, ease: 'easeOut' }}
-          className="pointer-events-none fixed z-[1100] w-80 rounded-xl border border-outline-variant/30 bg-surface/95 p-4 shadow-2xl backdrop-blur-md"
+          className="pointer-events-none fixed z-[1100] w-80 rounded-xl border border-outline-variant/30 bg-surface-container-lowest/97 p-4 shadow-2xl backdrop-blur-md"
           style={{
             left: Math.min(Math.max(position.x + 18, 16), window.innerWidth - 336),
             top: Math.min(Math.max(position.y - 40, 96), window.innerHeight - 380),

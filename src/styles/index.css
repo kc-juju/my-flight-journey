@@ -281,5 +281,8 @@
    pass is enough to seat the map in the same century as everything around
    it, without tinting the routes drawn on top (those are their own layer). */
 .atlas-tiles {
-  filter: sepia(0.42) saturate(0.75) brightness(1.03) contrast(0.96);
+  /* Enough warmth to belong to the album, little enough that a sheet of paper
+     laid on top of it still reads as a separate object. The first attempt at
+     0.42 tinted the ground to the same value as the cards floating over it. */
+  filter: sepia(0.16) saturate(0.85) brightness(1.04) contrast(0.95);
 }
