@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useAtlas } from '../hooks/useAtlas';
-import { StatisticsCard } from '../components/stats/StatisticsCard';
 import { ImageCredits } from '../components/stats/ImageCredits';
 import { Breakdowns } from '../components/stats/Breakdowns';
 import { EarthLaps } from '../components/stats/EarthLaps';
 import { Icon } from '../components/ui/Icon';
 import { formatNumber, MODE_ICON, MODE_LABEL } from '../lib/format';
 import { asset } from '../lib/asset';
+
+/** Fixed angles, cycled — a scrapbook is never square, but it is never random
+ *  between one visit and the next either. */
+const TILTS = ['tilt-1', 'tilt-2', 'tilt-4', 'tilt-3'];
 
 export function StatsPage() {
   const { metrics, data, journeys } = useAtlas();
@@ -24,43 +27,75 @@ export function StatsPage() {
         </header>
 
         <div className="grid grid-cols-1 gap-gutter md:grid-cols-12">
-          <StatisticsCard
-            label="Total distance"
-            value={formatNumber(metrics.distanceKm)}
-            unit="km"
-            icon="public"
-            className="md:col-span-8"
-          >
-            <EarthLaps km={metrics.distanceKm} />
-          </StatisticsCard>
+          {/* The distance sheet: the largest thing on the page, taped down. */}
+          <article className="paper tape tilt-3 flex flex-col p-stack-md md:col-span-8">
+            <div className="flex items-start justify-between gap-4">
+              <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                Total distance
+              </span>
+              <Icon name="public" className="opacity-40 text-on-surface-variant" />
+            </div>
 
-          <div className="grid grid-cols-1 gap-gutter md:col-span-4">
-            <StatisticsCard
-              label="Countries"
-              value={metrics.countryCount}
-              icon="map"
-              tone="inverted"
-            />
-            <StatisticsCard label="Cities" value={metrics.cityCount} icon="location_city" />
+            <div className="mt-stack-md flex items-baseline gap-2">
+              <span className="font-display-lg text-display-lg leading-none text-primary">
+                {formatNumber(metrics.distanceKm)}
+              </span>
+              <span className="font-headline-md text-headline-md text-on-surface-variant">km</span>
+            </div>
+
+            <EarthLaps km={metrics.distanceKm} />
+          </article>
+
+          {/* Two counts cut out with scissors rather than drawn as cards. */}
+          <div className="flex items-center justify-center gap-2 md:col-span-4 md:-ml-6 md:flex-col md:items-center md:gap-0">
+            <div className="blob tilt-2 flex w-[172px] flex-col items-center justify-center bg-primary-container text-on-primary shadow-lg">
+              <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-primary/70">
+                Countries
+              </span>
+              <span className="font-display-lg text-display-lg leading-none">
+                {metrics.countryCount}
+              </span>
+              <Icon name="map" className="mt-1 text-[16px] text-on-primary/60" />
+            </div>
+
+            <div className="blob-alt tilt-1 flex w-[150px] flex-col items-center justify-center bg-tertiary-fixed-dim text-on-tertiary-fixed shadow-lg md:-mt-5 md:ml-16">
+              <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-tertiary-fixed/70">
+                Cities
+              </span>
+              <span className="font-display-lg text-display-lg leading-none">
+                {metrics.cityCount}
+              </span>
+              <Icon name="location_city" className="mt-1 text-[16px] text-on-tertiary-fixed/60" />
+            </div>
           </div>
 
-          <StatisticsCard
-            label="Journey log"
-            value={metrics.journeyCount}
-            unit="journeys"
-            icon="explore"
-            tone="muted"
-            className="md:col-span-12"
-          >
-            <div className="mt-stack-md grid grid-cols-1 gap-gutter sm:grid-cols-4">
+          {/* The log itself: older stock, torn off at the foot, and stamped. */}
+          <article className="paper paper--aged paper--torn tilt-2 relative flex flex-col p-stack-md pb-stack-lg md:col-span-11 md:-mt-6">
+            <span
+              aria-hidden
+              className="stamp absolute right-6 top-6 rounded px-3 py-1 font-label-caps text-[13px] uppercase"
+            >
+              Verified
+            </span>
+
+            <div className="flex items-baseline gap-3">
+              <span className="font-display-lg text-display-lg leading-none text-primary">
+                {metrics.journeyCount}
+              </span>
+              <span className="font-headline-md text-headline-md italic text-on-surface-variant">
+                journeys documented
+              </span>
+            </div>
+
+            <div className="mt-stack-md grid grid-cols-2 gap-gutter sm:grid-cols-4">
               <MiniStat label="Segments" value={metrics.segmentCount} />
               <MiniStat label="Airports / stations" value={metrics.airportCount} />
               <MiniStat label="Operators" value={metrics.operatorCount} />
               <MiniStat label="Vehicle types" value={metrics.vehicleCount} />
             </div>
-          </StatisticsCard>
+          </article>
 
-          <section className="flex flex-col gap-stack-md rounded-xl bg-surface-container-lowest p-stack-md shadow-sm md:col-span-12">
+          <section className="paper tilt-1 flex flex-col gap-stack-md p-stack-md md:col-span-12">
             <div className="flex items-center gap-2">
               <Icon name="alt_route" className="text-on-surface-variant" />
               <h2 className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
@@ -73,7 +108,7 @@ export function StatsPage() {
                 .map(([mode, n]) => (
                   <li
                     key={mode}
-                    className="flex flex-col gap-1 rounded-lg bg-surface-container p-stack-sm"
+                    className="flex flex-col gap-1 border-l-2 border-tertiary-fixed-dim/60 pl-3"
                   >
                     <Icon
                       name={MODE_ICON[mode as keyof typeof MODE_ICON]}
@@ -105,8 +140,8 @@ export function StatsPage() {
         {/* A rail of doors into the journey list, not a gallery. The full
             cards said the same thing at five times the height, and the
             journeys page already filters by these very collections. */}
-        <div className="atlas-rail flex snap-x gap-gutter overflow-x-auto pb-2">
-          {data.collections.map((collection) => {
+        <div className="atlas-rail flex snap-x gap-gutter overflow-x-auto px-2 pb-4 pt-4">
+          {data.collections.map((collection, i) => {
             const inCollection = journeys.filter((j) =>
               (j.collectionIds ?? [j.collectionId]).includes(collection.id),
             );
@@ -114,31 +149,25 @@ export function StatsPage() {
               <Link
                 key={collection.id}
                 to={`/journeys?collection=${collection.id}`}
-                className="group relative flex h-[132px] w-[228px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-xl bg-surface-container-lowest shadow-md transition-transform duration-300 hover:-translate-y-1"
+                className={`polaroid tape-single tape ${TILTS[i % TILTS.length]} relative flex w-[186px] shrink-0 snap-start flex-col`}
               >
-                {collection.image && (
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 h-full w-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                    style={{ backgroundImage: `url('${asset(collection.image)}')` }}
-                  />
-                )}
-                <div
+                <span
                   aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
+                  className="block h-[132px] w-full bg-cover bg-center"
+                  style={
+                    collection.image
+                      ? { backgroundImage: `url('${asset(collection.image)}')` }
+                      : { backgroundColor: 'rgb(43 38 32 / 0.08)' }
+                  }
                 />
-                <div className="relative z-10 flex flex-col gap-1 p-stack-sm">
-                  <Icon
-                    name={collection.icon ?? 'photo_library'}
-                    className="text-[18px] text-on-primary/80"
-                  />
-                  <h3 className="font-headline-md text-[17px] leading-tight text-on-primary">
+                <span className="flex flex-col items-center gap-0.5 px-2 py-3 text-center">
+                  <span className="font-headline-md text-[15px] leading-tight text-on-surface">
                     {collection.title}
-                  </h3>
-                  <p className="font-label-caps text-[9px] uppercase tracking-widest text-inverse-primary">
+                  </span>
+                  <span className="font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant">
                     {inCollection.length} {inCollection.length === 1 ? 'journey' : 'journeys'}
-                  </p>
-                </div>
+                  </span>
+                </span>
               </Link>
             );
           })}
@@ -152,11 +181,11 @@ export function StatsPage() {
 
 function MiniStat({ label, value }: { label: string; value: number }) {
   return (
-    <div className="flex flex-col rounded-lg bg-surface-container-lowest p-stack-sm shadow-sm">
-      <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">
+    <div className="flex flex-col border-t-2 border-dotted border-on-surface-variant/30 pt-2">
+      <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
         {label}
       </span>
-      <span className="mt-1 font-headline-md text-headline-md text-primary">{value}</span>
+      <span className="mt-0.5 font-headline-md text-headline-md text-primary">{value}</span>
     </div>
   );
 }

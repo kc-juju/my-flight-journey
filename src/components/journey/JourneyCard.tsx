@@ -40,8 +40,8 @@ export function JourneyCard({
       <div
         className={
           variant === 'compact'
-            ? 'h-24 w-24 shrink-0 overflow-hidden rounded-lg shadow-md'
-            : 'h-48 w-full overflow-hidden rounded-xl shadow-md'
+            ? 'h-24 w-24 shrink-0 overflow-hidden rounded-lg border-[3px] border-surface-container-lowest shadow-md'
+            : 'h-48 w-full overflow-hidden rounded-xl border-[6px] border-surface-container-lowest shadow-md'
         }
       >
         {journey.thumbnail ? (
