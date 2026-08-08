@@ -1,0 +1,8 @@
+{
+  "_": "Legs the flight log dates wrongly, and the day they actually flew. Flighty takes its date from the booking; when an itinerary inherits the previous day's rotation, that date is a day out and the journey comes out in an impossible order — reaching Singapore before leaving Warsaw. These corrections used to come from a Flightradar24 export that no longer exists, so the ones that matter are recorded here instead. Keyed 'date FLIGHT ORIGIN DESTINATION', using the flight number as a ticket prints it.",
+
+  "2018-07-10 AY131 HEL SIN": {
+    "date": "2018-07-11",
+    "why": "The flight log had inherited the previous day's rotation; the flight taken was the 11th's, which is what the Flightradar24 record and VariFlight both show"
+  }
+}

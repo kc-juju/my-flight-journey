@@ -45,6 +45,10 @@ OVERLAND = os.environ.get(
 JOURNEY_NOTES = os.environ.get(
     'JOURNEY_NOTES', os.path.join(os.path.dirname(__file__), 'journey-notes.json')
 )
+# Dates the flight log gets wrong, corrected by hand.
+REDATES = os.environ.get(
+    'REDATES', os.path.join(os.path.dirname(__file__), 'redates.json')
+)
 IATA_MAP = os.environ.get(
     'IATA_MAP', os.path.join(os.path.dirname(__file__), 'airline-iata.json')
 )
@@ -131,10 +135,16 @@ def fr24_dates():
     — otherwise a journey can come out in an impossible sequence.
     """
     try:
-        raw = open(FR24_CSV, encoding='utf-8-sig').read().lstrip('\r\n')
         iata = json.load(open(IATA_MAP, encoding='utf-8'))
     except OSError:
-        return {}, {}
+        iata = {}
+    try:
+        raw = open(FR24_CSV, encoding='utf-8-sig').read().lstrip('\r\n')
+    except OSError:
+        # No Flightradar24 export is not the same as no airline codes: the
+        # ICAO->IATA map is vendored here and is what puts 'IT240' on a card
+        # instead of 'TTW240'.
+        return {}, iata
     out = {}
     for row in csv.DictReader(io.StringIO(raw)):
         m_from = re.search(r'\(([A-Z0-9]{3})/[A-Z]{4}\)', row['From'])
@@ -327,6 +337,20 @@ def build():
             leg['_orderDate'] = leg['date'] = best
     for note in corrected:
         print(f'  re-dated from the Flightradar24 record: {note}')
+
+    # Corrections kept by hand, for the days the Flightradar24 export used to
+    # settle and no longer can.
+    try:
+        with open(REDATES, encoding='utf-8') as fh:
+            redates = {k: v for k, v in json.load(fh).items() if not k.startswith('_')}
+    except OSError:
+        redates = {}
+    for leg in legs:
+        flight = f"{iata.get(leg['al'], leg['al'])}{leg['fl']}"
+        fix = redates.get(f"{leg['date']} {flight} {leg['o']} {leg['d']}")
+        if fix:
+            print(f"  re-dated by hand: {leg['date']}→{fix['date']} {leg['o']}-{leg['d']} {flight}")
+            leg['_orderDate'] = leg['date'] = fix['date']
     for leg in legs:
         leg['_depDay'] = 0
         clock, delay = leg.get('dep_local'), leg.get('dep')
