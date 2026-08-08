@@ -102,7 +102,7 @@
    invite a drag, and quiet enough not to compete with the map beneath. */
 .atlas-rail {
   scrollbar-width: thin;
-  scrollbar-color: rgb(43 38 32 / 0.25) transparent;
+  scrollbar-color: rgb(17 28 44 / 0.25) transparent;
 }
 .atlas-rail::-webkit-scrollbar {
   height: 8px;
@@ -111,11 +111,11 @@
   background: transparent;
 }
 .atlas-rail::-webkit-scrollbar-thumb {
-  background: rgb(43 38 32 / 0.2);
+  background: rgb(17 28 44 / 0.2);
   border-radius: 999px;
 }
 .atlas-rail:hover::-webkit-scrollbar-thumb {
-  background: rgb(43 38 32 / 0.35);
+  background: rgb(17 28 44 / 0.35);
 }
 
 /* ------------------------------------------------------------------ paper --
@@ -127,14 +127,16 @@
 
 :root {
   /* Fibres in the stock. Two turbulence octaves at very low opacity: enough
-     to break up a flat fill under a bright screen, invisible in a thumbnail. */
-  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='0.35'/%3E%3C/svg%3E");
-  --ink: 43 38 32;
+     to break up a flat fill under a bright screen, invisible in a thumbnail.
+     It multiplies, so it shows far more over white than over cream — this is
+     tuned for the white the palette actually uses. */
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='0.18'/%3E%3C/svg%3E");
+  --ink: 17 28 44;
 }
 
 .paper {
   position: relative;
-  background-color: #fffdf7;
+  background-color: #ffffff;
   /* The grain is a background layer rather than a pseudo-element: a sheet can
      also be taped down, and ::before/::after are spoken for by the tape. */
   background-image: var(--paper-grain);
@@ -145,9 +147,9 @@
     0 6px 16px -8px rgb(var(--ink) / 0.18);
 }
 
-/* Aged stock, for things that have been in the album longest. */
+/* Stock that has been in the album longest — a shade off the rest. */
 .paper--aged {
-  background-color: #f6efdf;
+  background-color: #f0f3ff;
 }
 
 /* A sheet torn along the bottom rather than cut. The mask is a repeating
@@ -181,7 +183,7 @@
     linear-gradient(
       100deg,
       rgb(255 255 255 / 0.05) 0 8%,
-      rgb(230 216 182 / 0.62) 8% 92%,
+      rgb(197 206 226 / 0.6) 8% 92%,
       rgb(255 255 255 / 0.05) 92%
     );
   box-shadow: 0 1px 2px rgb(var(--ink) / 0.12);
@@ -216,7 +218,7 @@
 /* --------------------------------------------------------------- polaroid --
    A print with a wide bottom margin to write the caption in.  */
 .polaroid {
-  background: #fffdf7;
+  background: #ffffff;
   padding: 10px 10px 0;
   border: 1px solid rgb(var(--ink) / 0.08);
   box-shadow:
@@ -251,7 +253,7 @@
    evenly. Decorative — anything it says is said in the text as well. */
 .stamp {
   border: 2px solid currentColor;
-  color: #9d3427;
+  color: #ba1a1a;
   opacity: 0.55;
   transform: rotate(-11deg);
   letter-spacing: 0.22em;
@@ -274,15 +276,4 @@
 
 .blob-alt {
   border-radius: 44% 56% 63% 37% / 56% 41% 59% 44%;
-}
-
-/* ------------------------------------------------------------- basemap --
-   The tiles arrive as a neutral grey; the album is paper. A light sepia
-   pass is enough to seat the map in the same century as everything around
-   it, without tinting the routes drawn on top (those are their own layer). */
-.atlas-tiles {
-  /* Enough warmth to belong to the album, little enough that a sheet of paper
-     laid on top of it still reads as a separate object. The first attempt at
-     0.42 tinted the ground to the same value as the cards floating over it. */
-  filter: sepia(0.16) saturate(0.85) brightness(1.04) contrast(0.95);
 }

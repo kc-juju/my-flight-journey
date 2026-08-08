@@ -157,7 +157,7 @@ export function StatsPage() {
                   style={
                     collection.image
                       ? { backgroundImage: `url('${asset(collection.image)}')` }
-                      : { backgroundColor: 'rgb(43 38 32 / 0.08)' }
+                      : { backgroundColor: 'rgb(17 28 44 / 0.08)' }
                   }
                 />
                 <span className="flex flex-col items-center gap-0.5 px-2 py-3 text-center">
