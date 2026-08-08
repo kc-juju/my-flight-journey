@@ -104,7 +104,12 @@ export function JourneyDetailPage() {
                       <div className="flex flex-col gap-stack-sm">
                         {row.legs.map(({ index, segment }) => (
                           <Fragment key={segment.id}>
-                            <SegmentCard segment={segment} placesById={placesById} />
+                            <SegmentCard
+                              segment={segment}
+                              placesById={placesById}
+                              slug={journey.slug}
+                              flown={journey.status === 'completed'}
+                            />
                             {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
                               <PhotoStrip
                                 photos={photoSlots.get(travelledIndex(index)) ?? []}
@@ -146,7 +151,12 @@ export function JourneyDetailPage() {
 
                 return (
                   <Fragment key={segment.id}>
-                    <SegmentCard segment={segment} placesById={placesById} />
+                    <SegmentCard
+                              segment={segment}
+                              placesById={placesById}
+                              slug={journey.slug}
+                              flown={journey.status === 'completed'}
+                            />
                     {(photoSlots.get(travelledIndex(index)) ?? []).length > 0 && (
                       <PhotoStrip
                         photos={photoSlots.get(travelledIndex(index)) ?? []}

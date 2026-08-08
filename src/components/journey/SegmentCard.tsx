@@ -12,14 +12,19 @@ import {
   punctuality,
 } from '../../lib/format';
 import { Icon } from '../ui/Icon';
+import { SegmentChangeControls } from './SegmentChange';
 
 interface SegmentCardProps {
   segment: Segment;
   placesById: Map<string, Place>;
+  /** Which journey this leg belongs to — a correction is keyed by it. */
+  slug?: string;
+  /** Already travelled, so the leg is a record rather than a plan. */
+  flown?: boolean;
 }
 
 /** One leg of the itinerary — flight, train, ferry, whatever it was. */
-export function SegmentCard({ segment, placesById }: SegmentCardProps) {
+export function SegmentCard({ segment, placesById, slug, flown = true }: SegmentCardProps) {
   const from = placesById.get(segment.fromPlaceId);
   const to = placesById.get(segment.toPlaceId);
 
@@ -50,6 +55,10 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
     .join(' • ');
 
   return (
+    // The card lays itself out as a row on a wide screen, so a change form
+    // added inside it becomes another column. It belongs under the leg it
+    // corrects, which means outside.
+    <div className="flex flex-col">
     <article
       className={`group relative flex flex-col items-start overflow-hidden rounded-xl transition-shadow duration-300 md:flex-row md:items-center ${
         dropped
@@ -185,6 +194,10 @@ export function SegmentCard({ segment, placesById }: SegmentCardProps) {
           )}
         </div>
       </div>
+
     </article>
+
+      {slug && <SegmentChangeControls slug={slug} segment={segment} flown={flown} />}
+    </div>
   );
 }
