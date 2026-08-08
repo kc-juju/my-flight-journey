@@ -1,19 +1,15 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { useAtlas } from '../hooks/useAtlas';
-import { journeyLabel } from '../lib/atlas';
 import { StatisticsCard } from '../components/stats/StatisticsCard';
 import { ImageCredits } from '../components/stats/ImageCredits';
 import { Breakdowns } from '../components/stats/Breakdowns';
+import { EarthLaps } from '../components/stats/EarthLaps';
 import { Icon } from '../components/ui/Icon';
 import { formatNumber, MODE_ICON, MODE_LABEL } from '../lib/format';
 import { asset } from '../lib/asset';
 
-const MOON_KM = 384_400;
-
 export function StatsPage() {
-  const { metrics, data, journeys, placesById } = useAtlas();
-  const moonProgress = Math.min(100, (metrics.distanceKm / MOON_KM) * 100);
+  const { metrics, data, journeys } = useAtlas();
 
   return (
     <div className="mx-auto flex w-full max-w-container flex-col gap-margin-desktop px-margin-mobile py-stack-lg lg:px-margin-desktop">
@@ -35,26 +31,7 @@ export function StatsPage() {
             icon="public"
             className="md:col-span-8"
           >
-            <div className="mt-stack-md w-full">
-              <div className="mb-2 flex justify-between font-label-caps text-label-caps uppercase text-on-surface-variant">
-                <span>Earth (0 km)</span>
-                <span>Moon ({formatNumber(MOON_KM)} km)</span>
-              </div>
-              <div className="flex h-2 w-full overflow-hidden rounded-full bg-surface-container">
-                <motion.div
-                  className="h-full rounded-full bg-primary"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${moonProgress}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, ease: 'easeOut' }}
-                />
-              </div>
-              <p className="mt-4 font-body-md text-sm text-on-surface-variant">
-                {moonProgress < 1
-                  ? `That is ${moonProgress.toFixed(2)}% of the way to the moon — great-circle distance, not actual track.`
-                  : `Roughly ${moonProgress.toFixed(1)}% of the way to the moon.`}
-              </p>
-            </div>
+            <EarthLaps km={metrics.distanceKm} />
           </StatisticsCard>
 
           <div className="grid grid-cols-1 gap-gutter md:col-span-4">
@@ -113,29 +90,31 @@ export function StatsPage() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-stack-lg">
+      <Breakdowns />
+
+      <section className="flex flex-col gap-stack-md">
         <header className="flex flex-col gap-unit">
-          <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
+          <h2 className="font-headline-md text-[22px] leading-tight text-on-surface">
             Curated experiences
           </h2>
-          <p className="max-w-lg font-body-md text-on-surface-variant">
-            A library of categorised memories, organised by region.
+          <p className="max-w-lg font-body-md text-sm text-on-surface-variant">
+            Shortcuts into the journey list, grouped by region.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-gutter md:grid-cols-2">
+        {/* A rail of doors into the journey list, not a gallery. The full
+            cards said the same thing at five times the height, and the
+            journeys page already filters by these very collections. */}
+        <div className="atlas-rail flex snap-x gap-gutter overflow-x-auto pb-2">
           {data.collections.map((collection) => {
             const inCollection = journeys.filter((j) =>
               (j.collectionIds ?? [j.collectionId]).includes(collection.id),
             );
             return (
-              <motion.article
+              <Link
                 key={collection.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, ease: 'easeOut' }}
-                className="group relative flex min-h-[400px] flex-col justify-end overflow-hidden rounded-xl bg-surface-container-lowest shadow-md transition-transform duration-500 hover:-translate-y-1"
+                to={`/journeys?collection=${collection.id}`}
+                className="group relative flex h-[132px] w-[228px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-xl bg-surface-container-lowest shadow-md transition-transform duration-300 hover:-translate-y-1"
               >
                 {collection.image && (
                   <div
@@ -148,41 +127,23 @@ export function StatsPage() {
                   aria-hidden
                   className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
                 />
-                <div className="relative z-10 flex flex-col gap-stack-sm p-stack-lg">
-                  <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-surface-container-lowest/20 backdrop-blur-md">
-                    <Icon name={collection.icon ?? 'photo_library'} className="text-on-primary" />
-                  </div>
-                  <h3 className="font-display-lg text-display-lg-mobile text-on-primary">
+                <div className="relative z-10 flex flex-col gap-1 p-stack-sm">
+                  <Icon
+                    name={collection.icon ?? 'photo_library'}
+                    className="text-[18px] text-on-primary/80"
+                  />
+                  <h3 className="font-headline-md text-[17px] leading-tight text-on-primary">
                     {collection.title}
                   </h3>
-                  <p className="font-label-caps text-label-caps uppercase tracking-widest text-inverse-primary">
-                    {inCollection.length} curated{' '}
-                    {inCollection.length === 1 ? 'journey' : 'journeys'}
+                  <p className="font-label-caps text-[9px] uppercase tracking-widest text-inverse-primary">
+                    {inCollection.length} {inCollection.length === 1 ? 'journey' : 'journeys'}
                   </p>
-                  {collection.blurb && (
-                    <p className="max-w-sm font-body-md text-on-primary/80">{collection.blurb}</p>
-                  )}
-                  <ul className="mt-4 flex flex-col gap-unit font-body-md text-on-primary/90">
-                    {inCollection.map((j) => (
-                      <li key={j.id}>
-                        <Link
-                          to={`/journeys/${j.slug}`}
-                          className="flex items-center gap-3 transition-colors hover:text-tertiary-fixed"
-                        >
-                          <span className="h-1.5 w-1.5 rounded-full bg-tertiary-fixed" />
-                          {journeyLabel(j, placesById)}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              </motion.article>
+              </Link>
             );
           })}
         </div>
       </section>
-
-      <Breakdowns />
 
       <ImageCredits />
     </div>

@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useAtlas } from '../hooks/useAtlas';
 import { JourneyCard } from '../components/journey/JourneyCard';
 import { Icon } from '../components/ui/Icon';
@@ -10,7 +11,12 @@ export function JourneysPage() {
   const { journeys, metricsFor, metrics, data } = useAtlas();
   const [year, setYear] = useState<number | null>(null);
   const [mode, setMode] = useState<TransportMode | null>(null);
-  const [collection, setCollection] = useState<string | null>(null);
+  // A collection can be named in the URL, so a link from elsewhere can arrive
+  // with the list already narrowed. After that the chips take over.
+  const [params] = useSearchParams();
+  const [collection, setCollection] = useState<string | null>(
+    params.get('collection'),
+  );
 
   const filtered = useMemo(
     () =>

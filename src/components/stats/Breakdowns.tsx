@@ -4,7 +4,7 @@ import { useAtlas } from '../../hooks/useAtlas';
 import type { Place } from '../../types/journey';
 import { buildBreakdown, type Tally } from '../../lib/breakdown';
 import {
-  formatDayDate, formatDuration, formatNumber, MODE_ICON, MODE_LABEL, plural,
+  formatDayDate, formatDuration, formatNumber, plural,
 } from '../../lib/format';
 import { SPORTS, sportOf } from '../../lib/sports';
 import { BallparkMap, type Park } from './BallparkMap';
@@ -87,6 +87,28 @@ export function Breakdowns() {
   const [openFamily, setOpenFamily] = useState<string | null>(null);
 
   const maxYearKm = Math.max(...b.years.map((y) => y.distanceKm), 1);
+
+  // The headline count upstairs leaves out countries only changed planes in,
+  // this list keeps them. Rather than let the page contradict itself, work
+  // out the difference and say it.
+  const transitOnly = useMemo(() => {
+    const stoodIn = new Set<string>();
+    const all = new Set<string>();
+    for (const journey of data.journeys) {
+      if (journey.status === 'bucket') continue;
+      const transfers = new Set(journey.transferPlaceIds ?? []);
+      for (const segment of journey.segments) {
+        if (segment.dropped) continue;
+        for (const id of [segment.fromPlaceId, segment.toPlaceId]) {
+          const place = placesById.get(id);
+          if (!place) continue;
+          all.add(place.countryCode);
+          if (!place.home && !transfers.has(id)) stoodIn.add(place.countryCode);
+        }
+      }
+    }
+    return [...all].filter((code) => !stoodIn.has(code)).length;
+  }, [data, placesById]);
   // This section is about airports; the ground-only towns have no code and
   // belong with their country, not in a list of airports.
   const airportsOnly = b.airportDetail.filter((row) => Boolean(row.place.code));
@@ -138,27 +160,64 @@ export function Breakdowns() {
 
   return (
     <div className="flex flex-col gap-margin-desktop">
+      {/* --------------------------------------------------------- extremes */}
+      <section className="grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          b.longest && {
+            label: 'Longest leg',
+            value: `${formatNumber(Math.round(b.longest.km))} km`,
+            sub: `${b.longest.segment.reference ?? b.longest.segment.operator ?? ''} · ${b.longest.journey.title}`,
+          },
+          b.shortest && {
+            label: 'Shortest leg',
+            value: `${formatNumber(Math.round(b.shortest.km))} km`,
+            sub: `${b.shortest.segment.reference ?? b.shortest.segment.operator ?? ''} · ${b.shortest.journey.title}`,
+          },
+          b.busiestYear && {
+            label: 'Furthest year',
+            value: String(b.busiestYear.year),
+            sub: `${formatNumber(Math.round(b.busiestYear.distanceKm))} km over ${b.busiestYear.journeys} journeys`,
+          },
+          {
+            label: 'Typical journey',
+            value: `${b.averageJourneyDays.toFixed(1)} days`,
+            sub: `average leg ${formatNumber(Math.round(b.averageLegKm))} km`,
+          },
+        ]
+          .filter(Boolean)
+          .map((card) => {
+            const c = card as { label: string; value: string; sub: string };
+            return (
+              <div
+                key={c.label}
+                className="flex flex-col justify-between rounded-xl bg-surface-container p-stack-md"
+              >
+                <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                  {c.label}
+                </span>
+                <span className="mt-stack-sm font-display-lg text-[28px] leading-none text-primary">
+                  {c.value}
+                </span>
+                <span className="mt-1 font-body-md text-xs text-on-surface-variant">{c.sub}</span>
+              </div>
+            );
+          })}
+      </section>
       {/* ---------------------------------------------------- countries -- */}
       <section className="flex flex-col gap-stack-md">
-        <button
-            type="button"
-            onClick={() => toggleSection('countries')}
-            aria-expanded={isOpen('countries')}
-            className="flex flex-col gap-unit text-left"
-          >
-          <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
-            Every country
-            <Icon
-              name={isOpen('countries') ? 'expand_less' : 'expand_more'}
-              className="ml-3 align-middle text-[24px] text-on-surface-variant"
-            />
-          </h2>
-          <p className="max-w-lg font-body-md text-on-surface-variant">
-            {b.countries.length} countries and territories across{' '}
-            {plural(b.continents.length, 'continent')}. Open one to see the cities, and
-            the airports or stations reached in each.
-          </p>
-        </button>
+        <SectionRow
+          title="Every country"
+          summary={`Across ${plural(b.continents.length, 'continent')}${
+            transitOnly
+              ? `, ${transitOnly} of them only changed planes in — which is why the count upstairs is ${
+                  b.countries.length - transitOnly
+                }`
+              : ''
+          }. Open one for its cities and the airports or stations reached.`}
+          count={`${b.countries.length} countries`}
+          open={isOpen('countries')}
+          onToggle={() => toggleSection('countries')}
+        />
 
         {isOpen('countries') && (
           <>
@@ -237,30 +296,20 @@ export function Breakdowns() {
       {/* ---------------------------------------------------- ballgames -- */}
       {ballgames.games.length > 0 && (
         <section className="flex flex-col gap-stack-md">
-          <button
-              type="button"
-              onClick={() => toggleSection('grounds')}
-              aria-expanded={isOpen('grounds')}
-              className="flex flex-col gap-unit text-left"
-            >
-            <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
-              Every ground
-              <Icon
-                name={isOpen('grounds') ? 'expand_less' : 'expand_more'}
-                className="ml-3 align-middle text-[24px] text-on-surface-variant"
-              />
-            </h2>
-            <p className="max-w-lg font-body-md text-on-surface-variant">
-              {plural(ballgames.games.length, 'game')} at{' '}
-              {plural(ballgames.grounds.length, 'ground')}
-              {ballgames.sports.length > 0 &&
-                ` · ${ballgames.sports
-                  .map(([, label, n]) => `${label.toLowerCase()} ×${n}`)
-                  .join(', ')}`}
-              . Watched on the way to somewhere else; scores are from the
-              leagues' own records.
-            </p>
-          </button>
+          <SectionRow
+            title="Every ground"
+            summary={`${
+              ballgames.sports.length > 0
+                ? ballgames.sports.map(([, label, n]) => `${label.toLowerCase()} ×${n}`).join(', ')
+                : 'Watched on the way to somewhere else'
+            } · scores from the leagues' own records.`}
+            count={`${plural(ballgames.games.length, 'game')} · ${plural(
+              ballgames.grounds.length,
+              'ground',
+            )}`}
+            open={isOpen('grounds')}
+            onToggle={() => toggleSection('grounds')}
+          />
 
           {isOpen('grounds') && (
             <>
@@ -352,25 +401,13 @@ export function Breakdowns() {
 
       {/* ----------------------------------------------------- airports -- */}
       <section className="flex flex-col gap-stack-md">
-        <button
-            type="button"
-            onClick={() => toggleSection('airports')}
-            aria-expanded={isOpen('airports')}
-            className="flex flex-col gap-unit text-left"
-          >
-          <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
-            Every airport
-            <Icon
-              name={isOpen('airports') ? 'expand_less' : 'expand_more'}
-              className="ml-3 align-middle text-[24px] text-on-surface-variant"
-            />
-          </h2>
-          <p className="max-w-lg font-body-md text-on-surface-variant">
-            {plural(airportsOnly.length, 'airport')}. Open one to see everywhere it
-            connects to and how many times each route was flown. Towns reached on
-            the ground appear under their country above, not here.
-          </p>
-        </button>
+        <SectionRow
+          title="Every airport"
+          summary="Open one to see everywhere it connects to and how often. Towns reached on the ground appear under their country, not here."
+          count={plural(airportsOnly.length, 'airport')}
+          open={isOpen('airports')}
+          onToggle={() => toggleSection('airports')}
+        />
 
         {isOpen('airports') && (
           <>
@@ -443,7 +480,20 @@ export function Breakdowns() {
       </section>
 
       {/* ------------------------------------------------------- rankings -- */}
-      <section className="grid grid-cols-1 gap-gutter lg:grid-cols-2">
+      <section className="flex flex-col gap-stack-md">
+        <SectionRow
+          title="Every aircraft and airline"
+          summary="Which routes came up again, who flew them, in what cabin, and on what metal."
+          count={`${plural(b.operators.length, 'operator')} · ${plural(
+            b.aircraft.length,
+            'model',
+          )}`}
+          open={isOpen('fleet')}
+          onToggle={() => toggleSection('fleet')}
+        />
+
+        {isOpen('fleet') && (
+          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-2">
         <RankTable title="Routes, by times flown" rows={b.routes} />
         <RankTable title="Operators" rows={b.operators} />
         <RankTable title="Cabin" rows={b.cabins} limit={6} />
@@ -510,43 +560,23 @@ export function Breakdowns() {
           </ol>
         </section>
 
-        <section className="flex flex-col gap-stack-sm rounded-xl bg-surface-container-lowest p-stack-md shadow-sm">
-          <h3 className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-            How it was travelled
-          </h3>
-          <ul className="flex flex-wrap gap-gutter">
-            {Object.entries(b.modeTotals).map(([mode, n]) => (
-              <li key={mode} className="flex items-center gap-2">
-                <Icon
-                  name={MODE_ICON[mode as keyof typeof MODE_ICON]}
-                  className="text-[20px] text-on-surface-variant"
-                />
-                <span className="font-headline-md text-[18px] text-primary">{n}</span>
-                <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
-                  {MODE_LABEL[mode as keyof typeof MODE_LABEL]}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
+          </div>
+        )}
       </section>
 
       {/* ---------------------------------------------------------- years -- */}
       <section className="flex flex-col gap-stack-md">
-        <button
-            type="button"
-            onClick={() => toggleSection('years')}
-            aria-expanded={isOpen('years')}
-            className="flex flex-col gap-unit text-left"
-          >
-          <h2 className="font-display-lg text-display-lg-mobile tracking-tight text-on-surface md:text-display-lg">
-            Year by year
-            <Icon
-              name={isOpen('years') ? 'expand_less' : 'expand_more'}
-              className="ml-3 align-middle text-[24px] text-on-surface-variant"
-            />
-          </h2>
-        </button>
+        <SectionRow
+          title="Year by year"
+          summary="Journeys, legs, distance and time on the move, and which countries were new that year."
+          count={
+            b.years.length
+              ? `${b.years[0].year}–${b.years[b.years.length - 1].year}`
+              : '—'
+          }
+          open={isOpen('years')}
+          onToggle={() => toggleSection('years')}
+        />
 
         {isOpen('years') && (
           <>
@@ -601,50 +631,56 @@ export function Breakdowns() {
         )}
       </section>
 
-      {/* --------------------------------------------------------- extremes */}
-      <section className="grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          b.longest && {
-            label: 'Longest leg',
-            value: `${formatNumber(Math.round(b.longest.km))} km`,
-            sub: `${b.longest.segment.reference ?? b.longest.segment.operator ?? ''} · ${b.longest.journey.title}`,
-          },
-          b.shortest && {
-            label: 'Shortest leg',
-            value: `${formatNumber(Math.round(b.shortest.km))} km`,
-            sub: `${b.shortest.segment.reference ?? b.shortest.segment.operator ?? ''} · ${b.shortest.journey.title}`,
-          },
-          b.busiestYear && {
-            label: 'Furthest year',
-            value: String(b.busiestYear.year),
-            sub: `${formatNumber(Math.round(b.busiestYear.distanceKm))} km over ${b.busiestYear.journeys} journeys`,
-          },
-          {
-            label: 'Typical journey',
-            value: `${b.averageJourneyDays.toFixed(1)} days`,
-            sub: `average leg ${formatNumber(Math.round(b.averageLegKm))} km`,
-          },
-        ]
-          .filter(Boolean)
-          .map((card) => {
-            const c = card as { label: string; value: string; sub: string };
-            return (
-              <div
-                key={c.label}
-                className="flex flex-col justify-between rounded-xl bg-surface-container p-stack-md"
-              >
-                <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-                  {c.label}
-                </span>
-                <span className="mt-stack-sm font-display-lg text-[28px] leading-none text-primary">
-                  {c.value}
-                </span>
-                <span className="mt-1 font-body-md text-xs text-on-surface-variant">{c.sub}</span>
-              </div>
-            );
-          })}
-      </section>
     </div>
+  );
+}
+
+/**
+ * One openable row of the index.
+ *
+ * Every section used to announce itself in the same type as the page title,
+ * so four closed sections read as four headings with nothing under them.
+ * Sized like a list item instead, they read as what they are: doors.
+ */
+function SectionRow({
+  title,
+  summary,
+  count,
+  open,
+  onToggle,
+}: {
+  title: string;
+  summary: string;
+  count: string;
+  open: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-expanded={open}
+      className={`flex w-full items-baseline justify-between gap-4 border-b py-stack-sm text-left transition-colors ${
+        open ? 'border-on-surface-variant/60' : 'border-outline-variant/50 hover:border-on-surface-variant/40'
+      }`}
+    >
+      <span className="flex min-w-0 flex-col gap-0.5">
+        <span className="font-headline-md text-[22px] leading-tight text-on-surface">
+          {title}
+        </span>
+        <span className="font-body-md text-sm text-on-surface-variant">{summary}</span>
+      </span>
+
+      <span className="flex shrink-0 items-center gap-3">
+        <span className="hidden font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant sm:inline">
+          {count}
+        </span>
+        <Icon
+          name={open ? 'expand_less' : 'expand_more'}
+          className="text-[22px] text-on-surface-variant"
+        />
+      </span>
+    </button>
   );
 }
 
