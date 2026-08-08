@@ -1,9 +1,13 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useAtlas } from '../../hooks/useAtlas';
 import { useOwner } from '../../hooks/useOwner';
 import { newSegmentId, type AddedSegment } from '../../lib/segment-additions';
 import { TRANSPORT_MODES, type TransportMode } from '../../types/journey';
 import { MODE_LABEL } from '../../lib/format';
+import {
+  loadAirports, placeFrom, searchAirports,
+  type AddedPlace, type ReferenceAirport,
+} from '../../lib/place-additions';
 import { Icon } from '../ui/Icon';
 
 /**
@@ -15,12 +19,13 @@ import { Icon } from '../ui/Icon';
  * rebuild, the leg is written to the database and sorted into the itinerary
  * by its own departure time.
  *
- * Where it goes is chosen from places the atlas already has. That is a real
- * limit — a first visit somewhere needs coordinates, and those belong in the
- * repository with a source, not typed into a form.
+ * Where it goes can be somewhere the atlas has never been. Searching reaches
+ * a vendored list of every airport with scheduled service, and choosing one
+ * teaches the atlas that place — with the list named as the source, because
+ * a coordinate with no provenance is a guess.
  */
 export function AddSegment({ slug }: { slug: string }) {
-  const { data, addSegment } = useAtlas();
+  const { data, addSegment, addPlace } = useAtlas();
   const owner = useOwner();
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -33,6 +38,10 @@ export function AddSegment({ slug }: { slug: string }) {
       ),
     [data.places],
   );
+
+  // Airports picked out of the reference list but not yet saved: they only
+  // become places if the leg using them is actually added.
+  const [discovered, setDiscovered] = useState<Record<string, AddedPlace>>({});
 
   const [form, setForm] = useState({
     mode: 'flight' as TransportMode,
@@ -63,6 +72,19 @@ export function AddSegment({ slug }: { slug: string }) {
     }
     setBusy(true);
     setError(null);
+
+    // Somewhere new has to exist before a leg can point at it.
+    for (const id of [form.fromPlaceId, form.toPlaceId]) {
+      const place = discovered[id];
+      if (!place) continue;
+      const failed = await addPlace(place);
+      if (failed) {
+        setBusy(false);
+        setError(failed);
+        return;
+      }
+    }
+
     const leg: AddedSegment = {
       segmentId: newSegmentId(form.fromPlaceId, form.toPlaceId, Date.now()),
       mode: form.mode,
@@ -137,19 +159,21 @@ export function AddSegment({ slug }: { slug: string }) {
               />
             </Field>
 
-            <Field label="From">
-              <PlaceSelect
+            <Field label="From" hint="or search any airport">
+              <PlacePicker
                 places={places}
                 value={form.fromPlaceId}
                 onChange={set('fromPlaceId')}
+                onDiscover={(p) => setDiscovered((c) => ({ ...c, [p.id]: p }))}
               />
             </Field>
 
-            <Field label="To">
-              <PlaceSelect
+            <Field label="To" hint="or search any airport">
+              <PlacePicker
                 places={places}
                 value={form.toPlaceId}
                 onChange={set('toPlaceId')}
+                onDiscover={(p) => setDiscovered((c) => ({ ...c, [p.id]: p }))}
               />
             </Field>
 
@@ -197,8 +221,8 @@ export function AddSegment({ slug }: { slug: string }) {
           </Field>
 
           <p className="font-body-md text-xs text-on-surface-variant">
-            Only places the atlas already knows can be chosen. Somewhere new needs
-            coordinates, and those belong in the repository with a source.
+            Searching reaches every airport with scheduled service. Choosing one the
+            atlas has not been to adds it, with OurAirports named as the source.
           </p>
 
           {error && <p className="font-body-md text-xs text-error">{error}</p>}
@@ -216,25 +240,128 @@ export function AddSegment({ slug }: { slug: string }) {
   );
 }
 
-function PlaceSelect({
+/**
+ * Somewhere the atlas has been, or anywhere with an airport.
+ *
+ * Typing searches the places already on the map first — they are the likely
+ * answer and cost nothing — and falls through to the reference list, which is
+ * fetched the first time somebody types.
+ */
+function PlacePicker({
   places,
   value,
   onChange,
+  onDiscover,
 }: {
   places: { id: string; name: string; code?: string; country: string }[];
   value: string;
   onChange: (value: string) => void;
+  onDiscover: (place: AddedPlace) => void;
 }) {
+  const [query, setQuery] = useState('');
+  const [reference, setReference] = useState<ReferenceAirport[] | null>(null);
+  const chosen = places.find((p) => p.id === value);
+  const box = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (query.trim().length >= 2 && !reference) void loadAirports().then(setReference);
+  }, [query, reference]);
+
+  const known = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (q.length < 1) return [];
+    return places
+      .filter(
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          (p.code ?? '').toLowerCase() === q ||
+          p.country.toLowerCase().startsWith(q),
+      )
+      .slice(0, 6);
+  }, [places, query]);
+
+  const found = useMemo(() => {
+    if (!reference) return [];
+    const have = new Set(places.map((p) => (p.code ?? '').toUpperCase()));
+    return searchAirports(reference, query).filter((a) => !have.has(a.c));
+  }, [reference, query, places]);
+
+  if (chosen && !query) {
+    return (
+      <div className="flex items-center gap-2">
+        <span className="flex-1 truncate rounded-lg border border-outline-variant/70 bg-surface px-3 py-2 font-body-md text-sm text-on-surface">
+          {chosen.code ? `${chosen.code} · ` : ''}
+          {chosen.name}
+        </span>
+        <button
+          type="button"
+          onClick={() => onChange('')}
+          className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant underline"
+        >
+          Change
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <select value={value} onChange={(e) => onChange(e.target.value)} className={INPUT}>
-      <option value="">—</option>
-      {places.map((place) => (
-        <option key={place.id} value={place.id}>
-          {place.code ? `${place.code} · ` : ''}
-          {place.name}, {place.country}
-        </option>
-      ))}
-    </select>
+    <div ref={box} className="relative">
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="City or airport code"
+        className={INPUT}
+      />
+
+      {(known.length > 0 || found.length > 0) && (
+        <ul className="absolute z-20 mt-1 max-h-56 w-full overflow-y-auto rounded-lg border border-outline-variant bg-surface-container-lowest shadow-lg">
+          {known.map((place) => (
+            <li key={place.id}>
+              <button
+                type="button"
+                onClick={() => {
+                  onChange(place.id);
+                  setQuery('');
+                }}
+                className="flex w-full items-baseline gap-2 px-3 py-2 text-left font-body-md text-sm hover:bg-surface-container"
+              >
+                <span className="text-on-surface">
+                  {place.code ? `${place.code} · ` : ''}
+                  {place.name}
+                </span>
+                <span className="text-xs text-on-surface-variant">{place.country}</span>
+              </button>
+            </li>
+          ))}
+
+          {found.length > 0 && (
+            <li className="border-t border-outline-variant/60 px-3 py-1 font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant">
+              Not been yet
+            </li>
+          )}
+
+          {found.map((airport) => (
+            <li key={airport.c}>
+              <button
+                type="button"
+                onClick={() => {
+                  const place = placeFrom(airport);
+                  onDiscover(place);
+                  onChange(place.id);
+                  setQuery('');
+                }}
+                className="flex w-full items-baseline gap-2 px-3 py-2 text-left font-body-md text-sm hover:bg-surface-container"
+              >
+                <span className="text-on-surface">
+                  {airport.c} · {airport.m || airport.n}
+                </span>
+                <span className="truncate text-xs text-on-surface-variant">{airport.n}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 

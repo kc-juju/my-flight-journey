@@ -13,6 +13,9 @@ import {
   listAdditions, removeAddition, toSegment, writeAddition, zoneOffsets,
   type AddedSegment, type Additions,
 } from '../lib/segment-additions';
+import {
+  listPlaceAdditions, writePlace, type AddedPlace,
+} from '../lib/place-additions';
 
 const data = raw as unknown as AtlasData;
 
@@ -41,6 +44,8 @@ interface AtlasContextValue {
   addSegment: (slug: string, leg: AddedSegment) => Promise<string | null>;
   /** Take an added leg out again. Only added legs can be removed this way. */
   dropSegment: (slug: string, segmentId: string) => Promise<string | null>;
+  /** Teach the atlas somewhere it has never been, so a leg can point at it. */
+  addPlace: (place: AddedPlace) => Promise<string | null>;
 }
 
 const AtlasContext = createContext<AtlasContextValue | null>(null);
@@ -55,6 +60,9 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
   // Legs added by hand: a positioning flight, a replacement the airline put
   // you on, a train the log cannot see.
   const [additions, setAdditions] = useState<Additions>({});
+  // Places the build has never seen — the destinations of journeys still
+  // being planned.
+  const [extraPlaces, setExtraPlaces] = useState<AddedPlace[]>([]);
 
   useEffect(() => {
     let live = true;
@@ -66,6 +74,9 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
     });
     void listAdditions().then((rows) => {
       if (live) setAdditions(rows);
+    });
+    void listPlaceAdditions().then((rows) => {
+      if (live) setExtraPlaces(rows);
     });
     return () => {
       live = false;
@@ -127,8 +138,22 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
     return null;
   }, []);
 
+  const addPlace = useCallback(async (place: AddedPlace) => {
+    const error = await writePlace(place);
+    if (error) return error;
+    setExtraPlaces((current) => [
+      ...current.filter((p) => p.id !== place.id),
+      place,
+    ]);
+    return null;
+  }, []);
+
   const value = useMemo<AtlasContextValue>(() => {
-    const placesById = indexPlaces(data.places);
+    // A place added from the site is indistinguishable downstream from one
+    // the build produced, except that the build never overwrites it.
+    const known = new Set(data.places.map((p) => p.id));
+    const places = [...data.places, ...extraPlaces.filter((p) => !known.has(p.id))];
+    const placesById = indexPlaces(places);
     const journeys = [...data.journeys]
       .map((journey) => {
         const over = overrides[journey.slug];
@@ -167,7 +192,7 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
     // Everything downstream — the totals, the breakdowns, the map — reads
     // from here, so a correction reaches all of them rather than only the
     // card it was typed into.
-    const corrected: AtlasData = { ...data, journeys };
+    const corrected: AtlasData = { ...data, journeys, places };
 
     return {
       data: corrected,
@@ -188,8 +213,12 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
       changeFor: (slug: string, segmentId: string) => changes[changeKey(slug, segmentId)],
       addSegment,
       dropSegment,
+      addPlace,
     };
-  }, [overrides, edit, changes, editSegment, additions, addSegment, dropSegment]);
+  }, [
+    overrides, edit, changes, editSegment, additions, addSegment, dropSegment,
+    extraPlaces, addPlace,
+  ]);
 
   return <AtlasContext.Provider value={value}>{children}</AtlasContext.Provider>;
 }
