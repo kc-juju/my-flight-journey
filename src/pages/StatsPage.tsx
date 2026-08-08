@@ -7,10 +7,6 @@ import { Icon } from '../components/ui/Icon';
 import { formatNumber, MODE_ICON, MODE_LABEL } from '../lib/format';
 import { asset } from '../lib/asset';
 
-/** Fixed angles, cycled — a scrapbook is never square, but it is never random
- *  between one visit and the next either. */
-const TILTS = ['tilt-1', 'tilt-2', 'tilt-4', 'tilt-3'];
-
 export function StatsPage() {
   const { metrics, data, journeys } = useAtlas();
 
@@ -27,8 +23,7 @@ export function StatsPage() {
         </header>
 
         <div className="grid grid-cols-1 gap-gutter md:grid-cols-12">
-          {/* The distance sheet: the largest thing on the page, taped down. */}
-          <article className="paper tape tilt-3 flex flex-col p-stack-md md:col-span-8">
+          <article className="flex flex-col rounded-xl bg-surface-container-lowest p-stack-md shadow-sm md:col-span-8">
             <div className="flex items-start justify-between gap-4">
               <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                 Total distance
@@ -46,10 +41,9 @@ export function StatsPage() {
             <EarthLaps km={metrics.distanceKm} />
           </article>
 
-          {/* Two counts cut out with scissors rather than drawn as cards. */}
-          <div className="flex items-center justify-center gap-2 md:col-span-4 md:-ml-6 md:flex-col md:items-center md:gap-0">
-            <div className="blob tilt-2 flex w-[172px] flex-col items-center justify-center bg-primary-container text-on-primary shadow-lg">
-              <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-primary/70">
+          <div className="grid grid-cols-2 gap-gutter md:col-span-4 md:grid-cols-1">
+            <div className="flex flex-col justify-center rounded-xl bg-primary-container p-stack-md text-on-primary shadow-sm">
+              <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-primary/70">
                 Countries
               </span>
               <span className="font-display-lg text-display-lg leading-none">
@@ -58,26 +52,18 @@ export function StatsPage() {
               <Icon name="map" className="mt-1 text-[16px] text-on-primary/60" />
             </div>
 
-            <div className="blob-alt tilt-1 flex w-[150px] flex-col items-center justify-center bg-tertiary-fixed-dim text-on-tertiary-fixed shadow-lg md:-mt-5 md:ml-16">
-              <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-tertiary-fixed/70">
+            <div className="flex flex-col justify-center rounded-xl bg-surface-container-lowest p-stack-md shadow-sm">
+              <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                 Cities
               </span>
-              <span className="font-display-lg text-display-lg leading-none">
+              <span className="font-display-lg text-display-lg leading-none text-primary">
                 {metrics.cityCount}
               </span>
-              <Icon name="location_city" className="mt-1 text-[16px] text-on-tertiary-fixed/60" />
+              <Icon name="location_city" className="mt-1 text-[16px] text-on-surface-variant/60" />
             </div>
           </div>
 
-          {/* The log itself: older stock, torn off at the foot, and stamped. */}
-          <article className="paper paper--aged paper--torn tilt-2 relative flex flex-col p-stack-md pb-stack-lg md:col-span-11 md:-mt-6">
-            <span
-              aria-hidden
-              className="stamp absolute right-6 top-6 rounded px-3 py-1 font-label-caps text-[13px] uppercase"
-            >
-              Verified
-            </span>
-
+          <article className="flex flex-col rounded-xl bg-surface-container p-stack-md md:col-span-12">
             <div className="flex items-baseline gap-3">
               <span className="font-display-lg text-display-lg leading-none text-primary">
                 {metrics.journeyCount}
@@ -95,7 +81,7 @@ export function StatsPage() {
             </div>
           </article>
 
-          <section className="paper tilt-1 flex flex-col gap-stack-md p-stack-md md:col-span-12">
+          <section className="flex flex-col gap-stack-md rounded-xl bg-surface-container-lowest p-stack-md shadow-sm md:col-span-12">
             <div className="flex items-center gap-2">
               <Icon name="alt_route" className="text-on-surface-variant" />
               <h2 className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
@@ -141,7 +127,7 @@ export function StatsPage() {
             cards said the same thing at five times the height, and the
             journeys page already filters by these very collections. */}
         <div className="atlas-rail flex snap-x gap-gutter overflow-x-auto px-2 pb-4 pt-4">
-          {data.collections.map((collection, i) => {
+          {data.collections.map((collection) => {
             const inCollection = journeys.filter((j) =>
               (j.collectionIds ?? [j.collectionId]).includes(collection.id),
             );
@@ -149,7 +135,7 @@ export function StatsPage() {
               <Link
                 key={collection.id}
                 to={`/journeys?collection=${collection.id}`}
-                className={`polaroid tape-single tape ${TILTS[i % TILTS.length]} relative flex w-[186px] shrink-0 snap-start flex-col`}
+                className="polaroid relative flex w-[186px] shrink-0 snap-start flex-col transition-transform duration-300 hover:-translate-y-1"
               >
                 <span
                   aria-hidden

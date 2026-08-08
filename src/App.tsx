@@ -25,7 +25,13 @@ export default function App() {
     <div className="flex min-h-screen flex-col bg-surface font-body-md text-on-surface">
       <ScrollToTop />
       <Navbar />
-      <main className={`w-full flex-1 pt-20 ${isMap ? 'overflow-hidden' : ''}`}>
+      {/* The banner stays the cool surface it has always been; the pages
+          under it read on warm ground, which is where the map already sat. */}
+      <main
+        className={`w-full flex-1 pt-20 ${
+          isMap ? 'overflow-hidden' : 'bg-surface-warm'
+        }`}
+      >
         <Routes>
           <Route path="/" element={<MapPage />} />
           <Route path="/journeys" element={<JourneysPage />} />

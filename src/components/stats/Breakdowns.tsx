@@ -25,7 +25,7 @@ function RankTable({ title, rows, unit, limit = 10 }: {
   if (!rows.length) return null;
 
   return (
-    <section className="paper flex flex-col gap-stack-sm p-stack-md">
+    <section className="flex flex-col gap-stack-sm rounded-xl bg-surface-container-lowest p-stack-md shadow-sm">
       <div className="flex items-baseline justify-between gap-4">
         <h3 className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
           {title}
@@ -185,12 +185,12 @@ export function Breakdowns() {
           },
         ]
           .filter(Boolean)
-          .map((card, i) => {
+          .map((card) => {
             const c = card as { label: string; value: string; sub: string };
             return (
               <div
                 key={c.label}
-                className={`paper ${['tilt-1','tilt-2','tilt-3','tilt-4'][i % 4]} flex flex-col justify-between p-stack-md`}
+                className="flex flex-col justify-between rounded-xl bg-surface-container p-stack-md"
               >
                 <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                   {c.label}
