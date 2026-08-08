@@ -3,6 +3,7 @@ import { useAtlas } from '../../hooks/useAtlas';
 import { useOwner } from '../../hooks/useOwner';
 import type { Segment } from '../../types/journey';
 import type { SegmentChange as Change } from '../../lib/segment-changes';
+import { isAdded } from '../../lib/segment-additions';
 import { Icon } from '../ui/Icon';
 
 /**
@@ -27,16 +28,41 @@ export function SegmentChangeControls({
   /** A leg already travelled is a record, not a plan; it is not edited here. */
   flown: boolean;
 }) {
-  const { editSegment, changeFor } = useAtlas();
+  const { editSegment, changeFor, dropSegment } = useAtlas();
   const owner = useOwner();
   const change = changeFor(slug, segment.id);
   const [open, setOpen] = useState(false);
+  const [removing, setRemoving] = useState(false);
+  const added = isAdded(segment.id);
 
-  if (!change && (flown || !owner)) return null;
+  if (!change && !added && (flown || !owner)) return null;
 
   return (
     <div className="mt-stack-sm flex flex-col gap-stack-sm">
+      {added && (
+        <p className="flex flex-wrap items-baseline gap-x-2 border-l-2 border-outline-variant pl-3 font-body-md text-xs text-on-surface-variant">
+          <span className="font-label-caps text-[10px] uppercase tracking-widest">
+            Added by hand
+          </span>
+          <span>not from the flight log</span>
+        </p>
+      )}
+
       {change && <ChangeNotice change={change} />}
+
+      {owner && added && (
+        <button
+          type="button"
+          disabled={removing}
+          onClick={() => {
+            setRemoving(true);
+            void dropSegment(slug, segment.id).then(() => setRemoving(false));
+          }}
+          className="w-fit font-label-caps text-[10px] uppercase tracking-widest text-error underline decoration-outline-variant underline-offset-4 disabled:opacity-50"
+        >
+          {removing ? 'Removing…' : 'Remove this leg'}
+        </button>
+      )}
 
       {owner && !flown && (
         <>

@@ -1,0 +1,4 @@
+{
+  "_": "Flights the Flighty export does not have — booked elsewhere, flown before the log began, or added from the site and folded back here. Each one becomes a leg exactly as an exported row does, so a set of legs on new dates becomes a new journey without anything else being written. 'flight' is the number as a ticket prints it (BR225); the two letters in front become the airline code and 'airline' is the name shown on the card. Times are local at each end.",
+  "flights": []
+}

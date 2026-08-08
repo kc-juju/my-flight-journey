@@ -5,6 +5,7 @@ import { useAtlas } from '../hooks/useAtlas';
 import { WorldMap } from '../components/map/WorldMap';
 import { Timeline } from '../components/journey/Timeline';
 import { SegmentCard } from '../components/journey/SegmentCard';
+import { AddSegment } from '../components/journey/AddSegment';
 import { CityGallery } from '../components/journey/CityGallery';
 import { Guestbook } from '../components/guestbook/Guestbook';
 import { HeroCarousel } from '../components/journey/HeroCarousel';
@@ -280,6 +281,8 @@ export function JourneyDetailPage() {
             {rows.map((row, rowIndex) => (
               <Fragment key={`row-${rowIndex}`}>{renderRow(row, rowIndex)}</Fragment>
             ))}
+
+            <AddSegment slug={journey.slug} />
 
             <p className="px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
               Total travelling time {formatDuration(metrics.durationMinutes)} ·{' '}

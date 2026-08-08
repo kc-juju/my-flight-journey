@@ -33,6 +33,7 @@ ATLAS = os.path.join(HERE, '..', 'src', 'data', 'journeys.json')
 EXTRA = os.path.join(HERE, 'airports-extra.json')
 REGISTRATIONS = os.path.join(HERE, 'registrations.json')
 REDATES = os.path.join(HERE, 'redates.json')
+EXTRA_FLIGHTS = os.path.join(HERE, 'extra-flights.json')
 IATA_MAP = os.path.join(HERE, 'airline-iata.json')
 
 
@@ -216,9 +217,59 @@ def main():
             'future': dt.date.fromisoformat(date) > today,
         })
 
+    # Legs written by hand, appended as though the export had carried them.
+    for extra in load_json(EXTRA_FLIGHTS, strip_comments=True).get('flights', []):
+        number = extra['flight'].strip()
+        code = ''.join(c for c in number if not c.isdigit())
+        digits = number[len(code):]
+        for airport in (extra['from'], extra['to']):
+            if airport not in airports:
+                unknown.add(airport)
+        dep = parse_stamp(extra.get('departure'))
+        arr = parse_stamp(extra.get('arrival'))
+        duration = None
+        tz_from = airports.get(extra['from'], {}).get('tz')
+        tz_to = airports.get(extra['to'], {}).get('tz')
+        if dep and arr and tz_from and tz_to:
+            duration = minutes_between(
+                dep.replace(tzinfo=ZoneInfo(tz_from)), arr.replace(tzinfo=ZoneInfo(tz_to))
+            )
+            if duration is not None and duration <= 0:
+                duration = None
+        if extra.get('airline'):
+            airline_names[code] = extra['airline']
+        date = extra.get('date') or (dep.date().isoformat() if dep else None)
+        flights.append({
+            'date': date,
+            'al': code,
+            'fl': digits,
+            'o': extra['from'],
+            'd': extra['to'],
+            'dep_local': dep.strftime('%H:%M') if dep else None,
+            'arr_local': arr.strftime('%H:%M') if arr else None,
+            'arr_day': (arr.date() - dep.date()).days if dep and arr else 0,
+            'dep': None,
+            'arr': None,
+            'dur': duration,
+            'ac': extra.get('aircraft'),
+            'reg': extra.get('registration'),
+            'cab': extra.get('cabin'),
+            'canceled': bool(extra.get('canceled')),
+            'future': dt.date.fromisoformat(date) > today,
+        })
+
     if unknown:
-        print(f'  WARNING: no coordinates for {sorted(unknown)} —'
-              f' add them to {os.path.basename(EXTRA)} with a source', file=sys.stderr)
+        # The build would otherwise fail deep inside, looking up a place id
+        # that was never made. Say what is missing, and where to put it.
+        print(
+            f'  ERROR: no coordinates for {", ".join(sorted(unknown))}.\n'
+            f'  Add each to scripts/{os.path.basename(EXTRA)} with a real source'
+            f' — {{"c": "SGN", "city": "Ho Chi Minh City", "cty": "VN",'
+            f' "name": "Tan Son Nhat International", "lat": …, "lon": …,'
+            f' "tz": "Asia/Ho_Chi_Minh", "source": "…"}}',
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     payload = {
         'airports': sorted(airports.values(), key=lambda a: a['c']),

@@ -9,6 +9,10 @@ import {
   applyChange, changeKey, listSegmentChanges, writeSegmentChange,
   type SegmentChange, type SegmentChanges,
 } from '../lib/segment-changes';
+import {
+  listAdditions, removeAddition, toSegment, writeAddition, zoneOffsets,
+  type AddedSegment, type Additions,
+} from '../lib/segment-additions';
 
 const data = raw as unknown as AtlasData;
 
@@ -33,6 +37,10 @@ interface AtlasContextValue {
   editSegment: (slug: string, segmentId: string, change: SegmentChange) => Promise<string | null>;
   /** The correction laid over this leg, if any. */
   changeFor: (slug: string, segmentId: string) => SegmentChange | undefined;
+  /** Put a leg the flight log never had into a journey. */
+  addSegment: (slug: string, leg: AddedSegment) => Promise<string | null>;
+  /** Take an added leg out again. Only added legs can be removed this way. */
+  dropSegment: (slug: string, segmentId: string) => Promise<string | null>;
 }
 
 const AtlasContext = createContext<AtlasContextValue | null>(null);
@@ -44,6 +52,9 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
   // Schedule changes to legs that have not been flown yet. Same reasoning:
   // an airline moves a flight long after the log was built.
   const [changes, setChanges] = useState<SegmentChanges>({});
+  // Legs added by hand: a positioning flight, a replacement the airline put
+  // you on, a train the log cannot see.
+  const [additions, setAdditions] = useState<Additions>({});
 
   useEffect(() => {
     let live = true;
@@ -52,6 +63,9 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
     });
     void listSegmentChanges().then((rows) => {
       if (live) setChanges(rows);
+    });
+    void listAdditions().then((rows) => {
+      if (live) setAdditions(rows);
     });
     return () => {
       live = false;
@@ -93,6 +107,26 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
     [],
   );
 
+  const addSegment = useCallback(async (slug: string, leg: AddedSegment) => {
+    const error = await writeAddition(slug, leg);
+    if (error) return error;
+    setAdditions((current) => {
+      const rest = (current[slug] ?? []).filter((l) => l.segmentId !== leg.segmentId);
+      return { ...current, [slug]: [...rest, leg] };
+    });
+    return null;
+  }, []);
+
+  const dropSegment = useCallback(async (slug: string, segmentId: string) => {
+    const error = await removeAddition(slug, segmentId);
+    if (error) return error;
+    setAdditions((current) => ({
+      ...current,
+      [slug]: (current[slug] ?? []).filter((l) => l.segmentId !== segmentId),
+    }));
+    return null;
+  }, []);
+
   const value = useMemo<AtlasContextValue>(() => {
     const placesById = indexPlaces(data.places);
     const journeys = [...data.journeys]
@@ -105,10 +139,23 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
           applyChange(segment, changes[changeKey(journey.slug, segment.id)]),
         );
         const retimed = segments.some((s, i) => s !== journey.segments[i]);
-        if (!over && !retimed) return journey;
+        // Added legs sort themselves into the itinerary by their departure,
+        // so nothing has to say where they belong. A leg with no clock goes
+        // to the end rather than to the start of the trip.
+        const extra = additions[journey.slug] ?? [];
+        const offsets = extra.length ? zoneOffsets(journey.segments) : null;
+        const all = extra.length
+          ? [
+              ...segments,
+              ...extra.map((leg) =>
+                toSegment(leg, offsets?.get(`${leg.fromPlaceId}>${leg.toPlaceId}`)),
+              ),
+            ].sort((a, b) => (a.departure ?? '9999').localeCompare(b.departure ?? '9999'))
+          : segments;
+        if (!over && !retimed && !extra.length) return journey;
         return {
           ...journey,
-          ...(retimed ? { segments } : {}),
+          ...(retimed || extra.length ? { segments: all } : {}),
           // A hand-written title also stands in for the region label, so the
           // collection lists call the journey what its owner calls it.
           ...(over.title ? { title: over.title, label: over.title } : {}),
@@ -139,8 +186,10 @@ export function AtlasProvider({ children }: { children: ReactNode }) {
       overrideFor: (slug: string) => overrides[slug],
       editSegment,
       changeFor: (slug: string, segmentId: string) => changes[changeKey(slug, segmentId)],
+      addSegment,
+      dropSegment,
     };
-  }, [overrides, edit, changes, editSegment]);
+  }, [overrides, edit, changes, editSegment, additions, addSegment, dropSegment]);
 
   return <AtlasContext.Provider value={value}>{children}</AtlasContext.Provider>;
 }
