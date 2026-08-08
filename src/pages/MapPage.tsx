@@ -11,6 +11,18 @@ import { formatDateRange, formatMonthYear, formatNumber } from '../lib/format';
 import { journeyYear } from '../lib/atlas';
 import { asset } from '../lib/asset';
 
+/**
+ * How tall the corner stack stands, closed and open.
+ *
+ * Expressed in cards rather than pixels so the two numbers cannot drift apart
+ * from the card they are measuring.
+ */
+const CARD_HEIGHT = 72;
+const CARD_GAP = 8;
+const COLLAPSED_COUNT = 3;
+const EXPANDED_COUNT = 6;
+const stackHeight = (cards: number) => cards * (CARD_HEIGHT + CARD_GAP) - CARD_GAP;
+
 export function MapPage() {
   const { journeys, placesById, metricsFor, metrics } = useAtlas();
   const navigate = useNavigate();
@@ -19,6 +31,7 @@ export function MapPage() {
   const [pointer, setPointer] = useState<{ x: number; y: number } | null>(null);
   const [selected, setSelected] = useState<Journey | null>(null);
   const [year, setYear] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState(false);
 
   const visible = useMemo(
     () => (year === null ? journeys : journeys.filter((j) => journeyYear(j) === year)),
@@ -86,10 +99,18 @@ export function MapPage() {
     setSelected(journey);
   };
 
+  const stats = [
+    ['Journeys', visible.length],
+    ['Flights', overview.flights],
+    ['Countries', overview.countries],
+    ['Cities', overview.cities],
+  ] as const;
+
   return (
     <div className="flex min-h-[calc(100vh-80px)] w-full flex-col overflow-hidden">
-      {/* What the map is showing, in numbers */}
-      <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-b border-outline-variant/40 bg-surface px-margin-mobile py-stack-sm lg:px-margin-desktop">
+      {/* Narrow screens keep the numbers in a bar: there is no room to float a
+          card without it landing on the year chips. */}
+      <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-b border-outline-variant/40 bg-surface px-margin-mobile py-stack-sm lg:hidden">
         <h1 className="font-display-lg text-headline-md text-on-surface">
           {year === null ? 'Everywhere so far' : `${year} in numbers`}
         </h1>
@@ -104,15 +125,8 @@ export function MapPage() {
             </span>
           </span>
 
-          <span aria-hidden className="hidden h-8 w-px bg-outline-variant/60 sm:block" />
-
           <dl className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-            {([
-              ['Journeys', visible.length],
-              ['Flights', overview.flights],
-              ['Countries', overview.countries],
-              ['Cities', overview.cities],
-            ] as const).map(([label, value]) => (
+            {stats.map(([label, value]) => (
               <div key={label} className="flex flex-col items-center">
                 <dd className="font-stat-display text-[22px] leading-tight text-on-surface">
                   {value}
@@ -123,16 +137,6 @@ export function MapPage() {
               </div>
             ))}
           </dl>
-
-          {overview.next && overview.days !== null && overview.days >= 0 && (
-            <Link
-              to={`/journeys/${overview.next.slug}`}
-              className="flex items-center gap-2 rounded-full border border-outline-variant/60 px-3 py-1 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant transition-colors hover:border-on-surface-variant hover:text-on-surface"
-            >
-              <Icon name="flight_takeoff" className="text-[14px]" />
-              Next · {overview.days === 0 ? 'today' : `${overview.days} days`}
-            </Link>
-          )}
         </div>
       </div>
 
@@ -164,6 +168,73 @@ export function MapPage() {
         </div>
       </div>
 
+      {/* The same numbers as a card, once there is room to float one. It steps
+          aside for the detail drawer, which occupies the same corner. */}
+      <AnimatePresence>
+        {!selected && (
+          <motion.section
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="pointer-events-none absolute right-margin-desktop top-margin-desktop z-[600] hidden w-[304px] lg:block"
+          >
+            <div className="pointer-events-auto flex flex-col gap-stack-sm rounded-2xl border border-outline-variant/40 bg-surface/90 p-stack-md shadow-xl backdrop-blur-xl">
+              <div className="flex items-baseline justify-between gap-4">
+                <h1 className="font-display-lg text-headline-md leading-tight text-on-surface">
+                  {year === null ? 'Everywhere so far' : `${year} in numbers`}
+                </h1>
+                <Link
+                  to="/stats"
+                  className="shrink-0 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant underline decoration-outline-variant underline-offset-4 transition-colors hover:text-on-surface"
+                >
+                  More
+                </Link>
+              </div>
+
+              <span className="flex items-baseline gap-2">
+                <span className="font-stat-display text-stat-display leading-none text-on-surface">
+                  {formatNumber(overview.km)}
+                </span>
+                <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                  km travelled
+                </span>
+              </span>
+
+              <dl className="grid grid-cols-4 gap-2 border-t border-outline-variant/40 pt-stack-sm">
+                {stats.map(([label, value]) => (
+                  <div key={label} className="flex flex-col">
+                    <dd className="font-stat-display text-[20px] leading-tight text-on-surface">
+                      {value}
+                    </dd>
+                    <dt className="font-label-caps text-[9px] uppercase leading-tight tracking-widest text-on-surface-variant">
+                      {label}
+                    </dt>
+                  </div>
+                ))}
+              </dl>
+
+              {overview.next && overview.days !== null && overview.days >= 0 && (
+                <Link
+                  to={`/journeys/${overview.next.slug}`}
+                  onMouseEnter={() => setHovered(overview.next ?? null)}
+                  onMouseLeave={() => setHovered(null)}
+                  className="flex items-center justify-between gap-3 border-t border-outline-variant/40 pt-stack-sm text-on-surface-variant transition-colors hover:text-on-surface"
+                >
+                  <span className="flex min-w-0 items-center gap-2">
+                    <Icon name="flight_takeoff" className="text-[16px]" />
+                    <span className="truncate font-body-md text-sm">{overview.next.title}</span>
+                  </span>
+                  <span className="shrink-0 font-label-caps text-[10px] uppercase tracking-widest">
+                    {overview.days === 0 ? 'today' : `in ${overview.days}d`}
+                  </span>
+                </Link>
+              )}
+            </div>
+          </motion.section>
+        )}
+      </AnimatePresence>
+
       <JourneyPopup
         journey={selected ? null : hovered}
         metrics={hovered ? metricsFor(hovered) : null}
@@ -178,21 +249,39 @@ export function MapPage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 24 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="pointer-events-none absolute inset-x-0 bottom-margin-mobile z-[600] flex flex-col gap-stack-sm px-margin-mobile lg:bottom-margin-desktop lg:px-margin-desktop lg:pr-20"
+            onMouseEnter={() => setExpanded(true)}
+            onMouseLeave={() => setExpanded(false)}
+            className="pointer-events-none absolute inset-x-0 bottom-margin-mobile z-[600] flex flex-col gap-stack-sm px-margin-mobile lg:inset-x-auto lg:bottom-margin-desktop lg:left-margin-desktop lg:w-[300px] lg:px-0"
           >
             <div className="flex flex-wrap items-center gap-2">
-              <span className="pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface/85 px-4 py-1.5 font-display-lg text-[18px] text-on-surface shadow-lg backdrop-blur-xl">
+              {/* On a touch screen there is no hover to open the stack with,
+                  so the heading doubles as the switch. */}
+              <button
+                type="button"
+                onClick={() => setExpanded((open) => !open)}
+                className="pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface/85 px-4 py-1.5 font-display-lg text-[18px] text-on-surface shadow-lg backdrop-blur-xl transition-colors hover:border-on-surface-variant/40"
+                aria-expanded={expanded}
+              >
                 <Icon name="flight_land" className="text-[18px] text-on-surface-variant" />
                 {year === null ? 'Recent journeys' : `${year} journeys`}
-              </span>
+                {flown.length > COLLAPSED_COUNT && (
+                  <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+                    {flown.length}
+                  </span>
+                )}
+              </button>
 
-              {upcoming.slice(0, 2).map((journey) => (
+              {upcoming.slice(0, 2).map((journey, i) => (
                 <Link
                   key={journey.id}
                   to={`/journeys/${journey.slug}`}
                   onMouseEnter={() => setHovered(journey)}
                   onMouseLeave={() => setHovered(null)}
-                  className="pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface/85 px-3 py-1.5 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant shadow-lg backdrop-blur-xl transition-colors hover:text-on-surface"
+                  // The stats card names the next trip already, so on a wide
+                  // screen the first pill would only say it twice.
+                  className={`pointer-events-auto flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface/85 px-3 py-1.5 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant shadow-lg backdrop-blur-xl transition-colors hover:text-on-surface ${
+                    i === 0 ? 'lg:hidden' : ''
+                  }`}
                 >
                   <Icon name="flight_takeoff" className="text-[14px]" />
                   {journey.title} · {formatMonthYear(journey.startDate)}
@@ -201,54 +290,50 @@ export function MapPage() {
             </div>
 
             {flown.length > 0 ? (
-              // Every flown journey, as a rail. Three big cards blocked the
-              // map they were annotating; small ones you can scroll past do
-              // not, and they let the whole list be here rather than a third
-              // of it.
-              <div className="atlas-rail pointer-events-auto flex snap-x gap-3 overflow-x-auto pb-2">
-                {flown.map((journey) => {
-                  const m = metricsFor(journey);
-                  return (
-                    <Link
+              <>
+                {/* Narrow screens: a rail along the bottom, where a tall stack
+                    would cover the whole map. */}
+                <div className="atlas-rail pointer-events-auto flex snap-x gap-3 overflow-x-auto pb-2 lg:hidden">
+                  {flown.map((journey) => (
+                    <JourneyChip
                       key={journey.id}
-                      to={`/journeys/${journey.slug}`}
-                      onMouseEnter={() => !selected && setHovered(journey)}
-                      onMouseLeave={() => setHovered(null)}
-                      className={`group flex w-[196px] shrink-0 snap-start gap-3 rounded-xl border bg-surface/90 p-2 shadow-lg backdrop-blur-xl transition-colors ${
-                        active?.id === journey.id
-                          ? 'border-tertiary-fixed-dim'
-                          : 'border-outline-variant/40 hover:border-on-surface-variant/40'
-                      }`}
-                    >
-                      {journey.heroImage ? (
-                        <img
-                          src={asset(journey.heroImage)}
-                          alt=""
-                          loading="lazy"
-                          className="h-14 w-14 shrink-0 rounded-lg object-cover"
-                        />
-                      ) : (
-                        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-surface-container">
-                          <Icon name="public" className="text-[18px] text-on-surface-variant" />
-                        </span>
-                      )}
+                      journey={journey}
+                      metrics={metricsFor(journey)}
+                      active={active?.id === journey.id}
+                      onHover={(on) => !selected && setHovered(on ? journey : null)}
+                      className="w-[196px] shrink-0 snap-start"
+                    />
+                  ))}
+                </div>
 
-                      <span className="flex min-w-0 flex-col justify-center">
-                        <span className="font-label-caps text-[9px] uppercase tracking-widest text-tertiary-fixed-dim">
-                          {formatMonthYear(journey.startDate)}
-                        </span>
-                        <span className="line-clamp-2 font-headline-md text-[15px] leading-tight text-on-surface">
-                          {journey.title}
-                        </span>
-                        <span className="truncate font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant">
-                          {m.cityCount} {m.cityCount === 1 ? 'city' : 'cities'} ·{' '}
-                          {formatNumber(m.distanceKm)} km
-                        </span>
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
+                {/* Wide screens: a stack in the corner that grows under the
+                    pointer. Three is enough to recognise the shape of it; the
+                    rest arrive when you show an interest. */}
+                <motion.div
+                  animate={{
+                    maxHeight: stackHeight(expanded ? EXPANDED_COUNT : COLLAPSED_COUNT),
+                  }}
+                  transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+                  // Closed, the last card fades out at the edge: a stack that
+                  // simply stopped would look like the end of the list.
+                  className={`atlas-rail pointer-events-auto hidden flex-col gap-2 overflow-y-auto pr-1 lg:flex ${
+                    !expanded && flown.length > COLLAPSED_COUNT
+                      ? '[mask-image:linear-gradient(to_bottom,black_72%,transparent)]'
+                      : ''
+                  }`}
+                >
+                  {flown.map((journey) => (
+                    <JourneyChip
+                      key={journey.id}
+                      journey={journey}
+                      metrics={metricsFor(journey)}
+                      active={active?.id === journey.id}
+                      onHover={(on) => !selected && setHovered(on ? journey : null)}
+                      className="w-full shrink-0"
+                    />
+                  ))}
+                </motion.div>
+              </>
             ) : (
               <p className="pointer-events-auto w-fit rounded-lg bg-surface/85 px-3 py-2 font-body-md text-sm italic text-on-surface-variant shadow-lg backdrop-blur-xl">
                 Nothing flown {year === null ? 'yet' : `in ${year}`}.
@@ -337,6 +422,65 @@ export function MapPage() {
       </AnimatePresence>
       </div>
     </div>
+  );
+}
+
+/**
+ * One journey, small enough to sit over the map without hiding it.
+ *
+ * The same card serves the bottom rail on a phone and the corner stack on a
+ * desktop; only its width changes, so the two never drift apart.
+ */
+function JourneyChip({
+  journey,
+  metrics,
+  active,
+  onHover,
+  className,
+}: {
+  journey: Journey;
+  metrics: { cityCount: number; distanceKm: number };
+  active: boolean;
+  onHover: (on: boolean) => void;
+  className: string;
+}) {
+  return (
+    <Link
+      to={`/journeys/${journey.slug}`}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
+      className={`group flex gap-3 rounded-xl border bg-surface/90 p-2 shadow-lg backdrop-blur-xl transition-colors ${
+        active
+          ? 'border-tertiary-fixed-dim'
+          : 'border-outline-variant/40 hover:border-on-surface-variant/40'
+      } ${className}`}
+    >
+      {journey.heroImage ? (
+        <img
+          src={asset(journey.heroImage)}
+          alt=""
+          loading="lazy"
+          className="h-14 w-14 shrink-0 rounded-lg object-cover"
+        />
+      ) : (
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-surface-container">
+          <Icon name="public" className="text-[18px] text-on-surface-variant" />
+        </span>
+      )}
+
+      <span className="flex min-w-0 flex-col justify-center">
+        <span className="font-label-caps text-[9px] uppercase tracking-widest text-tertiary-fixed-dim">
+          {formatMonthYear(journey.startDate)}
+        </span>
+        <span className="line-clamp-2 font-headline-md text-[15px] leading-tight text-on-surface">
+          {journey.title}
+        </span>
+        <span className="truncate font-label-caps text-[9px] uppercase tracking-widest text-on-surface-variant">
+          {metrics.cityCount} {metrics.cityCount === 1 ? 'city' : 'cities'} ·{' '}
+          {formatNumber(metrics.distanceKm)} km
+        </span>
+      </span>
+    </Link>
   );
 }
 
