@@ -6,6 +6,7 @@ import { WorldMap } from '../components/map/WorldMap';
 import { Timeline } from '../components/journey/Timeline';
 import { SegmentCard } from '../components/journey/SegmentCard';
 import { RouteSpine, SPINE_GUTTER } from '../components/journey/RouteSpine';
+import { LegFocusProvider, useLegFocus } from '../hooks/useLegFocus';
 import { AddSegment } from '../components/journey/AddSegment';
 import { CityGallery } from '../components/journey/CityGallery';
 import { Guestbook } from '../components/guestbook/Guestbook';
@@ -24,7 +25,20 @@ import type { JourneyEvent } from '../types/journey';
 import { useOwner } from '../hooks/useOwner';
 import { formatDateRange, formatDuration, formatNumber, plural, STATUS_LABEL } from '../lib/format';
 
+/**
+ * The page is split so the itinerary and the map can share what the pointer
+ * is over: a component cannot read a provider it renders itself.
+ */
 export function JourneyDetailPage() {
+  return (
+    <LegFocusProvider>
+      <JourneyDetail />
+    </LegFocusProvider>
+  );
+}
+
+function JourneyDetail() {
+  const { focused: focusedLeg } = useLegFocus();
   const { slug } = useParams<{ slug: string }>();
   const { journeyBySlug, placesById, metricsFor } = useAtlas();
   const owner = useOwner() === true;
@@ -319,6 +333,7 @@ export function JourneyDetailPage() {
                 journeys={[journey]}
                 placesById={placesById}
                 activeId={journey.id}
+                focusSegmentId={focusedLeg}
                 focus={journey}
                 focusPlaces={heroPlaces}
                 scrollWheelZoom={false}

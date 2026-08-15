@@ -2,6 +2,7 @@ import type { Place, Segment } from '../../types/journey';
 import { segmentDistanceKm } from '../../lib/atlas';
 import { MODE_TONE } from '../../lib/palette';
 import { RouteSpine } from './RouteSpine';
+import { useLegFocus } from '../../hooks/useLegFocus';
 import {
   dayOffset,
   formatClock,
@@ -26,6 +27,7 @@ interface SegmentCardProps {
 
 /** One leg of the itinerary — flight, train, ferry, whatever it was. */
 export function SegmentCard({ segment, placesById, slug, flown = true }: SegmentCardProps) {
+  const { focus } = useLegFocus();
   const from = placesById.get(segment.fromPlaceId);
   const to = placesById.get(segment.toPlaceId);
 
@@ -64,6 +66,11 @@ export function SegmentCard({ segment, placesById, slug, flown = true }: Segment
       kind={dropped ? 'waiting' : 'travelled'}
       className="flex flex-col"
     >
+      <div
+        onMouseEnter={() => focus(segment.id)}
+        onMouseLeave={() => focus(null)}
+        className="contents"
+      >
     <article
       className={`group relative flex flex-col items-start overflow-hidden rounded-xl transition-shadow duration-300 md:flex-row md:items-center ${
         dropped
@@ -207,6 +214,7 @@ export function SegmentCard({ segment, placesById, slug, flown = true }: Segment
     </article>
 
       {slug && <SegmentChangeControls slug={slug} segment={segment} flown={flown} />}
+      </div>
     </RouteSpine>
   );
 }

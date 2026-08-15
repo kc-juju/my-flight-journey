@@ -16,6 +16,8 @@ interface JourneyRoutesProps extends RouteHandlers {
   activeId?: string | null;
   /** Show the node markers as well as the lines. */
   showNodes?: boolean;
+  /** One leg picked out of the journey — what the reader is pointing at. */
+  focusSegmentId?: string | null;
 }
 
 /**
@@ -37,6 +39,7 @@ export function JourneyRoutes({
   placesById,
   activeId = null,
   showNodes = true,
+  focusSegmentId = null,
   onHover,
   onSelect,
 }: JourneyRoutesProps) {
@@ -84,20 +87,24 @@ export function JourneyRoutes({
 
         return (
           <Fragment key={journey.id}>
-            {lines.flatMap((line) =>
-              line.runs.flatMap((run, runIndex) =>
+            {lines.flatMap((line) => {
+              // Pointing at one leg makes the rest of its own journey recede,
+              // so the line and the card can be read as the same thing.
+              const picked = focusSegmentId === line.id;
+              const passedOver = focusSegmentId !== null && !picked;
+              return line.runs.flatMap((run, runIndex) =>
                 WORLD_COPIES.map((copy) => (
               <Polyline
                 key={`${line.id}-${runIndex}-${copy}`}
                 positions={shiftRun(run, copy)}
                 pathOptions={{
                   color: MODE_COLOR[line.mode],
-                  weight: active ? 4 : 2.5,
-                  opacity: dimmed ? 0.18 : active ? 1 : 0.75,
+                  weight: picked ? 6 : active ? 4 : 2.5,
+                  opacity: dimmed ? 0.18 : passedOver ? 0.25 : active ? 1 : 0.75,
                   dashArray: dashed ? '6 6' : undefined,
                   lineCap: 'round',
                 }}
-                className={active ? 'route-glow' : undefined}
+                className={picked || active ? 'route-glow' : undefined}
                 eventHandlers={{
                   mouseover: (e) =>
                     onHover?.(journey, {
@@ -114,8 +121,8 @@ export function JourneyRoutes({
                 }}
               />
                 )),
-              ),
-            )}
+              );
+            })}
 
             {showNodes &&
               nodes.flatMap((place) =>

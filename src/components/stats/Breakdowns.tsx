@@ -660,25 +660,37 @@ function SectionRow({
       type="button"
       onClick={onToggle}
       aria-expanded={open}
-      className={`flex w-full items-baseline justify-between gap-4 border-b py-stack-sm text-left transition-colors ${
-        open ? 'border-on-surface-variant/60' : 'border-outline-variant/50 hover:border-on-surface-variant/40'
-      }`}
+      className="group flex w-full flex-col gap-1 py-stack-sm text-left"
     >
-      <span className="flex min-w-0 flex-col gap-0.5">
-        <span className="font-headline-md text-[22px] leading-tight text-on-surface">
+      {/* A table of contents: the title, a leader of dots, and the figure it
+          leads to. The dots do the work a border was doing badly — they tie
+          the two ends of the line together instead of underlining a row. */}
+      <span className="flex w-full items-baseline gap-3">
+        <span className="shrink-0 font-headline-md text-[22px] leading-tight text-on-surface transition-colors group-hover:text-accent">
           {title}
         </span>
-        <span className="font-body-md text-sm text-on-surface-variant">{summary}</span>
-      </span>
-
-      <span className="flex shrink-0 items-center gap-3">
-        <span className="hidden font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant sm:inline">
+        <span
+          aria-hidden
+          className="mb-1 h-[3px] flex-1 opacity-45"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle, currentColor 1px, transparent 1px)',
+            backgroundSize: '6px 3px',
+            backgroundRepeat: 'repeat-x',
+            color: '#a2957a',
+          }}
+        />
+        <span className="shrink-0 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
           {count}
         </span>
         <Icon
           name={open ? 'expand_less' : 'expand_more'}
-          className="text-[22px] text-on-surface-variant"
+          className="shrink-0 text-[20px] text-on-surface-variant transition-colors group-hover:text-accent"
         />
+      </span>
+
+      <span className="max-w-2xl font-body-md text-sm text-on-surface-variant">
+        {summary}
       </span>
     </button>
   );

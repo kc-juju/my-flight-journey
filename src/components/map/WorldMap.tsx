@@ -164,6 +164,7 @@ interface WorldMapProps extends RouteHandlers {
   journeys: Journey[];
   placesById: Map<string, Place>;
   activeId?: string | null;
+  focusSegmentId?: string | null;
   /** Journey to zoom to. Passing null returns to the world view. */
   focus?: Journey | null;
   /**
@@ -184,6 +185,7 @@ export function WorldMap({
   journeys,
   placesById,
   activeId = null,
+  focusSegmentId = null,
   focus = null,
   focusPlaces,
   center = [26, 116],
@@ -221,6 +223,7 @@ export function WorldMap({
         journeys={journeys}
         placesById={placesById}
         activeId={activeId}
+        focusSegmentId={focusSegmentId}
         onHover={onHover}
         onSelect={onSelect}
       />
