@@ -10,6 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        accent: '#1f4e6b',
+        'accent-soft': '#e7eef3',
         'on-secondary-container': '#63635f',
         'on-primary-fixed-variant': '#39475f',
         'on-secondary-fixed': '#1b1c19',

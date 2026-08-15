@@ -61,21 +61,22 @@ export function JourneyCard({
       <div className="flex-1">
         <div className="mb-1 flex flex-wrap items-center gap-2">
           <span
-            className={`h-1.5 w-1.5 rounded-full bg-tertiary-fixed-dim ${
-              journey.status === 'completed' ? '' : 'opacity-50'
+            // Ahead of you, or behind you: the accent marks the first.
+            className={`h-1.5 w-1.5 rounded-full ${
+              journey.status === 'completed' ? 'bg-outline' : 'bg-accent'
             }`}
           />
           <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
             {formatMonthYear(journey.startDate)}
           </span>
           {journey.status !== 'completed' && (
-            <span className="rounded-full border border-outline-variant/60 px-2 py-0.5 font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">
+            <span className="rounded-full border border-accent/40 bg-accent-soft px-2 py-0.5 font-label-caps text-[10px] uppercase tracking-widest text-accent">
               {STATUS_LABEL[journey.status]}
             </span>
           )}
         </div>
 
-        <h3 className="mb-2 font-display-lg text-[22px] leading-tight text-on-surface transition-colors group-hover:text-on-tertiary-container">
+        <h3 className="mb-2 font-display-lg text-[22px] leading-tight text-on-surface transition-colors group-hover:text-accent">
           {journey.title}
         </h3>
 
