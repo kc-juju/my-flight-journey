@@ -1,6 +1,7 @@
 import type { Place, Segment } from '../../types/journey';
 import { segmentDistanceKm } from '../../lib/atlas';
 import { MODE_TONE } from '../../lib/palette';
+import { RouteSpine } from './RouteSpine';
 import {
   dayOffset,
   formatClock,
@@ -56,20 +57,13 @@ export function SegmentCard({ segment, placesById, slug, flown = true }: Segment
     .join(' • ');
 
   return (
-    // A journey is a line, not a stack. Each leg draws its own piece of that
-    // line down the gutter in its own colour, so consecutive legs join into a
-    // route whose shape can be read before a word of it is.
-    <div className="relative flex flex-col pl-10">
-      <span
-        aria-hidden
-        className="absolute bottom-0 left-[15px] top-0 w-[2px]"
-        style={{ backgroundColor: dropped ? 'transparent' : tone.accent, opacity: dropped ? 0 : 0.9 }}
-      />
-      <span
-        aria-hidden
-        className="absolute left-[9px] top-7 h-3.5 w-3.5 rounded-full border-[3px] bg-surface-warm"
-        style={{ borderColor: dropped ? '#c1c1c1' : tone.accent }}
-      />
+    // A journey is a line, not a stack: this leg's stretch of it, in its
+    // own colour.
+    <RouteSpine
+      colour={dropped ? '#c1c1c1' : tone.accent}
+      kind={dropped ? 'waiting' : 'travelled'}
+      className="flex flex-col"
+    >
     <article
       className={`group relative flex flex-col items-start overflow-hidden rounded-xl transition-shadow duration-300 md:flex-row md:items-center ${
         dropped
@@ -213,6 +207,6 @@ export function SegmentCard({ segment, placesById, slug, flown = true }: Segment
     </article>
 
       {slug && <SegmentChangeControls slug={slug} segment={segment} flown={flown} />}
-    </div>
+    </RouteSpine>
   );
 }

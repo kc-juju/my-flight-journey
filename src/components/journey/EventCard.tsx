@@ -2,6 +2,7 @@ import type { JourneyEvent, Place } from '../../types/journey';
 import { formatDayDate, formatDuration } from '../../lib/format';
 import { sportOf } from '../../lib/sports';
 import { EVENT_TONE, PARK_TONE, SPORT_TONE } from '../../lib/palette';
+import { RouteSpine } from './RouteSpine';
 import { Icon } from '../ui/Icon';
 import { MickeyEars } from '../ui/MickeyEars';
 
@@ -33,21 +34,8 @@ export function EventCard({
       : null;
 
   return (
-    // Nobody moved, so the line pauses rather than continues: a hollow node
-    // on a dotted stretch of the same route.
-    <div className="relative pl-10">
-      <span
-        aria-hidden
-        className="absolute bottom-0 left-[15px] top-0 w-[2px]"
-        style={{
-          backgroundImage: `repeating-linear-gradient(to bottom, ${tone.accent} 0 5px, transparent 5px 10px)`,
-        }}
-      />
-      <span
-        aria-hidden
-        className="absolute left-[9px] top-7 h-3.5 w-3.5 rounded-full border-[3px] bg-surface-warm"
-        style={{ borderColor: tone.accent }}
-      />
+    // Nobody moved, so the line pauses rather than continues.
+    <RouteSpine colour={tone.accent} kind="paused">
     <article
       className="flex items-start gap-4 rounded-xl border border-dashed p-stack-sm"
       style={{ backgroundColor: tone.tint, borderColor: tone.edge }}
@@ -99,6 +87,6 @@ export function EventCard({
         </span>
       </div>
     </article>
-    </div>
+    </RouteSpine>
   );
 }
