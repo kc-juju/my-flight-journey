@@ -44,7 +44,7 @@ export function JourneysPage() {
         </p>
       </header>
 
-      <div className="flex flex-col gap-stack-sm rounded-xl border border-outline-variant/70 bg-surface-container p-stack-md">
+      <div className="flex flex-col gap-stack-sm">
         <FilterRow label="Year">
           <Chip active={year === null} onClick={() => setYear(null)}>All</Chip>
           {[...metrics.years].reverse().map((y) => (
