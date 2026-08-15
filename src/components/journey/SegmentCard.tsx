@@ -56,10 +56,20 @@ export function SegmentCard({ segment, placesById, slug, flown = true }: Segment
     .join(' • ');
 
   return (
-    // The card lays itself out as a row on a wide screen, so a change form
-    // added inside it becomes another column. It belongs under the leg it
-    // corrects, which means outside.
-    <div className="flex flex-col">
+    // A journey is a line, not a stack. Each leg draws its own piece of that
+    // line down the gutter in its own colour, so consecutive legs join into a
+    // route whose shape can be read before a word of it is.
+    <div className="relative flex flex-col pl-10">
+      <span
+        aria-hidden
+        className="absolute bottom-0 left-[15px] top-0 w-[2px]"
+        style={{ backgroundColor: dropped ? 'transparent' : tone.accent, opacity: dropped ? 0 : 0.9 }}
+      />
+      <span
+        aria-hidden
+        className="absolute left-[9px] top-7 h-3.5 w-3.5 rounded-full border-[3px] bg-surface-warm"
+        style={{ borderColor: dropped ? '#c1c1c1' : tone.accent }}
+      />
     <article
       className={`group relative flex flex-col items-start overflow-hidden rounded-xl transition-shadow duration-300 md:flex-row md:items-center ${
         dropped

@@ -81,9 +81,17 @@ export function JourneyDetailPage() {
                   return (
                     <section
                       key={`base-${row.placeId}-${row.legs[0].index}`}
-                      className="rounded-xl border border-outline-variant/50 bg-surface-container-lowest/40 p-stack-sm"
+                      className="relative rounded-xl border border-outline-variant/50 bg-surface-container-lowest/40 py-stack-sm pl-10 pr-stack-sm"
                     >
-                      <h3 className="mb-stack-sm flex flex-wrap items-center gap-2 px-1 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                      <span
+                        aria-hidden
+                        className="absolute bottom-0 left-[15px] top-0 w-[2px] bg-outline-variant"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute left-[7px] top-6 h-[18px] w-[18px] rounded-full border-[3px] border-outline bg-surface-warm"
+                      />
+                      <h3 className="mb-stack-sm flex flex-wrap items-center gap-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                         <Icon name="hotel" className="text-[16px]" />
                         <span className="text-on-surface">{at?.name ?? ''}</span>
                         {row.nights && <span>· {plural(row.nights, 'night')}</span>}
@@ -102,7 +110,7 @@ export function JourneyDetailPage() {
                         </span>
                       </h3>
 
-                      <div className="flex flex-col gap-stack-sm">
+                      <div className="-ml-10 flex flex-col gap-stack-sm">
                         {row.legs.map(({ index, segment }) => (
                           <Fragment key={segment.id}>
                             <SegmentCard
@@ -170,7 +178,11 @@ export function JourneyDetailPage() {
                     ))}
 
                     {stay !== null && (
-                      <p className="flex flex-wrap items-center gap-2 px-2 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                      <p className="relative flex flex-wrap items-center gap-2 py-1 pl-10 font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                        <span
+                          aria-hidden
+                          className="absolute bottom-0 left-[15px] top-0 w-[2px] bg-outline-variant"
+                        />
                         <Icon
                           name={isShort ? 'connecting_airports' : 'hotel'}
                           className="text-[16px]"

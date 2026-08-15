@@ -33,6 +33,21 @@ export function EventCard({
       : null;
 
   return (
+    // Nobody moved, so the line pauses rather than continues: a hollow node
+    // on a dotted stretch of the same route.
+    <div className="relative pl-10">
+      <span
+        aria-hidden
+        className="absolute bottom-0 left-[15px] top-0 w-[2px]"
+        style={{
+          backgroundImage: `repeating-linear-gradient(to bottom, ${tone.accent} 0 5px, transparent 5px 10px)`,
+        }}
+      />
+      <span
+        aria-hidden
+        className="absolute left-[9px] top-7 h-3.5 w-3.5 rounded-full border-[3px] bg-surface-warm"
+        style={{ borderColor: tone.accent }}
+      />
     <article
       className="flex items-start gap-4 rounded-xl border border-dashed p-stack-sm"
       style={{ backgroundColor: tone.tint, borderColor: tone.edge }}
@@ -84,5 +99,6 @@ export function EventCard({
         </span>
       </div>
     </article>
+    </div>
   );
 }

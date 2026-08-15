@@ -10,6 +10,7 @@ import {
   STATUS_LABEL,
 } from '../../lib/format';
 import { Icon } from '../ui/Icon';
+import { MODE_TONE } from '../../lib/palette';
 import { asset } from '../../lib/asset';
 
 interface JourneyCardProps {
@@ -95,6 +96,8 @@ export function JourneyCard({
           </ul>
         )}
 
+        <RouteStrip journey={journey} />
+
         <ul className="mt-2 flex flex-wrap items-center gap-3">
           {metrics.modes.map((mode) => (
             <li
@@ -129,5 +132,38 @@ export function JourneyCard({
         {body}
       </Link>
     </motion.div>
+  );
+}
+
+/**
+ * The journey as a bar of its own colours, in order and in proportion.
+ *
+ * Widths follow time on the move rather than a count of legs, so an
+ * eleven-hour flight is not the same width as a forty-minute train. It is a
+ * summary, not a control — the detail page is where a leg can be read.
+ */
+function RouteStrip({ journey }: { journey: Journey }) {
+  const legs = journey.segments.filter((s) => !s.dropped);
+  if (legs.length < 2) return null;
+
+  const weights = legs.map((s) => Math.max(s.durationMinutes ?? 45, 15));
+  const total = weights.reduce((sum, w) => sum + w, 0);
+
+  return (
+    <span
+      aria-hidden
+      className="mt-3 flex h-1.5 w-full gap-[2px] overflow-hidden rounded-full"
+    >
+      {legs.map((segment, i) => (
+        <span
+          key={segment.id}
+          className="rounded-full"
+          style={{
+            width: `${(weights[i] / total) * 100}%`,
+            backgroundColor: MODE_TONE[segment.mode].accent,
+          }}
+        />
+      ))}
+    </span>
   );
 }
