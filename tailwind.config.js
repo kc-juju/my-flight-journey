@@ -11,6 +11,8 @@ export default {
     extend: {
       colors: {
         accent: '#1f4e6b',
+        banner: '#12303f',
+        'on-banner': '#f2ede1',
         'accent-soft': '#e7eef3',
         'on-secondary-container': '#63635f',
         'on-primary-fixed-variant': '#39475f',

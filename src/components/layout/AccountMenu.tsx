@@ -55,7 +55,7 @@ export function AccountMenu() {
         aria-label={session ? `Signed in as ${session.user.email}` : 'Sign in'}
         title={session ? `Signed in as ${session.user.email}` : 'Sign in'}
         className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
-          session ? 'bg-tertiary-fixed-dim text-primary' : 'bg-primary text-on-primary'
+          session ? 'bg-tertiary-fixed-dim text-primary' : 'bg-on-banner text-banner'
         }`}
       >
         <Icon name={session ? 'how_to_reg' : 'person'} className="text-[18px]" />

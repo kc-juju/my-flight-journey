@@ -11,7 +11,7 @@ const LINKS = [
 
 export function Navbar() {
   return (
-    <header className="fixed top-0 z-[1200] w-full border-b border-outline-variant/30 bg-surface/80 shadow-[0_1px_8px_rgba(0,0,0,0.04)] backdrop-blur-xl">
+    <header className="fixed top-0 z-[1200] w-full border-b border-black/20 bg-banner/95 shadow-[0_1px_12px_rgba(0,0,0,0.18)] backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-container items-center justify-between px-margin-mobile lg:px-margin-desktop">
         <NavLink
           to="/"
@@ -25,7 +25,7 @@ export function Navbar() {
           />
           {/* Below the small breakpoint the four links and the avatar leave no
               room for the wordmark; it wrapped and landed on top of them. */}
-          <span className="hidden whitespace-nowrap font-display-lg text-headline-md tracking-tight text-on-surface sm:inline">
+          <span className="hidden whitespace-nowrap font-display-lg text-headline-md tracking-tight text-on-banner sm:inline">
             My Flight Journey
           </span>
         </NavLink>
@@ -40,8 +40,8 @@ export function Navbar() {
                 [
                   'py-2 font-label-caps text-label-caps uppercase transition-colors',
                   isActive
-                    ? 'border-b border-primary font-bold text-primary'
-                    : 'text-on-surface-variant hover:text-on-surface',
+                    ? 'border-b border-on-banner font-bold text-on-banner'
+                    : 'text-on-banner/65 hover:text-on-banner',
                 ].join(' ')
               }
             >
@@ -60,7 +60,7 @@ export function Navbar() {
                 className={({ isActive }) =>
                   [
                     'font-label-caps text-[11px] uppercase tracking-widest transition-colors',
-                    isActive ? 'font-bold text-primary' : 'text-on-surface-variant',
+                    isActive ? 'font-bold text-on-banner' : 'text-on-banner/65',
                   ].join(' ')
                 }
               >
