@@ -25,7 +25,7 @@ function RankTable({ title, rows, unit, limit = 10 }: {
   if (!rows.length) return null;
 
   return (
-    <section className="flex flex-col gap-stack-sm rounded-xl bg-surface-container-lowest p-stack-md shadow-sm">
+    <section className="flex flex-col gap-stack-sm rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-stack-md shadow-sm">
       <div className="flex items-baseline justify-between gap-4">
         <h3 className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
           {title}
@@ -190,7 +190,7 @@ export function Breakdowns() {
             return (
               <div
                 key={c.label}
-                className="flex flex-col justify-between rounded-xl bg-surface-container p-stack-md"
+                className="flex flex-col justify-between rounded-xl border border-outline-variant/70 bg-surface-container p-stack-md"
               >
                 <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                   {c.label}

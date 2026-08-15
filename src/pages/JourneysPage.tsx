@@ -44,7 +44,7 @@ export function JourneysPage() {
         </p>
       </header>
 
-      <div className="flex flex-col gap-stack-sm">
+      <div className="flex flex-col gap-stack-sm rounded-xl border border-outline-variant/70 bg-surface-container p-stack-md">
         <FilterRow label="Year">
           <Chip active={year === null} onClick={() => setYear(null)}>All</Chip>
           {[...metrics.years].reverse().map((y) => (
@@ -127,8 +127,8 @@ function Chip({
       aria-pressed={active}
       className={`rounded-full border px-3 py-1.5 font-label-caps text-[11px] uppercase tracking-widest transition-colors ${
         active
-          ? 'border-primary bg-primary text-on-primary'
-          : 'border-outline-variant/60 text-on-surface-variant hover:border-on-surface-variant'
+          ? 'border-primary bg-primary text-on-primary shadow-sm'
+          : 'border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:border-on-surface-variant hover:text-on-surface'
       }`}
     >
       {children}

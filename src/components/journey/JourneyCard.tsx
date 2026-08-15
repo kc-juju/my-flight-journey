@@ -40,8 +40,8 @@ export function JourneyCard({
       <div
         className={
           variant === 'compact'
-            ? 'h-24 w-24 shrink-0 overflow-hidden rounded-lg border-[3px] border-surface-container-lowest shadow-md'
-            : 'h-48 w-full overflow-hidden rounded-xl border-[6px] border-surface-container-lowest shadow-md'
+            ? 'h-24 w-24 shrink-0 overflow-hidden rounded-lg'
+            : 'h-48 w-full overflow-hidden rounded-lg'
         }
       >
         {journey.thumbnail ? (
@@ -120,7 +120,9 @@ export function JourneyCard({
       <Link
         to={`/journeys/${journey.slug}`}
         className={`group flex cursor-pointer gap-4 ${
-          variant === 'compact' ? 'items-start' : 'flex-col'
+          variant === 'compact'
+            ? 'items-start'
+            : 'flex-col rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-stack-sm shadow-sm transition-shadow hover:shadow-md'
         }`}
       >
         {body}

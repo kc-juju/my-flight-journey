@@ -6,6 +6,7 @@ import { EarthLaps } from '../components/stats/EarthLaps';
 import { Icon } from '../components/ui/Icon';
 import { formatNumber, MODE_ICON, MODE_LABEL } from '../lib/format';
 import { asset } from '../lib/asset';
+import { MODE_TONE } from '../lib/palette';
 
 export function StatsPage() {
   const { metrics, data, journeys } = useAtlas();
@@ -23,7 +24,7 @@ export function StatsPage() {
         </header>
 
         <div className="grid grid-cols-1 gap-gutter md:grid-cols-12">
-          <article className="flex flex-col rounded-xl bg-surface-container-lowest p-stack-md shadow-sm md:col-span-8">
+          <article className="flex flex-col rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-stack-md shadow-sm md:col-span-8">
             <div className="flex items-start justify-between gap-4">
               <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                 Total distance
@@ -52,7 +53,7 @@ export function StatsPage() {
               <Icon name="map" className="mt-1 text-[16px] text-on-primary/60" />
             </div>
 
-            <div className="flex flex-col justify-center rounded-xl bg-surface-container-lowest p-stack-md shadow-sm">
+            <div className="flex flex-col justify-center rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-stack-md shadow-sm">
               <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                 Cities
               </span>
@@ -63,7 +64,7 @@ export function StatsPage() {
             </div>
           </div>
 
-          <article className="flex flex-col rounded-xl bg-surface-container p-stack-md md:col-span-12">
+          <article className="flex flex-col rounded-xl border border-outline-variant/70 bg-surface-container p-stack-md md:col-span-12">
             <div className="flex items-baseline gap-3">
               <span className="font-display-lg text-display-lg leading-none text-primary">
                 {metrics.journeyCount}
@@ -81,7 +82,7 @@ export function StatsPage() {
             </div>
           </article>
 
-          <section className="flex flex-col gap-stack-md rounded-xl bg-surface-container-lowest p-stack-md shadow-sm md:col-span-12">
+          <section className="flex flex-col gap-stack-md rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-stack-md shadow-sm md:col-span-12">
             <div className="flex items-center gap-2">
               <Icon name="alt_route" className="text-on-surface-variant" />
               <h2 className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
@@ -94,11 +95,16 @@ export function StatsPage() {
                 .map(([mode, n]) => (
                   <li
                     key={mode}
-                    className="flex flex-col gap-1 border-l-2 border-tertiary-fixed-dim/60 pl-3"
+                    className="flex flex-col gap-1 rounded-lg border-l-[3px] py-2 pl-3 pr-2"
+                    style={{
+                      backgroundColor: MODE_TONE[mode as keyof typeof MODE_TONE].tint,
+                      borderColor: MODE_TONE[mode as keyof typeof MODE_TONE].accent,
+                    }}
                   >
                     <Icon
                       name={MODE_ICON[mode as keyof typeof MODE_ICON]}
-                      className="text-[22px] text-on-surface-variant"
+                      className="text-[22px]"
+                      style={{ color: MODE_TONE[mode as keyof typeof MODE_TONE].accent }}
                     />
                     <span className="font-headline-md text-[20px] text-primary">{n}</span>
                     <span className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">

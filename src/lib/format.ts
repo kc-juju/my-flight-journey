@@ -99,15 +99,7 @@ export const MODE_ICON: Record<TransportMode, string> = {
  * Route colour per mode. Flights take the prototype's gold; ground transport
  * steps back so a mixed journey reads as one line with texture, not confetti.
  */
-export const MODE_COLOR: Record<TransportMode, string> = {
-  flight: '#e9c176',
-  train: '#5e5e5b',
-  car: '#76849f',
-  bus: '#a17f3b',
-  ferry: '#39475f',
-  walk: '#c8c6c2',
-  surface: '#b9c7e4',
-};
+export { MODE_ACCENT as MODE_COLOR } from './palette';
 
 /**
  * How a delay should read. Early and roughly-on-time are worth distinguishing

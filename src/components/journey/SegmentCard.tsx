@@ -1,12 +1,12 @@
 import type { Place, Segment } from '../../types/journey';
 import { segmentDistanceKm } from '../../lib/atlas';
+import { MODE_TONE } from '../../lib/palette';
 import {
   dayOffset,
   formatClock,
   formatDayDate,
   formatDuration,
   formatNumber,
-  MODE_COLOR,
   MODE_ICON,
   MODE_LABEL,
   punctuality,
@@ -32,7 +32,8 @@ export function SegmentCard({ segment, placesById, slug, flown = true }: Segment
   // a flight; everywhere else the place is what the traveller would say.
   const label = (place?: Place) =>
     place && (segment.mode === 'flight' ? (place.airportName ?? place.name) : place.name);
-  const accent = MODE_COLOR[segment.mode];
+  const tone = MODE_TONE[segment.mode];
+  const accent = tone.accent;
 
   const heading = [MODE_LABEL[segment.mode].toUpperCase(), segment.reference]
     .filter(Boolean)
@@ -64,9 +65,14 @@ export function SegmentCard({ segment, placesById, slug, flown = true }: Segment
         dropped
           ? 'gap-stack-md border border-dashed border-outline-variant bg-surface-container-low/60 p-stack-md shadow-none'
           : minor
-            ? 'ml-6 gap-stack-sm bg-surface-container-low/70 p-stack-sm shadow-sm'
-            : 'gap-stack-md bg-surface-container-lowest p-stack-md shadow-md shadow-primary/5 hover:shadow-lg'
+            ? 'ml-6 gap-stack-sm border p-stack-sm shadow-sm'
+            : 'gap-stack-md border p-stack-md shadow-md shadow-primary/5 hover:shadow-lg'
       }`}
+      style={
+        dropped
+          ? undefined
+          : { backgroundColor: tone.tint, borderColor: tone.edge }
+      }
     >
       <span
         aria-hidden
@@ -77,11 +83,10 @@ export function SegmentCard({ segment, placesById, slug, flown = true }: Segment
       <div
         className={`flex shrink-0 items-center justify-center rounded-full transition-transform ${
           minor ? 'h-10 w-10' : 'h-16 w-16'
-        } ${
-          dropped
-            ? 'bg-surface-container text-on-surface-variant/50'
-            : 'bg-surface-container text-primary group-hover:scale-110'
-        }`}
+        } ${dropped ? 'bg-surface-container text-on-surface-variant/50' : 'group-hover:scale-110'}`}
+        style={
+          dropped ? undefined : { backgroundColor: '#ffffff', color: accent, borderColor: tone.edge }
+        }
       >
         <Icon
           name={dropped ? 'flight_class' : MODE_ICON[segment.mode]}
