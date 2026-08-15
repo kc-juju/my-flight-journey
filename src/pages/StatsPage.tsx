@@ -24,7 +24,7 @@ export function StatsPage() {
         </header>
 
         <div className="grid grid-cols-1 gap-gutter md:grid-cols-12">
-          <article className="flex flex-col rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-stack-md shadow-sm md:col-span-8">
+          <article className="flex flex-col justify-between rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-stack-md shadow-sm md:col-span-6">
             <div className="flex items-start justify-between gap-4">
               <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                 Total distance
@@ -42,15 +42,15 @@ export function StatsPage() {
             <EarthLaps km={metrics.distanceKm} />
           </article>
 
-          <div className="grid grid-cols-2 gap-gutter md:col-span-4 md:grid-cols-1">
-            <div className="flex flex-col justify-center rounded-xl bg-primary-container p-stack-md text-on-primary shadow-sm">
-              <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-primary/70">
+          <div className="grid grid-cols-2 gap-gutter md:col-span-6">
+            <div className="flex flex-col justify-center rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-stack-md shadow-sm">
+              <span className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
                 Countries
               </span>
-              <span className="font-display-lg text-display-lg leading-none">
+              <span className="font-display-lg text-display-lg leading-none text-primary">
                 {metrics.countryCount}
               </span>
-              <Icon name="map" className="mt-1 text-[16px] text-on-primary/60" />
+              <Icon name="map" className="mt-1 text-[16px] text-on-surface-variant/60" />
             </div>
 
             <div className="flex flex-col justify-center rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-stack-md shadow-sm">
