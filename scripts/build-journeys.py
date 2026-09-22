@@ -464,6 +464,8 @@ def build():
                 seg['registration'] = leg['reg']
             if leg.get('cab'):
                 seg['cabin'] = leg['cab'].replace('_', ' ').title()
+            if leg.get('note'):
+                seg['note'] = leg['note']
             # Minutes late against the schedule; negative means early.
             if leg.get('dep') is not None:
                 seg['departureDelayMinutes'] = leg['dep']

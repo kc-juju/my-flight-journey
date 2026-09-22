@@ -1,6 +1,18 @@
 {
   "places": [
     {
+      "id": "bhd",
+      "name": "Belfast",
+      "code": "BHD",
+      "country": "United Kingdom",
+      "countryCode": "GB",
+      "airportName": "Belfast George Best Belfast City",
+      "lat": 54.618056,
+      "lon": -5.8725,
+      "continent": "Europe",
+      "timezone": "Europe/London"
+    },
+    {
       "id": "bki",
       "name": "Kota Kinabalu",
       "code": "BKI",
@@ -4747,7 +4759,7 @@
       "id": "2026-10-09-man",
       "slug": "2026-10-09-kr-qa",
       "title": "United Kingdom · Ireland · Thailand",
-      "subtitle": "TPE → ICN → DOH → MAN → DOH → BKK → TPE",
+      "subtitle": "TPE → ICN → DOH → MAN → BHD → DOH → BKK → TPE",
       "startDate": "2026-10-09",
       "endDate": "2026-10-26",
       "status": "planned",
@@ -4771,6 +4783,9 @@
         },
         {
           "placeId": "man"
+        },
+        {
+          "placeId": "bhd"
         },
         {
           "placeId": "dub"
@@ -4818,10 +4833,23 @@
           "toPlaceId": "man",
           "operator": "Qatar Airways",
           "reference": "QR27",
-          "departure": "2026-10-10T08:00",
-          "arrival": "2026-10-10T13:20",
+          "departure": "2026-10-10T07:50",
+          "arrival": "2026-10-10T13:10",
           "durationMinutes": 440,
           "vehicle": "Airbus A350-1000"
+        },
+        {
+          "id": "2026-10-19-EI3613-MANBHD",
+          "mode": "flight",
+          "fromPlaceId": "man",
+          "toPlaceId": "bhd",
+          "operator": "Aer Lingus",
+          "reference": "EI3613",
+          "departure": "2026-10-19T12:40",
+          "arrival": "2026-10-19T13:50",
+          "durationMinutes": 70,
+          "cabin": "Economy",
+          "note": "Operated by Emerald Airline (U.K.) Limited"
         },
         {
           "id": "2026-10-23-QTR20-DUBDOH",
@@ -4837,14 +4865,14 @@
           "cabin": "Business"
         },
         {
-          "id": "2026-10-24-QTR836-DOHBKK",
+          "id": "2026-10-24-QTR1836-DOHBKK",
           "mode": "flight",
           "fromPlaceId": "doh",
           "toPlaceId": "bkk",
           "operator": "Qatar Airways",
-          "reference": "QR836",
-          "departure": "2026-10-24T02:30",
-          "arrival": "2026-10-24T13:25",
+          "reference": "QR1836",
+          "departure": "2026-10-24T03:30",
+          "arrival": "2026-10-24T14:25",
           "durationMinutes": 415,
           "vehicle": "Airbus A380-800",
           "cabin": "First"

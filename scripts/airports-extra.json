@@ -1,5 +1,15 @@
 [
   {
+    "c": "BHD",
+    "city": "Belfast",
+    "cty": "GB",
+    "name": "George Best Belfast City Airport",
+    "lat": 54.618056,
+    "lon": -5.8725,
+    "tz": "Europe/London",
+    "source": "OpenStreetMap / Nominatim, George Best Belfast City Airport"
+  },
+  {
     "c": "KWE",
     "city": "Guiyang",
     "cty": "CN",

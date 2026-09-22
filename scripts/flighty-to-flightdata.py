@@ -254,6 +254,7 @@ def main():
             'ac': extra.get('aircraft'),
             'reg': extra.get('registration'),
             'cab': extra.get('cabin'),
+            'note': extra.get('note'),
             'canceled': bool(extra.get('canceled')),
             'future': dt.date.fromisoformat(date) > today,
         })
