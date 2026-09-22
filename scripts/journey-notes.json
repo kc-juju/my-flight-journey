@@ -360,20 +360,11 @@
    "ICN / Unseo stopover",
    "Qatar Airways Business Class",
    "Scottish Highlands road trip",
-   "Liverpool and Manchester football",
+   "Manchester stadium tour",
    "Newgrange Chamber tour",
    "Bangkok riverside stay"
   ],
   "events": [
-   {
-    "date": "2026-10-10",
-    "place": "man",
-    "kind": "football",
-    "time": "17:30",
-    "title": "Manchester United vs Tottenham Hotspur",
-    "detail": "Old Trafford matchday exterior atmosphere only; no match ticket purchased",
-    "source": "Honeymoon itinerary"
-   },
    {
     "date": "2026-10-11",
     "place": "man",
@@ -384,15 +375,6 @@
     "source": "Honeymoon itinerary"
    },
    {
-    "date": "2026-10-11",
-    "place": "liverpool",
-    "kind": "football",
-    "time": "16:30",
-    "title": "Liverpool vs Manchester City",
-    "detail": "Anfield pre-match atmosphere outside the stadium; leave around 16:00, no match ticket planned",
-    "source": "Honeymoon itinerary"
-   },
-   {
     "date": "2026-10-15",
     "place": "carbost",
     "kind": "tasting",
@@ -400,15 +382,6 @@
     "title": "Talisker Made By The Sea Tasting Experience",
     "detail": "£20 per person; three Talisker tastings during annual maintenance period",
     "source": "Talisker official experience"
-   },
-   {
-    "date": "2026-10-18",
-    "place": "nottingham",
-    "kind": "football",
-    "time": "16:30",
-    "title": "Nottingham Forest vs Arsenal",
-    "detail": "Matchday at The City Ground; if tickets are unavailable, consider a nearby city alternative",
-    "source": "Honeymoon itinerary"
    },
    {
     "date": "2026-10-21",

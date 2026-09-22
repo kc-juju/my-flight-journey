@@ -4889,7 +4889,7 @@
         "ICN / Unseo stopover",
         "Qatar Airways Business Class",
         "Scottish Highlands road trip",
-        "Liverpool and Manchester football",
+        "Manchester stadium tour",
         "Newgrange Chamber tour",
         "Bangkok riverside stay"
       ],
@@ -5207,30 +5207,12 @@
       "label": "A Qatar honeymoon through Britain, Ireland & Bangkok",
       "events": [
         {
-          "date": "2026-10-10",
-          "placeId": "man",
-          "title": "Manchester United vs Tottenham Hotspur",
-          "detail": "Old Trafford matchday exterior atmosphere only; no match ticket purchased",
-          "kind": "football",
-          "time": "17:30",
-          "source": "Honeymoon itinerary"
-        },
-        {
           "date": "2026-10-11",
           "placeId": "man",
           "title": "Etihad Stadium Tour",
           "detail": "Booked 10:00 stadium interior tour, approximately 75 minutes",
           "kind": "football",
           "time": "10:00",
-          "source": "Honeymoon itinerary"
-        },
-        {
-          "date": "2026-10-11",
-          "placeId": "liverpool",
-          "title": "Liverpool vs Manchester City",
-          "detail": "Anfield pre-match atmosphere outside the stadium; leave around 16:00, no match ticket planned",
-          "kind": "football",
-          "time": "16:30",
           "source": "Honeymoon itinerary"
         },
         {
@@ -5243,15 +5225,6 @@
           "source": "Talisker official experience"
         },
         {
-          "date": "2026-10-18",
-          "placeId": "nottingham",
-          "title": "Nottingham Forest vs Arsenal",
-          "detail": "Matchday at The City Ground; if tickets are unavailable, consider a nearby city alternative",
-          "kind": "football",
-          "time": "16:30",
-          "source": "Honeymoon itinerary"
-        },
-        {
           "date": "2026-10-21",
           "placeId": "newgrange",
           "title": "Brú na Bóinne Tour + Newgrange Chamber",
@@ -5261,7 +5234,7 @@
           "source": "Brú na Bóinne booking"
         }
       ],
-      "notes": "A planned honeymoon built around Qatar Airways Business and First Class experiences, Manchester and Liverpool football, Edinburgh, the Scottish Highlands and Skye, Belfast, Newgrange, Dublin and a relaxed Bangkok finish.",
+      "notes": "A planned honeymoon built around Qatar Airways Business and First Class experiences, a Manchester stadium tour, Edinburgh, the Scottish Highlands and Skye, Belfast, Newgrange, Dublin and a relaxed Bangkok finish.",
       "transferPlaceIds": [
         "doh"
       ]
