@@ -1032,5 +1032,204 @@
     "to": "KIX",
     "durationMinutes": 29,
     "note": "Special rapid back to Osaka • Published fastest timing on the current timetable, not the service actually taken"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-09",
+    "mode": "train",
+    "operator": "AREX All-stop Train",
+    "from": "ICN",
+    "to": "unseo",
+    "departure": "12:00",
+    "durationMinutes": 30,
+    "note": "ICN Terminal 1 → Unseo for Korean lunch and short shopping"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-09",
+    "mode": "train",
+    "operator": "AREX All-stop Train",
+    "from": "unseo",
+    "to": "ICN",
+    "departure": "15:10",
+    "durationMinutes": 30,
+    "note": "Return to ICN Terminal 1 for oneworld Lounge"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-11",
+    "mode": "train",
+    "operator": "National Rail",
+    "from": "MAN",
+    "to": "liverpool",
+    "departure": "13:30",
+    "durationMinutes": 60,
+    "note": "Manchester → Liverpool Lime Street; target direct service around 13:30–13:45"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-11",
+    "mode": "train",
+    "operator": "National Rail",
+    "from": "liverpool",
+    "to": "MAN",
+    "departure": "19:45",
+    "durationMinutes": 60,
+    "note": "Return after Cavern Club; choose a direct train around 19:45–20:00"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-12",
+    "mode": "train",
+    "operator": "National Rail",
+    "from": "MAN",
+    "to": "edinburgh",
+    "departure": "08:24",
+    "arrival": "11:37",
+    "durationMinutes": 193,
+    "note": "Manchester Oxford Road → Edinburgh Waverley; booked service"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-14",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "edinburgh",
+    "to": "fort-william",
+    "durationMinutes": 270,
+    "note": "Edinburgh → Doune Castle → Glencoe → Fort William"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-15",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "fort-william",
+    "to": "carbost",
+    "durationMinutes": 445,
+    "note": "Fort William → Glenfinnan → Eilean Donan → Skye → Talisker → Fairy Pools → Carbost"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-16",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "carbost",
+    "to": "carbost",
+    "durationMinutes": 180,
+    "note": "Trotternish loop: Old Man of Storr → Kilt Rock → Quiraing → Neist Point"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-17",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "carbost",
+    "to": "urquhart-castle",
+    "durationMinutes": 180,
+    "note": "Carbost → Urquhart Castle; no Inverness city sightseeing"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-17",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "urquhart-castle",
+    "to": "glasgow",
+    "durationMinutes": 225,
+    "note": "Urquhart Castle → Glasgow West End; Inverness is only a route-through"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-18",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "glasgow",
+    "to": "MAN",
+    "durationMinutes": 240,
+    "note": "Glasgow → Manchester Airport hotel before Nottingham"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-18",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "MAN",
+    "to": "nottingham",
+    "durationMinutes": 125,
+    "note": "Manchester Airport → Nottingham for Nottingham Forest v Arsenal"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-18",
+    "mode": "car",
+    "operator": "Hire car",
+    "from": "nottingham",
+    "to": "MAN",
+    "durationMinutes": 135,
+    "note": "Return to Manchester Airport hotel after the match"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-20",
+    "mode": "bus",
+    "operator": "McComb's Coach Tour",
+    "from": "BHD",
+    "to": "giants-causeway",
+    "departure": "08:00",
+    "durationMinutes": 120,
+    "note": "McComb’s full panoramic Giant’s Causeway tour"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-20",
+    "mode": "bus",
+    "operator": "McComb's Coach Tour",
+    "from": "giants-causeway",
+    "to": "BHD",
+    "durationMinutes": 120,
+    "note": "Return to Belfast after the tour"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-20",
+    "mode": "bus",
+    "operator": "Aircoach",
+    "from": "BHD",
+    "to": "DUB",
+    "departure": "19:10",
+    "durationMinutes": 145,
+    "note": "Preferred Belfast → Dublin transfer; O’Connell Street stop"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-21",
+    "mode": "car",
+    "operator": "SIXT hire car",
+    "from": "DUB",
+    "to": "newgrange",
+    "departure": "08:00",
+    "durationMinutes": 60,
+    "note": "Dublin → Brú na Bóinne Visitor Centre; Newgrange Chamber tour at 10:30"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-21",
+    "mode": "car",
+    "operator": "SIXT hire car",
+    "from": "newgrange",
+    "to": "slane",
+    "durationMinutes": 20,
+    "note": "Optional Slane Castle stop after Newgrange"
+  },
+  {
+    "journey": "2026-10-09-kr-qa",
+    "date": "2026-10-21",
+    "mode": "car",
+    "operator": "SIXT hire car",
+    "from": "slane",
+    "to": "DUB",
+    "durationMinutes": 60,
+    "note": "Return to Dublin; SIXT Q-Park key drop if returning early"
   }
 ]

@@ -593,5 +593,107 @@
     "lat": 34.6335,
     "lon": 135.0338,
     "kind": "landscape"
+  },
+  {
+    "id": "unseo",
+    "name": "Unseo",
+    "country": "South Korea",
+    "countryCode": "KR",
+    "lat": 37.4926,
+    "lon": 126.493,
+    "timezone": "Asia/Seoul"
+  },
+  {
+    "id": "edinburgh",
+    "name": "Edinburgh",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 55.9533,
+    "lon": -3.1883,
+    "timezone": "Europe/London"
+  },
+  {
+    "id": "fort-william",
+    "name": "Fort William",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 56.8198,
+    "lon": -5.1052,
+    "timezone": "Europe/London"
+  },
+  {
+    "id": "carbost",
+    "name": "Carbost",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 57.3025,
+    "lon": -6.353,
+    "timezone": "Europe/London"
+  },
+  {
+    "id": "urquhart-castle",
+    "name": "Urquhart Castle",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 57.324,
+    "lon": -4.442,
+    "kind": "landscape",
+    "timezone": "Europe/London"
+  },
+  {
+    "id": "glasgow",
+    "name": "Glasgow",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 55.8642,
+    "lon": -4.2518,
+    "timezone": "Europe/London"
+  },
+  {
+    "id": "liverpool",
+    "name": "Liverpool",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 53.4084,
+    "lon": -2.9916,
+    "timezone": "Europe/London"
+  },
+  {
+    "id": "nottingham",
+    "name": "Nottingham",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 52.9548,
+    "lon": -1.1581,
+    "timezone": "Europe/London"
+  },
+  {
+    "id": "giants-causeway",
+    "name": "Giant's Causeway",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "lat": 55.2408,
+    "lon": -6.5116,
+    "kind": "landscape",
+    "timezone": "Europe/London"
+  },
+  {
+    "id": "newgrange",
+    "name": "Newgrange",
+    "country": "Ireland",
+    "countryCode": "IE",
+    "lat": 53.6947,
+    "lon": -6.475,
+    "kind": "landscape",
+    "timezone": "Europe/Dublin"
+  },
+  {
+    "id": "slane",
+    "name": "Slane",
+    "country": "Ireland",
+    "countryCode": "IE",
+    "lat": 53.709,
+    "lon": -6.543,
+    "timezone": "Europe/Dublin"
   }
 ]

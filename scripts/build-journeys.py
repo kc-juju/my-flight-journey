@@ -525,7 +525,7 @@ def build():
                 if not stops or stops[-1]['placeId'] != pid:
                     stops.append({'placeId': pid})
 
-        hero = f'/images/cities/{farthest}.jpg' if farthest in have_image else None
+        hero = f'/images/cities/{farthest}.{image_ext[farthest]}' if farthest in have_image else None
 
         journeys.append({
             'id': f"{first['date']}-{farthest.lower()}",
