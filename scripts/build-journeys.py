@@ -256,11 +256,16 @@ def build():
 
     city_dir = os.path.join(os.path.dirname(__file__), '..', 'public', 'images', 'cities')
     have_image = set()
+    image_ext = {}
     have_image_by_id = set()
     if os.path.isdir(city_dir):
-        names = {f[:-4] for f in os.listdir(city_dir) if f.endswith('.jpg')}
-        have_image = {n for n in names if n.isupper()}
-        have_image_by_id = {n for n in names if not n.isupper()}
+        for filename in os.listdir(city_dir):
+            stem, ext = os.path.splitext(filename)
+            if ext.lower() not in ('.jpg', '.jpeg', '.png', '.webp'):
+                continue
+            image_ext[stem] = ext[1:].lower()
+        have_image = {n for n in image_ext if n.isupper()}
+        have_image_by_id = {n for n in image_ext if not n.isupper()}
 
     places = [
         {
@@ -275,7 +280,7 @@ def build():
             'lat': a['lat'],
             'lon': a['lon'],
             **({'home': True} if code in HOME_AIRPORTS else {}),
-            **({'image': f'/images/cities/{code}.jpg'} if code in have_image else {}),
+            **({'image': f'/images/cities/{code}.{image_ext[code]}'} if code in have_image else {}),
         }
         for code, a in sorted(airports.items())
     ]
@@ -290,7 +295,7 @@ def build():
         if place.get('image'):
             continue
         if place['id'] in have_image_by_id:
-            place['image'] = f"/images/cities/{place['id']}.jpg"
+            place['image'] = f"/images/cities/{place['id']}.{image_ext[place['id']]}"
     unfiled = set()
     for place in places:
         where = CONTINENT_BY_COUNTRY.get(place['countryCode'])

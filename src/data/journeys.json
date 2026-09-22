@@ -9,6 +9,7 @@
       "airportName": "Belfast George Best Belfast City",
       "lat": 54.618056,
       "lon": -5.8725,
+      "image": "/images/cities/BHD.png",
       "continent": "Europe",
       "timezone": "Europe/London"
     },
