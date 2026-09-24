@@ -4964,8 +4964,8 @@
           "operator": "Qatar Airways",
           "reference": "QR863",
           "departure": "2026-10-09T18:30",
-          "arrival": "2026-10-09T23:00",
-          "durationMinutes": 630,
+          "arrival": "2026-10-09T22:30",
+          "durationMinutes": 600,
           "vehicle": "Airbus A350-1000"
         },
         {
